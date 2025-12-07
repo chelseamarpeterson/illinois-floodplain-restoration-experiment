@@ -1,4 +1,4 @@
-path_to_tree_folder = "C:/Users/Chels/OneDrive - University of Illinois - Urbana/Ch2_Floodplain_Experiment/Floodplain-Experiment-Repo/Tree_Analysis"
+path_to_tree_folder = "C:/Users/Chels/OneDrive - University of Illinois - Urbana/Ch2_Floodplain_Experiment/Floodplain-Experiment-Repo"
 setwd(path_to_tree_folder)
 
 library(allodb)
@@ -6,43 +6,47 @@ library(dplyr)
 library(tidyr)
 library(reshape2)
 
-# conversions
-m2.per.ha = 10^4
-kg.per.Mg = 10^3
-
-# constants
-tree.C.content = 0.48 # %
-
-# plot dimensions 
-plot.length = 48 #m 
-plot.width = 12 #m 
-plot.area.m2 = plot.length * plot.width #m2
-plot.area.ha = plot.area.m2 / m2.per.ha #ha
-
 ################################################################################
-# step 1: estimate above- and belowground biomass from diameter-at-breast height (DBH) data (cm) 
+# load metadata
 
-# define data-related variables
-trt.names = c("Balled-and-burlapped","Bareroot","Seedling","Acorn","Seedbank","Reference")
+# treatments
+trt.df = read.csv("Metadata/Treatment_Letters_Names.csv")
+trt.letters = trt.df[,"Treatment.letters"]
+trt.names = trt.df[,"Treatment.names"]
+n.t = nrow(trt.df)
+
+# read in conversions, constants, and plot dimensions 
+dim.df = read.csv("Metadata/Constants_Conversions_Dimensions.csv")
+dim.list = list()
+for (i in 1:nrow(dim.df)) { dim.list[[dim.df[i,"Name"]]] = dim.df[i,"Value"] }
+
+# DBH data years
 years = c(2022, 2023)
 n.y = length(years)
 
 # list of genus families
-family.df = read.csv("Tree_Databases/Tree_Families.csv")
+family.df = read.csv("Tree_Analysis/Tree_Databases/Tree_Families.csv")
 n.f = nrow(family.df)
 genus.families = list()
 for (i in 1:n.f) { genus.families[[family.df$Genus[i]]] = family.df$Family[i] }
 
+################################################################################
+# step 1: estimate above- and belowground biomass from diameter-at-breast height (DBH) data (cm) 
+
 # read in all DBH data
-dbh.all = read.csv("Clean_Data_By_Species/DBH_Data_Clean_2022_2023.csv", header=T)
+dbh.all = read.csv("Tree_Analysis/Clean_Data_By_Species/DBH_Data_Clean_2022_2023.csv", header=T)
 
 # make list for unique species
 uni.spp = sort(unique(dbh.all$spp))
 n.sp = length(uni.spp)
 
 # read in allometric equation matrices
-allo.df1 = read.csv("Tree_Databases/Jenkins2004.csv", header=T); rownames(allo.df1) = allo.df1$spp
-allo.df2 = read.csv("Tree_Databases/Chojnacky2014.csv", header=T); rownames(allo.df2) = allo.df2$spp
+allo.df1 = read.csv("Tree_Analysis/Tree_Databases/Jenkins2004.csv", header=T)
+allo.df2 = read.csv("Tree_Analysis/Tree_Databases/Chojnacky2014.csv", header=T)
+
+# update row names
+rownames(allo.df1) = allo.df1$spp
+rownames(allo.df2) = allo.df2$spp
 
 # estimate biomass with allometric eqns in 1: Jenkins (2004) & 2: Chojnacky (2014)
 new.mat = data.frame(matrix(nrow = length(dbh.all$plot), ncol = 6))
@@ -52,12 +56,12 @@ for (sp in uni.spp) {
   sp.ind = which(dbh.all$spp == sp)
   
   # Jenkins
-  dbh.all[sp.ind,"ab1"] = exp(allo.df1[sp,"ab.b0"] + allo.df1[sp,"ab.b1"]*log(dbh.all[sp.ind,"dbh.cm"]))/kg.per.Mg # bm = exp(b0 + b1*log(dbh [cm])) [kg -> Mg]
+  dbh.all[sp.ind,"ab1"] = exp(allo.df1[sp,"ab.b0"] + allo.df1[sp,"ab.b1"]*log(dbh.all[sp.ind,"dbh.cm"]))/dim.list[["kg.per.Mg"]] # bm = exp(b0 + b1*log(dbh [cm])) [kg -> Mg]
   dbh.all[sp.ind,"r1"] = exp(allo.df1[sp,"cr.b0"] + allo.df1[sp,"cr.b1"]/dbh.all[sp.ind,"dbh.cm"]) # ratio = exp(b0 + b1/(dbh [cm]))
   dbh.all[sp.ind,"bg1"] = dbh.all[sp.ind,"r1"]*dbh.all[sp.ind,"ab1"] 
   
   # Chojnacky
-  dbh.all[sp.ind,"ab2"] = exp(allo.df2[sp,"ab.b0"] + allo.df2[sp,"ab.b1"]*log(dbh.all[sp.ind,"dbh.cm"]))/kg.per.Mg # bm = exp(b0 + b1*log(dbh [cm])) [kg -> Mg]
+  dbh.all[sp.ind,"ab2"] = exp(allo.df2[sp,"ab.b0"] + allo.df2[sp,"ab.b1"]*log(dbh.all[sp.ind,"dbh.cm"]))/dim.list[["kg.per.Mg"]] # bm = exp(b0 + b1*log(dbh [cm])) [kg -> Mg]
   dbh.all[sp.ind,"r2"] = exp(allo.df2[sp,"cr.b0"] + allo.df2[sp,"cr.b1"]*log(dbh.all[sp.ind,"dbh.cm"])) # ratio = exp(b0 + b1*log(dbh [cm]))
   dbh.all[sp.ind,"bg2"] = dbh.all[sp.ind,"r2"]*dbh.all[sp.ind,"ab2"]
 }
@@ -66,7 +70,7 @@ for (sp in uni.spp) {
 dbh.all$ab3 = get_biomass(dbh = dbh.all$dbh.cm, 
                           genus = dbh.all$genus, 
                           species = dbh.all$species, 
-                          coords = c(-90.1835, 41.5542))/kg.per.Mg # [kg -> Mg]
+                          coords = c(dim.list[["longitude"]], dim.list[["latitude"]]))/dim.list[["kg.per.Mg"]] # [kg -> Mg]
 dbh.all$bg3 = dbh.all$ab3 * dbh.all$r2 # using Chojnacky root:shoot ratio
 mean(dbh.all$r2)
 
@@ -75,22 +79,25 @@ sum(is.na(dbh.all[,c("ab1","ab2","r1","r2","bg1","bg2","ab3","bg3")]))
 
 # sum above & belowground biomass by species within each plot
 biomass.by.species = dbh.all %>% 
-                     group_by(redo, year, treatment, full.treatment.name, 
-                              plot, spp, genus, species) %>% 
-                     summarise(ab1=sum(ab1), ab2=sum(ab2), ab3=sum(ab3), 
-                               bg1=sum(bg1), bg2=sum(bg2), bg3=sum(bg3))
+                     group_by(redo, year, treatment, full.treatment.name, strip, plot, spp, genus, species) %>% 
+                     summarise(ab1=sum(ab1), 
+                               ab2=sum(ab2), 
+                               ab3=sum(ab3), 
+                               bg1=sum(bg1), 
+                               bg2=sum(bg2), 
+                               bg3=sum(bg3))
 
 # divide biomass by total plot area (Mg/ha)
 bm.vars = c("ab1","ab2","ab3","bg1","bg2","bg3")
 bm.vars.ha = c("ab.ha1","ab.ha2","ab.ha3","bg.ha1","bg.ha2","bg.ha3")
-biomass.by.species[, bm.vars] = biomass.by.species[, bm.vars]/plot.area.ha
+biomass.by.species[, bm.vars] = biomass.by.species[, bm.vars]/dim.list[["plot.area.ha"]]
 colnames(biomass.by.species)[which(colnames(biomass.by.species) %in% bm.vars)] = bm.vars.ha
 
 ################################################################################
 # step 2: estimate carbon stocks from biomass (Mg C/ha)
 
 # clean wood database
-wood.c.df = read.csv("Tree_Databases/Doraisami_2021_Wood_C_Database.csv")
+wood.c.df = read.csv("Tree_Analysis/Tree_Databases/Doraisami_2021_Wood_C_Database.csv")
 live.wood.c.df = wood.c.df[which(wood.c.df$dead.alive == "alive" & wood.c.df$growth.form == "tree"),]
 live.stem.c.df = live.wood.c.df[which(live.wood.c.df$tissue == "stem"),]
 live.stem.c.df = live.stem.c.df %>% separate(binomial.resolved, c("genus","spp"), sep="_", remove=F)
@@ -121,7 +128,7 @@ for (i in 1:nrow(biomass.by.species)) {
 }
 
 # estimate C stock by species
-id.vars = c("redo","year","treatment","full.treatment.name","plot","spp","genus","species")
+id.vars = c("redo","year","treatment","full.treatment.name","strip","plot","spp","genus","species")
 C.vars.ha = c("abC.ha1","abC.ha2","abC.ha3","bgC.ha1","bgC.ha2","bgC.ha3")
 C.stocks.by.species = biomass.by.species[, c(id.vars, bm.vars.ha)]
 C.stocks.by.species[,bm.vars.ha] = biomass.by.species[,bm.vars.ha] * biomass.by.species$taxon.c.content
@@ -129,7 +136,7 @@ colnames(C.stocks.by.species)[which(colnames(C.stocks.by.species) %in% bm.vars.h
 
 # sum C stocks by plot (Mg/ha)
 C.stocks.by.plot <- C.stocks.by.species %>% 
-                    group_by(redo, year, treatment, full.treatment.name, plot) %>% 
+                    group_by(redo, year, treatment, full.treatment.name, strip, plot) %>% 
                     summarise(abC.ha1=sum(abC.ha1), 
                               abC.ha2=sum(abC.ha2), 
                               abC.ha3=sum(abC.ha3), 
@@ -139,7 +146,7 @@ C.stocks.by.plot <- C.stocks.by.species %>%
 
 # estimate total biomass C stocks per ha
 C.stocks.by.plot = C.stocks.by.plot %>% 
-                   group_by(redo, year, treatment, full.treatment.name, plot) %>% 
+                   group_by(redo, year, treatment, full.treatment.name, strip, plot) %>% 
                    summarise(abC.ha1 = abC.ha1, 
                              abC.ha2 = abC.ha2, 
                              abC.ha3 = abC.ha3,
@@ -176,8 +183,7 @@ C.stocks.by.species.redo[which(C.stocks.by.species.redo$year == 2023),"year"] = 
 
 # estimate total biomass C stocks per ha by species
 C.stocks.by.species.redo = C.stocks.by.species.redo %>% 
-                           group_by(redo, year, treatment, full.treatment.name, 
-                                    plot, spp, genus, species) %>%
+                           group_by(treatment, full.treatment.name, strip, plot, spp, genus, species) %>%
                            summarise(abC.ha1 = abC.ha1, 
                                      abC.ha2 = abC.ha2, 
                                      abC.ha3 = abC.ha3,
@@ -188,6 +194,10 @@ C.stocks.by.species.redo = C.stocks.by.species.redo %>%
                                      bmC.ha2 = abC.ha2 + bgC.ha2,
                                      bmC.ha3 = abC.ha3 + bgC.ha3)
 
+# sort dataframes by treatment
+plot.sort = sort(C.stocks.by.plot.redo$treatment_plot, index.return=T)
+C.stocks.by.plot.redo = C.stocks.by.plot.redo[plot.sort$ix,-which(colnames(C.stocks.by.plot) %in% c("redo","year","treatment_plot"))]
+
 # write C stocks results to file
-write.csv(C.stocks.by.plot.redo, "Clean_Data_By_Plot/WoodyBiomass_C_Stocks_By_Plot.csv", row.names=F)
-write.csv(C.stocks.by.species.redo, "Clean_Data_By_Species/WoodyBiomass_C_Stocks_By_Species.csv", row.names=F)
+write.csv(C.stocks.by.plot.redo, "Tree_Analysis/Clean_Data_By_Plot/Woody_Biomass_C_Stocks_By_Plot.csv", row.names=F)
+write.csv(C.stocks.by.species.redo, "Tree_Analysis/Clean_Data_By_Species/Woody_Biomass_C_Stocks_By_Species.csv", row.names=F)

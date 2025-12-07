@@ -5,6 +5,7 @@ library(tidyr)
 library(dplyr)
 library(reshape2)
 library(tidyverse)
+library(brms)
 
 ### script that brings together all files with quadrat-level soil data into
 ### one clean dataframe
@@ -44,7 +45,8 @@ colnames(chem.data)[seq(8,26)] = c("texture.class","ph","p",
                                    "k.meq","ca.meq","mg.meq","h.meq")
 colnames(bd.data)[c(5,20,21,22)] = c("Depth","gravimetric.moisture",
                                      "volumetric.moisture","bulk.density")
-colnames(cn.data)[seq(4,8)] = c("bulk.n.percent","bulk.c.percent","bulk.cn.ratio","toc.n.percent","toc.percent")
+colnames(cn.data)[seq(4,8)] = c("bulk.n.percent","bulk.c.percent","bulk.cn.ratio",
+                                "toc.n.percent","toc.percent")
 colnames(pom.data)[seq(5,7)] = c("pom.mass","poc.n.percent","poc.percent")
 colnames(quad.data)[5:6] = c("elevation.mean","vegetation.height.mean")
 
@@ -68,7 +70,7 @@ bd.sum = bd.sum[,-which(colnames(bd.sum) %in% c("mass.water","sum.soil","sum.vol
 # average the POM reps
 pom.ave = pom.data[,c("Treatment","Plot","Quadrat","Rep","poc.percent","pom.mass")] %>%
           group_by(Treatment, Plot, Quadrat) %>%
-          summarize(poc.percent = mean(poc.percent*pom.mass/10)) # POM-C (%) = (g POM-C/g POM)*(g POM/g soil)
+          summarize(poc.percent = mean(poc.percent*pom.mass/10)) # POM-C (%) = (g POM-C/g POM)*(g POM/g soil)*100
 
 # add full treatment name
 temp.data$full.treatment.name = rep(0, nrow(temp.data))
@@ -181,10 +183,49 @@ soil.data = right_join(soil.data, ag.wide, by=c("treatment","plot","quadrat"))
 ################################################################################
 ## final quadrat-level data cleaning and writing to file
 
+# fit linear model between soc and som data by treatment
+lm.soc.som = lm(toc.percent ~ 0 + treatment:som.percent, data=soil.data)
+summary(lm.soc.som)
+m.strip.random = brm(data = soil.data, 
+                          toc.percent ~ 0 + som.percent:treatment + (som.percent:treatment|treatment:strip),
+                          family=gaussian(),
+                          chains=10, seed=2718, iter=10000)
+m.strip.plot.random = brm(data = soil.data, 
+                          toc.percent ~ 0 + som.percent:treatment + (som.percent:treatment|treatment:strip) + (som.percent:treatment|treatment:strip:plot),
+                          family=gaussian(),
+                          chains=10, seed=2718, iter=10000)
+summary(brm.soc.som)$fixed
+summary(brm.soc.som)$fixed$Rhat
+
 # calculate inorganic and mineral-associated organic c percents
+soil.data$toc.percent2 = predict(brm.soc.som, newdata=soil.data)[,"Estimate"]
 soil.data$bulk.c.percent = pmax(soil.data$bulk.c.percent, soil.data$toc.percent)
 soil.data$tic.percent = soil.data$bulk.c.percent - soil.data$toc.percent
 soil.data$maoc.percent = soil.data$toc.percent - soil.data$poc.percent
+
+# visualize data
+plot(soil.data$toc.percent, soil.data$toc.percent2)
+plot(seq(1,90),soil.data$bulk.c.percent,type="n",ylim=c(0,10))
+#points(seq(1,90),soil.data$bulk.c.percent,col="black")
+points(seq(1,90),soil.data$som.percent,col="black")
+points(seq(1,90),soil.data$toc.percent,col="blue")
+points(seq(1,90),soil.data$toc.percent2,col="orange")
+points(seq(1,90),soil.data$maoc.percent,col="green")
+points(seq(1,90),soil.data$poc.percent,col="red")
+
+# check for C data consistency
+sum(soil.data$bulk.c.percent >= soil.data$toc.percent)
+sum(soil.data$toc.percent >= soil.data$maoc.percent)
+sum(soil.data$maoc.percent >= soil.data$poc.percent)
+sum(soil.data$tic.percent >= 0)
+sum(soil.data$maoc.percent >= 0)
+
+# look at histograms
+hist(soil.data$bulk.c.percent)
+hist(soil.data$toc.percent)
+hist(soil.data$maoc.percent)
+hist(soil.data$poc.percent)
+hist(soil.data$tic.percent)
 
 # calculate POC:MAOC ratio
 soil.data$poc.maoc.ratio = soil.data$poc.percent/soil.data$maoc.percent

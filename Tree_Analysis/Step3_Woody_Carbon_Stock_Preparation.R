@@ -6,10 +6,10 @@ library(dplyr)
 library(reshape2)
 library(allodb)
 
-### script that integrates all biomass carbon stock data and writes the results to a CSV file
+## script that integrates all biomass carbon stock data and writes the results to a CSV file
 
 ################################################################################
-## name important variables and load wood C content database
+# name important variables and load wood C content database
 
 # read in conversions, constants, and plot dimensions 
 dim.df = read.csv("Metadata/Constants_Conversions_Dimensions.csv")
@@ -24,7 +24,8 @@ n.t = nrow(trt.df)
 
 # number of plots per treatment
 trt.plot.strip.df = read.csv("Metadata/Treatments_Strips_Plots.csv")
-n.p = length(unique(trt.plot.strip.df$Plot))
+colnames(trt.plot.strip.df) = tolower(colnames(trt.plot.strip.df))
+n.p = length(unique(trt.plot.strip.df$plot))
 
 # list of species families
 family.df = read.csv("Tree_Analysis/Tree_Databases/Tree_Families.csv")
@@ -49,31 +50,36 @@ live.wood.c.df = live.wood.c.df %>% separate(binomial.resolved, c("genus","spp")
 live.wood.c.df$species = paste(live.wood.c.df$genus, live.wood.c.df$spp, sep= " ")
 
 ################################################################################
-## clean coarse and fine woody debris data
+# clean coarse and fine woody debris data
 
-## load dataframe and change column names
+## load dataframe
 cwd.data = read.csv("Tree_Analysis/Raw_Data/CWD_June2023.csv")
+
+# update column names
 colnames(cwd.data) = c("treatment_plot","position","diameter.cm","species","fwd.count")
 
-# split plot name column
+# split treatment_plot column
 cwd.data = cwd.data %>% separate(treatment_plot, c("treatment","plot"), sep=1, remove=T)
+
+# trim white space for species column
+cwd.data$species = trimws(cwd.data$species)
 
 # add column for full treatment name
 cwd.data$full.treatment.name = 0
 for (i in 1:n.t) { cwd.data$full.treatment.name[which(cwd.data$treatment == trt.letters[i])] = trt.names[i] }
 
-#make data frame for fine woody debris (2.5-7.5 cm) count (#)
+## make data frame for fine woody debris (2.5-7.5 cm) counts (#)
 fwd.counts = cwd.data[which(is.na(cwd.data$diameter.cm)), c("treatment","full.treatment.name","plot","fwd.count")]
 row.names(fwd.counts) = seq(1, nrow(fwd.counts))
 treatment.sort = sort(fwd.counts$treatment, index.return=T)
 fwd.counts = fwd.counts[treatment.sort$ix,]
 
 # estimate FWD volume (m^3/ha) and C storage (Mg/ha)
-fwd.vol.coef = (1/dim.list[["plot.length.ft"]]) * (dim.list[["C1"]]*(pi^2)/8)
-fwd.counts$fwd.vol = fwd.vol.coef * fwd.counts$fwd.count * ((dim.list[["median.int.fwd.diameter.cm"]] / dim.list[["cm.per.in"]])^2) #m3/ha
+wd.vol.coef = (1/dim.list[["plot.length.ft"]]) * (dim.list[["C1"]]*(pi^2)/8)
+fwd.counts$fwd.vol = wd.vol.coef * fwd.counts$fwd.count * ((dim.list[["median.int.fwd.diameter.cm"]] / dim.list[["cm.per.in"]])^2) #m3/ha
 fwd.counts$int.fwd.carbon = fwd.counts$fwd.vol * dim.list[["cwd.wood.density"]] * dim.list[["fwd.C.content"]]  # m3/ha * g/cm3 * g/g = Mg/ha
 
-# make data frame for coarse woody debris (>7.5 cm)
+## estimate CWD stocks by plot
 cwd.diams = cwd.data[-which(is.na(cwd.data$diameter.cm)), -which(colnames(cwd.data) == "fwd.count")]
 cwd.diams = cwd.diams %>% separate(species, c("genus","spp"), sep=" ", remove=F)
 
@@ -101,8 +107,7 @@ for (i in 1:nrow(cwd.diams)) {
 }
 
 # estimate CWD volume (m^3/ha) and carbon storage (Mg/ha)
-cwd.vol.coef = (1/dim.list[["plot.length.ft"]]) * (dim.list[["C1"]]*(pi^2)/8)
-cwd.diams$cwd.vol = cwd.vol.coef * (cwd.diams$diameter/dim.list[["cm.per.in"]])^2 #m3/ha
+cwd.diams$cwd.vol = wd.vol.coef * (cwd.diams$diameter/dim.list[["cm.per.in"]])^2 #m3/ha
 cwd.diams$cwd.carbon = cwd.diams$cwd.vol * dim.list[["cwd.wood.density"]] * cwd.diams$taxon.c.content  # Mg/ha
 
 # sum carbon stocks (Mg/ha) by plot
@@ -126,6 +131,8 @@ for (i in 1:n.t) {
 }
 treatment.sort = sort(cwd.sum$treatment, index.return=T)
 cwd.sum = cwd.sum[treatment.sort$ix,]
+
+## estimate CWD stocks by species 
 
 # sum carbon stocks (Mg/ha) by species
 cwd.diams$species[which(cwd.diams$species == "")] = "Unknown"
@@ -158,9 +165,15 @@ for (i in 1:n.t) {
 treatment.sort = sort(cwd.sp.wide$treatment, index.return=T)
 cwd.sp.wide = cwd.sp.wide[treatment.sort$ix,]
 
+# add strip number to CWD by species dataframe
+cwd.sp.wide$plot = as.integer(cwd.sp.wide$plot)
+cwd.sp.wide = left_join(trt.plot.strip.df, 
+                        cwd.sp.wide, 
+                        by=c("treatment","plot"))
+
 # reshape dataframe
 cwd.sp.melt = melt(cwd.sp.wide, 
-                   id.vars=c("treatment","plot"), 
+                   id.vars=c("treatment","strip","plot"), 
                    variable.name="species",
                    value.name="total.cwd.carbon")
 
@@ -168,14 +181,19 @@ cwd.sp.melt = melt(cwd.sp.wide,
 write.csv(cwd.sp.melt, "Tree_Analysis/Clean_Data_By_Species/CWD_Carbon_Stocks_By_Species.csv", row.names=F)
 
 ################################################################################
-## clean snag data
+# clean snag data
 
-# load dataframe and change column names
+# load dataframe
 snag.dbh.data = read.table("Tree_Analysis/Raw_Data/DBH_Snags_June2023.csv", header=T, sep=",")
+
+# update column names
 colnames(snag.dbh.data) = c("redo","treatment_plot","live","species","dbh.cm","stem.count","notes")
 
 # split plot name column
 snag.dbh.data = snag.dbh.data %>% separate(treatment_plot, c("treatment","plot"), sep=1, remove=T)
+
+# trim white space for species column
+snag.dbh.data$species = trimws(snag.dbh.data$species)
 
 # add full treatment name
 snag.dbh.data$full.treatment.name = 0
@@ -300,33 +318,39 @@ snag.sp.sum = snag.diams %>%
               summarize(snag.carbon.min = sum(carbon.min))
 
 # reshape data frame
-snag.wide = pivot_wider(snag.sp.sum, 
-                        id_cols = c(treatment, plot),
-                        names_from = species, 
-                        values_from = snag.carbon.min)
-snag.wide[is.na(snag.wide)] = 0
+snag.sp.wide = pivot_wider(snag.sp.sum, 
+                           id_cols = c(treatment, plot),
+                           names_from = species, 
+                           values_from = snag.carbon.min)
+snag.sp.wide[is.na(snag.sp.wide)] = 0
 
 # add zeros to diameter sums
-snag.spp = colnames(snag.wide)[3:13]
-snag.wide$plot = as.character(snag.wide$plot)
+snag.spp = colnames(snag.sp.wide)[3:13]
+snag.sp.wide$plot = as.character(snag.sp.wide$plot)
 for (i in 1:n.t) {
   for (j in 1:n.p) {
-    treatment.plot.id = which(snag.wide$treatment == trt.letters[i] & snag.wide$plot == j)
+    treatment.plot.id = which(snag.sp.wide$treatment == trt.letters[i] & snag.sp.wide$plot == j)
     if (length(treatment.plot.id) == 0) {
-      zero.row = data.frame(matrix(ncol=length(colnames(snag.wide)), nrow=1))
-      colnames(zero.row) = colnames(snag.wide)
+      zero.row = data.frame(matrix(ncol=length(colnames(snag.sp.wide)), nrow=1))
+      colnames(zero.row) = colnames(snag.sp.wide)
       zero.row[1, c("treatment","plot")] = c(trt.letters[i], j)
       zero.row[1, snag.spp] = 0
-      snag.wide = rbind(snag.wide, zero.row)
+      snag.sp.wide = rbind(snag.sp.wide, zero.row)
     }
   }
 }
-treatment.sort = sort(snag.wide$treatment, index.return=T)
-snag.wide = snag.wide[treatment.sort$ix,]
+treatment.sort = sort(snag.sp.wide$treatment, index.return=T)
+snag.sp.wide = snag.sp.wide[treatment.sort$ix,]
+
+# add strip number to CWD by species dataframe
+snag.sp.wide$plot = as.integer(snag.sp.wide$plot)
+snag.sp.wide = left_join(trt.plot.strip.df, 
+                         snag.sp.wide, 
+                         by=c("treatment","plot"))
 
 # reshape dataframe
-snag.melt = melt(snag.wide, 
-                 id.vars=c("treatment","plot"), 
+snag.melt = melt(snag.sp.wide, 
+                 id.vars=c("treatment","strip","plot"), 
                  variable.name="species",
                  value.name="snag.carbon.min")
 treatment.sort = sort(snag.melt$treatment, index.return=T)
@@ -336,11 +360,15 @@ snag.melt = snag.melt[treatment.sort$ix,]
 write.csv(snag.melt, "Tree_Analysis/Clean_Data_By_Species/Snag_Carbon_Stocks_By_Species.csv", row.names=F)
 
 ################################################################################
-## clean live stem count data
+# clean live stem count data
 
 # read in 2022 DBH data
 dbh.data.2022 = read.csv('Tree_Analysis/Raw_Data/DBH_August2022.csv')
+
+# update column names
 colnames(dbh.data.2022) = c("treatment_plot","spp","dbh","stem.count")
+
+# isolate stem counts
 stem.data.2022 = dbh.data.2022[which(dbh.data.2022$dbh == "<3"), c("treatment_plot","spp","stem.count")]
 
 # get full species names
@@ -351,12 +379,16 @@ for (i in 1:nrow(stem.data.2022)) {
   stem.data.2022$species[i] = paste(allo.df[spp.id,"genus"], allo.df[spp.id,"species"], " ")
 }
 
-# split plot name column
+# split treatment_plot column
 stem.data.2022 = stem.data.2022 %>% separate(treatment_plot, c("treatment","plot"), sep=1, remove=T)
+
+# trim white space for species colum
+stem.data.2022$species = trimws(stem.data.2022$species)
 
 # read in 2023 DBH data
 stem.data.2023 = snag.dbh.data[which(snag.dbh.data$dbh == "<2.5" & snag.dbh.data$live == "L"),]
 stem.data.2023 = stem.data.2023[, c("treatment","plot","species","stem.count")]
+stem.data.2023$species = trimws(stem.data.2023$species)
 
 # make combined treatment-plot column
 stem.data.2022$treatment_plot = paste(stem.data.2022$treatment, stem.data.2022$plot, sep="")
@@ -460,16 +492,22 @@ for (i in 1:n.t) {
 treatment.sort = sort(stem.sp.wide$treatment, index.return=T)
 stem.sp.wide = stem.sp.wide[treatment.sort$ix,]
 
+# add strip number to CWD by species dataframe
+stem.sp.wide$plot = as.integer(stem.sp.wide$plot)
+stem.sp.wide = left_join(trt.plot.strip.df, 
+                         stem.sp.wide, 
+                         by=c("treatment","plot"))
+
 # reshape dataframe
 stem.sp.melt = melt(stem.sp.wide, 
-                    id.vars=c("treatment","plot"), 
+                    id.vars=c("treatment","strip","plot"), 
                     variable.name="species",
                     value.name="total.live.stem.carbon")
 treatment.sort = sort(stem.sp.melt$treatment, index.return=T)
 stem.sp.melt = stem.sp.melt[treatment.sort$ix,]
 
 # write cleaned live stem data to csv
-write.csv(stem.sp.melt, "Tree_Analysis/Clean_Data_By_Species/LiveStem_Carbon_Stocks_By_Species.csv", row.names=F)
+write.csv(stem.sp.melt, "Tree_Analysis/Clean_Data_By_Species/Live_Stem_Carbon_Stocks_By_Species.csv", row.names=F)
 
 ################################################################################
 ## calculate hypothetical C stock if frax. pen. were alive
@@ -528,7 +566,7 @@ treatment.sort = sort(snag.frax.sum$treatment, index.return=T)
 snag.frax.live = snag.frax.sum[treatment.sort$ix,]
 
 # isolate F. pennsylvanica data in true snag C stock data, then average by plot
-snag.frax.dead = snag.wide[, c("treatment","plot","Fraxinus pennsylvanica")]
+snag.frax.dead = snag.sp.wide[, c("treatment","plot","Fraxinus pennsylvanica")]
 colnames(snag.frax.dead) = c("treatment","plot","snag.frax.dead.carbon")
 snag.frax.dead$plot = as.character(snag.frax.dead$plot)
 snag.frax.sum = left_join(snag.frax.live, 
@@ -536,10 +574,10 @@ snag.frax.sum = left_join(snag.frax.live,
                           by = c("treatment","plot"))
 
 ################################################################################
-## read in calculated tree C stock data
+# read in calculated tree C stock data
 
 # tree data
-C.stock.data = read.csv("Tree_Analysis/Clean_Data_By_Plot/WoodyBiomass_C_Stocks_By_Plot.csv", header=T)
+C.stock.data = read.csv("Tree_Analysis/Clean_Data_By_Plot/Woody_Biomass_C_Stocks_By_Plot.csv", header=T)
 C.stock.data = C.stock.data[,c("treatment","full.treatment.name","plot","abC.ha3","bgC.ha3","bmC.ha3")]
 C.stock.data$plot = as.character(C.stock.data$plot)
 
@@ -589,44 +627,37 @@ understory.wide$herbaceous.biomass.cn.ratio = understory.hb$c.mg.ha / understory
 understory.wide$herbaceous.biomass.cn.ratio[which(is.na(understory.wide$herbaceous.biomass.cn.ratio))] = 0
 
 ################################################################################
-## combine all biomass C stock dataframes 
+## combine all biomass C stock by plots dataframes 
 
 # intermediate fine woody debris and coarse woody debris
-all.bm.data = right_join(fwd.counts[,c("treatment","full.treatment.name","plot","int.fwd.carbon")], 
-                         cwd.sum, 
-                         by=c("treatment","full.treatment.name","plot"))
+all.bm.data = left_join(cwd.sum, fwd.counts[,c("treatment","full.treatment.name","plot","int.fwd.carbon")], 
+                        by=c("treatment","full.treatment.name","plot"))
 
 # large standing dead trees
-all.bm.data = right_join(all.bm.data,
-                         snag.sum, 
-                         by=c("treatment","full.treatment.name","plot"))
+all.bm.data = left_join(all.bm.data, snag.sum, 
+                        by=c("treatment","full.treatment.name","plot"))
 
 # small standing dead stems
-all.bm.data = right_join(all.bm.data,
-                         snag.count.sum, 
-                         by=c("treatment","full.treatment.name","plot"))
+all.bm.data = left_join(all.bm.data, snag.count.sum, 
+                        by=c("treatment","full.treatment.name","plot"))
 
 # large live trees
-all.bm.data = right_join(all.bm.data, 
-                         C.stock.data, 
-                         by=c("treatment","full.treatment.name","plot"))
+all.bm.data = left_join(all.bm.data, C.stock.data, 
+                        by=c("treatment","full.treatment.name","plot"))
 
 # small live stems
-all.bm.data = right_join(all.bm.data,
-                         live.stem.sum[,c("treatment","full.treatment.name","plot",
-                                          "abg.live.stem.carbon","bg.live.stem.carbon","total.live.stem.carbon")], 
-                         by=c("treatment","full.treatment.name","plot"))
+all.bm.data = left_join(all.bm.data, live.stem.sum[,c("treatment","full.treatment.name","plot",
+                                                      "abg.live.stem.carbon","bg.live.stem.carbon","total.live.stem.carbon")], 
+                        by=c("treatment","full.treatment.name","plot"))
 
 # hypothetical C stocks of Frax pen
-all.bm.data = right_join(all.bm.data,
-                         snag.frax.sum[,c("treatment","full.treatment.name","plot",
-                                          "snag.frax.live.carbon","snag.frax.dead.carbon")], 
-                         by=c("treatment","full.treatment.name","plot"))
+all.bm.data = left_join(all.bm.data, snag.frax.sum[,c("treatment","full.treatment.name","plot",
+                                                      "snag.frax.live.carbon","snag.frax.dead.carbon")], 
+                        by=c("treatment","full.treatment.name","plot"))
 
 # understory C stocks and C:N ratios
-all.bm.data = right_join(all.bm.data, 
-                         understory.wide, 
-                         by=c("treatment","plot"))
+all.bm.data = left_join(all.bm.data, understory.wide, 
+                        by=c("treatment","plot"))
 
 # write all C stock and C:N ratio to file
 write.csv(all.bm.data, "Tree_Analysis/Clean_Data_By_Plot/All_Vegetation_C_Stocks_By_Plot.csv", row.names=F)

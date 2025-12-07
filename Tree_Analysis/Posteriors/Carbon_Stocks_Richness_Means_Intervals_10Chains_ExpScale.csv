@@ -1,0 +1,337 @@
+model,model.label,variable,variable.label,variable.mean,treatment,full.treatment.name,posterior.mean,5,95,25,75
+simple,Fixed effects only,MAOC,Mineral-associated organic carbon,87.00273799,A,Balled-and-burlapped,-0.125510642,-0.234811073,-0.008355547,-0.162195327,-0.074011684
+simple,Fixed effects only,MAOC,Mineral-associated organic carbon,87.00273799,B,Bareroot,-0.067550498,-0.234849614,0.09962126,-0.125753081,0.003465278
+simple,Fixed effects only,MAOC,Mineral-associated organic carbon,87.00273799,C,Seedling,-0.005485629,-0.166508607,0.155412999,-0.068092368,0.058171134
+simple,Fixed effects only,MAOC,Mineral-associated organic carbon,87.00273799,D,Acorn,0.089323923,-0.065395641,0.242234148,0.031993503,0.150876741
+simple,Fixed effects only,MAOC,Mineral-associated organic carbon,87.00273799,E,Seedbank,0.263893599,0.120186579,0.407457584,0.212667672,0.323829563
+simple,Fixed effects only,MAOC,Mineral-associated organic carbon,87.00273799,R,Reference,0.364242358,0.222965792,0.499898712,0.303937459,0.411463672
+strip.random,Strip random effects,MAOC,Mineral-associated organic carbon,87.00273799,A,Balled-and-burlapped,-0.127284631,-0.264357978,0.005928749,-0.17317597,-0.070717281
+strip.random,Strip random effects,MAOC,Mineral-associated organic carbon,87.00273799,B,Bareroot,-0.068464568,-0.264766029,0.121866635,-0.144077804,0.003866314
+strip.random,Strip random effects,MAOC,Mineral-associated organic carbon,87.00273799,C,Seedling,-0.006274527,-0.1910665,0.180546965,-0.078649626,0.063844881
+strip.random,Strip random effects,MAOC,Mineral-associated organic carbon,87.00273799,D,Acorn,0.098351198,-0.086985233,0.289192289,0.018313698,0.160832085
+strip.random,Strip random effects,MAOC,Mineral-associated organic carbon,87.00273799,E,Seedbank,0.263267141,0.089176322,0.433859916,0.196274691,0.32706011
+strip.random,Strip random effects,MAOC,Mineral-associated organic carbon,87.00273799,R,Reference,0.364158636,0.181951605,0.549704454,0.296115324,0.434734358
+simple,Fixed effects only,POC,Particulate organic carbon,15.16331936,A,Balled-and-burlapped,-0.061427359,-0.258946563,0.141345938,-0.118651313,0.03605327
+simple,Fixed effects only,POC,Particulate organic carbon,15.16331936,B,Bareroot,0.10695215,-0.177157267,0.376304927,0.007659067,0.221753419
+simple,Fixed effects only,POC,Particulate organic carbon,15.16331936,C,Seedling,-0.174187311,-0.487191237,0.154849687,-0.286714332,-0.040481076
+simple,Fixed effects only,POC,Particulate organic carbon,15.16331936,D,Acorn,-0.000107346,-0.286588023,0.296095749,-0.103845395,0.118271804
+simple,Fixed effects only,POC,Particulate organic carbon,15.16331936,E,Seedbank,0.15350185,-0.120965451,0.419438651,0.046431614,0.256671224
+simple,Fixed effects only,POC,Particulate organic carbon,15.16331936,R,Reference,0.112891306,-0.161172825,0.388744807,0.011741113,0.221332728
+strip.random,Strip random effects,POC,Particulate organic carbon,15.16331936,A,Balled-and-burlapped,-0.069301585,-0.350383267,0.216331675,-0.172419499,0.043924785
+strip.random,Strip random effects,POC,Particulate organic carbon,15.16331936,B,Bareroot,0.120000341,-0.249101937,0.494121118,-0.02864992,0.255078339
+strip.random,Strip random effects,POC,Particulate organic carbon,15.16331936,C,Seedling,-0.165866707,-0.531924961,0.227550397,-0.313584708,-0.020438216
+strip.random,Strip random effects,POC,Particulate organic carbon,15.16331936,D,Acorn,-0.021791889,-0.449065635,0.376263269,-0.168864055,0.144762608
+strip.random,Strip random effects,POC,Particulate organic carbon,15.16331936,E,Seedbank,0.15964577,-0.211387999,0.529182784,0.011901134,0.295138881
+strip.random,Strip random effects,POC,Particulate organic carbon,15.16331936,R,Reference,0.12915397,-0.352077972,0.617331759,-0.03721898,0.324939133
+simple,Fixed effects only,SOC,Soil organic carbon,102.1660574,A,Balled-and-burlapped,-0.112796837,-0.21214602,-0.015188734,-0.147525967,-0.070926424
+simple,Fixed effects only,SOC,Soil organic carbon,102.1660574,B,Bareroot,-0.037036595,-0.180116769,0.106995577,-0.088494445,0.022231599
+simple,Fixed effects only,SOC,Soil organic carbon,102.1660574,C,Seedling,-0.028315647,-0.170321479,0.115910017,-0.08625295,0.024594982
+simple,Fixed effects only,SOC,Soil organic carbon,102.1660574,D,Acorn,0.076549959,-0.057506638,0.21310787,0.020659839,0.125798935
+simple,Fixed effects only,SOC,Soil organic carbon,102.1660574,E,Seedbank,0.247703809,0.122299778,0.374218273,0.19704275,0.294793269
+simple,Fixed effects only,SOC,Soil organic carbon,102.1660574,R,Reference,0.328873654,0.204976913,0.447905228,0.279614616,0.374764453
+strip.random,Strip random effects,SOC,Soil organic carbon,102.1660574,A,Balled-and-burlapped,-0.114446659,-0.231574174,0.005147594,-0.154836342,-0.065057999
+strip.random,Strip random effects,SOC,Soil organic carbon,102.1660574,B,Bareroot,-0.036131813,-0.201590807,0.132572302,-0.099864768,0.026970082
+strip.random,Strip random effects,SOC,Soil organic carbon,102.1660574,C,Seedling,-0.028135349,-0.196033597,0.138799798,-0.090086912,0.036728805
+strip.random,Strip random effects,SOC,Soil organic carbon,102.1660574,D,Acorn,0.082385085,-0.078917022,0.251095629,0.017398922,0.143193382
+strip.random,Strip random effects,SOC,Soil organic carbon,102.1660574,E,Seedbank,0.24789957,0.094970695,0.398060761,0.191606548,0.306735982
+strip.random,Strip random effects,SOC,Soil organic carbon,102.1660574,R,Reference,0.328874992,0.163632091,0.494161526,0.266458268,0.38846219
+simple,Fixed effects only,TIC,Soil inorganic carbon,9.883886752,A,Balled-and-burlapped,0.623160653,0.347859113,0.918035218,0.581120049,0.785014642
+simple,Fixed effects only,TIC,Soil inorganic carbon,9.883886752,B,Bareroot,-0.157988924,-0.574232728,0.259748611,-0.338156512,-0.037939657
+simple,Fixed effects only,TIC,Soil inorganic carbon,9.883886752,C,Seedling,-0.105403019,-0.516925386,0.287244756,-0.273024196,0.023129024
+simple,Fixed effects only,TIC,Soil inorganic carbon,9.883886752,D,Acorn,-1.388166052,-2.215910049,-0.569891159,-1.628179784,-1.003935745
+simple,Fixed effects only,TIC,Soil inorganic carbon,9.883886752,E,Seedbank,-1.817447163,-2.77825211,-0.869678004,-2.162636433,-1.413460265
+simple,Fixed effects only,TIC,Soil inorganic carbon,9.883886752,R,Reference,-1.814902956,-2.761721226,-0.861083494,-2.113690569,-1.373550272
+strip.random,Strip random effects,TIC,Soil inorganic carbon,9.883886752,A,Balled-and-burlapped,0.337559702,-0.299822832,0.906300045,0.34473744,0.764970707
+strip.random,Strip random effects,TIC,Soil inorganic carbon,9.883886752,B,Bareroot,0.057818518,-0.619022653,0.785127385,-0.33869659,0.156685855
+strip.random,Strip random effects,TIC,Soil inorganic carbon,9.883886752,C,Seedling,0.103762938,-0.542285064,0.817575386,-0.252343946,0.22323913
+strip.random,Strip random effects,TIC,Soil inorganic carbon,9.883886752,D,Acorn,-1.182119506,-2.166345263,-0.11466479,-1.631774133,-0.860176815
+strip.random,Strip random effects,TIC,Soil inorganic carbon,9.883886752,E,Seedbank,-1.680263439,-2.777097132,-0.573544569,-2.083763383,-1.221352857
+strip.random,Strip random effects,TIC,Soil inorganic carbon,9.883886752,R,Reference,-1.535820376,-2.793344023,-0.309873161,-2.075053531,-1.134788116
+simple,Fixed effects only,TC,Total soil carbon,112.0499441,A,Balled-and-burlapped,0.006589016,-0.068170307,0.084461639,-0.020816734,0.038607362
+simple,Fixed effects only,TC,Total soil carbon,112.0499441,B,Bareroot,-0.074762155,-0.186904777,0.038126468,-0.117222363,-0.030045827
+simple,Fixed effects only,TC,Total soil carbon,112.0499441,C,Seedling,-0.060309795,-0.173258443,0.050623707,-0.101515262,-0.015506045
+simple,Fixed effects only,TC,Total soil carbon,112.0499441,D,Acorn,-0.096993063,-0.21078627,0.017346364,-0.141123499,-0.053099195
+simple,Fixed effects only,TC,Total soil carbon,112.0499441,E,Seedbank,0.03705729,-0.065592414,0.14605423,-0.006292775,0.076082539
+simple,Fixed effects only,TC,Total soil carbon,112.0499441,R,Reference,0.117915132,0.015564769,0.220433684,0.081419987,0.160673832
+strip.random,Strip random effects,TC,Total soil carbon,112.0499441,A,Balled-and-burlapped,0.004584945,-0.091110407,0.105887762,-0.026892206,0.047030628
+strip.random,Strip random effects,TC,Total soil carbon,112.0499441,B,Bareroot,-0.073724108,-0.208887876,0.064324346,-0.124483266,-0.021578536
+strip.random,Strip random effects,TC,Total soil carbon,112.0499441,C,Seedling,-0.05817888,-0.196633922,0.077191085,-0.110580912,-0.006534311
+strip.random,Strip random effects,TC,Total soil carbon,112.0499441,D,Acorn,-0.089627372,-0.231701927,0.056375536,-0.146223977,-0.038005245
+strip.random,Strip random effects,TC,Total soil carbon,112.0499441,E,Seedbank,0.037914465,-0.094962955,0.172584924,-0.008563092,0.09021736
+strip.random,Strip random effects,TC,Total soil carbon,112.0499441,R,Reference,0.119737818,-0.024208451,0.273088643,0.062716491,0.170834383
+simple,Fixed effects only,n.herb.only,Herbaceous layer richness,14.05555556,A,Balled-and-burlapped,0.176493594,0.010319951,0.348226969,0.127630443,0.258776777
+simple,Fixed effects only,n.herb.only,Herbaceous layer richness,14.05555556,B,Bareroot,-0.277629779,-0.560035025,0.002324504,-0.380247715,-0.163435796
+simple,Fixed effects only,n.herb.only,Herbaceous layer richness,14.05555556,C,Seedling,-0.063978044,-0.314520003,0.184295228,-0.164735525,0.025045269
+simple,Fixed effects only,n.herb.only,Herbaceous layer richness,14.05555556,D,Acorn,-0.154705476,-0.415799871,0.102128751,-0.253498765,-0.05303888
+simple,Fixed effects only,n.herb.only,Herbaceous layer richness,14.05555556,E,Seedbank,-0.955515986,-1.39395532,-0.486015398,-1.065708787,-0.726547078
+simple,Fixed effects only,n.herb.only,Herbaceous layer richness,14.05555556,R,Reference,-0.022451021,-0.261089928,0.226200384,-0.115199279,0.070590104
+strip.random,Strip random effects,n.herb.only,Herbaceous layer richness,14.05555556,A,Balled-and-burlapped,0.147959255,-0.104459338,0.397348018,0.065906045,0.25544234
+strip.random,Strip random effects,n.herb.only,Herbaceous layer richness,14.05555556,B,Bareroot,-0.250999497,-0.60930486,0.105002364,-0.39680528,-0.126852291
+strip.random,Strip random effects,n.herb.only,Herbaceous layer richness,14.05555556,C,Seedling,-0.039694322,-0.387425764,0.296870992,-0.190132911,0.064763244
+strip.random,Strip random effects,n.herb.only,Herbaceous layer richness,14.05555556,D,Acorn,-0.077151959,-0.444457824,0.300562984,-0.235705916,0.043107332
+strip.random,Strip random effects,n.herb.only,Herbaceous layer richness,14.05555556,E,Seedbank,-0.91358835,-1.371737434,-0.45675675,-1.064439726,-0.714625771
+strip.random,Strip random effects,n.herb.only,Herbaceous layer richness,14.05555556,R,Reference,0.011205455,-0.395425198,0.436641963,-0.153713854,0.144681997
+simple,Fixed effects only,n.tree.only,Tree layer richness,2.111111111,A,Balled-and-burlapped,-0.143997409,-0.693692328,0.402133514,-0.252795038,0.168276751
+simple,Fixed effects only,n.tree.only,Tree layer richness,2.111111111,B,Bareroot,0.45918246,-0.203125517,1.153950604,0.180795753,0.694549223
+simple,Fixed effects only,n.tree.only,Tree layer richness,2.111111111,C,Seedling,0.033670277,-0.76256917,0.850326795,-0.237383498,0.360281599
+simple,Fixed effects only,n.tree.only,Tree layer richness,2.111111111,D,Acorn,0.033475062,-0.752233548,0.864251512,-0.226309875,0.379460641
+simple,Fixed effects only,n.tree.only,Tree layer richness,2.111111111,E,Seedbank,-0.498113416,-1.469293246,0.453262546,-0.799588627,-0.065303625
+simple,Fixed effects only,n.tree.only,Tree layer richness,2.111111111,R,Reference,-0.681385028,-1.691350117,0.32473567,-0.97772306,-0.199997018
+strip.random,Strip random effects,n.tree.only,Tree layer richness,2.111111111,A,Balled-and-burlapped,-0.2202718,-0.863375558,0.416733668,-0.350064813,0.1349858
+strip.random,Strip random effects,n.tree.only,Tree layer richness,2.111111111,B,Bareroot,0.455784823,-0.330357013,1.247874874,0.146654421,0.741185717
+strip.random,Strip random effects,n.tree.only,Tree layer richness,2.111111111,C,Seedling,0.063105329,-0.778028774,0.952773862,-0.239907651,0.409296603
+strip.random,Strip random effects,n.tree.only,Tree layer richness,2.111111111,D,Acorn,0.076094992,-0.862168797,0.949595442,-0.224877213,0.446554467
+strip.random,Strip random effects,n.tree.only,Tree layer richness,2.111111111,E,Seedbank,-0.497565618,-1.48732523,0.543491235,-0.788473161,-0.011588602
+strip.random,Strip random effects,n.tree.only,Tree layer richness,2.111111111,R,Reference,-0.598598092,-1.725059526,0.489093599,-0.995650266,-0.128044484
+simple,Fixed effects only,n.both.herb.tree,Both tree and herbaceous layer,0.666666667,A,Balled-and-burlapped,-0.454182485,-1.260697662,0.429899838,-0.657403709,0.00808055
+simple,Fixed effects only,n.both.herb.tree,Both tree and herbaceous layer,0.666666667,B,Bareroot,-0.430756699,-1.661391887,0.800609846,-0.840393807,0.147227488
+simple,Fixed effects only,n.both.herb.tree,Both tree and herbaceous layer,0.666666667,C,Seedling,-0.081528824,-1.340688566,1.088748849,-0.429644649,0.513256905
+simple,Fixed effects only,n.both.herb.tree,Both tree and herbaceous layer,0.666666667,D,Acorn,-0.076563453,-1.314071054,1.109701454,-0.402882232,0.526858151
+simple,Fixed effects only,n.both.herb.tree,Both tree and herbaceous layer,0.666666667,E,Seedbank,-0.7201663,-1.966056407,0.560919179,-1.153667079,-0.140245231
+simple,Fixed effects only,n.both.herb.tree,Both tree and herbaceous layer,0.666666667,R,Reference,1.078042199,0.150409865,2.064116411,0.716369875,1.44121781
+strip.random,Strip random effects,n.both.herb.tree,Both tree and herbaceous layer,0.666666667,A,Balled-and-burlapped,-0.975440426,-2.343425975,0.432283793,-1.035907663,-0.070172522
+strip.random,Strip random effects,n.both.herb.tree,Both tree and herbaceous layer,0.666666667,B,Bareroot,-0.352596244,-1.735358283,0.983084644,-0.800132731,0.292927622
+strip.random,Strip random effects,n.both.herb.tree,Both tree and herbaceous layer,0.666666667,C,Seedling,-0.059976009,-1.423876687,1.258862791,-0.46917664,0.593304945
+strip.random,Strip random effects,n.both.herb.tree,Both tree and herbaceous layer,0.666666667,D,Acorn,-0.027608845,-1.359523464,1.320160716,-0.490320102,0.564148095
+strip.random,Strip random effects,n.both.herb.tree,Both tree and herbaceous layer,0.666666667,E,Seedbank,-0.605815396,-2.027500718,0.750321344,-1.197338917,-0.084486726
+strip.random,Strip random effects,n.both.herb.tree,Both tree and herbaceous layer,0.666666667,R,Reference,0.909152687,-0.380153825,2.159789721,0.466378706,1.423377574
+simple,Fixed effects only,n.total,Total richness,16.83333333,A,Balled-and-burlapped,0.151907833,-0.024125974,0.342321603,0.102377436,0.241827966
+simple,Fixed effects only,n.total,Total richness,16.83333333,B,Bareroot,-0.187572731,-0.471273332,0.108517048,-0.29390526,-0.075331362
+simple,Fixed effects only,n.total,Total richness,16.83333333,C,Seedling,-0.05190587,-0.317150997,0.219679102,-0.166231655,0.039521406
+simple,Fixed effects only,n.total,Total richness,16.83333333,D,Acorn,-0.124678717,-0.399856065,0.157315604,-0.230131885,-0.015906658
+simple,Fixed effects only,n.total,Total richness,16.83333333,E,Seedbank,-0.932920983,-1.426851511,-0.460084937,-1.063613947,-0.703315278
+simple,Fixed effects only,n.total,Total richness,16.83333333,R,Reference,-0.034840338,-0.29939405,0.23304246,-0.141403291,0.061673988
+strip.random,Strip random effects,n.total,Total richness,16.83333333,A,Balled-and-burlapped,0.125796914,-0.139537481,0.380856706,0.05828856,0.251135704
+strip.random,Strip random effects,n.total,Total richness,16.83333333,B,Bareroot,-0.165219585,-0.533813768,0.203490723,-0.311127426,-0.034291846
+strip.random,Strip random effects,n.total,Total richness,16.83333333,C,Seedling,-0.032605539,-0.377331118,0.326220541,-0.169843711,0.092228103
+strip.random,Strip random effects,n.total,Total richness,16.83333333,D,Acorn,-0.067819475,-0.44975804,0.310797445,-0.229498694,0.053390789
+strip.random,Strip random effects,n.total,Total richness,16.83333333,E,Seedbank,-0.899397042,-1.404239959,-0.401760684,-1.063024378,-0.682126012
+strip.random,Strip random effects,n.total,Total richness,16.83333333,R,Reference,-0.005369272,-0.422134184,0.423713009,-0.184485329,0.118659066
+simple,Fixed effects only,herbaceous.litter.c.stock,Herbaceous litter,1.959076985,A,Balled-and-burlapped,-0.174467366,-0.689704353,0.346368854,-0.281591701,0.120238021
+simple,Fixed effects only,herbaceous.litter.c.stock,Herbaceous litter,1.959076985,B,Bareroot,-0.050607637,-0.846150459,0.765355166,-0.317123383,0.27786119
+simple,Fixed effects only,herbaceous.litter.c.stock,Herbaceous litter,1.959076985,C,Seedling,-0.091707876,-0.894996194,0.751612092,-0.312884282,0.29722371
+simple,Fixed effects only,herbaceous.litter.c.stock,Herbaceous litter,1.959076985,D,Acorn,0.000724392,-0.753628872,0.819277768,-0.221553089,0.362808893
+simple,Fixed effects only,herbaceous.litter.c.stock,Herbaceous litter,1.959076985,E,Seedbank,0.40145345,-0.266871723,1.069301885,0.132915636,0.639816653
+simple,Fixed effects only,herbaceous.litter.c.stock,Herbaceous litter,1.959076985,R,Reference,-0.478469818,-1.431567219,0.431400301,-0.719501063,-0.005438511
+strip.random,Strip random effects,herbaceous.litter.c.stock,Herbaceous litter,1.959076985,A,Balled-and-burlapped,-0.12480208,-0.650572751,0.42417979,-0.308153505,0.113142399
+strip.random,Strip random effects,herbaceous.litter.c.stock,Herbaceous litter,1.959076985,B,Bareroot,-0.023326497,-0.776780442,0.70433861,-0.309302127,0.26930538
+strip.random,Strip random effects,herbaceous.litter.c.stock,Herbaceous litter,1.959076985,C,Seedling,-0.05792563,-0.793570661,0.702732234,-0.359357867,0.227368439
+strip.random,Strip random effects,herbaceous.litter.c.stock,Herbaceous litter,1.959076985,D,Acorn,-0.036240387,-0.816561218,0.775173282,-0.35949033,0.271013174
+strip.random,Strip random effects,herbaceous.litter.c.stock,Herbaceous litter,1.959076985,E,Seedbank,0.28328965,-0.430565485,1.027375135,0.036459357,0.608477646
+strip.random,Strip random effects,herbaceous.litter.c.stock,Herbaceous litter,1.959076985,R,Reference,-0.344111299,-1.300276962,0.594239903,-0.710343724,0.031348734
+simple,Fixed effects only,mixed.biomass.c.stock,Mixed biomass,0.273706242,A,Balled-and-burlapped,-0.502729573,-1.226227174,0.252320883,-0.706223022,-0.110950853
+simple,Fixed effects only,mixed.biomass.c.stock,Mixed biomass,0.273706242,B,Bareroot,0.127582398,-0.985809232,1.265594396,-0.201190975,0.654573963
+simple,Fixed effects only,mixed.biomass.c.stock,Mixed biomass,0.273706242,C,Seedling,-0.338416468,-1.540912456,0.851175209,-0.720967316,0.222050361
+simple,Fixed effects only,mixed.biomass.c.stock,Mixed biomass,0.273706242,D,Acorn,-0.086537819,-1.218269423,1.112055697,-0.416338613,0.485247137
+simple,Fixed effects only,mixed.biomass.c.stock,Mixed biomass,0.273706242,E,Seedbank,-0.452351232,-1.666442971,0.74681839,-0.805540221,0.15683975
+simple,Fixed effects only,mixed.biomass.c.stock,Mixed biomass,0.273706242,R,Reference,1.133557248,0.339719593,2.031269474,0.740269636,1.40182604
+strip.random,Strip random effects,mixed.biomass.c.stock,Mixed biomass,0.273706242,A,Balled-and-burlapped,-0.88740633,-1.979135683,0.272725989,-1.104676506,-0.259800594
+strip.random,Strip random effects,mixed.biomass.c.stock,Mixed biomass,0.273706242,B,Bareroot,0.168752188,-1.046081449,1.3844016,-0.260648258,0.708127645
+strip.random,Strip random effects,mixed.biomass.c.stock,Mixed biomass,0.273706242,C,Seedling,-0.320408245,-1.612641586,0.990208322,-0.796447301,0.240280993
+strip.random,Strip random effects,mixed.biomass.c.stock,Mixed biomass,0.273706242,D,Acorn,0.173910023,-1.144846908,1.403367354,-0.269374147,0.743371058
+strip.random,Strip random effects,mixed.biomass.c.stock,Mixed biomass,0.273706242,E,Seedbank,-0.454283987,-1.755720934,0.884102,-0.981142437,0.073084157
+strip.random,Strip random effects,mixed.biomass.c.stock,Mixed biomass,0.273706242,R,Reference,0.705998636,-0.640162463,2.026908731,0.25471815,1.317442512
+simple,Fixed effects only,p.arundinacea.c.stock,P. arundinacea biomass,0.16833599,A,Balled-and-burlapped,-0.744234316,-1.703764971,0.364361368,-0.960052562,-0.156721994
+simple,Fixed effects only,p.arundinacea.c.stock,P. arundinacea biomass,0.16833599,B,Bareroot,-0.314240182,-1.669916743,1.142865513,-0.802482523,0.338373388
+simple,Fixed effects only,p.arundinacea.c.stock,P. arundinacea biomass,0.16833599,C,Seedling,-0.421346561,-1.783185289,0.978939119,-0.942551176,0.17052049
+simple,Fixed effects only,p.arundinacea.c.stock,P. arundinacea biomass,0.16833599,D,Acorn,-0.380019665,-1.761871219,1.024029904,-0.860152497,0.284341002
+simple,Fixed effects only,p.arundinacea.c.stock,P. arundinacea biomass,0.16833599,E,Seedbank,2.055353215,1.019310045,3.268587981,1.68213269,2.530454588
+simple,Fixed effects only,p.arundinacea.c.stock,P. arundinacea biomass,0.16833599,R,Reference,-0.424728951,-1.82010238,0.937188997,-0.948762564,0.186825838
+strip.random,Strip random effects,p.arundinacea.c.stock,P. arundinacea biomass,0.16833599,A,Balled-and-burlapped,-2.994205675,-4.602823147,-1.349896465,-3.425418308,-2.166458164
+strip.random,Strip random effects,p.arundinacea.c.stock,P. arundinacea biomass,0.16833599,B,Bareroot,0.235427199,-1.201856821,1.708208058,-0.3215461,0.881985176
+strip.random,Strip random effects,p.arundinacea.c.stock,P. arundinacea biomass,0.16833599,C,Seedling,-0.714735024,-2.27446964,0.817551387,-1.329550272,-0.065304856
+strip.random,Strip random effects,p.arundinacea.c.stock,P. arundinacea biomass,0.16833599,D,Acorn,0.190065195,-1.327072755,1.670760683,-0.425161126,0.79264336
+strip.random,Strip random effects,p.arundinacea.c.stock,P. arundinacea biomass,0.16833599,E,Seedbank,1.304069829,-0.394991148,2.982629718,0.666366802,2.067031655
+strip.random,Strip random effects,p.arundinacea.c.stock,P. arundinacea biomass,0.16833599,R,Reference,-0.334538722,-1.941780781,1.223550281,-0.989963285,0.310406221
+simple,Fixed effects only,h.japonicus.c.stock,H. japonicus biomass,0.193483548,A,Balled-and-burlapped,-0.689383944,-1.646172171,0.393337687,-0.809995141,-0.024112915
+simple,Fixed effects only,h.japonicus.c.stock,H. japonicus biomass,0.193483548,B,Bareroot,-0.134848386,-1.471188828,1.191824857,-0.512859626,0.54463545
+simple,Fixed effects only,h.japonicus.c.stock,H. japonicus biomass,0.193483548,C,Seedling,-0.564041798,-1.88068257,0.772514015,-1.036575983,0.034574604
+simple,Fixed effects only,h.japonicus.c.stock,H. japonicus biomass,0.193483548,D,Acorn,-0.16516684,-1.533450099,1.137767933,-0.583953657,0.479088545
+simple,Fixed effects only,h.japonicus.c.stock,H. japonicus biomass,0.193483548,E,Seedbank,1.41013421,0.375287011,2.601889864,1.003089438,1.825448141
+simple,Fixed effects only,h.japonicus.c.stock,H. japonicus biomass,0.193483548,R,Reference,-0.576262316,-1.917535081,0.740971978,-1.059856669,0.015038311
+strip.random,Strip random effects,h.japonicus.c.stock,H. japonicus biomass,0.193483548,A,Balled-and-burlapped,-1.227908731,-2.727666827,0.36870485,-1.346821208,-0.276034259
+strip.random,Strip random effects,h.japonicus.c.stock,H. japonicus biomass,0.193483548,B,Bareroot,-0.017172282,-1.426382542,1.359964017,-0.488447227,0.618928077
+strip.random,Strip random effects,h.japonicus.c.stock,H. japonicus biomass,0.193483548,C,Seedling,-0.550816752,-1.93458784,0.916709873,-1.148343737,0.004858478
+strip.random,Strip random effects,h.japonicus.c.stock,H. japonicus biomass,0.193483548,D,Acorn,-0.121186858,-1.510565373,1.336969217,-0.623185765,0.522360778
+strip.random,Strip random effects,h.japonicus.c.stock,H. japonicus biomass,0.193483548,E,Seedbank,1.159947737,-0.169945809,2.481521846,0.797057036,1.809309206
+strip.random,Strip random effects,h.japonicus.c.stock,H. japonicus biomass,0.193483548,R,Reference,-0.421126403,-1.941266861,1.06057979,-1.025805346,0.185659206
+simple,Fixed effects only,herbaceous.biomass.c.stock,Herbaceous biomass,0.63552578,A,Balled-and-burlapped,-0.542733329,-1.251178149,0.203961336,-0.75302128,-0.165786376
+simple,Fixed effects only,herbaceous.biomass.c.stock,Herbaceous biomass,0.63552578,B,Bareroot,-0.064679112,-1.192266564,1.130026879,-0.390225623,0.512343681
+simple,Fixed effects only,herbaceous.biomass.c.stock,Herbaceous biomass,0.63552578,C,Seedling,-0.566989143,-1.762549801,0.661332019,-0.930254127,0.040397079
+simple,Fixed effects only,herbaceous.biomass.c.stock,Herbaceous biomass,0.63552578,D,Acorn,-0.211426192,-1.368231926,0.989380096,-0.544281546,0.388929861
+simple,Fixed effects only,herbaceous.biomass.c.stock,Herbaceous biomass,0.63552578,E,Seedbank,1.348208323,0.577272731,2.204970912,0.983173655,1.619577102
+simple,Fixed effects only,herbaceous.biomass.c.stock,Herbaceous biomass,0.63552578,R,Reference,0.066976372,-1.073107955,1.207916076,-0.228333085,0.653842505
+strip.random,Strip random effects,herbaceous.biomass.c.stock,Herbaceous biomass,0.63552578,A,Balled-and-burlapped,-0.66009288,-1.478442389,0.13395328,-0.922097822,-0.290422502
+strip.random,Strip random effects,herbaceous.biomass.c.stock,Herbaceous biomass,0.63552578,B,Bareroot,0.095178989,-0.967537317,1.167160654,-0.291418434,0.553584449
+strip.random,Strip random effects,herbaceous.biomass.c.stock,Herbaceous biomass,0.63552578,C,Seedling,-0.74568978,-1.950512848,0.50356241,-1.184278114,-0.204599775
+strip.random,Strip random effects,herbaceous.biomass.c.stock,Herbaceous biomass,0.63552578,D,Acorn,-0.070453032,-1.232629351,1.111347691,-0.466915495,0.456184877
+strip.random,Strip random effects,herbaceous.biomass.c.stock,Herbaceous biomass,0.63552578,E,Seedbank,1.134433097,0.130355687,2.121719962,0.790123022,1.572065339
+strip.random,Strip random effects,herbaceous.biomass.c.stock,Herbaceous biomass,0.63552578,R,Reference,0.250143996,-0.970646455,1.414024913,-0.145959009,0.803128749
+simple,Fixed effects only,herbaceous.biomass.cn.ratio,Herbaceous biomass C:N ratio,15.01534536,A,Balled-and-burlapped,-0.254414237,-0.587580248,0.111316566,-0.354633232,-0.083124743
+simple,Fixed effects only,herbaceous.biomass.cn.ratio,Herbaceous biomass C:N ratio,15.01534536,B,Bareroot,0.153037711,-0.349028141,0.647212469,-0.022525963,0.352798543
+simple,Fixed effects only,herbaceous.biomass.cn.ratio,Herbaceous biomass C:N ratio,15.01534536,C,Seedling,0.375017459,-0.082516392,0.818128815,0.211124769,0.556725881
+simple,Fixed effects only,herbaceous.biomass.cn.ratio,Herbaceous biomass C:N ratio,15.01534536,D,Acorn,0.292696915,-0.150923915,0.774213435,0.140895664,0.496472476
+simple,Fixed effects only,herbaceous.biomass.cn.ratio,Herbaceous biomass C:N ratio,15.01534536,E,Seedbank,0.183949102,-0.282799097,0.69027588,0.014694189,0.386646409
+simple,Fixed effects only,herbaceous.biomass.cn.ratio,Herbaceous biomass C:N ratio,15.01534536,R,Reference,0.123964579,-0.354600775,0.644888909,-0.044611695,0.3332069
+strip.random,Strip random effects,herbaceous.biomass.cn.ratio,Herbaceous biomass C:N ratio,15.01534536,A,Balled-and-burlapped,-0.225551583,-0.616418093,0.170023441,-0.369485667,-0.060524724
+strip.random,Strip random effects,herbaceous.biomass.cn.ratio,Herbaceous biomass C:N ratio,15.01534536,B,Bareroot,0.132779852,-0.403751561,0.66890329,-0.054905968,0.358116465
+strip.random,Strip random effects,herbaceous.biomass.cn.ratio,Herbaceous biomass C:N ratio,15.01534536,C,Seedling,0.335432541,-0.184550914,0.841657416,0.134250991,0.533945487
+strip.random,Strip random effects,herbaceous.biomass.cn.ratio,Herbaceous biomass C:N ratio,15.01534536,D,Acorn,0.311839904,-0.253030702,0.854575245,0.132852163,0.560672713
+strip.random,Strip random effects,herbaceous.biomass.cn.ratio,Herbaceous biomass C:N ratio,15.01534536,E,Seedbank,0.17516167,-0.359170688,0.693881879,-0.014009776,0.393896792
+strip.random,Strip random effects,herbaceous.biomass.cn.ratio,Herbaceous biomass C:N ratio,15.01534536,R,Reference,0.129819224,-0.501723962,0.774095634,-0.104290717,0.387548951
+simple,Fixed effects only,herbaceous.litter.cn.ratio,Herbaceous litter C:N ratio,17.74074474,A,Balled-and-burlapped,-0.081401295,-0.146919821,-0.015030212,-0.107132685,-0.056033766
+simple,Fixed effects only,herbaceous.litter.cn.ratio,Herbaceous litter C:N ratio,17.74074474,B,Bareroot,0.093437508,0.004390384,0.184147572,0.057690759,0.127632444
+simple,Fixed effects only,herbaceous.litter.cn.ratio,Herbaceous litter C:N ratio,17.74074474,C,Seedling,0.092698848,0.002276792,0.18261205,0.059596734,0.129842791
+simple,Fixed effects only,herbaceous.litter.cn.ratio,Herbaceous litter C:N ratio,17.74074474,D,Acorn,0.028075314,-0.066601148,0.118687832,-0.009171939,0.062564639
+simple,Fixed effects only,herbaceous.litter.cn.ratio,Herbaceous litter C:N ratio,17.74074474,E,Seedbank,0.042266079,-0.051365065,0.134271819,0.007605625,0.079729841
+simple,Fixed effects only,herbaceous.litter.cn.ratio,Herbaceous litter C:N ratio,17.74074474,R,Reference,0.205128015,0.116110054,0.287552499,0.168642582,0.235158549
+strip.random,Strip random effects,herbaceous.litter.cn.ratio,Herbaceous litter C:N ratio,17.74074474,A,Balled-and-burlapped,-0.074215046,-0.154180017,0.006869753,-0.104275678,-0.043248311
+strip.random,Strip random effects,herbaceous.litter.cn.ratio,Herbaceous litter C:N ratio,17.74074474,B,Bareroot,0.085500208,-0.021391601,0.193245971,0.05038627,0.132325068
+strip.random,Strip random effects,herbaceous.litter.cn.ratio,Herbaceous litter C:N ratio,17.74074474,C,Seedling,0.085029391,-0.023231589,0.192466415,0.045474291,0.127335195
+strip.random,Strip random effects,herbaceous.litter.cn.ratio,Herbaceous litter C:N ratio,17.74074474,D,Acorn,0.022721829,-0.092454751,0.136032384,-0.01847974,0.067188883
+strip.random,Strip random effects,herbaceous.litter.cn.ratio,Herbaceous litter C:N ratio,17.74074474,E,Seedbank,0.034067864,-0.076181578,0.141918356,-0.00533874,0.077763557
+strip.random,Strip random effects,herbaceous.litter.cn.ratio,Herbaceous litter C:N ratio,17.74074474,R,Reference,0.197290963,0.079863242,0.315993981,0.156966067,0.243826015
+simple,Fixed effects only,fine.woody.debris.cn.ratio,Fine woody debris C:N ratio,43.56954757,A,Balled-and-burlapped,0.154917622,-0.076026253,0.396016432,0.091809668,0.273862088
+simple,Fixed effects only,fine.woody.debris.cn.ratio,Fine woody debris C:N ratio,43.56954757,B,Bareroot,0.05660097,-0.276449188,0.385166715,-0.07731968,0.171635946
+simple,Fixed effects only,fine.woody.debris.cn.ratio,Fine woody debris C:N ratio,43.56954757,C,Seedling,-0.252992187,-0.646931411,0.135366398,-0.403511798,-0.108094055
+simple,Fixed effects only,fine.woody.debris.cn.ratio,Fine woody debris C:N ratio,43.56954757,D,Acorn,-0.153096529,-0.51180436,0.229958698,-0.29456744,-0.013381237
+simple,Fixed effects only,fine.woody.debris.cn.ratio,Fine woody debris C:N ratio,43.56954757,E,Seedbank,-0.794208341,-1.322946174,-0.210040606,-0.936971931,-0.52332311
+simple,Fixed effects only,fine.woody.debris.cn.ratio,Fine woody debris C:N ratio,43.56954757,R,Reference,-0.263346971,-0.651531125,0.138680632,-0.395981789,-0.096493722
+strip.random,Strip random effects,fine.woody.debris.cn.ratio,Fine woody debris C:N ratio,43.56954757,A,Balled-and-burlapped,0.098363523,-0.246419312,0.427709466,0.028688011,0.279219412
+strip.random,Strip random effects,fine.woody.debris.cn.ratio,Fine woody debris C:N ratio,43.56954757,B,Bareroot,0.095676432,-0.360682544,0.545260186,-0.086331336,0.249190336
+strip.random,Strip random effects,fine.woody.debris.cn.ratio,Fine woody debris C:N ratio,43.56954757,C,Seedling,-0.209291259,-0.704389161,0.285713058,-0.393007758,-0.024560531
+strip.random,Strip random effects,fine.woody.debris.cn.ratio,Fine woody debris C:N ratio,43.56954757,D,Acorn,-0.106923947,-0.606978232,0.403712906,-0.315775242,0.054770541
+strip.random,Strip random effects,fine.woody.debris.cn.ratio,Fine woody debris C:N ratio,43.56954757,E,Seedbank,-0.7176451,-1.342649327,-0.114442456,-0.90526084,-0.448097967
+strip.random,Strip random effects,fine.woody.debris.cn.ratio,Fine woody debris C:N ratio,43.56954757,R,Reference,-0.193157786,-0.775385347,0.390487573,-0.422764581,-0.004482623
+simple,Fixed effects only,total.fwd.carbon,Fine woody debris (< 7.6 cm),3.585195192,A,Balled-and-burlapped,-0.359108713,-0.874877678,0.174620941,-0.512764179,-0.098232108
+simple,Fixed effects only,total.fwd.carbon,Fine woody debris (< 7.6 cm),3.585195192,B,Bareroot,1.036318937,0.466452465,1.643040323,0.751020446,1.206705566
+simple,Fixed effects only,total.fwd.carbon,Fine woody debris (< 7.6 cm),3.585195192,C,Seedling,0.556816403,-0.116087273,1.228702869,0.308903218,0.825714256
+simple,Fixed effects only,total.fwd.carbon,Fine woody debris (< 7.6 cm),3.585195192,D,Acorn,-0.944463501,-2.040634247,0.094440374,-1.278942526,-0.428489851
+simple,Fixed effects only,total.fwd.carbon,Fine woody debris (< 7.6 cm),3.585195192,E,Seedbank,-0.925960134,-2.000604138,0.110690437,-1.227882903,-0.383065189
+simple,Fixed effects only,total.fwd.carbon,Fine woody debris (< 7.6 cm),3.585195192,R,Reference,0.56851715,-0.090200916,1.243588239,0.322092369,0.828390423
+strip.random,Strip random effects,total.fwd.carbon,Fine woody debris (< 7.6 cm),3.585195192,A,Balled-and-burlapped,-0.414101011,-0.983339962,0.171130277,-0.576781695,-0.122214852
+strip.random,Strip random effects,total.fwd.carbon,Fine woody debris (< 7.6 cm),3.585195192,B,Bareroot,1.022575503,0.375652551,1.716477418,0.739305415,1.253489757
+strip.random,Strip random effects,total.fwd.carbon,Fine woody debris (< 7.6 cm),3.585195192,C,Seedling,0.553597622,-0.167846882,1.303991644,0.282058039,0.847806197
+strip.random,Strip random effects,total.fwd.carbon,Fine woody debris (< 7.6 cm),3.585195192,D,Acorn,-0.938339381,-2.07382189,0.142775171,-1.285392736,-0.399074275
+strip.random,Strip random effects,total.fwd.carbon,Fine woody debris (< 7.6 cm),3.585195192,E,Seedbank,-0.933820989,-2.040348041,0.139849077,-1.277061905,-0.406094104
+strip.random,Strip random effects,total.fwd.carbon,Fine woody debris (< 7.6 cm),3.585195192,R,Reference,0.566358909,-0.219401738,1.373451222,0.253206574,0.863442695
+simple,Fixed effects only,total.cwd.carbon,Coarse woody debris (>= 7.6 cm),5.951136472,A,Balled-and-burlapped,-0.652457981,-1.436969565,0.250540371,-0.830298066,-0.174236855
+simple,Fixed effects only,total.cwd.carbon,Coarse woody debris (>= 7.6 cm),5.951136472,B,Bareroot,0.808117905,-0.312038789,1.938013339,0.47597552,1.304176518
+simple,Fixed effects only,total.cwd.carbon,Coarse woody debris (>= 7.6 cm),5.951136472,C,Seedling,0.015726953,-1.248797968,1.288802602,-0.299841226,0.706377316
+simple,Fixed effects only,total.cwd.carbon,Coarse woody debris (>= 7.6 cm),5.951136472,D,Acorn,-0.373854833,-1.693667442,0.8828414,-0.778066466,0.25175162
+simple,Fixed effects only,total.cwd.carbon,Coarse woody debris (>= 7.6 cm),5.951136472,E,Seedbank,-0.542533859,-1.865969131,0.727641081,-0.972640815,0.075526704
+simple,Fixed effects only,total.cwd.carbon,Coarse woody debris (>= 7.6 cm),5.951136472,R,Reference,0.945645041,-0.157872368,2.041307888,0.688875889,1.498152593
+strip.random,Strip random effects,total.cwd.carbon,Coarse woody debris (>= 7.6 cm),5.951136472,A,Balled-and-burlapped,-1.037955346,-2.283070876,0.290433152,-1.10491689,-0.230772331
+strip.random,Strip random effects,total.cwd.carbon,Coarse woody debris (>= 7.6 cm),5.951136472,B,Bareroot,0.653329161,-0.643979402,1.980530739,0.343521262,1.338250045
+strip.random,Strip random effects,total.cwd.carbon,Coarse woody debris (>= 7.6 cm),5.951136472,C,Seedling,0.001704208,-1.3571062,1.370358063,-0.389749495,0.695268944
+strip.random,Strip random effects,total.cwd.carbon,Coarse woody debris (>= 7.6 cm),5.951136472,D,Acorn,-0.3201194,-1.714222705,1.066220344,-0.822211048,0.294810887
+strip.random,Strip random effects,total.cwd.carbon,Coarse woody debris (>= 7.6 cm),5.951136472,E,Seedbank,-0.483154298,-1.844037486,0.886236808,-0.984565476,0.10818524
+strip.random,Strip random effects,total.cwd.carbon,Coarse woody debris (>= 7.6 cm),5.951136472,R,Reference,0.791200853,-0.529853322,2.085634802,0.416347491,1.416065834
+simple,Fixed effects only,total.snag.carbon,Standing dead trees,1.222381293,A,Balled-and-burlapped,-0.628357953,-1.155581965,-0.09590666,-0.784886755,-0.357725563
+simple,Fixed effects only,total.snag.carbon,Standing dead trees,1.222381293,B,Bareroot,1.243539153,0.670074747,1.833257749,0.976433101,1.439968371
+simple,Fixed effects only,total.snag.carbon,Standing dead trees,1.222381293,C,Seedling,0.338119504,-0.413767459,1.128200401,0.126258317,0.713477708
+simple,Fixed effects only,total.snag.carbon,Standing dead trees,1.222381293,D,Acorn,-0.453843564,-1.47971937,0.534974443,-0.679785949,0.098833365
+simple,Fixed effects only,total.snag.carbon,Standing dead trees,1.222381293,E,Seedbank,-1.033618134,-2.133914142,0.042902328,-1.366553716,-0.496949746
+simple,Fixed effects only,total.snag.carbon,Standing dead trees,1.222381293,R,Reference,1.394897613,0.831716306,1.969284171,1.135257023,1.58936409
+strip.random,Strip random effects,total.snag.carbon,Standing dead trees,1.222381293,A,Balled-and-burlapped,-0.672845369,-1.289175753,-0.049983772,-0.842560267,-0.35438401
+strip.random,Strip random effects,total.snag.carbon,Standing dead trees,1.222381293,B,Bareroot,1.181577136,0.450475209,1.917849439,0.925877418,1.491449033
+strip.random,Strip random effects,total.snag.carbon,Standing dead trees,1.222381293,C,Seedling,0.336595585,-0.533266124,1.199529385,0.071788988,0.732361113
+strip.random,Strip random effects,total.snag.carbon,Standing dead trees,1.222381293,D,Acorn,-0.447077203,-1.538849767,0.623190569,-0.758167273,0.07588088
+strip.random,Strip random effects,total.snag.carbon,Standing dead trees,1.222381293,E,Seedbank,-1.059189722,-2.183237378,0.096410832,-1.408055258,-0.492332144
+strip.random,Strip random effects,total.snag.carbon,Standing dead trees,1.222381293,R,Reference,1.236444094,0.383694361,2.097688197,1.01290588,1.634175236
+simple,Fixed effects only,snag.frax.live.carbon,Live F. pennsylvanica (>= 2.5 cm),10.27456481,A,Balled-and-burlapped,-0.667081795,-1.508176461,0.196333232,-0.91782366,-0.224456078
+simple,Fixed effects only,snag.frax.live.carbon,Live F. pennsylvanica (>= 2.5 cm),10.27456481,B,Bareroot,-0.057282378,-1.366047978,1.225882142,-0.412226156,0.618205177
+simple,Fixed effects only,snag.frax.live.carbon,Live F. pennsylvanica (>= 2.5 cm),10.27456481,C,Seedling,-0.57243406,-1.854970325,0.722268148,-1.010691586,0.026738375
+simple,Fixed effects only,snag.frax.live.carbon,Live F. pennsylvanica (>= 2.5 cm),10.27456481,D,Acorn,-0.62658324,-1.927418379,0.654668137,-1.06476263,-0.015873902
+simple,Fixed effects only,snag.frax.live.carbon,Live F. pennsylvanica (>= 2.5 cm),10.27456481,E,Seedbank,-0.624777718,-1.902231249,0.663464967,-1.081108864,-0.029386139
+simple,Fixed effects only,snag.frax.live.carbon,Live F. pennsylvanica (>= 2.5 cm),10.27456481,R,Reference,2.043803543,1.170889366,2.942977323,1.625677188,2.337332167
+strip.random,Strip random effects,snag.frax.live.carbon,Live F. pennsylvanica (>= 2.5 cm),10.27456481,A,Balled-and-burlapped,-2.341635879,-4.68119588,0.031903991,-2.480671109,-0.633162732
+strip.random,Strip random effects,snag.frax.live.carbon,Live F. pennsylvanica (>= 2.5 cm),10.27456481,B,Bareroot,0.081685858,-1.427592692,1.57555312,-0.502768341,0.716181677
+strip.random,Strip random effects,snag.frax.live.carbon,Live F. pennsylvanica (>= 2.5 cm),10.27456481,C,Seedling,-0.341554974,-1.835914781,1.175850032,-0.931812519,0.300004071
+strip.random,Strip random effects,snag.frax.live.carbon,Live F. pennsylvanica (>= 2.5 cm),10.27456481,D,Acorn,-0.315644733,-1.868419309,1.178063835,-0.947308279,0.287030375
+strip.random,Strip random effects,snag.frax.live.carbon,Live F. pennsylvanica (>= 2.5 cm),10.27456481,E,Seedbank,-0.363183001,-1.893247739,1.116829353,-0.995152061,0.213780659
+strip.random,Strip random effects,snag.frax.live.carbon,Live F. pennsylvanica (>= 2.5 cm),10.27456481,R,Reference,1.021117398,-0.613747409,2.669501764,0.46702234,1.848788385
+simple,Fixed effects only,snag.frax.dead.carbon,Dead F. pennsylvanica (>= 2.5 cm),0.472887632,A,Balled-and-burlapped,-0.613058276,-1.460635635,0.252065502,-0.825394643,-0.141504311
+simple,Fixed effects only,snag.frax.dead.carbon,Dead F. pennsylvanica (>= 2.5 cm),0.472887632,B,Bareroot,0.078212042,-1.209942556,1.327933781,-0.217177541,0.760436209
+simple,Fixed effects only,snag.frax.dead.carbon,Dead F. pennsylvanica (>= 2.5 cm),0.472887632,C,Seedling,-0.578923266,-1.877861138,0.706229119,-0.981194515,0.057041092
+simple,Fixed effects only,snag.frax.dead.carbon,Dead F. pennsylvanica (>= 2.5 cm),0.472887632,D,Acorn,-0.640431144,-1.923822441,0.625539635,-1.07416645,-0.029561254
+simple,Fixed effects only,snag.frax.dead.carbon,Dead F. pennsylvanica (>= 2.5 cm),0.472887632,E,Seedbank,-0.650529539,-1.920055109,0.627408121,-1.060685491,-0.026778727
+simple,Fixed effects only,snag.frax.dead.carbon,Dead F. pennsylvanica (>= 2.5 cm),0.472887632,R,Reference,1.885775675,1.017699296,2.803280792,1.459196122,2.16965812
+strip.random,Strip random effects,snag.frax.dead.carbon,Dead F. pennsylvanica (>= 2.5 cm),0.472887632,A,Balled-and-burlapped,-2.154519242,-4.346073333,0.080904613,-2.344868317,-0.618727574
+strip.random,Strip random effects,snag.frax.dead.carbon,Dead F. pennsylvanica (>= 2.5 cm),0.472887632,B,Bareroot,0.224457208,-1.264120094,1.687088254,-0.296808994,0.893032103
+strip.random,Strip random effects,snag.frax.dead.carbon,Dead F. pennsylvanica (>= 2.5 cm),0.472887632,C,Seedling,-0.36886032,-1.883741969,1.146889731,-0.957422847,0.260049136
+strip.random,Strip random effects,snag.frax.dead.carbon,Dead F. pennsylvanica (>= 2.5 cm),0.472887632,D,Acorn,-0.344047513,-1.863825891,1.184464937,-0.909710101,0.327160317
+strip.random,Strip random effects,snag.frax.dead.carbon,Dead F. pennsylvanica (>= 2.5 cm),0.472887632,E,Seedbank,-0.406778999,-1.906781485,1.109703961,-1.042060712,0.176086858
+strip.random,Strip random effects,snag.frax.dead.carbon,Dead F. pennsylvanica (>= 2.5 cm),0.472887632,R,Reference,0.935298623,-0.693582969,2.482974528,0.41971982,1.753981858
+simple,Fixed effects only,total.abg.wood.carbon,Aboveground woody biomass,80.24059822,A,Balled-and-burlapped,-0.032046961,-0.717981724,0.659108501,-0.098201151,0.415719346
+simple,Fixed effects only,total.abg.wood.carbon,Aboveground woody biomass,80.24059822,B,Bareroot,-0.527329585,-1.538615452,0.580253118,-0.878549154,-0.069693063
+simple,Fixed effects only,total.abg.wood.carbon,Aboveground woody biomass,80.24059822,C,Seedling,0.528616755,-0.237487109,1.354658882,0.156555761,0.749361996
+simple,Fixed effects only,total.abg.wood.carbon,Aboveground woody biomass,80.24059822,D,Acorn,-0.704092303,-1.822643867,0.387725952,-1.045180932,-0.189624892
+simple,Fixed effects only,total.abg.wood.carbon,Aboveground woody biomass,80.24059822,E,Seedbank,-0.903731109,-2.026771153,0.262472988,-1.291877074,-0.388859678
+simple,Fixed effects only,total.abg.wood.carbon,Aboveground woody biomass,80.24059822,R,Reference,-0.222954981,-1.207641095,0.808097257,-0.54444947,0.197233898
+strip.random,Strip random effects,total.abg.wood.carbon,Aboveground woody biomass,80.24059822,A,Balled-and-burlapped,-0.264682681,-1.120979905,0.622527857,-0.336158548,0.314530781
+strip.random,Strip random effects,total.abg.wood.carbon,Aboveground woody biomass,80.24059822,B,Bareroot,-0.467017582,-1.650338925,0.649165844,-0.855828865,0.027826518
+strip.random,Strip random effects,total.abg.wood.carbon,Aboveground woody biomass,80.24059822,C,Seedling,0.571792959,-0.353117692,1.485633972,0.185378525,0.879154172
+strip.random,Strip random effects,total.abg.wood.carbon,Aboveground woody biomass,80.24059822,D,Acorn,-0.610940545,-1.832725263,0.597365676,-1.056447452,-0.120948806
+strip.random,Strip random effects,total.abg.wood.carbon,Aboveground woody biomass,80.24059822,E,Seedbank,-0.832155291,-2.031907169,0.427220179,-1.309974795,-0.348358164
+strip.random,Strip random effects,total.abg.wood.carbon,Aboveground woody biomass,80.24059822,R,Reference,-0.098249623,-1.229775159,1.056985778,-0.555448387,0.31525818
+simple,Fixed effects only,total.bg.wood.carbon,Belowground woody biomass,16.47585462,A,Balled-and-burlapped,-0.033836031,-0.706362914,0.650442663,-0.100541601,0.414297274
+simple,Fixed effects only,total.bg.wood.carbon,Belowground woody biomass,16.47585462,B,Bareroot,-0.516356338,-1.589954122,0.547087888,-0.839215298,-0.019679999
+simple,Fixed effects only,total.bg.wood.carbon,Belowground woody biomass,16.47585462,C,Seedling,0.543351229,-0.23033579,1.359375,0.159684318,0.749731501
+simple,Fixed effects only,total.bg.wood.carbon,Belowground woody biomass,16.47585462,D,Acorn,-0.699318703,-1.779582758,0.434006779,-1.100845651,-0.247108135
+simple,Fixed effects only,total.bg.wood.carbon,Belowground woody biomass,16.47585462,E,Seedbank,-0.905816468,-2.048173972,0.222659902,-1.230167883,-0.337237829
+simple,Fixed effects only,total.bg.wood.carbon,Belowground woody biomass,16.47585462,R,Reference,-0.209874641,-1.153087569,0.822295702,-0.561815827,0.179462106
+strip.random,Strip random effects,total.bg.wood.carbon,Belowground woody biomass,16.47585462,A,Balled-and-burlapped,-0.29574921,-1.145571337,0.622749037,-0.359375828,0.291855183
+strip.random,Strip random effects,total.bg.wood.carbon,Belowground woody biomass,16.47585462,B,Bareroot,-0.449179576,-1.629809701,0.665561702,-0.842081096,0.040510438
+strip.random,Strip random effects,total.bg.wood.carbon,Belowground woody biomass,16.47585462,C,Seedling,0.586617139,-0.31766546,1.523101842,0.210740946,0.905755561
+strip.random,Strip random effects,total.bg.wood.carbon,Belowground woody biomass,16.47585462,D,Acorn,-0.602143596,-1.815949088,0.603176963,-0.988405453,-0.051640825
+strip.random,Strip random effects,total.bg.wood.carbon,Belowground woody biomass,16.47585462,E,Seedbank,-0.831389154,-2.076667825,0.389269444,-1.281024868,-0.318082778
+strip.random,Strip random effects,total.bg.wood.carbon,Belowground woody biomass,16.47585462,R,Reference,-0.090154237,-1.229004434,1.079784956,-0.525228607,0.351458085
+simple,Fixed effects only,total.live.carbon,Total live vegetation,97.35197862,A,Balled-and-burlapped,-0.024514873,-0.68713534,0.667516953,-0.102674133,0.406899275
+simple,Fixed effects only,total.live.carbon,Total live vegetation,97.35197862,B,Bareroot,-0.53098714,-1.554377836,0.570075413,-0.874763474,-0.061826455
+simple,Fixed effects only,total.live.carbon,Total live vegetation,97.35197862,C,Seedling,0.530393568,-0.2266714,1.333257612,0.168086236,0.754071726
+simple,Fixed effects only,total.live.carbon,Total live vegetation,97.35197862,D,Acorn,-0.706154525,-1.833507659,0.354701467,-1.094983042,-0.237019335
+simple,Fixed effects only,total.live.carbon,Total live vegetation,97.35197862,E,Seedbank,-0.903296796,-2.05984855,0.210490784,-1.281707366,-0.38855802
+simple,Fixed effects only,total.live.carbon,Total live vegetation,97.35197862,R,Reference,-0.215630426,-1.161859234,0.780522182,-0.5269935,0.197924317
+strip.random,Strip random effects,total.live.carbon,Total live vegetation,97.35197862,A,Balled-and-burlapped,-0.260053886,-1.103434079,0.617278649,-0.356989088,0.290706595
+strip.random,Strip random effects,total.live.carbon,Total live vegetation,97.35197862,B,Bareroot,-0.470828776,-1.608125318,0.697691195,-0.879884947,0.004124855
+strip.random,Strip random effects,total.live.carbon,Total live vegetation,97.35197862,C,Seedling,0.578896403,-0.32069094,1.526015427,0.185068199,0.882629209
+strip.random,Strip random effects,total.live.carbon,Total live vegetation,97.35197862,D,Acorn,-0.621970472,-1.842553936,0.593848906,-1.092323201,-0.143368353
+strip.random,Strip random effects,total.live.carbon,Total live vegetation,97.35197862,E,Seedbank,-0.82849455,-2.03240653,0.417611279,-1.284840295,-0.324737965
+strip.random,Strip random effects,total.live.carbon,Total live vegetation,97.35197862,R,Reference,-0.095143581,-1.233039785,1.062088329,-0.569766671,0.299381175
+simple,Fixed effects only,total.dead.carbon,Total dead vegetation,12.71778994,A,Balled-and-burlapped,-0.527410955,-1.014241433,-0.032534671,-0.671843324,-0.277637535
+simple,Fixed effects only,total.dead.carbon,Total dead vegetation,12.71778994,B,Bareroot,1.095029072,0.546916453,1.657409891,0.853151224,1.291048515
+simple,Fixed effects only,total.dead.carbon,Total dead vegetation,12.71778994,C,Seedling,0.489661709,-0.158721491,1.165974883,0.250881915,0.759633977
+simple,Fixed effects only,total.dead.carbon,Total dead vegetation,12.71778994,D,Acorn,-0.464844102,-1.422168746,0.481147278,-0.703734853,0.024502499
+simple,Fixed effects only,total.dead.carbon,Total dead vegetation,12.71778994,E,Seedbank,-0.663954325,-1.660104195,0.350070713,-0.89897135,-0.105291344
+simple,Fixed effects only,total.dead.carbon,Total dead vegetation,12.71778994,R,Reference,1.015108237,0.476266463,1.607108591,0.767042979,1.208143799
+strip.random,Strip random effects,total.dead.carbon,Total dead vegetation,12.71778994,A,Balled-and-burlapped,-0.544295847,-1.079903705,0.013822298,-0.705172786,-0.270055622
+strip.random,Strip random effects,total.dead.carbon,Total dead vegetation,12.71778994,B,Bareroot,1.06327753,0.444470727,1.720655721,0.80339237,1.294750935
+strip.random,Strip random effects,total.dead.carbon,Total dead vegetation,12.71778994,C,Seedling,0.448572233,-0.279047522,1.218844549,0.196840524,0.767682398
+strip.random,Strip random effects,total.dead.carbon,Total dead vegetation,12.71778994,D,Acorn,-0.472504079,-1.470005808,0.530090445,-0.737705281,0.039923416
+strip.random,Strip random effects,total.dead.carbon,Total dead vegetation,12.71778994,E,Seedbank,-0.671320633,-1.702626697,0.355569762,-0.956265125,-0.142497655
+strip.random,Strip random effects,total.dead.carbon,Total dead vegetation,12.71778994,R,Reference,0.9648365,0.258398997,1.660490705,0.714010247,1.245487994
+simple,Fixed effects only,total.veg.carbon,Total vegetation,110.0697686,A,Balled-and-burlapped,-0.003277338,-0.612971092,0.583670239,-0.088243982,0.365522744
+simple,Fixed effects only,total.veg.carbon,Total vegetation,110.0697686,B,Bareroot,-0.399189363,-1.347338458,0.552716651,-0.661934446,0.049870262
+simple,Fixed effects only,total.veg.carbon,Total vegetation,110.0697686,C,Seedling,0.492386483,-0.211183338,1.216463722,0.156641688,0.686890689
+simple,Fixed effects only,total.veg.carbon,Total vegetation,110.0697686,D,Acorn,-0.74086408,-1.807925753,0.285795614,-1.063464867,-0.259266309
+simple,Fixed effects only,total.veg.carbon,Total vegetation,110.0697686,E,Seedbank,-0.950964782,-2.023353142,0.155281823,-1.295777794,-0.440640038
+simple,Fixed effects only,total.veg.carbon,Total vegetation,110.0697686,R,Reference,-0.115837693,-0.961015531,0.777314856,-0.397870841,0.24961414
+strip.random,Strip random effects,total.veg.carbon,Total vegetation,110.0697686,A,Balled-and-burlapped,-0.191313568,-0.922751309,0.594195304,-0.290625963,0.271435041
+strip.random,Strip random effects,total.veg.carbon,Total vegetation,110.0697686,B,Bareroot,-0.344512875,-1.381388683,0.710142074,-0.667544923,0.117708469
+strip.random,Strip random effects,total.veg.carbon,Total vegetation,110.0697686,C,Seedling,0.542190802,-0.279130874,1.397076885,0.197856738,0.833204076
+strip.random,Strip random effects,total.veg.carbon,Total vegetation,110.0697686,D,Acorn,-0.664131571,-1.814396947,0.467047446,-1.080860992,-0.198978999
+strip.random,Strip random effects,total.veg.carbon,Total vegetation,110.0697686,E,Seedbank,-0.88767292,-2.030658417,0.308183626,-1.29809322,-0.373063321
+strip.random,Strip random effects,total.veg.carbon,Total vegetation,110.0697686,R,Reference,-0.011932689,-1.068280964,1.001361629,-0.385843989,0.390785558
+simple,Fixed effects only,total.ecosystem.carbon,Total ecosystem,222.1197127,A,Balled-and-burlapped,0.117122231,-0.154270821,0.411089157,0.044535754,0.259100829
+simple,Fixed effects only,total.ecosystem.carbon,Total ecosystem,222.1197127,B,Bareroot,-0.310381995,-0.794114604,0.181358716,-0.460971233,-0.098970175
+simple,Fixed effects only,total.ecosystem.carbon,Total ecosystem,222.1197127,C,Seedling,0.185412564,-0.184079987,0.558216917,0.031962993,0.314899187
+simple,Fixed effects only,total.ecosystem.carbon,Total ecosystem,222.1197127,D,Acorn,-0.540503895,-1.096587771,0.005642459,-0.715771455,-0.300438549
+simple,Fixed effects only,total.ecosystem.carbon,Total ecosystem,222.1197127,E,Seedbank,-0.609237404,-1.171632796,-0.016379701,-0.764724446,-0.334556619
+simple,Fixed effects only,total.ecosystem.carbon,Total ecosystem,222.1197127,R,Reference,-0.051825508,-0.467821939,0.368817822,-0.206920553,0.108316392
+strip.random,Strip random effects,total.ecosystem.carbon,Total ecosystem,222.1197127,A,Balled-and-burlapped,0.074110401,-0.284388761,0.424778331,-0.004332682,0.26359551
+strip.random,Strip random effects,total.ecosystem.carbon,Total ecosystem,222.1197127,B,Bareroot,-0.291392694,-0.849573546,0.268209124,-0.493490049,-0.075106797
+strip.random,Strip random effects,total.ecosystem.carbon,Total ecosystem,222.1197127,C,Seedling,0.205193745,-0.241433044,0.67668835,0.025253301,0.368977886
+strip.random,Strip random effects,total.ecosystem.carbon,Total ecosystem,222.1197127,D,Acorn,-0.517940379,-1.156958077,0.111670069,-0.716274444,-0.23894138
+strip.random,Strip random effects,total.ecosystem.carbon,Total ecosystem,222.1197127,E,Seedbank,-0.59523269,-1.246092129,0.049352883,-0.803925619,-0.318124013
+strip.random,Strip random effects,total.ecosystem.carbon,Total ecosystem,222.1197127,R,Reference,-0.014335836,-0.567222994,0.526203216,-0.2267026,0.17475315

@@ -45,7 +45,6 @@ all.lists = list()
 all.means = list()
 for (i in 1:n.v) {
   v = vars[i]
-  print(v)
   all.means[[v]] = mean(stock.richness.df[,v])
   all.lists[[v]] = list(treatment = factor(stock.richness.df$treatment), 
                         strip = factor(stock.richness.df$strip), 
@@ -111,7 +110,7 @@ rhat.df$model.label = rep(0, nrow(rhat.df))
 for (i in 1:n.m) { rhat.df$model.label[which(rhat.df$model == models[i])] = model.labels[i] }
 write.csv(rhat.df, "Tree_Analysis/Posteriors/Stock_Rhat_Statistic.csv", row.names=F)
 
-# compare models for each variale with WAIC, LOO, and kfold
+# compare models for each variale with WAIC and LOO
 criteria = c("waic","loo")
 criteria.labels = c("WAIC","LOO")
 n.c = length(criteria)
@@ -140,9 +139,9 @@ for (i in 1:n.m) { comp.df$model.label[which(comp.df$model == models[i])] = mode
 write.csv(comp.df, "Tree_Analysis/Posteriors/Stock_Model_Information_Criteria.csv", row.names=F)
 
 # get posterior intervals and write to file
-df.int = data.frame(matrix(nrow=0, ncol=13))
+df.int = data.frame(matrix(nrow=0, ncol=12))
 int.cols = c("model","model.label","variable","variable.label","variable.mean",
-             "treatment","full.treatment.name","posterior.mean","posterior.se",
+             "treatment","full.treatment.name","posterior.mean",
              "5","95","25","75")
 colnames(df.int) = int.cols
 for (i in 1:n.v) {
@@ -162,7 +161,6 @@ for (i in 1:n.v) {
     df.ij$treatment = trt.letters
     df.ij$full.treatment.name = trt.names
     df.ij$posterior.mean = fixef(fit.ij)[,"Estimate"]
-    df.ij$posterior.se = fixef(fit.ij)[,"Est.Error"]
     df.ij[1:n.t,"5"] = hdi.90[,"CI_low"]
     df.ij[1:n.t,"95"] = hdi.90[,"CI_high"]
     df.ij[1:n.t,"25"] = hdi.50[,"CI_low"]
@@ -172,4 +170,16 @@ for (i in 1:n.v) {
 }
 df.int$model.label = rep(0, nrow(df.int))
 for (i in 1:n.m) { df.int$model.label[which(df.int$model == models[i])] = model.labels[i] }
-write.csv(df.int, "Tree_Analysis/Posteriors/Carbon_Stocks_Richness_Means_Intervals_10Chains.csv", row.names=F)
+#write.csv(df.int, "Tree_Analysis/Posteriors/Carbon_Stocks_Richness_Means_Intervals_10Chains_ExpScale.csv", row.names=F)
+
+
+# convert hdis to standard units
+df.int = read.csv("Tree_Analysis/Posteriors/Carbon_Stocks_Richness_Means_Intervals_10Chains_ExpScale.csv")
+stat.cols = c("posterior.mean","X5","X95","X25","X75")
+for (k in 1:5) {
+  col = stat.cols[k]
+  df.int[,col] = exp(df.int[,col])*df.int[,"variable.mean"]
+}
+write.csv(df.int,"Tree_Analysis/Posteriors/Carbon_Stocks_Richness_Means_Intervals_10Chains_NaturalScale.csv", row.names=F)
+
+

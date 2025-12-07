@@ -29,7 +29,7 @@ for (i in 1:nrow(dim.df)) { dim.list[[dim.df[i,"Name"]]] = dim.df[i,"Value"] }
 soil.data = read.csv("Soil_Analysis/Clean_Data/Soil_Data_by_Quadrat_June2023.csv", header=T)
 
 # estimate SOC stocks (Mg/ha)
-soil.data$tic.stock = soil.data$tic.percent * soil.data$bulk.density * dim.list[["auger.depth"]] # g/cm2 = Mg/ha
+soil.data$tic.stock = (soil.data$tic.percent/100) * soil.data$bulk.density * dim.list[["auger.depth"]] # g/cm2 = Mg/ha
 soil.data$maoc.stock = soil.data$maoc.percent * soil.data$bulk.density * dim.list[["auger.depth"]] # g/cm2 = Mg/ha
 soil.data$poc.stock = soil.data$poc.percent * soil.data$bulk.density * dim.list[["auger.depth"]] # g/cm2 = Mg/ha
 soil.data$soc.stock = soil.data$toc.percent * soil.data$bulk.density * dim.list[["auger.depth"]] # g/cm2 = Mg/ha

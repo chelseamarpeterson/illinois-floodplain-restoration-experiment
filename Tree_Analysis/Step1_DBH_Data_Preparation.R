@@ -1,23 +1,35 @@
-path_to_tree_folder = "C:/Users/Chels/OneDrive - University of Illinois - Urbana/Ch2_Floodplain_Experiment/Floodplain-Experiment-Repo/Tree_Analysis"
+path_to_tree_folder = "C:/Users/Chels/OneDrive - University of Illinois - Urbana/Ch2_Floodplain_Experiment/Floodplain-Experiment-Repo"
 setwd(path_to_tree_folder)
 
 library(tidyr)
 
-### script that loads and cleans diameter-at-breast-height (dbh.cm) data from 
-### Joslin wetland mitigation site in Henry County
+## script that loads and cleans diameter-at-breast-height (dbh.cm) data from 
+## Joslin wetland mitigation site in Henry County
 
-# define important variables
-trt.letters = c("A","B","C","D","E","R")
-trt.names = c("Balled-and-burlapped","Bareroot","Seedling","Acorn","Seedbank","Reference")
-n.t = length(trt.letters)
-n.p = 3
+################################################################################
+# metadata
 
-# conversions
-cm.per.m = 100
+# treatments
+trt.df = read.csv("Metadata/Treatment_Letters_Names.csv")
+trt.letters = trt.df[,"Treatment.letters"]
+trt.names = trt.df[,"Treatment.names"]
+n.t = nrow(trt.df)
+
+# number of plots per treatment
+trt.plot.strip.df = read.csv("Metadata/Treatments_Strips_Plots.csv")
+colnames(trt.plot.strip.df) = tolower(colnames(trt.plot.strip.df))
+n.p = length(unique(trt.plot.strip.df$plot))
+
+# read in conversions, constants, and plot dimensions 
+dim.df = read.csv("Metadata/Constants_Conversions_Dimensions.csv")
+dim.list = list()
+for (i in 1:nrow(dim.df)) { dim.list[[dim.df[i,"Name"]]] = dim.df[i,"Value"] }
+
+################################################################################
 
 # read in data from 2022 and re-sample data from 2023
-data.2022 = read.csv('Raw_Data/DBH_August2022.csv')
-data.2023 = read.csv('Raw_Data/DBH_Snags_June2023.csv', header=T)
+data.2022 = read.csv('Tree_Analysis/Raw_Data/DBH_August2022.csv')
+data.2023 = read.csv('Tree_Analysis/Raw_Data/DBH_Snags_June2023.csv', header=T)
 
 # update column names
 colnames(data.2022) = c("treatment_plot","spp","dbh.cm","stem.count")
@@ -27,7 +39,7 @@ colnames(data.2023) = c("redo","treatment_plot","live","spp","dbh.cm","stem.coun
 data.2022 = data.2022[-which(data.2022['dbh.cm'] == "<3"),
                       -which(colnames(data.2022) %in% c("stem.count"))] # remove rows with dbh.cm <3 cm
 data.2022$dbh.cm = as.numeric(unlist(data.2022[,'dbh.cm']))
-data.2022$basal.area.m2 = pi*(data.2022$dbh.cm/cm.per.m/2)^2  
+data.2022$basal.area.m2 = pi*(data.2022$dbh.cm/dim.list[["cm.per.m"]]/2)^2  
 data.2022$year = 2022
 data.2022$redo = "N"
 
@@ -36,13 +48,17 @@ data.2023 = data.2023[which(data.2023$live == "L"),]
 data.2023 = data.2023[-which(data.2023$dbh.cm == "<2.5"), 
                       -which(colnames(data.2023) %in% c("live","stem.count","notes"))]
 data.2023$dbh.cm = as.numeric(data.2023$dbh.cm)
-data.2023$basal.area.m2 = pi*(data.2023$dbh.cm/cm.per.m/2)^2 # m^2
+data.2023$basal.area.m2 = pi*(data.2023$dbh.cm/dim.list[["cm.per.m"]]/2)^2 # m^2
 data.2023$year = 2023
-data.2023 = data.2023 %>% separate(spp, into = c("genus", "species"), sep = " ", remove=F)
+data.2023 = data.2023 %>% separate(spp, into = c("genus","species"), sep = " ", remove=F)
 
 # read in allometric equation matrices
-allo.df1 = read.csv("Tree_Databases/Jenkins2004.csv", header=T); rownames(allo.df1) = allo.df1$spp
-allo.df2 = read.csv("Tree_Databases/Chojnacky2014.csv", header=T); rownames(allo.df2) = allo.df2$spp
+allo.df1 = read.csv("Tree_Analysis/Tree_Databases/Jenkins2004.csv", header=T)
+allo.df2 = read.csv("Tree_Analysis/Tree_Databases/Chojnacky2014.csv", header=T)
+
+# update row names
+rownames(allo.df1) = allo.df1$spp
+rownames(allo.df2) = allo.df2$spp
 
 # add columns for genus and species
 uni.spp = sort(unique(data.2022$spp))
@@ -78,5 +94,11 @@ for (i in 1:length(names)) {
   dbh.cm.all$spp[name.id] = abbrs[i]
 }
 
+# add strip number to DBH by species dataframe
+dbh.cm.all$plot = as.integer(dbh.cm.all$plot)
+dbh.cm.all = left_join(trt.plot.strip.df, 
+                       dbh.cm.all, 
+                       by=c("treatment","plot"))
+
 # write dbh.cm data to file
-write.csv(dbh.cm.all, "Clean_Data_By_Species/DBH_Data_Clean_2022_2023.csv", row.names=F)
+write.csv(dbh.cm.all, "Tree_Analysis/Clean_Data_By_Species/DBH_Data_Clean_2022_2023.csv", row.names=F)

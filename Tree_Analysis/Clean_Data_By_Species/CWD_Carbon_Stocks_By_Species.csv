@@ -1,73 +1,73 @@
-"treatment","plot","species","total.cwd.carbon"
-"A","1","Unknown",0.772208534511271
-"A","3","Unknown",1.36930813682619
-"A","2","Unknown",0
-"B","1","Unknown",8.5355961883377
-"B","2","Unknown",15.8503796999717
-"B","3","Unknown",11.5000091302499
-"C","1","Unknown",11.4429894449128
-"C","2","Unknown",5.07375559688977
-"C","3","Unknown",0.864102153664975
-"D","1","Unknown",2.27966244787563
-"D","2","Unknown",4.07369331415164
-"D","3","Unknown",0.185651467027559
-"E","1","Unknown",1.67780584813687
-"E","2","Unknown",0
-"E","3","Unknown",0
-"R","1","Unknown",5.86682420794205
-"R","2","Unknown",4.1683189926366
-"R","3","Unknown",4.05955088937807
-"A","1","Acer saccharinum",0
-"A","3","Acer saccharinum",1.8551887678358
-"A","2","Acer saccharinum",0
-"B","1","Acer saccharinum",0
-"B","2","Acer saccharinum",0
-"B","3","Acer saccharinum",0
-"C","1","Acer saccharinum",0
-"C","2","Acer saccharinum",0
-"C","3","Acer saccharinum",0
-"D","1","Acer saccharinum",0
-"D","2","Acer saccharinum",0
-"D","3","Acer saccharinum",0
-"E","1","Acer saccharinum",0
-"E","2","Acer saccharinum",0
-"E","3","Acer saccharinum",0
-"R","1","Acer saccharinum",0
-"R","2","Acer saccharinum",0.923106616457268
-"R","3","Acer saccharinum",1.17748796917234
-"A","1","Populus deltoides ",0
-"A","3","Populus deltoides ",0
-"A","2","Populus deltoides ",0
-"B","1","Populus deltoides ",0
-"B","2","Populus deltoides ",0
-"B","3","Populus deltoides ",0
-"C","1","Populus deltoides ",0.964692842166606
-"C","2","Populus deltoides ",0
-"C","3","Populus deltoides ",0
-"D","1","Populus deltoides ",0
-"D","2","Populus deltoides ",0
-"D","3","Populus deltoides ",0
-"E","1","Populus deltoides ",0
-"E","2","Populus deltoides ",0
-"E","3","Populus deltoides ",0
-"R","1","Populus deltoides ",0
-"R","2","Populus deltoides ",0
-"R","3","Populus deltoides ",0
-"A","1","Salix nigra",0
-"A","3","Salix nigra",0
-"A","2","Salix nigra",0
-"B","1","Salix nigra",0
-"B","2","Salix nigra",0
-"B","3","Salix nigra",0
-"C","1","Salix nigra",0
-"C","2","Salix nigra",0
-"C","3","Salix nigra",0
-"D","1","Salix nigra",0
-"D","2","Salix nigra",0
-"D","3","Salix nigra",1.2501407241988
-"E","1","Salix nigra",0.207057287204584
-"E","2","Salix nigra",0
-"E","3","Salix nigra",0
-"R","1","Salix nigra",0
-"R","2","Salix nigra",0
-"R","3","Salix nigra",23.0229262331855
+"treatment","strip","plot","species","total.cwd.carbon"
+"A",1,1,"Unknown",0.772208534511271
+"A",2,2,"Unknown",0
+"A",2,3,"Unknown",1.36930813682619
+"B",1,1,"Unknown",8.5355961883377
+"B",2,2,"Unknown",15.8503796999717
+"B",3,3,"Unknown",11.5000091302499
+"C",1,1,"Unknown",11.4429894449128
+"C",2,2,"Unknown",5.07375559688977
+"C",3,3,"Unknown",0.864102153664975
+"D",1,1,"Unknown",2.27966244787563
+"D",2,2,"Unknown",4.07369331415164
+"D",2,3,"Unknown",0.185651467027559
+"E",1,1,"Unknown",1.67780584813687
+"E",2,2,"Unknown",0
+"E",3,3,"Unknown",0
+"R",1,1,"Unknown",5.86682420794205
+"R",1,2,"Unknown",4.1683189926366
+"R",1,3,"Unknown",4.05955088937807
+"A",1,1,"Acer saccharinum",0
+"A",2,2,"Acer saccharinum",0
+"A",2,3,"Acer saccharinum",1.8551887678358
+"B",1,1,"Acer saccharinum",0
+"B",2,2,"Acer saccharinum",0
+"B",3,3,"Acer saccharinum",0
+"C",1,1,"Acer saccharinum",0
+"C",2,2,"Acer saccharinum",0
+"C",3,3,"Acer saccharinum",0
+"D",1,1,"Acer saccharinum",0
+"D",2,2,"Acer saccharinum",0
+"D",2,3,"Acer saccharinum",0
+"E",1,1,"Acer saccharinum",0
+"E",2,2,"Acer saccharinum",0
+"E",3,3,"Acer saccharinum",0
+"R",1,1,"Acer saccharinum",0
+"R",1,2,"Acer saccharinum",0.923106616457268
+"R",1,3,"Acer saccharinum",1.17748796917234
+"A",1,1,"Populus deltoides",0
+"A",2,2,"Populus deltoides",0
+"A",2,3,"Populus deltoides",0
+"B",1,1,"Populus deltoides",0
+"B",2,2,"Populus deltoides",0
+"B",3,3,"Populus deltoides",0
+"C",1,1,"Populus deltoides",0.964692842166606
+"C",2,2,"Populus deltoides",0
+"C",3,3,"Populus deltoides",0
+"D",1,1,"Populus deltoides",0
+"D",2,2,"Populus deltoides",0
+"D",2,3,"Populus deltoides",0
+"E",1,1,"Populus deltoides",0
+"E",2,2,"Populus deltoides",0
+"E",3,3,"Populus deltoides",0
+"R",1,1,"Populus deltoides",0
+"R",1,2,"Populus deltoides",0
+"R",1,3,"Populus deltoides",0
+"A",1,1,"Salix nigra",0
+"A",2,2,"Salix nigra",0
+"A",2,3,"Salix nigra",0
+"B",1,1,"Salix nigra",0
+"B",2,2,"Salix nigra",0
+"B",3,3,"Salix nigra",0
+"C",1,1,"Salix nigra",0
+"C",2,2,"Salix nigra",0
+"C",3,3,"Salix nigra",0
+"D",1,1,"Salix nigra",0
+"D",2,2,"Salix nigra",0
+"D",2,3,"Salix nigra",1.2501407241988
+"E",1,1,"Salix nigra",0.207057287204584
+"E",2,2,"Salix nigra",0
+"E",3,3,"Salix nigra",0
+"R",1,1,"Salix nigra",0
+"R",1,2,"Salix nigra",0
+"R",1,3,"Salix nigra",23.0229262331855

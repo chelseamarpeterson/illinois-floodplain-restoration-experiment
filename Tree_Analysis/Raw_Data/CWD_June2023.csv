@@ -1,4 +1,4 @@
-Treatment_Plot,Transect Position (cm),Intersection Diameter (>=7.6cm),Species (if known),Stem Count (2.5 - 7.5 cm)
+Plot,Transect Position (cm),Intersection Diameter (>=7.6cm),Species (if known),Stem Count (2.5 - 7.5 cm)
 R1,,,,12
 R1,20.46,21.3,,
 R1,22.79,9.6,,

@@ -1,4 +1,4 @@
-path_to_soil_folder = "C:/Users/Chels/OneDrive - University of Illinois - Urbana/Ch2_Floodplain_Experiment/Floodplain-Experiment-Repo"
+path_to_soil_folder = "C:/Users/Chels/OneDrive - University of Illinois - Urbana/Ch2_Floodplain_Experiment/floodplain-experiment-repo"
 setwd(path_to_soil_folder)
 
 library(tidyr)

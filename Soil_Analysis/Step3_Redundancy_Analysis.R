@@ -28,7 +28,8 @@ text.cols = c("Sand","Silt","Clay")
 
 # variables to omit
 leave.out = c("texture.class","n.release","volumetric.moisture","coarse.material",
-              ag.cols, meq.cols)
+              "tc.stock","toc.stock","maoc.stock","poc.stock","tic.stock",
+               ag.cols, meq.cols)
 soil.df = soil.df[,-which(colnames(soil.df) %in% leave.out)]
 
 # read in biomass data
@@ -42,14 +43,16 @@ soil.bm.df = left_join(soil.df, bm.df,
 soil.bm.df = soil.bm.df[-which(soil.bm.df$treatment == "R"),]
 
 # update column names
-colnames(soil.bm.df)[6:37] = c("Temp","Moist","BD","TN","TC","CN","SOC",text.cols,
+colnames(soil.bm.df)[6:38] = c("Temp","Moist","BD",
+                               "Root.Frag",text.cols,
                                "pH","P","K","Ca","Mg","SOM","NO3","NH4","CEC",
-                               "POC","EV","HT","MWD","TIC","MAOC","POC_MAOC",
+                               "TN","TC","SOC","POC","EV","HT","MWD",
+                               "TIC","MAOC","POC_MAOC","CN",
                                "HB","HL","FWD","MB","PAB","HJB")
 
 # select explanatory and response variables
 y.cols = c("SOC","POC","MAOC","POC_MAOC")
-x.cols = c("Temp","Moist","BD","TN","CN","Sand","Clay",
+x.cols = c("Temp","Moist","BD","Root.Frag","TN","CN","Sand","Clay",
            "pH","P","NO3","NH4","CEC","EV","HT",
            "MWD","HL","FWD","MB","PAB","HJB")
 
@@ -63,11 +66,10 @@ rda_model <- rda(y.data ~., data = x.data)
 
 # RDA summary data
 summary(rda_model)
-smry <- summary(rda_model)
-df1  <- data.frame(smry$sites[,1:3])       # PC1 and PC2
+df1 = data.frame(scores(rda_model, display = "sites"))  
 df1$full.treatment.name = soil.bm.df$full.treatment.name
-df2  <- data.frame(smry$species[,1:3])     # loadings for PC1 and PC2
-df3  <- data.frame(smry$biplot[,1:3])
+df2 = data.frame(scores(rda_model, display = "species"))
+df3 = data.frame(rda_model$CCA$biplot[,1:2])
 
 # variance explained by each RDA axis
 var.rda1 = round(smry$cont$importance["Proportion Explained","RDA1"]*100,1)
@@ -80,7 +82,7 @@ rda.plot <- ggplot(data=df1) +
                    geom_point(aes(x=RDA1, y=RDA2, 
                                   color=factor(full.treatment.name, levels=trt.names),
                                   shape=factor(full.treatment.name, levels=trt.names)),
-                              size=2) + 
+                              size=3.5) + 
                    guides(shape=guide_legend(title="Treatment"),
                           color=guide_legend(title="Treatment")) +
                    geom_hline(yintercept=0, linetype="dotted") +
@@ -88,35 +90,38 @@ rda.plot <- ggplot(data=df1) +
                    coord_fixed() + 
                    geom_segment(data=df3, 
                                 aes(x=0, xend=RDA1, y=0, yend=RDA2), 
-                                color="blue", 
+                                color="blue", max.overlaps=21,
                                 arrow=arrow(length=unit(0.01,"npc"))) +
                    geom_segment(data=df2, 
                                 aes(x=0, xend=RDA1, y=0, yend=RDA2), 
-                                color="red", 
+                                color="red",  
                                 arrow=arrow(length=unit(0.01,"npc"))) +
-                   geom_label_repel(data=df3, 
+                   geom_label_repel(data=df3, max.overlaps=21,
                                     aes(x=RDA1, y=RDA2, label=rownames(df3)),
                                     color="blue",fill="transparent",
-                                    alpha=0.7,size=2.5) +
+                                    alpha=0.7,size=3) +
                    geom_label_repel(data=df2,
                                     aes(x=RDA1, y=RDA2, label=rownames(df2)),
                                     color="red", fill="transparent",
-                                    alpha=0.7,size=3) +
+                                    alpha=0.7,size=3.5) +
                    labs(x=var.rda1.label,y=var.rda2.label) + 
-                   theme(text=element_text(size=12))
+                   xlim(c(-2,2)) + ylim(c(-2,2)) +
+                   theme(text=element_text(size=14))
 rda.plot
 
-# sort variable strength along each axis
-df3$rows = rownames(df3)
-var.sort1 = sort(df3[,"RDA1"], decreasing=T, index.return=T)
-df3[var.sort1$ix, c("RDA1","rows")]
-
-var.sort2 = sort(df3[,"RDA2"], decreasing=T, index.return=T)
-df3[var.sort2$ix, c("RDA2","rows")]
-
 # write plot
-ggsave("Figures/Figure5_Soil_Vegetation_RDA_HTElev.jpeg", 
-       plot=rda.plot, width=26, height=20, units="cm", dpi=600)
+ggsave("Main_Figures/Figure5_Soil_Vegetation_RDA_HTElev.jpeg", 
+       plot=rda.plot, width=32, height=30, units="cm", dpi=600)
+
+# sort variable strength along each axis
+#df3$rows = rownames(df3)
+#var.sort1 = sort(df3[,"RDA1"], decreasing=T, index.return=T)
+#df3[var.sort1$ix, c("RDA1","rows")]
+
+#var.sort2 = sort(df3[,"RDA2"], decreasing=T, index.return=T)
+#df3[var.sort2$ix, c("RDA2","rows")]
+
+
 
 # compute Pearsons r^2 to confirm inference about correlations
 # among SOC, MAOC, POC, and POC:MAOC ratio

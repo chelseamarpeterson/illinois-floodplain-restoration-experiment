@@ -1,40 +1,45 @@
 variable,label,description,unit,method
-bulk.c.percent,TC (%),total carbon concentration,mass percent (%; g C/g soil),elemental analysis; used maxium of C concentration of bulk soil and acid-fumigated soil to ensure non-negative TIC concentration and that TOC concentrations did not exceed TC concentrations
-tic.percent,TIC (%),total inorganic carbon concentration,mass percent (%; g total inorganic carbon/g soil),difference between TC and TOC concentration
-som.percent,SOM (%),soil organic matter concentration,mass percent (%; g organic matter/g soil),loss on ignition at 405 degrees celsis for 2.5 hours
-toc.percent,SOC (%),total organic carbon concentration,mass percent (%; g organic carbon/g soil),elemental analysis after 8 hour acid-fumigation with hydrochloric(HCl) acid (100 cm3 of 10 molar solution)
-poc.percent,POC (%),concentration of coarse particulate organic carbon (>= 53 microns),mass percent (%; g particulate organic carbon [>=53 microns]/g soil),"size fractionation procedure in Ugarte et al. (2018) where 10 g samples were shaken in 10% sodium hexametaphosphate solution for 1 hour at 180 oscillations per minute, followed by ten 10-minute shakes with distilled water, transferring to new 53-micron mesh, oven-drying at 50 degrees C for 24 hours, and elemental analysis; raw C concentrations were multiplied by the particulate organic matter (>= 53 micron) mass out of the 10 g soil sample"
-maoc.percent,MAOC (%),mineral-associated organic carbon concentration,mass percent (%; g mineral-associated organic carbon [<53 microns]/g soil),calculated as the difference between the TOC and POC concentration
-poc.maoc.ratio,POC:MAOC ratio,ratio of particulate organic matter to mineral-associated organic matter concentration,unitless (g particulate organic carbon/g mineral-associated organic carbon),divided POC concentration by MOC concentration
-bulk.cn.ratio,C:N Ratio,carbon to nitrogen ratio,unitless (g C/g N),divided TC concentration by TN concentration
-bulk.n.percent,TN (%),total nitrogen concentration,mass percent (%; g N/g soil),elemental analysis
+temperature,Temperature (C),soil temperature,celsius,in-situ digital probe measurement
+gravimetric.moisture,Gravitational moisture (%),soil gravitational moisture,mass percent (%; g water/g soil),mass difference between field moist and oven-dry soil after 24 hours at 105 degrees celsius divided by oven-dry soil mass without coarse material (>= 2 mm)
+volumetric.moisture,Volumetric moisture (g/cm3),soil volumetric moisture,g water/cm3 soil,mass difference between field moist and oven-dry soil after 24 hours at 105 degrees celsius divided by oven-dry soil mass without coarse material (>= 2 mm)
+bulk.density,Bulk density (g/cm3),soil bulk density,g soil/cm3 soil,mass of oven-dry soil after 24 hours at 105 degrees celsius minus coarse material  (>= 2 mm) mass divided by core volume minus coarse material  (>= 2 mm) volume
+root.fragment.density,Root and wood fragment density (g/cm3),coarse root and wood fragment density,g coarse roots and wood fragments/cm3 soil,oven-dry (48 h at 24 degrees C) coarse roots and wood fragments (>= 2 mm) mass divided by core volume minus coarse material  (>= 2 mm) volume
+sand,Sand (%),sand percent,mass percent (%; g sand/g soil),hydrometer method
+silt,Silt (%),silt percent,mass percent (%; g silt/g soil),hydrometer method
+clay,Clay (%),clay percent,mass percent (%; g clay/g soil),hydrometer method
+texture.class,Texture class,soil texture classification,"one of twelve descriptive categories based on sand, silt, and clay percent",US Department of Agriculture soil texture classification
+ph,pH,pH,pH on 1 to 14 scale (-log[H+]),1:1 water to soil solution
 p,P (ppm),phosphorus concentration,parts per million (1 kg P/1000 m3 of soil solution),mehlich 3 extraction followed by concentration measurement with inductively coupled plasma spectrometer
 k,K (ppm),potassium concentration,parts per million (1 kg K/1000 m3 of soil solution),mehlich 3 extraction followed by concentration measurement with inductively coupled plasma spectrometer
 ca,Ca (ppm),calcium concentration,parts per million (1 kg Ca/1000 m3 of soil solution),mehlich 3 extraction followed by concentration measurement with inductively coupled plasma spectrometer
 mg,Mg (ppm),magnesium concentration,parts per million (1 kg Mg/1000 m3 of soil solution),mehlich 3 extraction followed by concentration measurement with inductively coupled plasma spectrometer
+som.percent,SOM (%),soil organic matter concentration,mass percent (%; g organic matter/g soil),loss on ignition at 405 degrees celsis for 2.5 hours
 no3.n,NO3-N (ppm),nitrate-nitrogen concentration,parts per million (1 kg NO3-N/1000 m3 of soil solution),extraction with 2 molar potassium chlorid (KCl) solution followed by concentration measruement with a flow injection analyzer
 nh4.n,NH4-N (ppm),ammonium-nitrogen concentration,parts per million (1 kg NH4-N/1000 m3 of soil solution),extraction with 2 molar potassium chlorid (KCl) solution followed by concentration measruement with a flow injection analyzer
+cec,CEC (meq/100 g),cation exchange capacity,milliequivalents per 100 grams,"calculated as sum of K, Ca, Mg, and H (meq/100 g)"
 k.meq,K (meq/100 g),contribution of potassium (K+) to base saturation,milliequivalents per 100 grams,meq K / 100 g = ppm  K / 390
 ca.meq,Ca (meq/100 g),contribution of calcium (Ca2+) to base saturation,milliequivalents per 100 grams,meq Ca / 100 g = ppm Ca / 200
 mg.meq,Mg (meq/100 g),contribution of magnesium (Mg2+) to base saturation,milliequivalents per 100 grams,meq Mg / 100 g = ppm Mg / 120
-cec,CEC (meq/100 g),cation exchange capacity,milliequivalents per 100 grams,"calculated as sum of K, Ca, Mg, and H (meq/100 g)"
-ph,pH,pH,pH on 1 to 14 scale (-log[H+]),1:1 water to soil solution
-bulk.density,Bulk density (g/cm3),soil bulk density,g soil/cm3 soil,mass of oven-dry soil after 24 hours at 105 degrees celsius minus coarse material  (>= 2 mm) mass divided by core volume minus coarse material  (>= 2 mm) volume
-temperature,Temperature (C),soil temperature,celsius,in-situ digital probe measurement
-gravimetric.moisture,Gravitational moisture (%),soil gravitational moisture,mass percent (%; g water/g soil),mass difference between field moist and oven-dry soil after 24 hours at 105 degrees celsius divided by oven-dry soil mass without coarse material (>= 2 mm)
-sand,Sand (%),sand percent,mass percent (%; g sand/g soil),hydrometer method
-silt,Silt (%),silt percent,mass percent (%; g silt/g soil),hydrometer method
-clay,Clay (%),clay percent,mass percent (%; g clay/g soil),hydrometer method
+h.meq,H (meq/100 g),contribution of hydrogen (H+) to base saturation,milliequivalents per 100 grams,meq H / 100 g = ppm H / 10.8
+tn.percent,TN (%),total nitrogen concentration,mass percent (%; g N/g soil),elemental analysis
+tc.percent,TC (%),total carbon concentration,mass percent (%; g C/g soil),elemental analysis; used maxium of C concentration of bulk soil and acid-fumigated soil to ensure non-negative TIC concentration and that TOC concentrations did not exceed TC concentrations
+toc.percent,SOC (%),total organic carbon concentration,mass percent (%; g organic carbon/g soil),elemental analysis after 8 hour acid-fumigation with hydrochloric(HCl) acid (100 cm3 of 10 molar solution)
+poc.percent,POC (%),concentration of coarse particulate organic carbon (>= 53 microns),mass percent (%; g particulate organic carbon [>=53 microns]/g soil),"size fractionation procedure in Ugarte et al. (2018) where 10 g samples were shaken in 10% sodium hexametaphosphate solution for 1 hour at 180 oscillations per minute, followed by ten 10-minute shakes with distilled water, transferring to new 53-micron mesh, oven-drying at 50 degrees C for 24 hours, and elemental analysis; raw C concentrations were multiplied by the particulate organic matter (>= 53 micron) mass out of the 10 g soil sample"
+elevation.mean,EV (m),average ground elevation with 1-m x 1-m quadrat,meters,estimated using zonal statistics based on LiDAR-derived digital elevation model
+vegetation.height.mean,HT (m),average vegetation height with 1-m x 1-m quadrat,meters,estimated using zonal statistics based on LiDAR-derived vegetation height raster
+fpom,Floating POM,mass of floating particulate organic matter,mass percent (%; g floating particulate organic matter/g soil),skimmed from water surface and oven-dried at 60 degrees celsius for 48 hours after wet sieving with 5 minutes of submersion in distilled water followed by automated sieving for 2 minutes (30 repititions/minutes)
 g475mm,>= 4.75 mm,mass of aggregates with diameters greater than or equal to 4.75 mm,mass percent (%; g aggregates [>=4.75 mm]/g soil),wet sieving with 5 minutes of submersion in distilled water followed by automated sieving for 2 minutes (30 repititions/minutes) and oven drying at 60 degrees celsius for 48 hours and removal of corase material (>= 2 mm)
 g2mm,2-4.75 mm,mass of aggregates with diameters less than 4.75 mm and greater than or equal to 2 mm,"mass percent (%; g aggregates [>= 2 mm, <4.75 mm]/g soil)",wet sieving with 5 minutes of submersion in distilled water followed by automated sieving for 2 minutes (30 repititions/minutes) and oven drying at 60 degrees celsius for 48 hours and removal of corase material (>= 2 mm)
 g250um,0.250-2 mm,mass of aggregates with diameters less than 2 mm and greater than or equal to 0.250 mm,"mass percent (%; g aggregates [>= 0.250 mm, <2 mm]/g soil)",wet sieving with 5 minutes of submersion in distilled water followed by automated sieving for 2 minutes (30 repititions/minutes) and oven drying at 60 degrees celsius for 48 hours
 g53um,0.053-0.250 mm,mass of aggregates with diameters less than 0.250 mm and greater than or equal to 0.053 mm,"mass percent (%; g aggregates [>= 0.053 mm, <250 mm]/g soil)",wet sieving with 5 minutes of submersion in distilled water followed by automated sieving for 2 minutes (30 repititions/minutes) and oven drying at 60 degrees celsius for 48 hours
 l53um,<0.053 mm,mass of mineral-associated organic matter or microaggregates with size less than or equal to 0.053 mm,mass percent (%; g aggregates [< 0.053 mm]/g soil),"calculated as difference between total soil mass minus coarse material (>= 2 mm) and mass of all other aggregate size classes, including fPOM"
 mwd,Mean-weight diameter (mm),mean-weight diamater across all aggregate size classes with diameters greater than or equal to 0.053 mm,millimeters,calculated by summing together the mean diameter of each size class above 0.053 mm and mutliplying by the mass percent of the respective size class
-coarse.material,Coarse material (g),mass of coarse material greater than or equal to 2 mm,g coarse material [>= 2 mm],"mass of coarse material (>= 2 mm) removed from oven-dry soil, includes rocks, roots, and other hard fragments like bark or shells"
-fpom,Floating POM,mass of floating particulate organic matter,mass percent (%; g floating particulate organic matter/g soil),skimmed from water surface and oven-dried at 60 degrees celsius for 48 hours after wet sieving with 5 minutes of submersion in distilled water followed by automated sieving for 2 minutes (30 repititions/minutes)
-h.meq,H (meq/100 g),contribution of hydrogen (H+) to base saturation,milliequivalents per 100 grams,meq H / 100 g = ppm H / 10.8
-elevation.mean,EV (m),average ground elevation with 1-m x 1-m quadrat,meters,estimated using zonal statistics based on LiDAR-derived digital elevation model
-vegetation.height.mean,HT (m),average vegetation height with 1-m x 1-m quadrat,meters,estimated using zonal statistics based on LiDAR-derived vegetation height raster
-volumetric.moisture,Volumetric moisture (g/cm3),soil volumetric moisture,g water/cm3 soil,mass difference between field moist and oven-dry soil after 24 hours at 105 degrees celsius divided by oven-dry soil mass without coarse material (>= 2 mm)
-texture.class,Texture class,soil texture classification,"one of twelve descriptive categories based on sand, silt, and clay percent",US Department of Agriculture soil texture classification
+tic.percent,TIC (%),total inorganic carbon concentration,mass percent (%; g total inorganic carbon/g soil),difference between TC and TOC concentration
+maoc.percent,MAOC (%),mineral-associated organic carbon concentration,mass percent (%; g mineral-associated organic carbon [<53 microns]/g soil),calculated as the difference between the TOC and POC concentration
+poc.maoc.ratio,POC:MAOC ratio,ratio of particulate organic matter to mineral-associated organic matter concentration,unitless (g particulate organic carbon/g mineral-associated organic carbon),divided POC concentration by MOC concentration
+cn.ratio,C:N Ratio,carbon to nitrogen ratio,unitless (g C/g N),divided TC concentration by TN concentration
+tc.stock,TC (Mg/ha),total carbon stock,Mg C  per hectare,TC percent (%) times bulk density (g/cm3) times auger depth (30)
+toc.stock,TOC (Mg/ha),total organic carbon stock,Mg C  per hectare,TOC percent (%) times bulk density (g/cm3) times auger depth (30)
+maoc.stock,MAOC (Mg/ha),mineral-associated organic carbon stock,Mg C  per hectare,MAOC percent (%) times bulk density (g/cm3) times auger depth (30)
+poc.stock,POC (Mg/ha),particulate organic carbon stock,Mg C  per hectare,POC percent (%) times bulk density (g/cm3) times auger depth (30)
+tic.stock,TIC (Mg/ha),total inorganic carbon stock,Mg C  per hectare,TIC percent (%) times bulk density (g/cm3) times auger depth (30)

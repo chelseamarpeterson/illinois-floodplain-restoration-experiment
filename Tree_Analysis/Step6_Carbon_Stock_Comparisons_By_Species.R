@@ -1,4 +1,4 @@
-path_to_repo = "C:/Users/Chels/OneDrive - University of Illinois - Urbana/Ch2_Floodplain_Experiment/Floodplain-Experiment-Repo"
+path_to_repo = "C:/Users/Chels/OneDrive - University of Illinois - Urbana/Ch2_Floodplain_Experiment/floodplain-experiment-repo"
 setwd(path_to_repo)
 
 library(tidyr)
@@ -17,19 +17,18 @@ trt.names = trt.df[,"Treatment.names"]
 n.t = nrow(trt.df)
 
 # ecosystem carbon pools
-pools = c("total.cwd.carbon","snag.carbon.min","live.tree.carbon","herbaceous.carbon")
+pools = c("total.cwd.carbon","large.snag.carbon","live.tree.carbon")
 df.paths = c("Clean_Data_By_Species/CWD_Carbon_Stocks_By_Species.csv",
              "Clean_Data_By_Species/Snag_Carbon_Stocks_By_Species.csv",
-             "Clean_Data_By_Species/Woody_Biomass_C_Stocks_By_Species.csv",
-             "Clean_Data_By_Plot/Clean_Veg_Soil_C_Stocks_Richness_by_Plot.csv")
-n.ep = length(pools)
+             "Clean_Data_By_Species/Woody_Biomass_Carbon_Stocks_By_Species.csv")
+n.pool = length(pools)
 
 ################################################################################
 # statistical analyses on coarse woody debris C stocks
 
 ## read in data frames
 df.list = list()
-for (i in 1:n.ep) { df.list[[pools[i]]] = read.csv(paste("Tree_Analysis/",df.paths[i],sep="")) }
+for (i in 1:n.pool) { df.list[[pools[i]]] = read.csv(paste("Tree_Analysis/",df.paths[i],sep="")) }
 
 ## clean up live tree data
 
@@ -38,35 +37,22 @@ df.list[["live.tree.carbon"]] = unite(df.list[["live.tree.carbon"]], col='specie
 
 # make wide df
 df.list[["live.tree.carbon"]] = pivot_wider(df.list[["live.tree.carbon"]], 
-                                            id_cols = c(treatment, full.treatment.name, strip, plot),
+                                            id_cols = c(treatment, strip, plot),
                                             names_from = species, 
                                             values_from = bmC.ha3)
 df.list[["live.tree.carbon"]][is.na(df.list[["live.tree.carbon"]])] = 0
 
 # reshape dataframe
 df.list[["live.tree.carbon"]] = melt(df.list[["live.tree.carbon"]], 
-                                     id.vars=c("treatment","full.treatment.name","strip","plot"), 
+                                     id.vars=c("treatment","strip","plot"), 
                                      variable.name="species",
                                      value.name="live.tree.carbon")
 
-## clean up herbaceous biomass data
-
-# isolate biomass data for each species
-herb.vars = c("mixed.biomass.c.stock","p.arundinacea.c.stock","h.japonicus.c.stock")
-herb.spp = c("Mixed community","Phalaris arundinacea","Humulus japonicus")
-df.list[["herbaceous.carbon"]] = df.list[["herbaceous.carbon"]][,c("treatment","full.treatment.name","strip","plot",herb.vars)]
-colnames(df.list[["herbaceous.carbon"]])[which(colnames(df.list[["herbaceous.carbon"]]) %in% herb.vars)] = herb.spp
-
-# melt dataframe
-df.list[["herbaceous.carbon"]] = melt(df.list[["herbaceous.carbon"]], 
-                                      id.vars=c("treatment","full.treatment.name","strip","plot"),
-                                      variable.name="species",
-                                      value.name="herbaceous.carbon")
 
 # make simplified data lists
 mean.list = list()
 data.list = list()
-for (i in 1:n.ep) {
+for (i in 1:n.pool) {
   pool.i = pools[i]
   df.i = df.list[[pool.i]]
   spp.i = levels(factor(df.i$species))
@@ -87,11 +73,11 @@ for (i in 1:n.ep) {
 seed = 3141; n.iter=10000; n.chain=10
 model.list = list()
 rhat.df = data.frame(matrix(nrow=0, ncol=6))
-colnames(rhat.df) = c("pool","species","species.mean","treatment","full.treatment.name","Rhat")
 df.int = data.frame(matrix(nrow=0, ncol=10))
+colnames(rhat.df) = c("pool","species","species.mean","treatment","full.treatment.name","Rhat")
 colnames(df.int) = c("pool","species","species.mean","treatment","full.treatment.name",
                      "posterior.mean","X5","X95","X25","X75")
-for (i in 1:n.ep) {
+for (i in 1:n.pool) {
   pool.i = pools[i]
   print(pool.i)
   df.i = df.list[[pool.i]]
@@ -157,4 +143,7 @@ for (i in 1:n.ep) {
   }
 }
 
+################################################################################
+# Run PCA's on species-specific C stock data for each pool and 
+# make one combined figure
 

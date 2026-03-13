@@ -1,4 +1,4 @@
-path_to_repo = "C:/Users/Chels/OneDrive - University of Illinois - Urbana/Ch2_Floodplain_Experiment/Floodplain-Experiment-Repo"
+path_to_repo = "C:/Users/Chels/OneDrive - University of Illinois - Urbana/Ch2_Floodplain_Experiment/floodplain-experiment-repo"
 setwd(path_to_repo)
 
 library(tidyr)
@@ -21,7 +21,7 @@ vars = read.csv("Metadata/Plot_Level_Carbon_Richness_Variables.csv")[,"variable"
 var.labels = read.csv("Metadata/Plot_Level_Carbon_Richness_Variables.csv", stringsAsFactors=F)[,"label"]
 
 # variables to leave out
-leave.out = c("small.fwd.carbon","int.fwd.carbon","dead.stem.carbon.min","snag.carbon.min",
+leave.out = c("small.fwd.carbon","intermediate.fwd.carbon","dead.stem.carbon","large.snag.carbon","tc.stock",
               "abg.live.tree.carbon","bg.live.tree.carbon","total.live.tree.carbon",
               "abg.live.stem.carbon","bg.live.stem.carbon","total.live.stem.carbon")
 omit.var.id = which(vars %in% leave.out)
@@ -140,16 +140,15 @@ write.csv(comp.df, "Tree_Analysis/Posteriors/Stock_Model_Information_Criteria.cs
 
 # get posterior intervals and write to file
 df.int = data.frame(matrix(nrow=0, ncol=12))
-int.cols = c("model","model.label","variable","variable.label","variable.mean",
-             "treatment","full.treatment.name","posterior.mean",
-             "5","95","25","75")
+int.cols = c("model","model.label","variable","variable.label","variable.mean","treatment",
+             "full.treatment.name","posterior.mean","5","95","25","75")
 colnames(df.int) = int.cols
 for (i in 1:n.v) {
   v.i = vars[i]
   for (j in 1:n.m) {
     m.j = models[j]
     fit.ij = stock.model.list[[v.i]][[m.j]]
-    df.ij = data.frame(matrix(nrow=n.t, ncol=13))
+    df.ij = data.frame(matrix(nrow=n.t, ncol=12))
     colnames(df.ij) = int.cols
     hdi.90 = hdi(fit.ij, ci=0.90)
     hdi.50 = hdi(fit.ij, ci=0.50)
@@ -160,26 +159,13 @@ for (i in 1:n.v) {
     df.ij$variable.mean = all.means[[v.i]]
     df.ij$treatment = trt.letters
     df.ij$full.treatment.name = trt.names
-    df.ij$posterior.mean = fixef(fit.ij)[,"Estimate"]
-    df.ij[1:n.t,"5"] = hdi.90[,"CI_low"]
-    df.ij[1:n.t,"95"] = hdi.90[,"CI_high"]
-    df.ij[1:n.t,"25"] = hdi.50[,"CI_low"]
-    df.ij[1:n.t,"75"] = hdi.50[,"CI_high"]
+    df.ij$posterior.mean = exp(fixef(fit.ij)[,"Estimate"])*all.means[[v.i]]
+    df.ij[1:n.t,"5"] = exp(hdi.90[,"CI_low"])*all.means[[v.i]]
+    df.ij[1:n.t,"95"] = exp(hdi.90[,"CI_high"])*all.means[[v.i]]
+    df.ij[1:n.t,"25"] = exp(hdi.50[,"CI_low"])*all.means[[v.i]]
+    df.ij[1:n.t,"75"] = exp(hdi.50[,"CI_high"])*all.means[[v.i]]
     df.int = rbind(df.int, df.ij)
   }
 }
-df.int$model.label = rep(0, nrow(df.int))
-for (i in 1:n.m) { df.int$model.label[which(df.int$model == models[i])] = model.labels[i] }
-#write.csv(df.int, "Tree_Analysis/Posteriors/Carbon_Stocks_Richness_Means_Intervals_10Chains_ExpScale.csv", row.names=F)
-
-
-# convert hdis to standard units
-df.int = read.csv("Tree_Analysis/Posteriors/Carbon_Stocks_Richness_Means_Intervals_10Chains_ExpScale.csv")
-stat.cols = c("posterior.mean","X5","X95","X25","X75")
-for (k in 1:5) {
-  col = stat.cols[k]
-  df.int[,col] = exp(df.int[,col])*df.int[,"variable.mean"]
-}
 write.csv(df.int,"Tree_Analysis/Posteriors/Carbon_Stocks_Richness_Means_Intervals_10Chains_NaturalScale.csv", row.names=F)
-
 

@@ -1,4 +1,4 @@
-path_to_repo = "C:/Users/Chels/OneDrive - University of Illinois - Urbana/Ch2_Floodplain_Experiment/Floodplain-Experiment-Repo"
+path_to_repo = "C:/Users/Chels/OneDrive - University of Illinois - Urbana/Ch2_Floodplain_Experiment/floodplain-experiment-repo"
 setwd(path_to_repo)
 
 library(tidyr)
@@ -9,7 +9,7 @@ library(allodb)
 ## script that integrates all biomass carbon stock data and writes the results to a CSV file
 
 ################################################################################
-# name important variables and load wood C content database
+# name important variables
 
 # read in conversions, constants, and plot dimensions 
 dim.df = read.csv("Metadata/Constants_Conversions_Dimensions.csv")
@@ -34,20 +34,23 @@ genus.families = list()
 for (i in 1:n.f) { genus.families[[family.df$Genus[i]]] = family.df$Family[i] }
 families = family.df$Family
 
-## read in woody C data 
+################################################################################
+# load wood C content database
+
+# read CSV
 wood.c.df = read.csv("Tree_Analysis/Tree_Databases/Doraisami_2021_Wood_C_Database.csv")
 
 # isolate rows for dead material
-dead.wood.c.df = wood.c.df[which(wood.c.df$dead.alive == "dead"),]
-dead.wood.c.df = dead.wood.c.df[which(dead.wood.c.df$tissue == "stem"),]
-dead.wood.c.df = dead.wood.c.df %>% separate(binomial.resolved, c("genus","spp"), sep="_", remove=F)
-dead.wood.c.df$species = paste(dead.wood.c.df$genus, dead.wood.c.df$spp, sep= " ")
+dead.wood.c.df = subset(wood.c.df, dead.alive == "dead" & division == "angiosperm")
+dead.stem.c.df = subset(dead.wood.c.df, tissue == "stem" & growth.form == "tree")
+dead.stem.c.df = dead.stem.c.df %>% separate(binomial.resolved, c("genus","spp"), sep="_", remove=F)
+dead.stem.c.df$species = paste(dead.stem.c.df$genus, dead.stem.c.df$spp, sep= " ")
 
 # isolate rows for live material
-live.wood.c.df = wood.c.df[which(wood.c.df$dead.alive == "alive" & wood.c.df$growth.form == "tree"),]
-live.wood.c.df = live.wood.c.df[which(live.wood.c.df$position == "standing" & live.wood.c.df$tissue == "stem"),]
-live.wood.c.df = live.wood.c.df %>% separate(binomial.resolved, c("genus","spp"), sep="_", remove=F)
-live.wood.c.df$species = paste(live.wood.c.df$genus, live.wood.c.df$spp, sep= " ")
+live.wood.c.df = subset(wood.c.df, dead.alive == "alive" & division == "angiosperm")
+live.stem.c.df = subset(live.wood.c.df, tissue == "stem" & (growth.form == "tree" & position == "standing"))
+live.stem.c.df = live.stem.c.df %>% separate(binomial.resolved, c("genus","spp"), sep="_", remove=F)
+live.stem.c.df$species = paste(live.stem.c.df$genus, live.stem.c.df$spp, sep= " ")
 
 ################################################################################
 # clean coarse and fine woody debris data
@@ -66,38 +69,39 @@ cwd.data$species = trimws(cwd.data$species)
 
 # add column for full treatment name
 cwd.data$full.treatment.name = 0
-for (i in 1:n.t) { cwd.data$full.treatment.name[which(cwd.data$treatment == trt.letters[i])] = trt.names[i] }
+for (i in 1:n.t) { cwd.data$full.treatment.name[cwd.data$treatment == trt.letters[i]] = trt.names[i] }
 
 ## make data frame for fine woody debris (2.5-7.5 cm) counts (#)
-fwd.counts = cwd.data[which(is.na(cwd.data$diameter.cm)), c("treatment","full.treatment.name","plot","fwd.count")]
-row.names(fwd.counts) = seq(1, nrow(fwd.counts))
+fwd.counts = cwd.data[is.na(cwd.data$diameter.cm), c("treatment","full.treatment.name","plot","fwd.count")]
+row.names(fwd.counts) = seq(1,nrow(fwd.counts))
 treatment.sort = sort(fwd.counts$treatment, index.return=T)
 fwd.counts = fwd.counts[treatment.sort$ix,]
 
 # estimate FWD volume (m^3/ha) and C storage (Mg/ha)
 wd.vol.coef = (1/dim.list[["plot.length.ft"]]) * (dim.list[["C1"]]*(pi^2)/8)
-fwd.counts$fwd.vol = wd.vol.coef * fwd.counts$fwd.count * ((dim.list[["median.int.fwd.diameter.cm"]] / dim.list[["cm.per.in"]])^2) #m3/ha
-fwd.counts$int.fwd.carbon = fwd.counts$fwd.vol * dim.list[["cwd.wood.density"]] * dim.list[["fwd.C.content"]]  # m3/ha * g/cm3 * g/g = Mg/ha
+fwd.counts$fwd.volume = wd.vol.coef * fwd.counts$fwd.count * ((dim.list[["median.int.fwd.diameter.cm"]] / dim.list[["cm.per.in"]])^2) #m3/ha
+fwd.counts$intermediate.fwd.carbon = fwd.counts$fwd.volume * dim.list[["cwd.wood.density"]] * dim.list[["fwd.C.content"]]  # m3/ha * g/cm3 * g/g = Mg/ha
 
 ## estimate CWD stocks by plot
 cwd.diams = cwd.data[-which(is.na(cwd.data$diameter.cm)), -which(colnames(cwd.data) == "fwd.count")]
 cwd.diams = cwd.diams %>% separate(species, c("genus","spp"), sep=" ", remove=F)
 
 # add column for potential C content by taxon
+downed.dead.stem.c.df = subset(dead.stem.c.df, position == "downed")
 cwd.diams$taxon.c.content = 0
-cwd.diams$family = rep(NA, nrow(cwd.diams))
+cwd.diams$family = NA
 for (i in 1:nrow(cwd.diams)) {
   if (cwd.diams$species[i] != "") {
     cwd.diams$family[i] = genus.families[[cwd.diams$genus[i]]]
-    df.sp.id = which(dead.wood.c.df$species == cwd.diams$species[i])
-    df.gen.id = which(dead.wood.c.df$genus.resolved == cwd.diams$genus[i]) 
-    df.fam.id = which(dead.wood.c.df$family.resolved == cwd.diams$family[i]) 
+    df.sp.id = which(downed.dead.stem.c.df$species == cwd.diams$species[i])
+    df.gen.id = which(downed.dead.stem.c.df$genus.resolved == cwd.diams$genus[i]) 
+    df.fam.id = which(downed.dead.stem.c.df$family.resolved == cwd.diams$family[i]) 
     if (length(df.sp.id) > 0) {
-      cwd.diams[i,"taxon.c.content"] = mean(dead.wood.c.df[df.sp.id,"tissue.c"])/100
+      cwd.diams[i,"taxon.c.content"] = mean(downed.dead.stem.c.df[df.sp.id,"tissue.c"])/100
     } else if (length(df.gen.id > 0)) {
-      cwd.diams[i,"taxon.c.content"] = mean(dead.wood.c.df[df.gen.id,"tissue.c"])/100
+      cwd.diams[i,"taxon.c.content"] = mean(downed.dead.stem.c.df[df.gen.id,"tissue.c"])/100
     } else if (length(df.fam.id > 0)) {
-      cwd.diams[i,"taxon.c.content"] = mean(dead.wood.c.df[df.fam.id,"tissue.c"])/100
+      cwd.diams[i,"taxon.c.content"] = mean(downed.dead.stem.c.df[df.fam.id,"tissue.c"])/100
     } else {
       cwd.diams[i,"taxon.c.content"] = dim.list[["cwd.C.content"]]
     }
@@ -107,13 +111,13 @@ for (i in 1:nrow(cwd.diams)) {
 }
 
 # estimate CWD volume (m^3/ha) and carbon storage (Mg/ha)
-cwd.diams$cwd.vol = wd.vol.coef * (cwd.diams$diameter/dim.list[["cm.per.in"]])^2 #m3/ha
-cwd.diams$cwd.carbon = cwd.diams$cwd.vol * dim.list[["cwd.wood.density"]] * cwd.diams$taxon.c.content  # Mg/ha
+cwd.diams$cwd.volume = wd.vol.coef * (cwd.diams$diameter/dim.list[["cm.per.in"]])^2 # m3/ha
+cwd.diams$total.cwd.carbon = cwd.diams$cwd.volume * dim.list[["cwd.wood.density"]] * cwd.diams$taxon.c.content  # Mg/ha
 
 # sum carbon stocks (Mg/ha) by plot
 cwd.sum = cwd.diams %>% 
           group_by(treatment, full.treatment.name, plot) %>% 
-          summarize(total.cwd.carbon = sum(cwd.carbon))
+          summarize(total.cwd.carbon = sum(total.cwd.carbon))
 
 # add zeros to CWD c stocks
 cwd.sum$plot = as.character(cwd.sum$plot)
@@ -138,7 +142,7 @@ cwd.sum = cwd.sum[treatment.sort$ix,]
 cwd.diams$species[which(cwd.diams$species == "")] = "Unknown"
 cwd.sp.sum = cwd.diams %>% 
              group_by(treatment, full.treatment.name, plot, species) %>% 
-             summarize(total.cwd.carbon = sum(cwd.carbon))
+             summarize(total.cwd.carbon = sum(total.cwd.carbon))
 
 # reshape data frame
 cwd.sp.wide = pivot_wider(cwd.sp.sum, 
@@ -177,7 +181,7 @@ cwd.sp.melt = melt(cwd.sp.wide,
                    variable.name="species",
                    value.name="total.cwd.carbon")
 
-# write cleaned cwd data to csv
+# write cleaned CWD data to csv
 write.csv(cwd.sp.melt, "Tree_Analysis/Clean_Data_By_Species/CWD_Carbon_Stocks_By_Species.csv", row.names=F)
 
 ################################################################################
@@ -197,13 +201,13 @@ snag.dbh.data$species = trimws(snag.dbh.data$species)
 
 # add full treatment name
 snag.dbh.data$full.treatment.name = 0
-for (i in 1:n.t) { snag.dbh.data$full.treatment.name[which(snag.dbh.data$treatment == trt.letters[i])] = trt.names[i] }
+for (i in 1:n.t) { snag.dbh.data$full.treatment.name[snag.dbh.data$treatment == trt.letters[i]] = trt.names[i] }
 
 # isolate all dead trees
-snag.data = snag.dbh.data[which(snag.dbh.data$live == "D"),]
+snag.data = subset(snag.dbh.data, live == "D")
 
 # make dataframe for diameter measurements
-snag.diams = snag.data[-which(snag.data$dbh == "<2.5"),]
+snag.diams = subset(snag.data, dbh.cm != "<2.5")
 
 # split species column
 snag.diams = snag.diams %>% separate(species, c("genus","spp"), sep=" ", remove=F)
@@ -211,23 +215,25 @@ snag.diams = snag.diams %>% separate(species, c("genus","spp"), sep=" ", remove=
 # calculate snag volume (m3/ha)
 snag.diams$dbh.cm = as.numeric(snag.diams$dbh.cm) # cm
 snag.diams$basal.area = (pi * (snag.diams$dbh.cm/2)^2) / dim.list[["plot.area.m2"]] #m2/ha = cm2/m2
-snag.diams$vol.min = snag.diams$basal.area * (dim.list[["min.snag.height.ft"]] / dim.list[["ft.per.m"]]) #m3/ha
+snag.diams$height.ft = dim.list[["snag.height.ft.intercept"]] + dim.list[["snag.height.ft.slope"]] * snag.diams$dbh.cm
+snag.diams$volume.min = snag.diams$basal.area * (snag.diams$height.ft / dim.list[["ft.per.m"]]) #m3/ha
 
 # calculate snag C storage
+standing.dead.stem.c.df = subset(dead.stem.c.df, position == "standing")
 snag.diams$taxon.c.content = 0
-snag.diams$family = rep(NA, nrow(snag.diams))
+snag.diams$family = NA
 for (i in 1:nrow(snag.diams)) {
   if (snag.diams$species[i] != "Unknown") {
     snag.diams$family[i] = genus.families[[snag.diams$genus[i]]]
-    df.sp.id = which(dead.wood.c.df$species == snag.diams$species[i])
-    df.gen.id = which(dead.wood.c.df$genus.resolved == snag.diams$genus[i]) 
-    df.fam.id = which(dead.wood.c.df$family.resolved == snag.diams$family[i]) 
+    df.sp.id = which(standing.dead.stem.c.df$species == snag.diams$species[i])
+    df.gen.id = which(standing.dead.stem.c.df$genus.resolved == snag.diams$genus[i]) 
+    df.fam.id = which(standing.dead.stem.c.df$family.resolved == snag.diams$family[i]) 
     if (length(df.sp.id) > 0) {
-      snag.diams[i,"taxon.c.content"] = mean(dead.wood.c.df[df.sp.id,"tissue.c"])/100
+      snag.diams[i,"taxon.c.content"] = mean(standing.dead.stem.c.df[df.sp.id,"tissue.c"])/100
     } else if (length(df.gen.id > 0)) {
-      snag.diams[i,"taxon.c.content"] = mean(dead.wood.c.df[df.gen.id,"tissue.c"])/100
+      snag.diams[i,"taxon.c.content"] = mean(standing.dead.stem.c.df[df.gen.id,"tissue.c"])/100
     } else if (length(df.fam.id > 0)) {
-      snag.diams[i,"taxon.c.content"] = mean(dead.wood.c.df[df.fam.id,"tissue.c"])/100
+      snag.diams[i,"taxon.c.content"] = mean(standing.dead.stem.c.df[df.fam.id,"tissue.c"])/100
     } else {
       snag.diams[i,"taxon.c.content"] = dim.list[["snag.C.content"]]
     }
@@ -235,12 +241,12 @@ for (i in 1:nrow(snag.diams)) {
     snag.diams[i,"taxon.c.content"] = dim.list[["snag.C.content"]]
   }
 }
-snag.diams$carbon.min = snag.diams$vol.min * dim.list[["snag.wood.density"]] * snag.diams$taxon.c.content  # Mg/ha
+snag.diams$large.snag.carbon = snag.diams$volume.min * dim.list[["snag.wood.density"]] * snag.diams$taxon.c.content  # Mg/ha
 
 # calculate total basal area within each plot
 snag.sum = snag.diams %>% 
            group_by(treatment, full.treatment.name, plot) %>% 
-           summarize(snag.carbon.min = sum(carbon.min))
+           summarize(large.snag.carbon = sum(large.snag.carbon))
 
 # add zeros to diameter sums
 snag.sum$plot = as.character(snag.sum$plot)
@@ -251,7 +257,7 @@ for (i in 1:n.t) {
       zero.row = data.frame(matrix(nrow=1, ncol=4))
       colnames(zero.row) = colnames(snag.sum)
       zero.row[1, c("treatment","full.treatment.name","plot")] = c(trt.letters[i], trt.names[i], j)
-      zero.row[1, "snag.carbon.min"] = 0
+      zero.row[1, "large.snag.carbon"] = 0
       snag.sum = rbind(snag.sum, zero.row)
     }
   }
@@ -260,27 +266,28 @@ treatment.sort = sort(snag.sum$treatment, index.return=T)
 snag.sum = snag.sum[treatment.sort$ix,]
 
 # estimate volume and C stocks of dead stems
-snag.counts = snag.data[which(snag.data$dbh == "<2.5"),]
+snag.counts = subset(snag.data, dbh.cm == "<2.5")
 snag.counts = snag.counts[,-which(colnames(snag.counts) %in% c("redo","live","dbh.cm","notes"))]
 snag.counts$dead.stem.count = snag.counts$stem.count / dim.list[["plot.area.ha"]] # count/ha
-snag.counts$dead.stem.volmin = snag.counts$dead.stem.count * pi * ((dim.list[["median.stem.diameter.cm"]]/dim.list[["cm.per.m"]])^2) * (dim.list[["min.snag.height.ft"]] / dim.list[["ft.per.m"]]) # m3/ha
+snag.counts$height.ft = dim.list[["snag.height.ft.intercept"]] + dim.list[["snag.height.ft.slope"]] * dim.list[["median.stem.diameter.cm"]]
+snag.counts$dead.stem.volume = snag.counts$dead.stem.count * pi * ((dim.list[["median.stem.diameter.cm"]] / dim.list[["cm.per.m"]])^2) * (snag.counts$height.ft / dim.list[["ft.per.m"]]) # m3/ha
 
 # calculate dead stem C storage
-snag.counts$taxon.c.content = 0 
 snag.counts = snag.counts %>% separate(species, c("genus","spp"), sep = " ", remove=F)
-snag.counts$family = rep(NA, nrow(snag.counts))
+snag.counts$taxon.c.content = 0 
+snag.counts$family = NA
 for (i in 1:nrow(snag.counts)) {
   if (snag.counts$species[i] != "Unknown") {
     snag.counts$family[i] = genus.families[[snag.counts$genus[i]]]
-    df.sp.id = which(dead.wood.c.df$species == snag.counts$species[i])
-    df.gen.id = which(dead.wood.c.df$genus.resolved == snag.counts$genus[i]) 
-    df.fam.id = which(dead.wood.c.df$family.resolved == snag.counts$family[i]) 
+    df.sp.id = which(standing.dead.stem.c.df$species == snag.counts$species[i])
+    df.gen.id = which(standing.dead.stem.c.df$genus.resolved == snag.counts$genus[i]) 
+    df.fam.id = which(standing.dead.stem.c.df$family.resolved == snag.counts$family[i]) 
     if (length(df.sp.id) > 0) {
-      snag.counts[i,"taxon.c.content"] = mean(dead.wood.c.df[df.sp.id,"tissue.c"])/100
+      snag.counts[i,"taxon.c.content"] = mean(standing.dead.stem.c.df[df.sp.id,"tissue.c"])/100
     } else if (length(df.gen.id > 0)) {
-      snag.counts[i,"taxon.c.content"] = mean(dead.wood.c.df[df.gen.id,"tissue.c"])/100
+      snag.counts[i,"taxon.c.content"] = mean(standing.dead.stem.c.df[df.gen.id,"tissue.c"])/100
     } else if (length(df.fam.id > 0)) {
-      snag.counts[i,"taxon.c.content"] = mean(dead.wood.c.df[df.fam.id,"tissue.c"])/100
+      snag.counts[i,"taxon.c.content"] = mean(standing.dead.stem.c.df[df.fam.id,"tissue.c"])/100
     } else {
       snag.counts[i,"taxon.c.content"] = dim.list[["snag.C.content"]]
     }
@@ -288,12 +295,12 @@ for (i in 1:nrow(snag.counts)) {
     snag.counts[i,"taxon.c.content"] = dim.list[["snag.C.content"]]
   }
 }
-snag.counts$dead.stem.carbon.min = snag.counts$dead.stem.volmin * dim.list[["snag.wood.density"]] * snag.counts$taxon.c.content # Mg/ha
+snag.counts$dead.stem.carbon = snag.counts$dead.stem.volume * dim.list[["snag.wood.density"]] * snag.counts$taxon.c.content # Mg/ha
 
 # sum snag counts over species
 snag.count.sum = snag.counts %>% 
                  group_by(treatment, full.treatment.name, plot) %>% 
-                 summarize(dead.stem.carbon.min = sum(dead.stem.carbon.min))
+                 summarize(dead.stem.carbon = sum(dead.stem.carbon))
 
 # add zeros to small snag count data
 snag.count.sum$plot = as.character(snag.count.sum$plot)
@@ -302,9 +309,9 @@ for (i in 1:n.t) {
     treatment.plot.id = which(snag.count.sum$treatment == trt.letters[i] & snag.count.sum$plot == j)
     if (length(treatment.plot.id) == 0) {
       zero.row = data.frame(matrix(nrow=1, ncol=4))
-      colnames(zero.row) = c("treatment","full.treatment.name","plot","dead.stem.carbon.min")
+      colnames(zero.row) = c("treatment","full.treatment.name","plot","dead.stem.carbon")
       zero.row[1, c("treatment","full.treatment.name","plot")] = c(trt.letters[i], trt.names[i], j)
-      zero.row[1, "dead.stem.carbon.min"] = 0
+      zero.row[1, "dead.stem.carbon"] = 0
       snag.count.sum = rbind(snag.count.sum, zero.row)
     }
   }
@@ -315,13 +322,13 @@ snag.count.sum = snag.count.sum[treatment.sort$ix,]
 # species-level estimates of snag C stocks
 snag.sp.sum = snag.diams %>% 
               group_by(treatment, full.treatment.name, plot, species) %>% 
-              summarize(snag.carbon.min = sum(carbon.min))
+              summarize(large.snag.carbon = sum(large.snag.carbon))
 
 # reshape data frame
 snag.sp.wide = pivot_wider(snag.sp.sum, 
                            id_cols = c(treatment, plot),
                            names_from = species, 
-                           values_from = snag.carbon.min)
+                           values_from = large.snag.carbon)
 snag.sp.wide[is.na(snag.sp.wide)] = 0
 
 # add zeros to diameter sums
@@ -352,7 +359,7 @@ snag.sp.wide = left_join(trt.plot.strip.df,
 snag.melt = melt(snag.sp.wide, 
                  id.vars=c("treatment","strip","plot"), 
                  variable.name="species",
-                 value.name="snag.carbon.min")
+                 value.name="large.snag.carbon")
 treatment.sort = sort(snag.melt$treatment, index.return=T)
 snag.melt = snag.melt[treatment.sort$ix,]
 
@@ -369,7 +376,7 @@ dbh.data.2022 = read.csv('Tree_Analysis/Raw_Data/DBH_August2022.csv')
 colnames(dbh.data.2022) = c("treatment_plot","spp","dbh","stem.count")
 
 # isolate stem counts
-stem.data.2022 = dbh.data.2022[which(dbh.data.2022$dbh == "<3"), c("treatment_plot","spp","stem.count")]
+stem.data.2022 = dbh.data.2022[dbh.data.2022$dbh == "<3", c("treatment_plot","spp","stem.count")]
 
 # get full species names
 allo.df = read.csv("Tree_Analysis/Tree_Databases/Chojnacky2014.csv")
@@ -386,7 +393,7 @@ stem.data.2022 = stem.data.2022 %>% separate(treatment_plot, c("treatment","plot
 stem.data.2022$species = trimws(stem.data.2022$species)
 
 # read in 2023 DBH data
-stem.data.2023 = snag.dbh.data[which(snag.dbh.data$dbh == "<2.5" & snag.dbh.data$live == "L"),]
+stem.data.2023 = subset(snag.dbh.data, dbh.cm == "<2.5" & live == "L")
 stem.data.2023 = stem.data.2023[, c("treatment","plot","species","stem.count")]
 stem.data.2023$species = trimws(stem.data.2023$species)
 
@@ -395,7 +402,7 @@ stem.data.2022$treatment_plot = paste(stem.data.2022$treatment, stem.data.2022$p
 stem.data.2023$treatment_plot = paste(stem.data.2023$treatment, stem.data.2023$plot, sep="")
 
 # combine 2022 and 2023 data
-redo.trt.plots = unique(snag.dbh.data$treatment_plot[which(snag.dbh.data$redo == "Y")])
+redo.trt.plots = unique(snag.dbh.data$treatment_plot[snag.dbh.data$redo == "Y"])
 redo.ind = which(stem.data.2022$treatment_plot %in% redo.trt.plots) # no overlap, so safe to do simple combination
 all.stem.data = rbind(stem.data.2022[,c("treatment","plot","species","stem.count")], 
                       stem.data.2023[,c("treatment","plot","species","stem.count")])
@@ -418,13 +425,13 @@ all.stem.data$bg.ha = all.stem.data$abg.ha * all.stem.data$r # Mg/ha
 all.stem.data$c.content = 0
 all.stem.data$level.c = 0
 for (i in 1:nrow(all.stem.data)) {
-  df.sp.id = which(live.wood.c.df$species == all.stem.data$species[i])
-  df.gen.id = which(live.wood.c.df$genus.resolved == all.stem.data$genus[i])
+  df.sp.id = which(live.stem.c.df$species == all.stem.data$species[i])
+  df.gen.id = which(live.stem.c.df$genus.resolved == all.stem.data$genus[i])
   if (length(df.sp.id) == 0) {
-    all.stem.data$c.content[i] = mean(live.wood.c.df[df.gen.id,"tissue.c"])/100
+    all.stem.data$c.content[i] = mean(live.stem.c.df[df.gen.id,"tissue.c"])/100
     all.stem.data$level.c[i] = "genus"
   } else {
-    all.stem.data$c.content[i] = mean(live.wood.c.df[df.sp.id,"tissue.c"])/100
+    all.stem.data$c.content[i] = mean(live.stem.c.df[df.sp.id,"tissue.c"])/100
     all.stem.data$level.c[i] = "species"
   }
 }
@@ -436,7 +443,7 @@ all.stem.data$total.live.stem.carbon = all.stem.data$abg.live.stem.carbon + all.
 
 # add full treatment name
 all.stem.data$full.treatment.name = 0
-for (i in 1:n.t) { all.stem.data$full.treatment.name[which(all.stem.data$treatment == trt.letters[i])] = trt.names[i] }
+for (i in 1:n.t) { all.stem.data$full.treatment.name[all.stem.data$treatment == trt.letters[i]] = trt.names[i] }
 
 # sum data by plot
 live.stem.sum = all.stem.data %>% 
@@ -531,13 +538,13 @@ snag.frax.pen$hypothetical.biomass.ha = snag.frax.pen$hypothetical.abg.bm.ha + s
 snag.frax.pen$taxon.c.content = 0
 snag.frax.pen$level.c = 0
 for (i in 1:nrow(snag.frax.pen)) {
-  df.sp.id = which(live.wood.c.df$species == snag.frax.pen$species[i])
-  df.gen.id = which(live.wood.c.df$genus.resolved == snag.frax.pen$genus[i])
+  df.sp.id = which(live.stem.c.df$species == snag.frax.pen$species[i])
+  df.gen.id = which(live.stem.c.df$genus.resolved == snag.frax.pen$genus[i])
   if (length(df.sp.id) == 0) {
-    snag.frax.pen$taxon.c.content[i] = mean(live.wood.c.df[df.gen.id,"tissue.c"])/100
+    snag.frax.pen$taxon.c.content[i] = mean(live.stem.c.df[df.gen.id,"tissue.c"])/100
     snag.frax.pen$level.c[i] = "genus"
   } else {
-    snag.frax.pen$taxon.c.content[i] = mean(live.wood.c.df[df.sp.id,"tissue.c"])/100
+    snag.frax.pen$taxon.c.content[i] = mean(live.stem.c.df[df.sp.id,"tissue.c"])/100
     snag.frax.pen$level.c[i] = "species"
   }
 }
@@ -610,49 +617,56 @@ understory.wide$plot = as.character(understory.wide$plot)
 ## calculate C:N ratios of fine woody debris, herbaceous litter, and herbaceous biomass
 
 # separate data by type
-understory.fwd = understory.data[which(understory.data$type == "Fine.woody.debris"),]
-understory.hl = understory.data[which(understory.data$type == "Herbaceous.litter"),]
-understory.hb = understory.data[which(understory.data$type == "Herbaceous.biomass"),]
+understory.fwd = understory.data[understory.data$type == "Fine.woody.debris",]
+understory.hl = understory.data[understory.data$type == "Herbaceous.litter",]
+understory.hb = understory.data[understory.data$type == "Herbaceous.biomass",]
 
 # FWD C:N ratio
 understory.wide$fine.woody.debris.cn.ratio = understory.fwd$c.mg.ha / understory.fwd$n.mg.ha
-understory.wide$fine.woody.debris.cn.ratio[which(is.na(understory.wide$fine.woody.debris.cn.ratio))] = 0
+understory.wide$fine.woody.debris.cn.ratio[is.na(understory.wide$fine.woody.debris.cn.ratio)] = 0
 
 # HL C:N ratio
 understory.wide$herbaceous.litter.cn.ratio = understory.hl$c.mg.ha / understory.hl$n.mg.ha
-understory.wide$herbaceous.litter.cn.ratio[which(is.na(understory.wide$herbaceous.litter.cn.ratio))] = 0
+understory.wide$herbaceous.litter.cn.ratio[is.na(understory.wide$herbaceous.litter.cn.ratio)] = 0
 
 # HN C:N ratioa
 understory.wide$herbaceous.biomass.cn.ratio = understory.hb$c.mg.ha / understory.hb$n.mg.ha
-understory.wide$herbaceous.biomass.cn.ratio[which(is.na(understory.wide$herbaceous.biomass.cn.ratio))] = 0
+understory.wide$herbaceous.biomass.cn.ratio[is.na(understory.wide$herbaceous.biomass.cn.ratio)] = 0
 
 ################################################################################
 ## combine all biomass C stock by plots dataframes 
 
 # intermediate fine woody debris and coarse woody debris
-all.bm.data = left_join(cwd.sum, fwd.counts[,c("treatment","full.treatment.name","plot","int.fwd.carbon")], 
+all.bm.data = left_join(cwd.sum, 
+                        fwd.counts[,c("treatment","full.treatment.name","plot","intermediate.fwd.carbon")], 
                         by=c("treatment","full.treatment.name","plot"))
 
 # large standing dead trees
-all.bm.data = left_join(all.bm.data, snag.sum, 
+all.bm.data = left_join(all.bm.data, 
+                        snag.sum, 
                         by=c("treatment","full.treatment.name","plot"))
 
 # small standing dead stems
-all.bm.data = left_join(all.bm.data, snag.count.sum, 
+all.bm.data = left_join(all.bm.data, 
+                        snag.count.sum, 
                         by=c("treatment","full.treatment.name","plot"))
 
 # large live trees
-all.bm.data = left_join(all.bm.data, C.stock.data, 
+all.bm.data = left_join(all.bm.data, 
+                        C.stock.data, 
                         by=c("treatment","full.treatment.name","plot"))
 
 # small live stems
-all.bm.data = left_join(all.bm.data, live.stem.sum[,c("treatment","full.treatment.name","plot",
-                                                      "abg.live.stem.carbon","bg.live.stem.carbon","total.live.stem.carbon")], 
+all.bm.data = left_join(all.bm.data, 
+                        live.stem.sum[,c("treatment","full.treatment.name","plot",
+                                         "abg.live.stem.carbon","bg.live.stem.carbon",
+                                         "total.live.stem.carbon")], 
                         by=c("treatment","full.treatment.name","plot"))
 
 # hypothetical C stocks of Frax pen
-all.bm.data = left_join(all.bm.data, snag.frax.sum[,c("treatment","full.treatment.name","plot",
-                                                      "snag.frax.live.carbon","snag.frax.dead.carbon")], 
+all.bm.data = left_join(all.bm.data, 
+                        snag.frax.sum[,c("treatment","full.treatment.name","plot",
+                                         "snag.frax.live.carbon","snag.frax.dead.carbon")], 
                         by=c("treatment","full.treatment.name","plot"))
 
 # understory C stocks and C:N ratios

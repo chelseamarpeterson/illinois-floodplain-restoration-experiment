@@ -1,9 +1,5 @@
 variable,label,unit,description
-MAOC,Mineral-associated organic carbon,Mg C per ha,mineral-associated organic carbon stock in surface soils (0-30 cm)
-POC,Particulate organic carbon,Mg C per ha,particulate organic carbon stock in surface soils (0-30 cm)
-SOC,Soil organic carbon,Mg C per ha,"total soil organic carbon stock in surface soils (0-30 cm), which is the sum of particulate and mineral-associated organic carbon"
-TIC,Soil inorganic carbon,Mg C per ha,total soil inorganic carbon stock in surface soils (0-30 cm)
-TC,Total soil carbon,Mg C per ha,"total soil carbon stock in surface soils (0-30 cm), which is the sum of total soil organic and inorganic carbon"
+tc.stock,Total soil carbon,Mg C per ha,"total soil carbon stock in surface soils (0-30 cm), which is the sum of total soil organic and inorganic carbon"
 n.herb.only,Herbaceous layer richness,integer species count,"number of unique species exclusively in the herbaceous layer, including small trees below breast height (1.37 m or 4.5 ft)"
 n.tree.only,Tree layer richness,integer species count,"number of unique species exclusively in the tree layer, which includes all trees above breast height (1.37 m or 4.5 ft)"
 n.both.herb.tree,Both tree and herbaceous layer,integer species count,number of unique species in both tree and herbaceous layers
@@ -17,11 +13,11 @@ herbaceous.biomass.cn.ratio,Herbaceous biomass C:N ratio,unitless (g C/g N),carb
 herbaceous.litter.cn.ratio,Herbaceous litter C:N ratio,unitless (g C/g N),carbon to nitrogen ratio of standing herbaceous litter in the understory layer
 fine.woody.debris.cn.ratio,Fine woody debris C:N ratio,unitless (g C/g N),carbon to nitrogen ratio of fine woody debris (<2.5 cm) in the understory layer
 small.fwd.carbon,Fine woody debris (< 2.5 cm),Mg C per ha,carbon storage of fine woody debris (<2.5 cm) in the understory layer
-int.fwd.carbon,Fine woody debris (2.5-7.5 cm),Mg C per ha,carbon storage in intermediate fine woody debris with intersection diameters >=2.5 cm and <7.6 cm
+intermediate.fwd.carbon,Fine woody debris (2.5-7.5 cm),Mg C per ha,carbon storage in intermediate fine woody debris with intersection diameters >=2.5 cm and <7.6 cm
 total.fwd.carbon,Fine woody debris (< 7.6 cm),Mg C per ha,carbon storage in all fine woody debris with diameters <7.6 cm
 total.cwd.carbon,Coarse woody debris (>= 7.6 cm),Mg C per ha,carbon storage in coarse woody debris with intersection diameters >=7.6 cm
-dead.stem.carbon.min,Dead stems (< 2.5 cm),Mg C per ha,lower bound estimate of carbon storage in standing dead stems with diameters at breast height <2.5 cm
-snag.carbon.min,Standing dead trees (>= 2.5 cm),Mg C per ha,lower bound estimate of carbon storage in standing dead trees with diameters at breast height >=2.5 cm
+dead.stem.carbon,Dead stems (< 2.5 cm),Mg C per ha,lower bound estimate of carbon storage in standing dead stems with diameters at breast height <2.5 cm
+large.snag.carbon,Standing dead trees (>= 2.5 cm),Mg C per ha,lower bound estimate of carbon storage in standing dead trees with diameters at breast height >=2.5 cm
 total.snag.carbon,Standing dead trees,Mg C per ha,lower bound estimate of carbon storage in all standing dead trees regardless of height
 abg.live.tree.carbon,Aboveground live trees (>= 2.5 cm),Mg C per ha,aboveground carbon storage in live standing trees with diameters at breast height >=2.5 cm
 bg.live.tree.carbon,Belowground live trees (>= 2.5 cm),Mg C per ha,belowground carbon storage in live standing trees with diameters at breast height >=2.5 cm
@@ -35,5 +31,5 @@ total.abg.wood.carbon,Aboveground woody biomass,Mg C per ha,"total aboveground c
 total.bg.wood.carbon,Belowground woody biomass,Mg C per ha,"total belowground carbon stock in living woody biomass, including large trees (>= 2.5 cm) and small stems (< 2.5 cm)"
 total.live.carbon,Total live vegetation,Mg C per ha,"total carbon stock in living woody biomass, including large trees (>= 2.5 cm), small stems (< 2.5 cm), and herbaceous biomass"
 total.dead.carbon,Total dead vegetation,Mg C per ha,"total carbon stock in dead vegetation, including large standing dead trees (>= 2.5 cm), small dead stems (<2.5 cm), coarse woody debris (>= 7.6 cm), and all fine woody debris (<7.6 cm)"
-total.veg.carbon,Total vegetation,Mg C per ha,total carbon stock in living and dead vegetation
+total.vegetation.carbon,Total vegetation,Mg C per ha,total carbon stock in living and dead vegetation
 total.ecosystem.carbon,Total ecosystem,Mg C per ha,"total ecosystem carbon stock, which is the sum of the total vegetation and total soil carbon stocks"

@@ -74,12 +74,12 @@ for (i in 1:n.v) {
 
 # run three models for each variable and store results in list
 seed = 3141; n.iter=20000; n.chain=10
-#soil.model.list = list()
+soil.model.list = list()
 select.vars = c("tn.percent","ca.meq","sand","root.fragment.density")
 n.v = length(select.vars)
 for (i in 1:n.v) { 
   v.i = select.vars[i]
-  #soil.model.list[[v.i]] = list()
+  soil.model.list[[v.i]] = list()
   for (j in 1:n.m) {
     m.j = models[j]
     if (m.j == "simple") {
@@ -88,7 +88,6 @@ for (i in 1:n.v) {
                          family=gaussian(link="log"),
                          prior=prior(normal(0,1), class=b),
                          chains=n.chain, seed=seed, iter=n.iter)
-    # control = list(adapt_delta = 0.99,max_treedepth = 16)
     } else if (m.j == "strip.random") {
       model.fit.ij = brm(data = all.lists[[v.i]], 
                          y ~ treatment + (1|treatment:strip),
@@ -110,7 +109,7 @@ for (i in 1:n.v) {
 
 
 # save Rhat statistic for each variable and model
-rhat.df = read.csv("Soil_Analysis/Posteriors/Soil_Rhat_Statistic_Updated.csv")
+rhat.df = read.csv("Soil_Analysis/Posteriors/Soil_Rhat_Statistic.csv")
 #rhat.df = data.frame(matrix(nrow=0,ncol=7))
 #colnames(rhat.df) = c("variable","variable.label","model","model.label",
 #                      "treatment","full.treatment.name","Rhat")
@@ -129,17 +128,14 @@ for (i in 1:n.v) {
     rhat.df.ij$treatment = trt.letters
     rhat.df.ij$full.treatment.name = trt.names
     rhat.df.ij$Rhat = model.sum.ij$fixed$Rhat
-    rhat.df[which(rhat.df$variable == v.i & rhat.df$model == m.j),] = rhat.df.ij
+    rhat.df[rhat.df$variable == v.i & rhat.df$model == m.j,] = rhat.df.ij
     #rhat.df = rbind(rhat.df, rhat.df.ij)
   }
 }
-rhat.df$model.label = rep(0, nrow(rhat.df))
-for (i in 1:n.m) { rhat.df$model.label[which(rhat.df$model == models[i])] = model.labels[i] }
-write.csv(rhat.df, "Soil_Analysis/Posteriors/Soil_Rhat_Statistic_Updated.csv", row.names=F)
-sum(rhat.df$Rhat >= 1.01)
+write.csv(rhat.df, "Soil_Analysis/Posteriors/Soil_Rhat_Statistic.csv", row.names=F)
 
 # compare models for each variale with WAIC, LOO, and kfold
-comp.df = read.csv("Soil_Analysis/Posteriors/Soil_Model_Information_Criteria_Updated.csv")[,1:13]
+comp.df = read.csv("Soil_Analysis/Posteriors/Soil_Model_Information_Criteria.csv")
 #comp.df = data.frame(matrix(nrow=0, ncol=13))
 #colnames(comp.df) = c("elpd_diff","se_diff","elpd","se_elpd","p","se_p","ic","se_ic",
 #                      "variable","variable.label","criterion","model","best.model")
@@ -149,24 +145,23 @@ for (i in 1:n.v) {
     m1 = soil.model.list[[v.i]][[models[1]]]
     m2 = soil.model.list[[v.i]][[models[2]]]
     m3 = soil.model.list[[v.i]][[models[3]]]
-    comp.ij = data.frame(loo_compare(m1, m2, m3, criterion = criteria[j],
-                         model_names=models))
+    comp.ij = data.frame(loo_compare(m1, m2, m3, criterion = tolower(criteria)[j], model_names=models))
     colnames(comp.ij) = c("elpd_diff","se_diff","elpd","se_elpd","p","se_p","ic","se_ic")
     comp.ij$variable = v.i
     comp.ij$variable.label = soil.var.list[[v.i]]
     comp.ij$criterion = criteria.labels[j]
     comp.ij$model = row.names(comp.ij)
     comp.ij$best.model = c("Yes",rep("No",2))
-    comp.df[which(comp.df$variable == v.i & comp.df$model == m.j),] = comp.ij
+    comp.df[comp.df$variable == v.i & comp.df$criterion == toupper(criteria[j]),1:13] = comp.ij
     #comp.df = rbind(comp.df, comp.ij)
   }
 }
-comp.df$model.label = rep(0, nrow(comp.df))
+comp.df$model.label = 0
 for (i in 1:n.m) { comp.df$model.label[which(comp.df$model == models[i])] = model.labels[i] }
-write.csv(comp.df, "Soil_Analysis/Posteriors/Soil_Model_Information_Criteria_Updated.csv", row.names=F)
+write.csv(comp.df, "Soil_Analysis/Posteriors/Soil_Model_Information_Criteria.csv", row.names=F)
 
 # get posterior intervals and write to file
-df.int = read.csv("Soil_Analysis/Posteriors/Soil_Posterior_Intervals_10Chains_NaturalScale_Updated.csv")
+df.int = read.csv("Soil_Analysis/Posteriors/Soil_Posterior_Intervals_10Chains_NaturalScale.csv")
 #df.int = data.frame(matrix(nrow=0, ncol=12))
 #colnames(df.int) = c("model","model.label","variable","variable.label","variable.mean",
 #                     "treatment","full.treatment.name","posterior.mean","X5","X95","X25","X75")
@@ -198,7 +193,7 @@ for (i in 1:n.v) {
 }
 df.int$model.label = rep(0, nrow(df.int))
 for (i in 1:n.m) { df.int$model.label[which(df.int$model == models[i])] = model.labels[i] }
-write.csv(df.int, "Soil_Analysis/Posteriors/Soil_Posterior_Intervals_10Chains_NaturalScale_Updated.csv", row.names=F)
+write.csv(df.int, "Soil_Analysis/Posteriors/Soil_Posterior_Intervals_10Chains_NaturalScale.csv", row.names=F)
 
 
 

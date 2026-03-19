@@ -215,8 +215,8 @@ snag.diams = snag.diams %>% separate(species, c("genus","spp"), sep=" ", remove=
 # calculate snag volume (m3/ha)
 snag.diams$dbh.cm = as.numeric(snag.diams$dbh.cm) # cm
 snag.diams$basal.area = (pi * (snag.diams$dbh.cm/2)^2) / dim.list[["plot.area.m2"]] #m2/ha = cm2/m2
-snag.diams$height.ft = dim.list[["snag.height.ft.intercept"]] + dim.list[["snag.height.ft.slope"]] * snag.diams$dbh.cm
-snag.diams$volume.min = snag.diams$basal.area * (snag.diams$height.ft / dim.list[["ft.per.m"]]) #m3/ha
+snag.diams$height.m = dim.list[["snag.height.m.intercept"]] + dim.list[["snag.height.cm.m.slope"]] * snag.diams$dbh.cm
+snag.diams$volume.min = snag.diams$basal.area * snag.diams$height.m #m3/ha
 
 # calculate snag C storage
 standing.dead.stem.c.df = subset(dead.stem.c.df, position == "standing")

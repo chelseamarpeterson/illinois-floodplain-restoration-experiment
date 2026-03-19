@@ -54,7 +54,7 @@ for (i in 1:n.v) {
 }
 
 # fit simple models
-seed = 3141; n.iter=10000; n.chain=10
+seed = 3141; n.iter=20000; n.chain=20
 stock.model.list = list()
 for (i in 1:n.v) {
   v.i = vars[i]
@@ -63,7 +63,7 @@ for (i in 1:n.v) {
     m.j = models[j]
     if (m.j == "simple") {
       model.fit.ij = brm(data = all.lists[[v.i]], 
-                                y ~ treatment,
+                                y ~ 0 + treatment,
                                 family = gaussian(link="log"),
                                 prior=prior(normal(0,1), class=b),
                                 chains=n.chain, seed=seed, iter=n.iter,
@@ -71,7 +71,7 @@ for (i in 1:n.v) {
                                                max_treedepth = 12))
     } else if (m.j == "strip.random") {
       model.fit.ij = brm(data = all.lists[[v.i]], 
-                         y ~ treatment + (1|treatment:strip),
+                         y ~ 0 + treatment + (1|treatment:strip),
                          family=gaussian(link="log"),
                          prior=prior(normal(0,1), class=b),
                          chains=n.chain, seed=seed, iter=n.iter,
@@ -86,8 +86,7 @@ for (i in 1:n.v) {
 
 # save Rhat statistic for each variable and model
 rhat.df = data.frame(matrix(nrow=0,ncol=7))
-colnames(rhat.df) = c("variable","variable.label","model","model.label",
-                      "treatment","full.treatment.name","Rhat")
+colnames(rhat.df) = c("variable","variable.label","model","model.label","treatment","full.treatment.name","Rhat")
 for (i in 1:n.v) {
   v.i = vars[i]
   for (j in 1:n.m) {

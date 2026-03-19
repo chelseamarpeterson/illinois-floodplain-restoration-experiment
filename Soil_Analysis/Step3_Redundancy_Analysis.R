@@ -1,4 +1,4 @@
-path_to_repo = "C:/Users/Chels/OneDrive - University of Illinois - Urbana/Ch2_Floodplain_Experiment/Floodplain-Experiment-Repo"
+path_to_repo = "C:/Users/Chels/OneDrive - University of Illinois - Urbana/Ch2_Floodplain_Experiment/floodplain-experiment-repo"
 setwd(path_to_repo)
 
 library(ggplot2)
@@ -66,6 +66,7 @@ rda_model <- rda(y.data ~., data = x.data)
 
 # RDA summary data
 summary(rda_model)
+smry = summary(rda_model)
 df1 = data.frame(scores(rda_model, display = "sites"))  
 df1$full.treatment.name = soil.bm.df$full.treatment.name
 df2 = data.frame(scores(rda_model, display = "species"))
@@ -105,7 +106,7 @@ rda.plot <- ggplot(data=df1) +
                                     color="red", fill="transparent",
                                     alpha=0.7,size=3.5) +
                    labs(x=var.rda1.label,y=var.rda2.label) + 
-                   xlim(c(-2,2)) + ylim(c(-2,2)) +
+                   #xlim(c(-2,2)) + ylim(c(-2,2)) +
                    theme(text=element_text(size=14))
 rda.plot
 
@@ -114,12 +115,12 @@ ggsave("Main_Figures/Figure5_Soil_Vegetation_RDA_HTElev.jpeg",
        plot=rda.plot, width=32, height=30, units="cm", dpi=600)
 
 # sort variable strength along each axis
-#df3$rows = rownames(df3)
-#var.sort1 = sort(df3[,"RDA1"], decreasing=T, index.return=T)
-#df3[var.sort1$ix, c("RDA1","rows")]
+df3$rows = rownames(df3)
+var.sort1 = sort(df3[,"RDA1"], decreasing=T, index.return=T)
+df3[var.sort1$ix, c("RDA1","rows")]
 
-#var.sort2 = sort(df3[,"RDA2"], decreasing=T, index.return=T)
-#df3[var.sort2$ix, c("RDA2","rows")]
+var.sort2 = sort(df3[,"RDA2"], decreasing=T, index.return=T)
+df3[var.sort2$ix, c("RDA2","rows")]
 
 
 

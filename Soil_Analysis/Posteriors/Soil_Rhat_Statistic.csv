@@ -1,685 +1,685 @@
 "variable","variable.label","model","model.label","treatment","full.treatment.name","Rhat"
-"temperature","Temperature (C)","simple","Fixed effects only","A","Balled-and-burlapped",1.0001001088695
-"temperature","Temperature (C)","simple","Fixed effects only","B","Bareroot",1.00016482519572
-"temperature","Temperature (C)","simple","Fixed effects only","C","Seedling",1.00016910813079
-"temperature","Temperature (C)","simple","Fixed effects only","D","Acorn",1.0001512036259
-"temperature","Temperature (C)","simple","Fixed effects only","E","Seedbank",1.00011538909569
-"temperature","Temperature (C)","simple","Fixed effects only","R","Reference",1.00019844424849
-"temperature","Temperature (C)","strip.random","Strip random effects","A","Balled-and-burlapped",1.00085845159584
-"temperature","Temperature (C)","strip.random","Strip random effects","B","Bareroot",1.0005038692363
-"temperature","Temperature (C)","strip.random","Strip random effects","C","Seedling",1.00106876480963
-"temperature","Temperature (C)","strip.random","Strip random effects","D","Acorn",1.00058750710938
-"temperature","Temperature (C)","strip.random","Strip random effects","E","Seedbank",1.00078251270914
-"temperature","Temperature (C)","strip.random","Strip random effects","R","Reference",1.00063515799686
-"temperature","Temperature (C)","strip.plot.random","Strip and plot random effects","A","Balled-and-burlapped",1.00057993663433
-"temperature","Temperature (C)","strip.plot.random","Strip and plot random effects","B","Bareroot",1.0004509717142
-"temperature","Temperature (C)","strip.plot.random","Strip and plot random effects","C","Seedling",1.00029708549422
-"temperature","Temperature (C)","strip.plot.random","Strip and plot random effects","D","Acorn",1.00044491764338
-"temperature","Temperature (C)","strip.plot.random","Strip and plot random effects","E","Seedbank",1.00051601447069
-"temperature","Temperature (C)","strip.plot.random","Strip and plot random effects","R","Reference",1.00069115938222
-"gravimetric.moisture","Gravitational moisture (%)","simple","Fixed effects only","A","Balled-and-burlapped",1.00003936082768
-"gravimetric.moisture","Gravitational moisture (%)","simple","Fixed effects only","B","Bareroot",1.00013330274779
-"gravimetric.moisture","Gravitational moisture (%)","simple","Fixed effects only","C","Seedling",1.00011299408621
-"gravimetric.moisture","Gravitational moisture (%)","simple","Fixed effects only","D","Acorn",1.00012625915066
-"gravimetric.moisture","Gravitational moisture (%)","simple","Fixed effects only","E","Seedbank",1.00001400202447
-"gravimetric.moisture","Gravitational moisture (%)","simple","Fixed effects only","R","Reference",1.00009538439204
-"gravimetric.moisture","Gravitational moisture (%)","strip.random","Strip random effects","A","Balled-and-burlapped",1.00144150189066
-"gravimetric.moisture","Gravitational moisture (%)","strip.random","Strip random effects","B","Bareroot",1.00161481683575
-"gravimetric.moisture","Gravitational moisture (%)","strip.random","Strip random effects","C","Seedling",1.00133903134052
-"gravimetric.moisture","Gravitational moisture (%)","strip.random","Strip random effects","D","Acorn",1.00160916499872
-"gravimetric.moisture","Gravitational moisture (%)","strip.random","Strip random effects","E","Seedbank",1.00209537399165
-"gravimetric.moisture","Gravitational moisture (%)","strip.random","Strip random effects","R","Reference",1.00161678897668
-"gravimetric.moisture","Gravitational moisture (%)","strip.plot.random","Strip and plot random effects","A","Balled-and-burlapped",1.00275433842037
-"gravimetric.moisture","Gravitational moisture (%)","strip.plot.random","Strip and plot random effects","B","Bareroot",1.00175711065817
-"gravimetric.moisture","Gravitational moisture (%)","strip.plot.random","Strip and plot random effects","C","Seedling",1.00250625499291
-"gravimetric.moisture","Gravitational moisture (%)","strip.plot.random","Strip and plot random effects","D","Acorn",1.00159548846462
-"gravimetric.moisture","Gravitational moisture (%)","strip.plot.random","Strip and plot random effects","E","Seedbank",1.00268001236129
-"gravimetric.moisture","Gravitational moisture (%)","strip.plot.random","Strip and plot random effects","R","Reference",1.00236878388667
-"bulk.density","Bulk density (g/cm3)","simple","Fixed effects only","A","Balled-and-burlapped",1.00032145418908
-"bulk.density","Bulk density (g/cm3)","simple","Fixed effects only","B","Bareroot",1.00016648178523
-"bulk.density","Bulk density (g/cm3)","simple","Fixed effects only","C","Seedling",1.00036112899714
-"bulk.density","Bulk density (g/cm3)","simple","Fixed effects only","D","Acorn",1.00032536350545
-"bulk.density","Bulk density (g/cm3)","simple","Fixed effects only","E","Seedbank",1.00026962717351
-"bulk.density","Bulk density (g/cm3)","simple","Fixed effects only","R","Reference",1.00011676715352
-"bulk.density","Bulk density (g/cm3)","strip.random","Strip random effects","A","Balled-and-burlapped",1.00148648925088
-"bulk.density","Bulk density (g/cm3)","strip.random","Strip random effects","B","Bareroot",1.00136444557259
-"bulk.density","Bulk density (g/cm3)","strip.random","Strip random effects","C","Seedling",1.0014734426524
-"bulk.density","Bulk density (g/cm3)","strip.random","Strip random effects","D","Acorn",1.00179377143337
-"bulk.density","Bulk density (g/cm3)","strip.random","Strip random effects","E","Seedbank",1.00156795970408
-"bulk.density","Bulk density (g/cm3)","strip.random","Strip random effects","R","Reference",1.00135632764417
-"bulk.density","Bulk density (g/cm3)","strip.plot.random","Strip and plot random effects","A","Balled-and-burlapped",1.00051554352627
-"bulk.density","Bulk density (g/cm3)","strip.plot.random","Strip and plot random effects","B","Bareroot",1.00020899934731
-"bulk.density","Bulk density (g/cm3)","strip.plot.random","Strip and plot random effects","C","Seedling",1.00020753159436
-"bulk.density","Bulk density (g/cm3)","strip.plot.random","Strip and plot random effects","D","Acorn",1.00060409744337
-"bulk.density","Bulk density (g/cm3)","strip.plot.random","Strip and plot random effects","E","Seedbank",1.00033033939588
-"bulk.density","Bulk density (g/cm3)","strip.plot.random","Strip and plot random effects","R","Reference",1.00052152530664
-"root.fragment.density","Root and wood fragment density (g/cm3)","simple","Fixed effects only","A","Balled-and-burlapped",1.00006930641794
-"root.fragment.density","Root and wood fragment density (g/cm3)","simple","Fixed effects only","B","Bareroot",1.00014947341739
-"root.fragment.density","Root and wood fragment density (g/cm3)","simple","Fixed effects only","C","Seedling",1.00016992530543
-"root.fragment.density","Root and wood fragment density (g/cm3)","simple","Fixed effects only","D","Acorn",1.00009625983844
-"root.fragment.density","Root and wood fragment density (g/cm3)","simple","Fixed effects only","E","Seedbank",1.00005064235612
-"root.fragment.density","Root and wood fragment density (g/cm3)","simple","Fixed effects only","R","Reference",1.00013221148108
-"root.fragment.density","Root and wood fragment density (g/cm3)","strip.random","Strip random effects","A","Balled-and-burlapped",1.00182835325125
-"root.fragment.density","Root and wood fragment density (g/cm3)","strip.random","Strip random effects","B","Bareroot",1.00037317781293
-"root.fragment.density","Root and wood fragment density (g/cm3)","strip.random","Strip random effects","C","Seedling",1.00071581338126
-"root.fragment.density","Root and wood fragment density (g/cm3)","strip.random","Strip random effects","D","Acorn",1.0003601685486
-"root.fragment.density","Root and wood fragment density (g/cm3)","strip.random","Strip random effects","E","Seedbank",1.00028835667969
-"root.fragment.density","Root and wood fragment density (g/cm3)","strip.random","Strip random effects","R","Reference",1.00142003263679
-"root.fragment.density","Root and wood fragment density (g/cm3)","strip.plot.random","Strip and plot random effects","A","Balled-and-burlapped",1.00204818101047
-"root.fragment.density","Root and wood fragment density (g/cm3)","strip.plot.random","Strip and plot random effects","B","Bareroot",1.00060765561354
-"root.fragment.density","Root and wood fragment density (g/cm3)","strip.plot.random","Strip and plot random effects","C","Seedling",1.00100426190198
-"root.fragment.density","Root and wood fragment density (g/cm3)","strip.plot.random","Strip and plot random effects","D","Acorn",1.00066923770142
-"root.fragment.density","Root and wood fragment density (g/cm3)","strip.plot.random","Strip and plot random effects","E","Seedbank",1.00120456187698
-"root.fragment.density","Root and wood fragment density (g/cm3)","strip.plot.random","Strip and plot random effects","R","Reference",1.00142016358997
-"sand","Sand (%)","simple","Fixed effects only","A","Balled-and-burlapped",1.0001756635777
-"sand","Sand (%)","simple","Fixed effects only","B","Bareroot",1.00015138350808
-"sand","Sand (%)","simple","Fixed effects only","C","Seedling",1.00010470658416
-"sand","Sand (%)","simple","Fixed effects only","D","Acorn",1.00018649739066
-"sand","Sand (%)","simple","Fixed effects only","E","Seedbank",1.00017039768239
-"sand","Sand (%)","simple","Fixed effects only","R","Reference",1.00017139998812
-"sand","Sand (%)","strip.random","Strip random effects","A","Balled-and-burlapped",1.00025736282399
-"sand","Sand (%)","strip.random","Strip random effects","B","Bareroot",1.0003696705002
-"sand","Sand (%)","strip.random","Strip random effects","C","Seedling",1.00022769791458
-"sand","Sand (%)","strip.random","Strip random effects","D","Acorn",1.00043841582055
-"sand","Sand (%)","strip.random","Strip random effects","E","Seedbank",1.00032796985597
-"sand","Sand (%)","strip.random","Strip random effects","R","Reference",1.00025915712069
-"sand","Sand (%)","strip.plot.random","Strip and plot random effects","A","Balled-and-burlapped",1.00051448281303
-"sand","Sand (%)","strip.plot.random","Strip and plot random effects","B","Bareroot",1.00040985129678
-"sand","Sand (%)","strip.plot.random","Strip and plot random effects","C","Seedling",1.00042077069895
-"sand","Sand (%)","strip.plot.random","Strip and plot random effects","D","Acorn",1.00031902988232
-"sand","Sand (%)","strip.plot.random","Strip and plot random effects","E","Seedbank",1.00030178066173
-"sand","Sand (%)","strip.plot.random","Strip and plot random effects","R","Reference",1.0002080198779
-"silt","Silt (%)","simple","Fixed effects only","A","Balled-and-burlapped",1.00008769493141
-"silt","Silt (%)","simple","Fixed effects only","B","Bareroot",1.00008839324313
-"silt","Silt (%)","simple","Fixed effects only","C","Seedling",1.00008188765131
-"silt","Silt (%)","simple","Fixed effects only","D","Acorn",1.0001419718549
-"silt","Silt (%)","simple","Fixed effects only","E","Seedbank",1.00005466896351
-"silt","Silt (%)","simple","Fixed effects only","R","Reference",1.00000394127522
-"silt","Silt (%)","strip.random","Strip random effects","A","Balled-and-burlapped",1.00083045610553
-"silt","Silt (%)","strip.random","Strip random effects","B","Bareroot",1.0003909365223
-"silt","Silt (%)","strip.random","Strip random effects","C","Seedling",1.00045398087963
-"silt","Silt (%)","strip.random","Strip random effects","D","Acorn",1.00083171820018
-"silt","Silt (%)","strip.random","Strip random effects","E","Seedbank",1.00042726222745
-"silt","Silt (%)","strip.random","Strip random effects","R","Reference",1.00050638606296
-"silt","Silt (%)","strip.plot.random","Strip and plot random effects","A","Balled-and-burlapped",1.00448590682279
-"silt","Silt (%)","strip.plot.random","Strip and plot random effects","B","Bareroot",1.00445820275314
-"silt","Silt (%)","strip.plot.random","Strip and plot random effects","C","Seedling",1.00407179558458
-"silt","Silt (%)","strip.plot.random","Strip and plot random effects","D","Acorn",1.00340953422628
-"silt","Silt (%)","strip.plot.random","Strip and plot random effects","E","Seedbank",1.00040546405345
-"silt","Silt (%)","strip.plot.random","Strip and plot random effects","R","Reference",1.0046041981537
-"clay","Clay (%)","simple","Fixed effects only","A","Balled-and-burlapped",1.00036089939905
-"clay","Clay (%)","simple","Fixed effects only","B","Bareroot",1.00015126474063
-"clay","Clay (%)","simple","Fixed effects only","C","Seedling",1.00017544979478
-"clay","Clay (%)","simple","Fixed effects only","D","Acorn",1.00028275199988
-"clay","Clay (%)","simple","Fixed effects only","E","Seedbank",1.00017798053357
-"clay","Clay (%)","simple","Fixed effects only","R","Reference",1.00024971172748
-"clay","Clay (%)","strip.random","Strip random effects","A","Balled-and-burlapped",1.00196439687087
-"clay","Clay (%)","strip.random","Strip random effects","B","Bareroot",1.00068812728384
-"clay","Clay (%)","strip.random","Strip random effects","C","Seedling",1.00176442446774
-"clay","Clay (%)","strip.random","Strip random effects","D","Acorn",1.00056196526984
-"clay","Clay (%)","strip.random","Strip random effects","E","Seedbank",1.00128495573537
-"clay","Clay (%)","strip.random","Strip random effects","R","Reference",1.00085652814277
-"clay","Clay (%)","strip.plot.random","Strip and plot random effects","A","Balled-and-burlapped",1.00211595512255
-"clay","Clay (%)","strip.plot.random","Strip and plot random effects","B","Bareroot",1.00285925391589
-"clay","Clay (%)","strip.plot.random","Strip and plot random effects","C","Seedling",1.00039249835587
-"clay","Clay (%)","strip.plot.random","Strip and plot random effects","D","Acorn",1.00256115887692
-"clay","Clay (%)","strip.plot.random","Strip and plot random effects","E","Seedbank",1.00337168654039
-"clay","Clay (%)","strip.plot.random","Strip and plot random effects","R","Reference",1.00261629253869
-"ph","pH","simple","Fixed effects only","A","Balled-and-burlapped",1.00009730104649
-"ph","pH","simple","Fixed effects only","B","Bareroot",1.00014321282103
-"ph","pH","simple","Fixed effects only","C","Seedling",1.00014007201859
-"ph","pH","simple","Fixed effects only","D","Acorn",1.00011525968153
-"ph","pH","simple","Fixed effects only","E","Seedbank",1.00015592961281
-"ph","pH","simple","Fixed effects only","R","Reference",1.0000697339371
-"ph","pH","strip.random","Strip random effects","A","Balled-and-burlapped",1.00127365366507
-"ph","pH","strip.random","Strip random effects","B","Bareroot",1.00124621956143
-"ph","pH","strip.random","Strip random effects","C","Seedling",1.00106660127697
-"ph","pH","strip.random","Strip random effects","D","Acorn",1.00142081859713
-"ph","pH","strip.random","Strip random effects","E","Seedbank",1.0006823525739
-"ph","pH","strip.random","Strip random effects","R","Reference",1.00102554155632
-"ph","pH","strip.plot.random","Strip and plot random effects","A","Balled-and-burlapped",1.00072504464102
-"ph","pH","strip.plot.random","Strip and plot random effects","B","Bareroot",1.00013712535656
-"ph","pH","strip.plot.random","Strip and plot random effects","C","Seedling",1.00026511133612
-"ph","pH","strip.plot.random","Strip and plot random effects","D","Acorn",1.00035650201824
-"ph","pH","strip.plot.random","Strip and plot random effects","E","Seedbank",1.000324546809
-"ph","pH","strip.plot.random","Strip and plot random effects","R","Reference",1.0003150609829
-"p","P (ppm)","simple","Fixed effects only","A","Balled-and-burlapped",1.00026858476186
-"p","P (ppm)","simple","Fixed effects only","B","Bareroot",1.00020606513732
-"p","P (ppm)","simple","Fixed effects only","C","Seedling",1.000096957352
-"p","P (ppm)","simple","Fixed effects only","D","Acorn",1.00017401400155
-"p","P (ppm)","simple","Fixed effects only","E","Seedbank",1.00028012021215
-"p","P (ppm)","simple","Fixed effects only","R","Reference",1.00009985721512
-"p","P (ppm)","strip.random","Strip random effects","A","Balled-and-burlapped",1.00102442078602
-"p","P (ppm)","strip.random","Strip random effects","B","Bareroot",1.00059046423777
-"p","P (ppm)","strip.random","Strip random effects","C","Seedling",1.00095517748505
-"p","P (ppm)","strip.random","Strip random effects","D","Acorn",1.00063481095382
-"p","P (ppm)","strip.random","Strip random effects","E","Seedbank",1.00068461764338
-"p","P (ppm)","strip.random","Strip random effects","R","Reference",1.00101966081098
-"p","P (ppm)","strip.plot.random","Strip and plot random effects","A","Balled-and-burlapped",1.00070418440964
-"p","P (ppm)","strip.plot.random","Strip and plot random effects","B","Bareroot",1.00045114955915
-"p","P (ppm)","strip.plot.random","Strip and plot random effects","C","Seedling",1.00040667465838
-"p","P (ppm)","strip.plot.random","Strip and plot random effects","D","Acorn",1.00062621941914
-"p","P (ppm)","strip.plot.random","Strip and plot random effects","E","Seedbank",1.00076092061655
-"p","P (ppm)","strip.plot.random","Strip and plot random effects","R","Reference",1.00028930449818
-"k","K (ppm)","simple","Fixed effects only","A","Balled-and-burlapped",1.00026680891456
-"k","K (ppm)","simple","Fixed effects only","B","Bareroot",1.0002187397276
-"k","K (ppm)","simple","Fixed effects only","C","Seedling",1.00034541606223
-"k","K (ppm)","simple","Fixed effects only","D","Acorn",1.00019710815885
-"k","K (ppm)","simple","Fixed effects only","E","Seedbank",1.00036588778049
-"k","K (ppm)","simple","Fixed effects only","R","Reference",1.00027584472005
-"k","K (ppm)","strip.random","Strip random effects","A","Balled-and-burlapped",1.00029848062793
-"k","K (ppm)","strip.random","Strip random effects","B","Bareroot",1.00023563493144
-"k","K (ppm)","strip.random","Strip random effects","C","Seedling",1.00030073514512
-"k","K (ppm)","strip.random","Strip random effects","D","Acorn",1.00034190335978
-"k","K (ppm)","strip.random","Strip random effects","E","Seedbank",1.00039024642347
-"k","K (ppm)","strip.random","Strip random effects","R","Reference",1.00031879714656
-"k","K (ppm)","strip.plot.random","Strip and plot random effects","A","Balled-and-burlapped",1.00064808566261
-"k","K (ppm)","strip.plot.random","Strip and plot random effects","B","Bareroot",1.00063689363052
-"k","K (ppm)","strip.plot.random","Strip and plot random effects","C","Seedling",1.00024265497582
-"k","K (ppm)","strip.plot.random","Strip and plot random effects","D","Acorn",1.00040444761953
-"k","K (ppm)","strip.plot.random","Strip and plot random effects","E","Seedbank",1.0004514895764
-"k","K (ppm)","strip.plot.random","Strip and plot random effects","R","Reference",1.00027113124502
-"ca","Ca (ppm)","simple","Fixed effects only","A","Balled-and-burlapped",1.00020623105906
-"ca","Ca (ppm)","simple","Fixed effects only","B","Bareroot",1.00011908547373
-"ca","Ca (ppm)","simple","Fixed effects only","C","Seedling",1.00013140973209
-"ca","Ca (ppm)","simple","Fixed effects only","D","Acorn",1.00015898772553
-"ca","Ca (ppm)","simple","Fixed effects only","E","Seedbank",1.00010437235691
-"ca","Ca (ppm)","simple","Fixed effects only","R","Reference",1.00009860670156
-"ca","Ca (ppm)","strip.random","Strip random effects","A","Balled-and-burlapped",1.00104562030899
-"ca","Ca (ppm)","strip.random","Strip random effects","B","Bareroot",1.0009153115014
-"ca","Ca (ppm)","strip.random","Strip random effects","C","Seedling",1.00057788718424
-"ca","Ca (ppm)","strip.random","Strip random effects","D","Acorn",1.0012119144558
-"ca","Ca (ppm)","strip.random","Strip random effects","E","Seedbank",1.00124497509579
-"ca","Ca (ppm)","strip.random","Strip random effects","R","Reference",1.0013789201215
-"ca","Ca (ppm)","strip.plot.random","Strip and plot random effects","A","Balled-and-burlapped",1.00073695758551
-"ca","Ca (ppm)","strip.plot.random","Strip and plot random effects","B","Bareroot",1.00079363459489
-"ca","Ca (ppm)","strip.plot.random","Strip and plot random effects","C","Seedling",1.0007179208669
-"ca","Ca (ppm)","strip.plot.random","Strip and plot random effects","D","Acorn",1.00060235567678
-"ca","Ca (ppm)","strip.plot.random","Strip and plot random effects","E","Seedbank",1.00046591983504
-"ca","Ca (ppm)","strip.plot.random","Strip and plot random effects","R","Reference",1.00140573600686
-"mg","Mg (ppm)","simple","Fixed effects only","A","Balled-and-burlapped",1.00042583768767
-"mg","Mg (ppm)","simple","Fixed effects only","B","Bareroot",1.00034248382623
-"mg","Mg (ppm)","simple","Fixed effects only","C","Seedling",1.00027913574745
-"mg","Mg (ppm)","simple","Fixed effects only","D","Acorn",1.00028630024106
-"mg","Mg (ppm)","simple","Fixed effects only","E","Seedbank",1.00035065384901
-"mg","Mg (ppm)","simple","Fixed effects only","R","Reference",1.00043338475628
-"mg","Mg (ppm)","strip.random","Strip random effects","A","Balled-and-burlapped",1.00123076736748
-"mg","Mg (ppm)","strip.random","Strip random effects","B","Bareroot",1.00165686170215
-"mg","Mg (ppm)","strip.random","Strip random effects","C","Seedling",1.00043334743126
-"mg","Mg (ppm)","strip.random","Strip random effects","D","Acorn",1.00034212107498
-"mg","Mg (ppm)","strip.random","Strip random effects","E","Seedbank",1.00051224209309
-"mg","Mg (ppm)","strip.random","Strip random effects","R","Reference",1.00159226130893
-"mg","Mg (ppm)","strip.plot.random","Strip and plot random effects","A","Balled-and-burlapped",1.00062813026511
-"mg","Mg (ppm)","strip.plot.random","Strip and plot random effects","B","Bareroot",1.00045714005554
-"mg","Mg (ppm)","strip.plot.random","Strip and plot random effects","C","Seedling",1.00035450149909
-"mg","Mg (ppm)","strip.plot.random","Strip and plot random effects","D","Acorn",1.00051717494836
-"mg","Mg (ppm)","strip.plot.random","Strip and plot random effects","E","Seedbank",1.00043136260823
-"mg","Mg (ppm)","strip.plot.random","Strip and plot random effects","R","Reference",1.00077524851297
-"som.percent","SOM (%)","simple","Fixed effects only","A","Balled-and-burlapped",1.00016232538265
-"som.percent","SOM (%)","simple","Fixed effects only","B","Bareroot",1.00004253279689
-"som.percent","SOM (%)","simple","Fixed effects only","C","Seedling",1.0001857082075
-"som.percent","SOM (%)","simple","Fixed effects only","D","Acorn",1.00011898943564
-"som.percent","SOM (%)","simple","Fixed effects only","E","Seedbank",1.00008759110301
-"som.percent","SOM (%)","simple","Fixed effects only","R","Reference",1.00009674728272
-"som.percent","SOM (%)","strip.random","Strip random effects","A","Balled-and-burlapped",1.00056393421968
-"som.percent","SOM (%)","strip.random","Strip random effects","B","Bareroot",1.00031784018978
-"som.percent","SOM (%)","strip.random","Strip random effects","C","Seedling",1.00046078357525
-"som.percent","SOM (%)","strip.random","Strip random effects","D","Acorn",1.00067050053587
-"som.percent","SOM (%)","strip.random","Strip random effects","E","Seedbank",1.00072362117658
-"som.percent","SOM (%)","strip.random","Strip random effects","R","Reference",1.00060485189245
-"som.percent","SOM (%)","strip.plot.random","Strip and plot random effects","A","Balled-and-burlapped",1.00789111624238
-"som.percent","SOM (%)","strip.plot.random","Strip and plot random effects","B","Bareroot",1.00830547681251
-"som.percent","SOM (%)","strip.plot.random","Strip and plot random effects","C","Seedling",1.00156029640121
-"som.percent","SOM (%)","strip.plot.random","Strip and plot random effects","D","Acorn",1.00763179566692
-"som.percent","SOM (%)","strip.plot.random","Strip and plot random effects","E","Seedbank",1.00107934961805
-"som.percent","SOM (%)","strip.plot.random","Strip and plot random effects","R","Reference",1.0020356182344
-"no3.n","NO3-N (ppm)","simple","Fixed effects only","A","Balled-and-burlapped",1.00020958184827
-"no3.n","NO3-N (ppm)","simple","Fixed effects only","B","Bareroot",1.00007579352854
-"no3.n","NO3-N (ppm)","simple","Fixed effects only","C","Seedling",1.00008138197364
-"no3.n","NO3-N (ppm)","simple","Fixed effects only","D","Acorn",1.00020497895238
-"no3.n","NO3-N (ppm)","simple","Fixed effects only","E","Seedbank",1.00025990813194
-"no3.n","NO3-N (ppm)","simple","Fixed effects only","R","Reference",1.00016278961125
-"no3.n","NO3-N (ppm)","strip.random","Strip random effects","A","Balled-and-burlapped",1.00257646416623
-"no3.n","NO3-N (ppm)","strip.random","Strip random effects","B","Bareroot",1.0025393570761
-"no3.n","NO3-N (ppm)","strip.random","Strip random effects","C","Seedling",1.0027670298928
-"no3.n","NO3-N (ppm)","strip.random","Strip random effects","D","Acorn",1.00301176892084
-"no3.n","NO3-N (ppm)","strip.random","Strip random effects","E","Seedbank",1.00309242969898
-"no3.n","NO3-N (ppm)","strip.random","Strip random effects","R","Reference",1.00205527545083
-"no3.n","NO3-N (ppm)","strip.plot.random","Strip and plot random effects","A","Balled-and-burlapped",1.00094193085392
-"no3.n","NO3-N (ppm)","strip.plot.random","Strip and plot random effects","B","Bareroot",1.00065923358896
-"no3.n","NO3-N (ppm)","strip.plot.random","Strip and plot random effects","C","Seedling",1.00025704445714
-"no3.n","NO3-N (ppm)","strip.plot.random","Strip and plot random effects","D","Acorn",1.00065633200069
-"no3.n","NO3-N (ppm)","strip.plot.random","Strip and plot random effects","E","Seedbank",1.00071186970021
-"no3.n","NO3-N (ppm)","strip.plot.random","Strip and plot random effects","R","Reference",1.00125362206271
-"nh4.n","NH4-N (ppm)","simple","Fixed effects only","A","Balled-and-burlapped",1.0002646401624
-"nh4.n","NH4-N (ppm)","simple","Fixed effects only","B","Bareroot",1.00019848894072
-"nh4.n","NH4-N (ppm)","simple","Fixed effects only","C","Seedling",1.00021264804627
-"nh4.n","NH4-N (ppm)","simple","Fixed effects only","D","Acorn",1.00016848860626
-"nh4.n","NH4-N (ppm)","simple","Fixed effects only","E","Seedbank",1.00016342130483
-"nh4.n","NH4-N (ppm)","simple","Fixed effects only","R","Reference",1.00008270702834
-"nh4.n","NH4-N (ppm)","strip.random","Strip random effects","A","Balled-and-burlapped",1.00170937094971
-"nh4.n","NH4-N (ppm)","strip.random","Strip random effects","B","Bareroot",1.00122601570728
-"nh4.n","NH4-N (ppm)","strip.random","Strip random effects","C","Seedling",1.00131116441802
-"nh4.n","NH4-N (ppm)","strip.random","Strip random effects","D","Acorn",1.0009321919759
-"nh4.n","NH4-N (ppm)","strip.random","Strip random effects","E","Seedbank",1.00125935597601
-"nh4.n","NH4-N (ppm)","strip.random","Strip random effects","R","Reference",1.00186509035846
-"nh4.n","NH4-N (ppm)","strip.plot.random","Strip and plot random effects","A","Balled-and-burlapped",1.00052576028298
-"nh4.n","NH4-N (ppm)","strip.plot.random","Strip and plot random effects","B","Bareroot",1.00036332732849
-"nh4.n","NH4-N (ppm)","strip.plot.random","Strip and plot random effects","C","Seedling",1.00036030122874
-"nh4.n","NH4-N (ppm)","strip.plot.random","Strip and plot random effects","D","Acorn",1.00048474559056
-"nh4.n","NH4-N (ppm)","strip.plot.random","Strip and plot random effects","E","Seedbank",1.0002419516151
-"nh4.n","NH4-N (ppm)","strip.plot.random","Strip and plot random effects","R","Reference",1.00048676714032
-"cec","CEC (meq/100 g)","simple","Fixed effects only","A","Balled-and-burlapped",1.00029600869172
-"cec","CEC (meq/100 g)","simple","Fixed effects only","B","Bareroot",1.0002670787167
-"cec","CEC (meq/100 g)","simple","Fixed effects only","C","Seedling",1.0002624937991
-"cec","CEC (meq/100 g)","simple","Fixed effects only","D","Acorn",1.000182274429
-"cec","CEC (meq/100 g)","simple","Fixed effects only","E","Seedbank",1.00019493362416
-"cec","CEC (meq/100 g)","simple","Fixed effects only","R","Reference",1.00017976045966
-"cec","CEC (meq/100 g)","strip.random","Strip random effects","A","Balled-and-burlapped",1.00229459891953
-"cec","CEC (meq/100 g)","strip.random","Strip random effects","B","Bareroot",1.00215011793526
-"cec","CEC (meq/100 g)","strip.random","Strip random effects","C","Seedling",1.00197723179642
-"cec","CEC (meq/100 g)","strip.random","Strip random effects","D","Acorn",1.00172269384864
-"cec","CEC (meq/100 g)","strip.random","Strip random effects","E","Seedbank",1.00234442875811
-"cec","CEC (meq/100 g)","strip.random","Strip random effects","R","Reference",1.00265680666424
-"cec","CEC (meq/100 g)","strip.plot.random","Strip and plot random effects","A","Balled-and-burlapped",1.0005720079057
-"cec","CEC (meq/100 g)","strip.plot.random","Strip and plot random effects","B","Bareroot",1.00048943182495
-"cec","CEC (meq/100 g)","strip.plot.random","Strip and plot random effects","C","Seedling",1.0004246550741
-"cec","CEC (meq/100 g)","strip.plot.random","Strip and plot random effects","D","Acorn",1.00031083720976
-"cec","CEC (meq/100 g)","strip.plot.random","Strip and plot random effects","E","Seedbank",1.00068014094531
-"cec","CEC (meq/100 g)","strip.plot.random","Strip and plot random effects","R","Reference",1.0004404963447
-"k.meq","K (meq/100 g)","simple","Fixed effects only","A","Balled-and-burlapped",1.00062322327562
-"k.meq","K (meq/100 g)","simple","Fixed effects only","B","Bareroot",1.00041204561924
-"k.meq","K (meq/100 g)","simple","Fixed effects only","C","Seedling",1.00030327656661
-"k.meq","K (meq/100 g)","simple","Fixed effects only","D","Acorn",1.0005468842783
-"k.meq","K (meq/100 g)","simple","Fixed effects only","E","Seedbank",1.00060250401875
-"k.meq","K (meq/100 g)","simple","Fixed effects only","R","Reference",1.00026688975927
-"k.meq","K (meq/100 g)","strip.random","Strip random effects","A","Balled-and-burlapped",1.00039670479207
-"k.meq","K (meq/100 g)","strip.random","Strip random effects","B","Bareroot",1.00041611092847
-"k.meq","K (meq/100 g)","strip.random","Strip random effects","C","Seedling",1.00029761325156
-"k.meq","K (meq/100 g)","strip.random","Strip random effects","D","Acorn",1.00050383920418
-"k.meq","K (meq/100 g)","strip.random","Strip random effects","E","Seedbank",1.00097990891262
-"k.meq","K (meq/100 g)","strip.random","Strip random effects","R","Reference",1.00077240802738
-"k.meq","K (meq/100 g)","strip.plot.random","Strip and plot random effects","A","Balled-and-burlapped",1.00016573910571
-"k.meq","K (meq/100 g)","strip.plot.random","Strip and plot random effects","B","Bareroot",1.0001009029828
-"k.meq","K (meq/100 g)","strip.plot.random","Strip and plot random effects","C","Seedling",1.00015602499849
-"k.meq","K (meq/100 g)","strip.plot.random","Strip and plot random effects","D","Acorn",1.00020779096576
-"k.meq","K (meq/100 g)","strip.plot.random","Strip and plot random effects","E","Seedbank",1.00023079949885
-"k.meq","K (meq/100 g)","strip.plot.random","Strip and plot random effects","R","Reference",1.00028612268794
-"ca.meq","Ca (meq/100 g)","simple","Fixed effects only","A","Balled-and-burlapped",1.00011881562972
-"ca.meq","Ca (meq/100 g)","simple","Fixed effects only","B","Bareroot",1.00007028780596
-"ca.meq","Ca (meq/100 g)","simple","Fixed effects only","C","Seedling",1.00015331393879
-"ca.meq","Ca (meq/100 g)","simple","Fixed effects only","D","Acorn",1.00008369833084
-"ca.meq","Ca (meq/100 g)","simple","Fixed effects only","E","Seedbank",1.00008762434336
-"ca.meq","Ca (meq/100 g)","simple","Fixed effects only","R","Reference",1.0001060588538
-"ca.meq","Ca (meq/100 g)","strip.random","Strip random effects","A","Balled-and-burlapped",1.00057068672598
-"ca.meq","Ca (meq/100 g)","strip.random","Strip random effects","B","Bareroot",1.00180529786966
-"ca.meq","Ca (meq/100 g)","strip.random","Strip random effects","C","Seedling",1.00055929308675
-"ca.meq","Ca (meq/100 g)","strip.random","Strip random effects","D","Acorn",1.00037627168776
-"ca.meq","Ca (meq/100 g)","strip.random","Strip random effects","E","Seedbank",1.00067529226812
-"ca.meq","Ca (meq/100 g)","strip.random","Strip random effects","R","Reference",1.00119255402512
-"ca.meq","Ca (meq/100 g)","strip.plot.random","Strip and plot random effects","A","Balled-and-burlapped",1.0009526560889
-"ca.meq","Ca (meq/100 g)","strip.plot.random","Strip and plot random effects","B","Bareroot",1.00072897054824
-"ca.meq","Ca (meq/100 g)","strip.plot.random","Strip and plot random effects","C","Seedling",1.00069708864312
-"ca.meq","Ca (meq/100 g)","strip.plot.random","Strip and plot random effects","D","Acorn",1.00127943885382
-"ca.meq","Ca (meq/100 g)","strip.plot.random","Strip and plot random effects","E","Seedbank",1.00054241549788
-"ca.meq","Ca (meq/100 g)","strip.plot.random","Strip and plot random effects","R","Reference",1.00072768627062
-"mg.meq","Mg (meq/100 g)","simple","Fixed effects only","A","Balled-and-burlapped",1.00015126192272
-"mg.meq","Mg (meq/100 g)","simple","Fixed effects only","B","Bareroot",1.00013562787248
-"mg.meq","Mg (meq/100 g)","simple","Fixed effects only","C","Seedling",1.00018776756854
-"mg.meq","Mg (meq/100 g)","simple","Fixed effects only","D","Acorn",1.00024745581394
-"mg.meq","Mg (meq/100 g)","simple","Fixed effects only","E","Seedbank",1.0001965052655
-"mg.meq","Mg (meq/100 g)","simple","Fixed effects only","R","Reference",1.00014803918206
-"mg.meq","Mg (meq/100 g)","strip.random","Strip random effects","A","Balled-and-burlapped",1.00075957430102
-"mg.meq","Mg (meq/100 g)","strip.random","Strip random effects","B","Bareroot",1.00034571771635
-"mg.meq","Mg (meq/100 g)","strip.random","Strip random effects","C","Seedling",1.00047007389426
-"mg.meq","Mg (meq/100 g)","strip.random","Strip random effects","D","Acorn",1.00027871511767
-"mg.meq","Mg (meq/100 g)","strip.random","Strip random effects","E","Seedbank",1.00080135078838
-"mg.meq","Mg (meq/100 g)","strip.random","Strip random effects","R","Reference",1.00114687417965
-"mg.meq","Mg (meq/100 g)","strip.plot.random","Strip and plot random effects","A","Balled-and-burlapped",1.0002986553492
-"mg.meq","Mg (meq/100 g)","strip.plot.random","Strip and plot random effects","B","Bareroot",1.00041740239816
-"mg.meq","Mg (meq/100 g)","strip.plot.random","Strip and plot random effects","C","Seedling",1.00037736482398
-"mg.meq","Mg (meq/100 g)","strip.plot.random","Strip and plot random effects","D","Acorn",1.00018366469932
-"mg.meq","Mg (meq/100 g)","strip.plot.random","Strip and plot random effects","E","Seedbank",1.00021069268428
-"mg.meq","Mg (meq/100 g)","strip.plot.random","Strip and plot random effects","R","Reference",1.00014372073759
-"tn.percent","TN (%)","simple","Fixed effects only","A","Balled-and-burlapped",1.0002298159874
-"tn.percent","TN (%)","simple","Fixed effects only","B","Bareroot",1.00009741146518
-"tn.percent","TN (%)","simple","Fixed effects only","C","Seedling",1.0001024561997
-"tn.percent","TN (%)","simple","Fixed effects only","D","Acorn",1.00013830321865
-"tn.percent","TN (%)","simple","Fixed effects only","E","Seedbank",1.00012461373481
-"tn.percent","TN (%)","simple","Fixed effects only","R","Reference",1.00010677891847
-"tn.percent","TN (%)","strip.random","Strip random effects","A","Balled-and-burlapped",1.00034674737646
-"tn.percent","TN (%)","strip.random","Strip random effects","B","Bareroot",1.00032979722617
-"tn.percent","TN (%)","strip.random","Strip random effects","C","Seedling",1.00029861143779
-"tn.percent","TN (%)","strip.random","Strip random effects","D","Acorn",1.00023703644176
-"tn.percent","TN (%)","strip.random","Strip random effects","E","Seedbank",1.00033087276867
-"tn.percent","TN (%)","strip.random","Strip random effects","R","Reference",1.00025938159085
-"tn.percent","TN (%)","strip.plot.random","Strip and plot random effects","A","Balled-and-burlapped",1.00081078990544
-"tn.percent","TN (%)","strip.plot.random","Strip and plot random effects","B","Bareroot",1.00030557150917
-"tn.percent","TN (%)","strip.plot.random","Strip and plot random effects","C","Seedling",1.00068481513002
-"tn.percent","TN (%)","strip.plot.random","Strip and plot random effects","D","Acorn",1.00043685851316
-"tn.percent","TN (%)","strip.plot.random","Strip and plot random effects","E","Seedbank",1.00054623954853
-"tn.percent","TN (%)","strip.plot.random","Strip and plot random effects","R","Reference",1.000676750225
-"tc.percent","TC (%)","simple","Fixed effects only","A","Balled-and-burlapped",1.00006513078086
-"tc.percent","TC (%)","simple","Fixed effects only","B","Bareroot",1.00011106861915
-"tc.percent","TC (%)","simple","Fixed effects only","C","Seedling",1.00008873262166
-"tc.percent","TC (%)","simple","Fixed effects only","D","Acorn",1.00002935441318
-"tc.percent","TC (%)","simple","Fixed effects only","E","Seedbank",1.00011479309917
-"tc.percent","TC (%)","simple","Fixed effects only","R","Reference",1.00000812545403
-"tc.percent","TC (%)","strip.random","Strip random effects","A","Balled-and-burlapped",1.00030247249875
-"tc.percent","TC (%)","strip.random","Strip random effects","B","Bareroot",1.000325558165
-"tc.percent","TC (%)","strip.random","Strip random effects","C","Seedling",1.00023364443537
-"tc.percent","TC (%)","strip.random","Strip random effects","D","Acorn",1.00036560242033
-"tc.percent","TC (%)","strip.random","Strip random effects","E","Seedbank",1.00014487178699
-"tc.percent","TC (%)","strip.random","Strip random effects","R","Reference",1.00007950444477
-"tc.percent","TC (%)","strip.plot.random","Strip and plot random effects","A","Balled-and-burlapped",1.00121105412168
-"tc.percent","TC (%)","strip.plot.random","Strip and plot random effects","B","Bareroot",1.00091139123097
-"tc.percent","TC (%)","strip.plot.random","Strip and plot random effects","C","Seedling",1.00289181621658
-"tc.percent","TC (%)","strip.plot.random","Strip and plot random effects","D","Acorn",1.00256907848836
-"tc.percent","TC (%)","strip.plot.random","Strip and plot random effects","E","Seedbank",1.00124723131116
-"tc.percent","TC (%)","strip.plot.random","Strip and plot random effects","R","Reference",1.00316724898762
-"toc.percent","SOC (%)","simple","Fixed effects only","A","Balled-and-burlapped",1.0002609209419
-"toc.percent","SOC (%)","simple","Fixed effects only","B","Bareroot",1.00018322248347
-"toc.percent","SOC (%)","simple","Fixed effects only","C","Seedling",1.00011706298445
-"toc.percent","SOC (%)","simple","Fixed effects only","D","Acorn",1.00013951639387
-"toc.percent","SOC (%)","simple","Fixed effects only","E","Seedbank",1.00029670581961
-"toc.percent","SOC (%)","simple","Fixed effects only","R","Reference",1.00010747564877
-"toc.percent","SOC (%)","strip.random","Strip random effects","A","Balled-and-burlapped",1.00039908178142
-"toc.percent","SOC (%)","strip.random","Strip random effects","B","Bareroot",1.00052561374493
-"toc.percent","SOC (%)","strip.random","Strip random effects","C","Seedling",1.00033298311184
-"toc.percent","SOC (%)","strip.random","Strip random effects","D","Acorn",1.00047708739174
-"toc.percent","SOC (%)","strip.random","Strip random effects","E","Seedbank",1.00046072645515
-"toc.percent","SOC (%)","strip.random","Strip random effects","R","Reference",1.00036822213974
-"toc.percent","SOC (%)","strip.plot.random","Strip and plot random effects","A","Balled-and-burlapped",1.00085425889064
-"toc.percent","SOC (%)","strip.plot.random","Strip and plot random effects","B","Bareroot",1.00032859159129
-"toc.percent","SOC (%)","strip.plot.random","Strip and plot random effects","C","Seedling",1.00146234023487
-"toc.percent","SOC (%)","strip.plot.random","Strip and plot random effects","D","Acorn",1.00141539021385
-"toc.percent","SOC (%)","strip.plot.random","Strip and plot random effects","E","Seedbank",1.00051381644304
-"toc.percent","SOC (%)","strip.plot.random","Strip and plot random effects","R","Reference",1.00198456656859
-"poc.percent","POC (%)","simple","Fixed effects only","A","Balled-and-burlapped",1.00047210570815
-"poc.percent","POC (%)","simple","Fixed effects only","B","Bareroot",1.00025775689839
-"poc.percent","POC (%)","simple","Fixed effects only","C","Seedling",1.00031054962563
-"poc.percent","POC (%)","simple","Fixed effects only","D","Acorn",1.00030612444807
-"poc.percent","POC (%)","simple","Fixed effects only","E","Seedbank",1.0002170502531
-"poc.percent","POC (%)","simple","Fixed effects only","R","Reference",1.00044088455603
-"poc.percent","POC (%)","strip.random","Strip random effects","A","Balled-and-burlapped",1.00046122005863
-"poc.percent","POC (%)","strip.random","Strip random effects","B","Bareroot",1.00039950310037
-"poc.percent","POC (%)","strip.random","Strip random effects","C","Seedling",1.00032467431882
-"poc.percent","POC (%)","strip.random","Strip random effects","D","Acorn",1.00071495033667
-"poc.percent","POC (%)","strip.random","Strip random effects","E","Seedbank",1.00062923143099
-"poc.percent","POC (%)","strip.random","Strip random effects","R","Reference",1.00044211336023
-"poc.percent","POC (%)","strip.plot.random","Strip and plot random effects","A","Balled-and-burlapped",1.00063784717837
-"poc.percent","POC (%)","strip.plot.random","Strip and plot random effects","B","Bareroot",1.0004587165906
-"poc.percent","POC (%)","strip.plot.random","Strip and plot random effects","C","Seedling",1.00035648281507
-"poc.percent","POC (%)","strip.plot.random","Strip and plot random effects","D","Acorn",1.0004583231578
-"poc.percent","POC (%)","strip.plot.random","Strip and plot random effects","E","Seedbank",1.00053788566219
-"poc.percent","POC (%)","strip.plot.random","Strip and plot random effects","R","Reference",1.00030915816536
-"g475mm",">= 4.75 mm","simple","Fixed effects only","A","Balled-and-burlapped",1.00009362222286
-"g475mm",">= 4.75 mm","simple","Fixed effects only","B","Bareroot",1.00001743354548
-"g475mm",">= 4.75 mm","simple","Fixed effects only","C","Seedling",1.00007444347021
-"g475mm",">= 4.75 mm","simple","Fixed effects only","D","Acorn",1.00022128714065
-"g475mm",">= 4.75 mm","simple","Fixed effects only","E","Seedbank",1.00006285849582
-"g475mm",">= 4.75 mm","simple","Fixed effects only","R","Reference",1.00012375046135
-"g475mm",">= 4.75 mm","strip.random","Strip random effects","A","Balled-and-burlapped",1.00062926438587
-"g475mm",">= 4.75 mm","strip.random","Strip random effects","B","Bareroot",1.00033718582441
-"g475mm",">= 4.75 mm","strip.random","Strip random effects","C","Seedling",1.00054641965942
-"g475mm",">= 4.75 mm","strip.random","Strip random effects","D","Acorn",1.00049574130615
-"g475mm",">= 4.75 mm","strip.random","Strip random effects","E","Seedbank",1.00048248120675
-"g475mm",">= 4.75 mm","strip.random","Strip random effects","R","Reference",1.00031464102315
-"g475mm",">= 4.75 mm","strip.plot.random","Strip and plot random effects","A","Balled-and-burlapped",1.00024100087989
-"g475mm",">= 4.75 mm","strip.plot.random","Strip and plot random effects","B","Bareroot",1.0002083156218
-"g475mm",">= 4.75 mm","strip.plot.random","Strip and plot random effects","C","Seedling",1.00032393514203
-"g475mm",">= 4.75 mm","strip.plot.random","Strip and plot random effects","D","Acorn",1.00014498554816
-"g475mm",">= 4.75 mm","strip.plot.random","Strip and plot random effects","E","Seedbank",1.00023423143891
-"g475mm",">= 4.75 mm","strip.plot.random","Strip and plot random effects","R","Reference",1.00013057377628
-"g2mm","2-4.75 mm","simple","Fixed effects only","A","Balled-and-burlapped",1.00033107984198
-"g2mm","2-4.75 mm","simple","Fixed effects only","B","Bareroot",1.00020627155172
-"g2mm","2-4.75 mm","simple","Fixed effects only","C","Seedling",1.00016663718054
-"g2mm","2-4.75 mm","simple","Fixed effects only","D","Acorn",1.00012783218644
-"g2mm","2-4.75 mm","simple","Fixed effects only","E","Seedbank",1.00034450610303
-"g2mm","2-4.75 mm","simple","Fixed effects only","R","Reference",1.00018237236378
-"g2mm","2-4.75 mm","strip.random","Strip random effects","A","Balled-and-burlapped",1.00050300812408
-"g2mm","2-4.75 mm","strip.random","Strip random effects","B","Bareroot",1.00042087673935
-"g2mm","2-4.75 mm","strip.random","Strip random effects","C","Seedling",1.00064351091551
-"g2mm","2-4.75 mm","strip.random","Strip random effects","D","Acorn",1.00032462071355
-"g2mm","2-4.75 mm","strip.random","Strip random effects","E","Seedbank",1.00034501718129
-"g2mm","2-4.75 mm","strip.random","Strip random effects","R","Reference",1.00036988410277
-"g2mm","2-4.75 mm","strip.plot.random","Strip and plot random effects","A","Balled-and-burlapped",1.00042862775637
-"g2mm","2-4.75 mm","strip.plot.random","Strip and plot random effects","B","Bareroot",1.0003702227138
-"g2mm","2-4.75 mm","strip.plot.random","Strip and plot random effects","C","Seedling",1.00043325377184
-"g2mm","2-4.75 mm","strip.plot.random","Strip and plot random effects","D","Acorn",1.00060896273228
-"g2mm","2-4.75 mm","strip.plot.random","Strip and plot random effects","E","Seedbank",1.00008743321198
-"g2mm","2-4.75 mm","strip.plot.random","Strip and plot random effects","R","Reference",1.0005041496344
-"g250um","0.250-2 mm","simple","Fixed effects only","A","Balled-and-burlapped",1.00012847981297
-"g250um","0.250-2 mm","simple","Fixed effects only","B","Bareroot",0.999986859377946
-"g250um","0.250-2 mm","simple","Fixed effects only","C","Seedling",0.999927360746047
-"g250um","0.250-2 mm","simple","Fixed effects only","D","Acorn",1.00006841783776
-"g250um","0.250-2 mm","simple","Fixed effects only","E","Seedbank",1.0000869451336
-"g250um","0.250-2 mm","simple","Fixed effects only","R","Reference",1.00009416163905
-"g250um","0.250-2 mm","strip.random","Strip random effects","A","Balled-and-burlapped",1.00091559436737
-"g250um","0.250-2 mm","strip.random","Strip random effects","B","Bareroot",1.00064046158291
-"g250um","0.250-2 mm","strip.random","Strip random effects","C","Seedling",1.00074723002395
-"g250um","0.250-2 mm","strip.random","Strip random effects","D","Acorn",1.00072557767224
-"g250um","0.250-2 mm","strip.random","Strip random effects","E","Seedbank",1.00063512447187
-"g250um","0.250-2 mm","strip.random","Strip random effects","R","Reference",1.00093679614738
-"g250um","0.250-2 mm","strip.plot.random","Strip and plot random effects","A","Balled-and-burlapped",1.00382786336066
-"g250um","0.250-2 mm","strip.plot.random","Strip and plot random effects","B","Bareroot",1.00285323783091
-"g250um","0.250-2 mm","strip.plot.random","Strip and plot random effects","C","Seedling",1.00334917108954
-"g250um","0.250-2 mm","strip.plot.random","Strip and plot random effects","D","Acorn",1.00350697903666
-"g250um","0.250-2 mm","strip.plot.random","Strip and plot random effects","E","Seedbank",1.00260217220183
-"g250um","0.250-2 mm","strip.plot.random","Strip and plot random effects","R","Reference",1.00295789557616
-"g53um","0.053-0.250 mm","simple","Fixed effects only","A","Balled-and-burlapped",1.00015623636224
-"g53um","0.053-0.250 mm","simple","Fixed effects only","B","Bareroot",1.0001907814587
-"g53um","0.053-0.250 mm","simple","Fixed effects only","C","Seedling",1.00017823201469
-"g53um","0.053-0.250 mm","simple","Fixed effects only","D","Acorn",1.00013297473257
-"g53um","0.053-0.250 mm","simple","Fixed effects only","E","Seedbank",1.0001607943927
-"g53um","0.053-0.250 mm","simple","Fixed effects only","R","Reference",1.00008136741196
-"g53um","0.053-0.250 mm","strip.random","Strip random effects","A","Balled-and-burlapped",1.00172679062117
-"g53um","0.053-0.250 mm","strip.random","Strip random effects","B","Bareroot",1.00108989976149
-"g53um","0.053-0.250 mm","strip.random","Strip random effects","C","Seedling",1.00111588419204
-"g53um","0.053-0.250 mm","strip.random","Strip random effects","D","Acorn",1.00179699787096
-"g53um","0.053-0.250 mm","strip.random","Strip random effects","E","Seedbank",1.00244775435673
-"g53um","0.053-0.250 mm","strip.random","Strip random effects","R","Reference",1.00068558153087
-"g53um","0.053-0.250 mm","strip.plot.random","Strip and plot random effects","A","Balled-and-burlapped",1.00047632102143
-"g53um","0.053-0.250 mm","strip.plot.random","Strip and plot random effects","B","Bareroot",1.0001748430068
-"g53um","0.053-0.250 mm","strip.plot.random","Strip and plot random effects","C","Seedling",1.00039975408876
-"g53um","0.053-0.250 mm","strip.plot.random","Strip and plot random effects","D","Acorn",1.00036949502715
-"g53um","0.053-0.250 mm","strip.plot.random","Strip and plot random effects","E","Seedbank",1.00028583874299
-"g53um","0.053-0.250 mm","strip.plot.random","Strip and plot random effects","R","Reference",1.00020331974882
-"l53um","<0.053 mm","simple","Fixed effects only","A","Balled-and-burlapped",1.00065101824069
-"l53um","<0.053 mm","simple","Fixed effects only","B","Bareroot",1.00024819515625
-"l53um","<0.053 mm","simple","Fixed effects only","C","Seedling",1.00033554707215
-"l53um","<0.053 mm","simple","Fixed effects only","D","Acorn",1.00039222738715
-"l53um","<0.053 mm","simple","Fixed effects only","E","Seedbank",1.00051065862374
-"l53um","<0.053 mm","simple","Fixed effects only","R","Reference",1.00028953301503
-"l53um","<0.053 mm","strip.random","Strip random effects","A","Balled-and-burlapped",1.00057981515738
-"l53um","<0.053 mm","strip.random","Strip random effects","B","Bareroot",1.00040828686003
-"l53um","<0.053 mm","strip.random","Strip random effects","C","Seedling",1.00045648853292
-"l53um","<0.053 mm","strip.random","Strip random effects","D","Acorn",1.00056581977556
-"l53um","<0.053 mm","strip.random","Strip random effects","E","Seedbank",1.00038512543786
-"l53um","<0.053 mm","strip.random","Strip random effects","R","Reference",1.00047764958285
-"l53um","<0.053 mm","strip.plot.random","Strip and plot random effects","A","Balled-and-burlapped",1.00043091529085
-"l53um","<0.053 mm","strip.plot.random","Strip and plot random effects","B","Bareroot",1.00023995920994
-"l53um","<0.053 mm","strip.plot.random","Strip and plot random effects","C","Seedling",1.00024368124703
-"l53um","<0.053 mm","strip.plot.random","Strip and plot random effects","D","Acorn",1.00031361702269
-"l53um","<0.053 mm","strip.plot.random","Strip and plot random effects","E","Seedbank",1.00041410360966
-"l53um","<0.053 mm","strip.plot.random","Strip and plot random effects","R","Reference",1.00082626374717
-"mwd","Mean-weight diameter (mm)","simple","Fixed effects only","A","Balled-and-burlapped",1.00023943065543
-"mwd","Mean-weight diameter (mm)","simple","Fixed effects only","B","Bareroot",1.00028303242371
-"mwd","Mean-weight diameter (mm)","simple","Fixed effects only","C","Seedling",1.00015613474338
-"mwd","Mean-weight diameter (mm)","simple","Fixed effects only","D","Acorn",1.00027242862316
-"mwd","Mean-weight diameter (mm)","simple","Fixed effects only","E","Seedbank",1.00010727798472
-"mwd","Mean-weight diameter (mm)","simple","Fixed effects only","R","Reference",1.00009131692904
-"mwd","Mean-weight diameter (mm)","strip.random","Strip random effects","A","Balled-and-burlapped",1.00062432776698
-"mwd","Mean-weight diameter (mm)","strip.random","Strip random effects","B","Bareroot",1.0007478097323
-"mwd","Mean-weight diameter (mm)","strip.random","Strip random effects","C","Seedling",1.00059515320036
-"mwd","Mean-weight diameter (mm)","strip.random","Strip random effects","D","Acorn",1.00062603263426
-"mwd","Mean-weight diameter (mm)","strip.random","Strip random effects","E","Seedbank",1.00060741318555
-"mwd","Mean-weight diameter (mm)","strip.random","Strip random effects","R","Reference",1.00076218453344
-"mwd","Mean-weight diameter (mm)","strip.plot.random","Strip and plot random effects","A","Balled-and-burlapped",1.00109508213908
-"mwd","Mean-weight diameter (mm)","strip.plot.random","Strip and plot random effects","B","Bareroot",1.0006469895531
-"mwd","Mean-weight diameter (mm)","strip.plot.random","Strip and plot random effects","C","Seedling",1.00068338320782
-"mwd","Mean-weight diameter (mm)","strip.plot.random","Strip and plot random effects","D","Acorn",1.00049244528527
-"mwd","Mean-weight diameter (mm)","strip.plot.random","Strip and plot random effects","E","Seedbank",1.00084568877168
-"mwd","Mean-weight diameter (mm)","strip.plot.random","Strip and plot random effects","R","Reference",1.00085979295887
-"tic.percent","TIC (%)","simple","Fixed effects only","A","Balled-and-burlapped",1.00023989788336
-"tic.percent","TIC (%)","simple","Fixed effects only","B","Bareroot",1.00020379675921
-"tic.percent","TIC (%)","simple","Fixed effects only","C","Seedling",1.0001833022167
-"tic.percent","TIC (%)","simple","Fixed effects only","D","Acorn",1.00019713342817
-"tic.percent","TIC (%)","simple","Fixed effects only","E","Seedbank",1.00023872540761
-"tic.percent","TIC (%)","simple","Fixed effects only","R","Reference",1.00015545834249
-"tic.percent","TIC (%)","strip.random","Strip random effects","A","Balled-and-burlapped",1.00090403920306
-"tic.percent","TIC (%)","strip.random","Strip random effects","B","Bareroot",1.00077488092425
-"tic.percent","TIC (%)","strip.random","Strip random effects","C","Seedling",1.00067039610393
-"tic.percent","TIC (%)","strip.random","Strip random effects","D","Acorn",1.00085147514487
-"tic.percent","TIC (%)","strip.random","Strip random effects","E","Seedbank",1.00065165626459
-"tic.percent","TIC (%)","strip.random","Strip random effects","R","Reference",1.00070603896904
-"tic.percent","TIC (%)","strip.plot.random","Strip and plot random effects","A","Balled-and-burlapped",1.00073316676078
-"tic.percent","TIC (%)","strip.plot.random","Strip and plot random effects","B","Bareroot",1.00054170657627
-"tic.percent","TIC (%)","strip.plot.random","Strip and plot random effects","C","Seedling",1.00020998605861
-"tic.percent","TIC (%)","strip.plot.random","Strip and plot random effects","D","Acorn",1.00073683354961
-"tic.percent","TIC (%)","strip.plot.random","Strip and plot random effects","E","Seedbank",1.00040249711398
-"tic.percent","TIC (%)","strip.plot.random","Strip and plot random effects","R","Reference",1.00070044010291
-"maoc.percent","MAOC (%)","simple","Fixed effects only","A","Balled-and-burlapped",1.00034739461549
-"maoc.percent","MAOC (%)","simple","Fixed effects only","B","Bareroot",1.00023724579173
-"maoc.percent","MAOC (%)","simple","Fixed effects only","C","Seedling",1.00023361778344
-"maoc.percent","MAOC (%)","simple","Fixed effects only","D","Acorn",1.00029000215262
-"maoc.percent","MAOC (%)","simple","Fixed effects only","E","Seedbank",1.00022202313735
-"maoc.percent","MAOC (%)","simple","Fixed effects only","R","Reference",1.00023267528295
-"maoc.percent","MAOC (%)","strip.random","Strip random effects","A","Balled-and-burlapped",1.00120946631806
-"maoc.percent","MAOC (%)","strip.random","Strip random effects","B","Bareroot",1.00088222392149
-"maoc.percent","MAOC (%)","strip.random","Strip random effects","C","Seedling",1.00159723624012
-"maoc.percent","MAOC (%)","strip.random","Strip random effects","D","Acorn",1.00046507975295
-"maoc.percent","MAOC (%)","strip.random","Strip random effects","E","Seedbank",1.00173291453612
-"maoc.percent","MAOC (%)","strip.random","Strip random effects","R","Reference",1.00092219788999
-"maoc.percent","MAOC (%)","strip.plot.random","Strip and plot random effects","A","Balled-and-burlapped",1.00163467433777
-"maoc.percent","MAOC (%)","strip.plot.random","Strip and plot random effects","B","Bareroot",1.0011268166406
-"maoc.percent","MAOC (%)","strip.plot.random","Strip and plot random effects","C","Seedling",1.0009584592731
-"maoc.percent","MAOC (%)","strip.plot.random","Strip and plot random effects","D","Acorn",1.00120574209326
-"maoc.percent","MAOC (%)","strip.plot.random","Strip and plot random effects","E","Seedbank",1.00145405443411
-"maoc.percent","MAOC (%)","strip.plot.random","Strip and plot random effects","R","Reference",1.00158665620139
-"poc.maoc.ratio","POC:MAOC ratio","simple","Fixed effects only","A","Balled-and-burlapped",1.00025300341511
-"poc.maoc.ratio","POC:MAOC ratio","simple","Fixed effects only","B","Bareroot",1.00024134895065
-"poc.maoc.ratio","POC:MAOC ratio","simple","Fixed effects only","C","Seedling",1.00014304768738
-"poc.maoc.ratio","POC:MAOC ratio","simple","Fixed effects only","D","Acorn",1.00010652952925
-"poc.maoc.ratio","POC:MAOC ratio","simple","Fixed effects only","E","Seedbank",1.00011639196639
-"poc.maoc.ratio","POC:MAOC ratio","simple","Fixed effects only","R","Reference",1.00017457676877
-"poc.maoc.ratio","POC:MAOC ratio","strip.random","Strip random effects","A","Balled-and-burlapped",1.00066789152671
-"poc.maoc.ratio","POC:MAOC ratio","strip.random","Strip random effects","B","Bareroot",1.00030451499276
-"poc.maoc.ratio","POC:MAOC ratio","strip.random","Strip random effects","C","Seedling",1.00047709874066
-"poc.maoc.ratio","POC:MAOC ratio","strip.random","Strip random effects","D","Acorn",1.00026096599455
-"poc.maoc.ratio","POC:MAOC ratio","strip.random","Strip random effects","E","Seedbank",1.00054592600931
-"poc.maoc.ratio","POC:MAOC ratio","strip.random","Strip random effects","R","Reference",1.00032475930488
-"poc.maoc.ratio","POC:MAOC ratio","strip.plot.random","Strip and plot random effects","A","Balled-and-burlapped",1.00017640634144
-"poc.maoc.ratio","POC:MAOC ratio","strip.plot.random","Strip and plot random effects","B","Bareroot",1.00032883694372
-"poc.maoc.ratio","POC:MAOC ratio","strip.plot.random","Strip and plot random effects","C","Seedling",1.00031157328255
-"poc.maoc.ratio","POC:MAOC ratio","strip.plot.random","Strip and plot random effects","D","Acorn",1.00028605850378
-"poc.maoc.ratio","POC:MAOC ratio","strip.plot.random","Strip and plot random effects","E","Seedbank",1.0001601150755
-"poc.maoc.ratio","POC:MAOC ratio","strip.plot.random","Strip and plot random effects","R","Reference",1.00023778122809
-"cn.ratio","C:N Ratio","simple","Fixed effects only","A","Balled-and-burlapped",1.00024965613794
-"cn.ratio","C:N Ratio","simple","Fixed effects only","B","Bareroot",1.000311400483
-"cn.ratio","C:N Ratio","simple","Fixed effects only","C","Seedling",1.00009498877713
-"cn.ratio","C:N Ratio","simple","Fixed effects only","D","Acorn",1.00014248278385
-"cn.ratio","C:N Ratio","simple","Fixed effects only","E","Seedbank",1.00008511549077
-"cn.ratio","C:N Ratio","simple","Fixed effects only","R","Reference",1.00011389680888
-"cn.ratio","C:N Ratio","strip.random","Strip random effects","A","Balled-and-burlapped",1.00042019519709
-"cn.ratio","C:N Ratio","strip.random","Strip random effects","B","Bareroot",1.00040019812741
-"cn.ratio","C:N Ratio","strip.random","Strip random effects","C","Seedling",1.00034596460114
-"cn.ratio","C:N Ratio","strip.random","Strip random effects","D","Acorn",1.00018255521231
-"cn.ratio","C:N Ratio","strip.random","Strip random effects","E","Seedbank",1.00030098968496
-"cn.ratio","C:N Ratio","strip.random","Strip random effects","R","Reference",1.00024615791574
-"cn.ratio","C:N Ratio","strip.plot.random","Strip and plot random effects","A","Balled-and-burlapped",1.00110717281783
-"cn.ratio","C:N Ratio","strip.plot.random","Strip and plot random effects","B","Bareroot",1.00107154646071
-"cn.ratio","C:N Ratio","strip.plot.random","Strip and plot random effects","C","Seedling",1.00113446553834
-"cn.ratio","C:N Ratio","strip.plot.random","Strip and plot random effects","D","Acorn",1.00101486868116
-"cn.ratio","C:N Ratio","strip.plot.random","Strip and plot random effects","E","Seedbank",1.00136963857797
-"cn.ratio","C:N Ratio","strip.plot.random","Strip and plot random effects","R","Reference",1.00188804850392
-"tc.stock","TC (Mg/ha)","simple","Fixed effects only","A","Balled-and-burlapped",1.00031473273323
-"tc.stock","TC (Mg/ha)","simple","Fixed effects only","B","Bareroot",1.00008494610933
-"tc.stock","TC (Mg/ha)","simple","Fixed effects only","C","Seedling",1.00003034916928
-"tc.stock","TC (Mg/ha)","simple","Fixed effects only","D","Acorn",1.00003143847999
-"tc.stock","TC (Mg/ha)","simple","Fixed effects only","E","Seedbank",1.00010048781911
-"tc.stock","TC (Mg/ha)","simple","Fixed effects only","R","Reference",1.00001391083417
-"tc.stock","TC (Mg/ha)","strip.random","Strip random effects","A","Balled-and-burlapped",1.00084921230586
-"tc.stock","TC (Mg/ha)","strip.random","Strip random effects","B","Bareroot",1.00142105166826
-"tc.stock","TC (Mg/ha)","strip.random","Strip random effects","C","Seedling",1.00055422850423
-"tc.stock","TC (Mg/ha)","strip.random","Strip random effects","D","Acorn",1.00082902816309
-"tc.stock","TC (Mg/ha)","strip.random","Strip random effects","E","Seedbank",1.00078046467259
-"tc.stock","TC (Mg/ha)","strip.random","Strip random effects","R","Reference",1.00158198950392
-"tc.stock","TC (Mg/ha)","strip.plot.random","Strip and plot random effects","A","Balled-and-burlapped",1.00079410619604
-"tc.stock","TC (Mg/ha)","strip.plot.random","Strip and plot random effects","B","Bareroot",1.00052769474788
-"tc.stock","TC (Mg/ha)","strip.plot.random","Strip and plot random effects","C","Seedling",1.00038499005048
-"tc.stock","TC (Mg/ha)","strip.plot.random","Strip and plot random effects","D","Acorn",1.00050243576685
-"tc.stock","TC (Mg/ha)","strip.plot.random","Strip and plot random effects","E","Seedbank",1.00061534656769
-"tc.stock","TC (Mg/ha)","strip.plot.random","Strip and plot random effects","R","Reference",1.00059942229413
-"toc.stock","TOC (Mg/ha)","simple","Fixed effects only","A","Balled-and-burlapped",1.00020364792423
-"toc.stock","TOC (Mg/ha)","simple","Fixed effects only","B","Bareroot",1.00013653991625
-"toc.stock","TOC (Mg/ha)","simple","Fixed effects only","C","Seedling",1.00013167708164
-"toc.stock","TOC (Mg/ha)","simple","Fixed effects only","D","Acorn",1.00016313601269
-"toc.stock","TOC (Mg/ha)","simple","Fixed effects only","E","Seedbank",1.00013484112006
-"toc.stock","TOC (Mg/ha)","simple","Fixed effects only","R","Reference",1.00012974645035
-"toc.stock","TOC (Mg/ha)","strip.random","Strip random effects","A","Balled-and-burlapped",1.00066609924564
-"toc.stock","TOC (Mg/ha)","strip.random","Strip random effects","B","Bareroot",1.00066104585892
-"toc.stock","TOC (Mg/ha)","strip.random","Strip random effects","C","Seedling",1.00109521247963
-"toc.stock","TOC (Mg/ha)","strip.random","Strip random effects","D","Acorn",1.00085626725527
-"toc.stock","TOC (Mg/ha)","strip.random","Strip random effects","E","Seedbank",1.00040511468356
-"toc.stock","TOC (Mg/ha)","strip.random","Strip random effects","R","Reference",1.000771638223
-"toc.stock","TOC (Mg/ha)","strip.plot.random","Strip and plot random effects","A","Balled-and-burlapped",1.00019559745494
-"toc.stock","TOC (Mg/ha)","strip.plot.random","Strip and plot random effects","B","Bareroot",1.00018350122331
-"toc.stock","TOC (Mg/ha)","strip.plot.random","Strip and plot random effects","C","Seedling",1.00024186704552
-"toc.stock","TOC (Mg/ha)","strip.plot.random","Strip and plot random effects","D","Acorn",1.00022932880128
-"toc.stock","TOC (Mg/ha)","strip.plot.random","Strip and plot random effects","E","Seedbank",1.00026449340546
-"toc.stock","TOC (Mg/ha)","strip.plot.random","Strip and plot random effects","R","Reference",1.00036192611084
-"maoc.stock","MAOC (Mg/ha)","simple","Fixed effects only","A","Balled-and-burlapped",1.00032503698769
-"maoc.stock","MAOC (Mg/ha)","simple","Fixed effects only","B","Bareroot",1.00002710855922
-"maoc.stock","MAOC (Mg/ha)","simple","Fixed effects only","C","Seedling",1.00008116806032
-"maoc.stock","MAOC (Mg/ha)","simple","Fixed effects only","D","Acorn",1.00012687702232
-"maoc.stock","MAOC (Mg/ha)","simple","Fixed effects only","E","Seedbank",1.00030184719581
-"maoc.stock","MAOC (Mg/ha)","simple","Fixed effects only","R","Reference",1.00011626257027
-"maoc.stock","MAOC (Mg/ha)","strip.random","Strip random effects","A","Balled-and-burlapped",1.0016304856066
-"maoc.stock","MAOC (Mg/ha)","strip.random","Strip random effects","B","Bareroot",1.00087254310043
-"maoc.stock","MAOC (Mg/ha)","strip.random","Strip random effects","C","Seedling",1.00337930306846
-"maoc.stock","MAOC (Mg/ha)","strip.random","Strip random effects","D","Acorn",1.00174144059492
-"maoc.stock","MAOC (Mg/ha)","strip.random","Strip random effects","E","Seedbank",1.00235129155322
-"maoc.stock","MAOC (Mg/ha)","strip.random","Strip random effects","R","Reference",1.00114724370609
-"maoc.stock","MAOC (Mg/ha)","strip.plot.random","Strip and plot random effects","A","Balled-and-burlapped",1.00331963376338
-"maoc.stock","MAOC (Mg/ha)","strip.plot.random","Strip and plot random effects","B","Bareroot",1.00222669871911
-"maoc.stock","MAOC (Mg/ha)","strip.plot.random","Strip and plot random effects","C","Seedling",1.0014780899408
-"maoc.stock","MAOC (Mg/ha)","strip.plot.random","Strip and plot random effects","D","Acorn",1.00135083032134
-"maoc.stock","MAOC (Mg/ha)","strip.plot.random","Strip and plot random effects","E","Seedbank",1.00244999154016
-"maoc.stock","MAOC (Mg/ha)","strip.plot.random","Strip and plot random effects","R","Reference",1.00292142111976
-"poc.stock","POC (Mg/ha)","simple","Fixed effects only","A","Balled-and-burlapped",1.00037067865558
-"poc.stock","POC (Mg/ha)","simple","Fixed effects only","B","Bareroot",1.00025701972648
-"poc.stock","POC (Mg/ha)","simple","Fixed effects only","C","Seedling",1.00027345313511
-"poc.stock","POC (Mg/ha)","simple","Fixed effects only","D","Acorn",1.0002791172456
-"poc.stock","POC (Mg/ha)","simple","Fixed effects only","E","Seedbank",1.00032461212974
-"poc.stock","POC (Mg/ha)","simple","Fixed effects only","R","Reference",1.00019875889842
-"poc.stock","POC (Mg/ha)","strip.random","Strip random effects","A","Balled-and-burlapped",1.00136016524118
-"poc.stock","POC (Mg/ha)","strip.random","Strip random effects","B","Bareroot",1.00045170622673
-"poc.stock","POC (Mg/ha)","strip.random","Strip random effects","C","Seedling",1.00173072386512
-"poc.stock","POC (Mg/ha)","strip.random","Strip random effects","D","Acorn",1.00079225966047
-"poc.stock","POC (Mg/ha)","strip.random","Strip random effects","E","Seedbank",1.00191762993001
-"poc.stock","POC (Mg/ha)","strip.random","Strip random effects","R","Reference",1.00060532976057
-"poc.stock","POC (Mg/ha)","strip.plot.random","Strip and plot random effects","A","Balled-and-burlapped",1.00230992012856
-"poc.stock","POC (Mg/ha)","strip.plot.random","Strip and plot random effects","B","Bareroot",1.0012984515877
-"poc.stock","POC (Mg/ha)","strip.plot.random","Strip and plot random effects","C","Seedling",1.00076321357299
-"poc.stock","POC (Mg/ha)","strip.plot.random","Strip and plot random effects","D","Acorn",1.00069506902377
-"poc.stock","POC (Mg/ha)","strip.plot.random","Strip and plot random effects","E","Seedbank",1.00119808194794
-"poc.stock","POC (Mg/ha)","strip.plot.random","Strip and plot random effects","R","Reference",1.00046473220911
-"tic.stock","TIC (Mg/ha)","simple","Fixed effects only","A","Balled-and-burlapped",1.00021290876769
-"tic.stock","TIC (Mg/ha)","simple","Fixed effects only","B","Bareroot",1.00022027841676
-"tic.stock","TIC (Mg/ha)","simple","Fixed effects only","C","Seedling",1.00000784468947
-"tic.stock","TIC (Mg/ha)","simple","Fixed effects only","D","Acorn",1.00021293580732
-"tic.stock","TIC (Mg/ha)","simple","Fixed effects only","E","Seedbank",1.00023521339096
-"tic.stock","TIC (Mg/ha)","simple","Fixed effects only","R","Reference",1.00004352419034
-"tic.stock","TIC (Mg/ha)","strip.random","Strip random effects","A","Balled-and-burlapped",1.00097762084507
-"tic.stock","TIC (Mg/ha)","strip.random","Strip random effects","B","Bareroot",1.00064752284541
-"tic.stock","TIC (Mg/ha)","strip.random","Strip random effects","C","Seedling",1.00063094846167
-"tic.stock","TIC (Mg/ha)","strip.random","Strip random effects","D","Acorn",1.00060995729647
-"tic.stock","TIC (Mg/ha)","strip.random","Strip random effects","E","Seedbank",1.00066971329434
-"tic.stock","TIC (Mg/ha)","strip.random","Strip random effects","R","Reference",1.00038805334006
-"tic.stock","TIC (Mg/ha)","strip.plot.random","Strip and plot random effects","A","Balled-and-burlapped",1.00092399024408
-"tic.stock","TIC (Mg/ha)","strip.plot.random","Strip and plot random effects","B","Bareroot",1.00098928973585
-"tic.stock","TIC (Mg/ha)","strip.plot.random","Strip and plot random effects","C","Seedling",1.00126488503416
-"tic.stock","TIC (Mg/ha)","strip.plot.random","Strip and plot random effects","D","Acorn",1.001083580406
-"tic.stock","TIC (Mg/ha)","strip.plot.random","Strip and plot random effects","E","Seedbank",1.00138218237567
-"tic.stock","TIC (Mg/ha)","strip.plot.random","Strip and plot random effects","R","Reference",1.00125712036657
+"temperature","Temperature (C)","simple","Fixed effects only","A","Balled-and-burlapped",1.000077011
+"temperature","Temperature (C)","simple","Fixed effects only","B","Bareroot",1.000066413
+"temperature","Temperature (C)","simple","Fixed effects only","C","Seedling",1.000068002
+"temperature","Temperature (C)","simple","Fixed effects only","D","Acorn",1.000110304
+"temperature","Temperature (C)","simple","Fixed effects only","E","Seedbank",1.000145874
+"temperature","Temperature (C)","simple","Fixed effects only","R","Reference",1.000247815
+"temperature","Temperature (C)","strip.random","Strip random effects","A","Balled-and-burlapped",1.000446713
+"temperature","Temperature (C)","strip.random","Strip random effects","B","Bareroot",1.000837206
+"temperature","Temperature (C)","strip.random","Strip random effects","C","Seedling",1.000152803
+"temperature","Temperature (C)","strip.random","Strip random effects","D","Acorn",1.000786957
+"temperature","Temperature (C)","strip.random","Strip random effects","E","Seedbank",1.00015129
+"temperature","Temperature (C)","strip.random","Strip random effects","R","Reference",1.000289104
+"temperature","Temperature (C)","strip.plot.random","Strip and plot random effects","A","Balled-and-burlapped",1.000170058
+"temperature","Temperature (C)","strip.plot.random","Strip and plot random effects","B","Bareroot",1.000101548
+"temperature","Temperature (C)","strip.plot.random","Strip and plot random effects","C","Seedling",1.000302878
+"temperature","Temperature (C)","strip.plot.random","Strip and plot random effects","D","Acorn",1.000052957
+"temperature","Temperature (C)","strip.plot.random","Strip and plot random effects","E","Seedbank",1.000144356
+"temperature","Temperature (C)","strip.plot.random","Strip and plot random effects","R","Reference",1.000417965
+"gravimetric.moisture","Gravitational moisture (%)","simple","Fixed effects only","A","Balled-and-burlapped",1.000091221
+"gravimetric.moisture","Gravitational moisture (%)","simple","Fixed effects only","B","Bareroot",1.000081191
+"gravimetric.moisture","Gravitational moisture (%)","simple","Fixed effects only","C","Seedling",1.000327831
+"gravimetric.moisture","Gravitational moisture (%)","simple","Fixed effects only","D","Acorn",1.000137193
+"gravimetric.moisture","Gravitational moisture (%)","simple","Fixed effects only","E","Seedbank",1.000052392
+"gravimetric.moisture","Gravitational moisture (%)","simple","Fixed effects only","R","Reference",1.000124101
+"gravimetric.moisture","Gravitational moisture (%)","strip.random","Strip random effects","A","Balled-and-burlapped",1.000062998
+"gravimetric.moisture","Gravitational moisture (%)","strip.random","Strip random effects","B","Bareroot",1.000104459
+"gravimetric.moisture","Gravitational moisture (%)","strip.random","Strip random effects","C","Seedling",1.000229067
+"gravimetric.moisture","Gravitational moisture (%)","strip.random","Strip random effects","D","Acorn",1.000081473
+"gravimetric.moisture","Gravitational moisture (%)","strip.random","Strip random effects","E","Seedbank",1.000148282
+"gravimetric.moisture","Gravitational moisture (%)","strip.random","Strip random effects","R","Reference",1.00023596
+"gravimetric.moisture","Gravitational moisture (%)","strip.plot.random","Strip and plot random effects","A","Balled-and-burlapped",1.000155051
+"gravimetric.moisture","Gravitational moisture (%)","strip.plot.random","Strip and plot random effects","B","Bareroot",0.999997719
+"gravimetric.moisture","Gravitational moisture (%)","strip.plot.random","Strip and plot random effects","C","Seedling",1.000164802
+"gravimetric.moisture","Gravitational moisture (%)","strip.plot.random","Strip and plot random effects","D","Acorn",1.000164294
+"gravimetric.moisture","Gravitational moisture (%)","strip.plot.random","Strip and plot random effects","E","Seedbank",1.000069017
+"gravimetric.moisture","Gravitational moisture (%)","strip.plot.random","Strip and plot random effects","R","Reference",1.000119652
+"bulk.density","Bulk density (g/cm3)","simple","Fixed effects only","A","Balled-and-burlapped",1.00007498
+"bulk.density","Bulk density (g/cm3)","simple","Fixed effects only","B","Bareroot",1.000072657
+"bulk.density","Bulk density (g/cm3)","simple","Fixed effects only","C","Seedling",1.000164171
+"bulk.density","Bulk density (g/cm3)","simple","Fixed effects only","D","Acorn",1.000165461
+"bulk.density","Bulk density (g/cm3)","simple","Fixed effects only","E","Seedbank",1.000243858
+"bulk.density","Bulk density (g/cm3)","simple","Fixed effects only","R","Reference",1.00013724
+"bulk.density","Bulk density (g/cm3)","strip.random","Strip random effects","A","Balled-and-burlapped",1.0003135
+"bulk.density","Bulk density (g/cm3)","strip.random","Strip random effects","B","Bareroot",1.000196721
+"bulk.density","Bulk density (g/cm3)","strip.random","Strip random effects","C","Seedling",1.000117995
+"bulk.density","Bulk density (g/cm3)","strip.random","Strip random effects","D","Acorn",1.000448867
+"bulk.density","Bulk density (g/cm3)","strip.random","Strip random effects","E","Seedbank",1.000270572
+"bulk.density","Bulk density (g/cm3)","strip.random","Strip random effects","R","Reference",1.000459878
+"bulk.density","Bulk density (g/cm3)","strip.plot.random","Strip and plot random effects","A","Balled-and-burlapped",1.000289522
+"bulk.density","Bulk density (g/cm3)","strip.plot.random","Strip and plot random effects","B","Bareroot",1.000592445
+"bulk.density","Bulk density (g/cm3)","strip.plot.random","Strip and plot random effects","C","Seedling",1.000239777
+"bulk.density","Bulk density (g/cm3)","strip.plot.random","Strip and plot random effects","D","Acorn",1.000433543
+"bulk.density","Bulk density (g/cm3)","strip.plot.random","Strip and plot random effects","E","Seedbank",1.000263655
+"bulk.density","Bulk density (g/cm3)","strip.plot.random","Strip and plot random effects","R","Reference",1.000203281
+"root.fragment.density","Root and wood fragment density (g/cm3)","simple","Fixed effects only","A","Balled-and-burlapped",1.000067641
+"root.fragment.density","Root and wood fragment density (g/cm3)","simple","Fixed effects only","B","Bareroot",1.000156607
+"root.fragment.density","Root and wood fragment density (g/cm3)","simple","Fixed effects only","C","Seedling",1.000110688
+"root.fragment.density","Root and wood fragment density (g/cm3)","simple","Fixed effects only","D","Acorn",1.000076216
+"root.fragment.density","Root and wood fragment density (g/cm3)","simple","Fixed effects only","E","Seedbank",1.00014432
+"root.fragment.density","Root and wood fragment density (g/cm3)","simple","Fixed effects only","R","Reference",1.000022072
+"root.fragment.density","Root and wood fragment density (g/cm3)","strip.random","Strip random effects","A","Balled-and-burlapped",1.000143517
+"root.fragment.density","Root and wood fragment density (g/cm3)","strip.random","Strip random effects","B","Bareroot",1.000313918
+"root.fragment.density","Root and wood fragment density (g/cm3)","strip.random","Strip random effects","C","Seedling",1.000666777
+"root.fragment.density","Root and wood fragment density (g/cm3)","strip.random","Strip random effects","D","Acorn",1.000322815
+"root.fragment.density","Root and wood fragment density (g/cm3)","strip.random","Strip random effects","E","Seedbank",1.000183602
+"root.fragment.density","Root and wood fragment density (g/cm3)","strip.random","Strip random effects","R","Reference",1.001562384
+"root.fragment.density","Root and wood fragment density (g/cm3)","strip.plot.random","Strip and plot random effects","A","Balled-and-burlapped",1.000089763
+"root.fragment.density","Root and wood fragment density (g/cm3)","strip.plot.random","Strip and plot random effects","B","Bareroot",1.000113477
+"root.fragment.density","Root and wood fragment density (g/cm3)","strip.plot.random","Strip and plot random effects","C","Seedling",1.000216396
+"root.fragment.density","Root and wood fragment density (g/cm3)","strip.plot.random","Strip and plot random effects","D","Acorn",1.000216535
+"root.fragment.density","Root and wood fragment density (g/cm3)","strip.plot.random","Strip and plot random effects","E","Seedbank",1.00015131
+"root.fragment.density","Root and wood fragment density (g/cm3)","strip.plot.random","Strip and plot random effects","R","Reference",1.000349127
+"sand","Sand (%)","simple","Fixed effects only","A","Balled-and-burlapped",1.000076265
+"sand","Sand (%)","simple","Fixed effects only","B","Bareroot",1.000105474
+"sand","Sand (%)","simple","Fixed effects only","C","Seedling",1.00012932
+"sand","Sand (%)","simple","Fixed effects only","D","Acorn",1.000162843
+"sand","Sand (%)","simple","Fixed effects only","E","Seedbank",1.000126136
+"sand","Sand (%)","simple","Fixed effects only","R","Reference",1.000106231
+"sand","Sand (%)","strip.random","Strip random effects","A","Balled-and-burlapped",1.000188573
+"sand","Sand (%)","strip.random","Strip random effects","B","Bareroot",1.000222707
+"sand","Sand (%)","strip.random","Strip random effects","C","Seedling",1.000311065
+"sand","Sand (%)","strip.random","Strip random effects","D","Acorn",1.000285015
+"sand","Sand (%)","strip.random","Strip random effects","E","Seedbank",1.000376153
+"sand","Sand (%)","strip.random","Strip random effects","R","Reference",1.000216397
+"sand","Sand (%)","strip.plot.random","Strip and plot random effects","A","Balled-and-burlapped",1.000269254
+"sand","Sand (%)","strip.plot.random","Strip and plot random effects","B","Bareroot",1.001180883
+"sand","Sand (%)","strip.plot.random","Strip and plot random effects","C","Seedling",1.000749189
+"sand","Sand (%)","strip.plot.random","Strip and plot random effects","D","Acorn",1.000733262
+"sand","Sand (%)","strip.plot.random","Strip and plot random effects","E","Seedbank",1.000809057
+"sand","Sand (%)","strip.plot.random","Strip and plot random effects","R","Reference",1.004571969
+"silt","Silt (%)","simple","Fixed effects only","A","Balled-and-burlapped",1.000154992
+"silt","Silt (%)","simple","Fixed effects only","B","Bareroot",1.000073436
+"silt","Silt (%)","simple","Fixed effects only","C","Seedling",1.000113702
+"silt","Silt (%)","simple","Fixed effects only","D","Acorn",1.000145201
+"silt","Silt (%)","simple","Fixed effects only","E","Seedbank",1.000115164
+"silt","Silt (%)","simple","Fixed effects only","R","Reference",1.000004378
+"silt","Silt (%)","strip.random","Strip random effects","A","Balled-and-burlapped",1.000263576
+"silt","Silt (%)","strip.random","Strip random effects","B","Bareroot",1.000457676
+"silt","Silt (%)","strip.random","Strip random effects","C","Seedling",1.000196557
+"silt","Silt (%)","strip.random","Strip random effects","D","Acorn",1.000749388
+"silt","Silt (%)","strip.random","Strip random effects","E","Seedbank",1.000300537
+"silt","Silt (%)","strip.random","Strip random effects","R","Reference",1.000389948
+"silt","Silt (%)","strip.plot.random","Strip and plot random effects","A","Balled-and-burlapped",1.000475945
+"silt","Silt (%)","strip.plot.random","Strip and plot random effects","B","Bareroot",1.00023033
+"silt","Silt (%)","strip.plot.random","Strip and plot random effects","C","Seedling",1.000194754
+"silt","Silt (%)","strip.plot.random","Strip and plot random effects","D","Acorn",1.000404029
+"silt","Silt (%)","strip.plot.random","Strip and plot random effects","E","Seedbank",1.000215229
+"silt","Silt (%)","strip.plot.random","Strip and plot random effects","R","Reference",1.000629055
+"clay","Clay (%)","simple","Fixed effects only","A","Balled-and-burlapped",1.000061864
+"clay","Clay (%)","simple","Fixed effects only","B","Bareroot",1.000094519
+"clay","Clay (%)","simple","Fixed effects only","C","Seedling",1.000076253
+"clay","Clay (%)","simple","Fixed effects only","D","Acorn",1.000191215
+"clay","Clay (%)","simple","Fixed effects only","E","Seedbank",1.000054023
+"clay","Clay (%)","simple","Fixed effects only","R","Reference",1.000208681
+"clay","Clay (%)","strip.random","Strip random effects","A","Balled-and-burlapped",1.001195203
+"clay","Clay (%)","strip.random","Strip random effects","B","Bareroot",1.001608554
+"clay","Clay (%)","strip.random","Strip random effects","C","Seedling",1.002339102
+"clay","Clay (%)","strip.random","Strip random effects","D","Acorn",1.002877501
+"clay","Clay (%)","strip.random","Strip random effects","E","Seedbank",1.004641662
+"clay","Clay (%)","strip.random","Strip random effects","R","Reference",1.004688757
+"clay","Clay (%)","strip.plot.random","Strip and plot random effects","A","Balled-and-burlapped",1.000084284
+"clay","Clay (%)","strip.plot.random","Strip and plot random effects","B","Bareroot",1.000124447
+"clay","Clay (%)","strip.plot.random","Strip and plot random effects","C","Seedling",1.000208539
+"clay","Clay (%)","strip.plot.random","Strip and plot random effects","D","Acorn",1.000177677
+"clay","Clay (%)","strip.plot.random","Strip and plot random effects","E","Seedbank",1.00014143
+"clay","Clay (%)","strip.plot.random","Strip and plot random effects","R","Reference",1.000110586
+"ph","pH","simple","Fixed effects only","A","Balled-and-burlapped",1.000097337
+"ph","pH","simple","Fixed effects only","B","Bareroot",1.000098142
+"ph","pH","simple","Fixed effects only","C","Seedling",1.000207244
+"ph","pH","simple","Fixed effects only","D","Acorn",1.000076297
+"ph","pH","simple","Fixed effects only","E","Seedbank",1.000097702
+"ph","pH","simple","Fixed effects only","R","Reference",1.00028239
+"ph","pH","strip.random","Strip random effects","A","Balled-and-burlapped",1.00018152
+"ph","pH","strip.random","Strip random effects","B","Bareroot",1.000108085
+"ph","pH","strip.random","Strip random effects","C","Seedling",1.000482921
+"ph","pH","strip.random","Strip random effects","D","Acorn",1.000234937
+"ph","pH","strip.random","Strip random effects","E","Seedbank",1.000094937
+"ph","pH","strip.random","Strip random effects","R","Reference",1.00027423
+"ph","pH","strip.plot.random","Strip and plot random effects","A","Balled-and-burlapped",1.000121689
+"ph","pH","strip.plot.random","Strip and plot random effects","B","Bareroot",1.0002178
+"ph","pH","strip.plot.random","Strip and plot random effects","C","Seedling",1.000188891
+"ph","pH","strip.plot.random","Strip and plot random effects","D","Acorn",1.000136959
+"ph","pH","strip.plot.random","Strip and plot random effects","E","Seedbank",1.000107909
+"ph","pH","strip.plot.random","Strip and plot random effects","R","Reference",1.000426174
+"p","P (ppm)","simple","Fixed effects only","A","Balled-and-burlapped",1.000146635
+"p","P (ppm)","simple","Fixed effects only","B","Bareroot",1.000114487
+"p","P (ppm)","simple","Fixed effects only","C","Seedling",1.000042808
+"p","P (ppm)","simple","Fixed effects only","D","Acorn",1.000135075
+"p","P (ppm)","simple","Fixed effects only","E","Seedbank",1.000004389
+"p","P (ppm)","simple","Fixed effects only","R","Reference",1.000078856
+"p","P (ppm)","strip.random","Strip random effects","A","Balled-and-burlapped",1.000583364
+"p","P (ppm)","strip.random","Strip random effects","B","Bareroot",1.00030914
+"p","P (ppm)","strip.random","Strip random effects","C","Seedling",1.000355981
+"p","P (ppm)","strip.random","Strip random effects","D","Acorn",1.000763288
+"p","P (ppm)","strip.random","Strip random effects","E","Seedbank",1.0004291
+"p","P (ppm)","strip.random","Strip random effects","R","Reference",1.000356118
+"p","P (ppm)","strip.plot.random","Strip and plot random effects","A","Balled-and-burlapped",1.000298945
+"p","P (ppm)","strip.plot.random","Strip and plot random effects","B","Bareroot",1.000055022
+"p","P (ppm)","strip.plot.random","Strip and plot random effects","C","Seedling",1.000113098
+"p","P (ppm)","strip.plot.random","Strip and plot random effects","D","Acorn",1.000178995
+"p","P (ppm)","strip.plot.random","Strip and plot random effects","E","Seedbank",1.000118404
+"p","P (ppm)","strip.plot.random","Strip and plot random effects","R","Reference",1.00020842
+"k","K (ppm)","simple","Fixed effects only","A","Balled-and-burlapped",1.000059617
+"k","K (ppm)","simple","Fixed effects only","B","Bareroot",1.000089187
+"k","K (ppm)","simple","Fixed effects only","C","Seedling",1.000152492
+"k","K (ppm)","simple","Fixed effects only","D","Acorn",1.000128806
+"k","K (ppm)","simple","Fixed effects only","E","Seedbank",1.000088296
+"k","K (ppm)","simple","Fixed effects only","R","Reference",1.000247747
+"k","K (ppm)","strip.random","Strip random effects","A","Balled-and-burlapped",1.000458584
+"k","K (ppm)","strip.random","Strip random effects","B","Bareroot",1.000155985
+"k","K (ppm)","strip.random","Strip random effects","C","Seedling",1.000375838
+"k","K (ppm)","strip.random","Strip random effects","D","Acorn",1.000371795
+"k","K (ppm)","strip.random","Strip random effects","E","Seedbank",1.000313122
+"k","K (ppm)","strip.random","Strip random effects","R","Reference",1.000260778
+"k","K (ppm)","strip.plot.random","Strip and plot random effects","A","Balled-and-burlapped",1.000074602
+"k","K (ppm)","strip.plot.random","Strip and plot random effects","B","Bareroot",1.000405907
+"k","K (ppm)","strip.plot.random","Strip and plot random effects","C","Seedling",1.000133237
+"k","K (ppm)","strip.plot.random","Strip and plot random effects","D","Acorn",1.000129837
+"k","K (ppm)","strip.plot.random","Strip and plot random effects","E","Seedbank",1.000295165
+"k","K (ppm)","strip.plot.random","Strip and plot random effects","R","Reference",1.000277343
+"ca","Ca (ppm)","simple","Fixed effects only","A","Balled-and-burlapped",1.000103518
+"ca","Ca (ppm)","simple","Fixed effects only","B","Bareroot",1.000116138
+"ca","Ca (ppm)","simple","Fixed effects only","C","Seedling",1.000033038
+"ca","Ca (ppm)","simple","Fixed effects only","D","Acorn",0.999984676
+"ca","Ca (ppm)","simple","Fixed effects only","E","Seedbank",1.00001016
+"ca","Ca (ppm)","simple","Fixed effects only","R","Reference",1.000169433
+"ca","Ca (ppm)","strip.random","Strip random effects","A","Balled-and-burlapped",1.000508736
+"ca","Ca (ppm)","strip.random","Strip random effects","B","Bareroot",1.000383471
+"ca","Ca (ppm)","strip.random","Strip random effects","C","Seedling",1.000380565
+"ca","Ca (ppm)","strip.random","Strip random effects","D","Acorn",1.000682981
+"ca","Ca (ppm)","strip.random","Strip random effects","E","Seedbank",1.000356329
+"ca","Ca (ppm)","strip.random","Strip random effects","R","Reference",1.000495692
+"ca","Ca (ppm)","strip.plot.random","Strip and plot random effects","A","Balled-and-burlapped",1.000300521
+"ca","Ca (ppm)","strip.plot.random","Strip and plot random effects","B","Bareroot",1.001070239
+"ca","Ca (ppm)","strip.plot.random","Strip and plot random effects","C","Seedling",1.001246605
+"ca","Ca (ppm)","strip.plot.random","Strip and plot random effects","D","Acorn",1.000996128
+"ca","Ca (ppm)","strip.plot.random","Strip and plot random effects","E","Seedbank",1.001738023
+"ca","Ca (ppm)","strip.plot.random","Strip and plot random effects","R","Reference",1.002398412
+"mg","Mg (ppm)","simple","Fixed effects only","A","Balled-and-burlapped",1.000107859
+"mg","Mg (ppm)","simple","Fixed effects only","B","Bareroot",1.000010362
+"mg","Mg (ppm)","simple","Fixed effects only","C","Seedling",1.000076128
+"mg","Mg (ppm)","simple","Fixed effects only","D","Acorn",1.000078298
+"mg","Mg (ppm)","simple","Fixed effects only","E","Seedbank",0.999980607
+"mg","Mg (ppm)","simple","Fixed effects only","R","Reference",1.000072843
+"mg","Mg (ppm)","strip.random","Strip random effects","A","Balled-and-burlapped",1.000211321
+"mg","Mg (ppm)","strip.random","Strip random effects","B","Bareroot",1.00015647
+"mg","Mg (ppm)","strip.random","Strip random effects","C","Seedling",1.000241026
+"mg","Mg (ppm)","strip.random","Strip random effects","D","Acorn",1.00017828
+"mg","Mg (ppm)","strip.random","Strip random effects","E","Seedbank",1.000243872
+"mg","Mg (ppm)","strip.random","Strip random effects","R","Reference",1.000441629
+"mg","Mg (ppm)","strip.plot.random","Strip and plot random effects","A","Balled-and-burlapped",1.000229
+"mg","Mg (ppm)","strip.plot.random","Strip and plot random effects","B","Bareroot",1.000267348
+"mg","Mg (ppm)","strip.plot.random","Strip and plot random effects","C","Seedling",1.000230773
+"mg","Mg (ppm)","strip.plot.random","Strip and plot random effects","D","Acorn",1.000334814
+"mg","Mg (ppm)","strip.plot.random","Strip and plot random effects","E","Seedbank",1.000322808
+"mg","Mg (ppm)","strip.plot.random","Strip and plot random effects","R","Reference",1.000495435
+"som.percent","SOM (%)","simple","Fixed effects only","A","Balled-and-burlapped",1.000146541
+"som.percent","SOM (%)","simple","Fixed effects only","B","Bareroot",1.000091928
+"som.percent","SOM (%)","simple","Fixed effects only","C","Seedling",1.000249887
+"som.percent","SOM (%)","simple","Fixed effects only","D","Acorn",1.000045048
+"som.percent","SOM (%)","simple","Fixed effects only","E","Seedbank",1.000083671
+"som.percent","SOM (%)","simple","Fixed effects only","R","Reference",1.000146131
+"som.percent","SOM (%)","strip.random","Strip random effects","A","Balled-and-burlapped",1.003059833
+"som.percent","SOM (%)","strip.random","Strip random effects","B","Bareroot",1.001504417
+"som.percent","SOM (%)","strip.random","Strip random effects","C","Seedling",1.001265398
+"som.percent","SOM (%)","strip.random","Strip random effects","D","Acorn",1.004480221
+"som.percent","SOM (%)","strip.random","Strip random effects","E","Seedbank",1.004978542
+"som.percent","SOM (%)","strip.random","Strip random effects","R","Reference",1.002997895
+"som.percent","SOM (%)","strip.plot.random","Strip and plot random effects","A","Balled-and-burlapped",1.000186534
+"som.percent","SOM (%)","strip.plot.random","Strip and plot random effects","B","Bareroot",1.000172335
+"som.percent","SOM (%)","strip.plot.random","Strip and plot random effects","C","Seedling",1.000272898
+"som.percent","SOM (%)","strip.plot.random","Strip and plot random effects","D","Acorn",1.000311642
+"som.percent","SOM (%)","strip.plot.random","Strip and plot random effects","E","Seedbank",1.000331133
+"som.percent","SOM (%)","strip.plot.random","Strip and plot random effects","R","Reference",1.000375381
+"no3.n","NO3-N (ppm)","simple","Fixed effects only","A","Balled-and-burlapped",1.000140141
+"no3.n","NO3-N (ppm)","simple","Fixed effects only","B","Bareroot",1.000103071
+"no3.n","NO3-N (ppm)","simple","Fixed effects only","C","Seedling",1.000054585
+"no3.n","NO3-N (ppm)","simple","Fixed effects only","D","Acorn",1.000243295
+"no3.n","NO3-N (ppm)","simple","Fixed effects only","E","Seedbank",1.00004473
+"no3.n","NO3-N (ppm)","simple","Fixed effects only","R","Reference",1.000032714
+"no3.n","NO3-N (ppm)","strip.random","Strip random effects","A","Balled-and-burlapped",1.000220788
+"no3.n","NO3-N (ppm)","strip.random","Strip random effects","B","Bareroot",1.00018648
+"no3.n","NO3-N (ppm)","strip.random","Strip random effects","C","Seedling",1.000196653
+"no3.n","NO3-N (ppm)","strip.random","Strip random effects","D","Acorn",1.000549458
+"no3.n","NO3-N (ppm)","strip.random","Strip random effects","E","Seedbank",1.000402991
+"no3.n","NO3-N (ppm)","strip.random","Strip random effects","R","Reference",1.000392778
+"no3.n","NO3-N (ppm)","strip.plot.random","Strip and plot random effects","A","Balled-and-burlapped",1.000089555
+"no3.n","NO3-N (ppm)","strip.plot.random","Strip and plot random effects","B","Bareroot",1.000161151
+"no3.n","NO3-N (ppm)","strip.plot.random","Strip and plot random effects","C","Seedling",1.000080203
+"no3.n","NO3-N (ppm)","strip.plot.random","Strip and plot random effects","D","Acorn",1.000150588
+"no3.n","NO3-N (ppm)","strip.plot.random","Strip and plot random effects","E","Seedbank",1.000116265
+"no3.n","NO3-N (ppm)","strip.plot.random","Strip and plot random effects","R","Reference",1.000222964
+"nh4.n","NH4-N (ppm)","simple","Fixed effects only","A","Balled-and-burlapped",1.000200361
+"nh4.n","NH4-N (ppm)","simple","Fixed effects only","B","Bareroot",1.000155341
+"nh4.n","NH4-N (ppm)","simple","Fixed effects only","C","Seedling",1.000123034
+"nh4.n","NH4-N (ppm)","simple","Fixed effects only","D","Acorn",1.000084385
+"nh4.n","NH4-N (ppm)","simple","Fixed effects only","E","Seedbank",1.000090068
+"nh4.n","NH4-N (ppm)","simple","Fixed effects only","R","Reference",1.000145208
+"nh4.n","NH4-N (ppm)","strip.random","Strip random effects","A","Balled-and-burlapped",1.000412882
+"nh4.n","NH4-N (ppm)","strip.random","Strip random effects","B","Bareroot",1.000214164
+"nh4.n","NH4-N (ppm)","strip.random","Strip random effects","C","Seedling",1.000591371
+"nh4.n","NH4-N (ppm)","strip.random","Strip random effects","D","Acorn",1.000297312
+"nh4.n","NH4-N (ppm)","strip.random","Strip random effects","E","Seedbank",1.000213966
+"nh4.n","NH4-N (ppm)","strip.random","Strip random effects","R","Reference",1.000770822
+"nh4.n","NH4-N (ppm)","strip.plot.random","Strip and plot random effects","A","Balled-and-burlapped",1.000281418
+"nh4.n","NH4-N (ppm)","strip.plot.random","Strip and plot random effects","B","Bareroot",1.000279529
+"nh4.n","NH4-N (ppm)","strip.plot.random","Strip and plot random effects","C","Seedling",1.000193238
+"nh4.n","NH4-N (ppm)","strip.plot.random","Strip and plot random effects","D","Acorn",1.000163475
+"nh4.n","NH4-N (ppm)","strip.plot.random","Strip and plot random effects","E","Seedbank",1.000119346
+"nh4.n","NH4-N (ppm)","strip.plot.random","Strip and plot random effects","R","Reference",1.000299792
+"cec","CEC (meq/100 g)","simple","Fixed effects only","A","Balled-and-burlapped",1.000226527
+"cec","CEC (meq/100 g)","simple","Fixed effects only","B","Bareroot",1.00020774
+"cec","CEC (meq/100 g)","simple","Fixed effects only","C","Seedling",1.000278213
+"cec","CEC (meq/100 g)","simple","Fixed effects only","D","Acorn",1.00007371
+"cec","CEC (meq/100 g)","simple","Fixed effects only","E","Seedbank",1.000138975
+"cec","CEC (meq/100 g)","simple","Fixed effects only","R","Reference",1.000101597
+"cec","CEC (meq/100 g)","strip.random","Strip random effects","A","Balled-and-burlapped",1.000495815
+"cec","CEC (meq/100 g)","strip.random","Strip random effects","B","Bareroot",1.000598607
+"cec","CEC (meq/100 g)","strip.random","Strip random effects","C","Seedling",1.000173735
+"cec","CEC (meq/100 g)","strip.random","Strip random effects","D","Acorn",1.000593421
+"cec","CEC (meq/100 g)","strip.random","Strip random effects","E","Seedbank",1.000401789
+"cec","CEC (meq/100 g)","strip.random","Strip random effects","R","Reference",1.001504325
+"cec","CEC (meq/100 g)","strip.plot.random","Strip and plot random effects","A","Balled-and-burlapped",1.000303738
+"cec","CEC (meq/100 g)","strip.plot.random","Strip and plot random effects","B","Bareroot",1.000459687
+"cec","CEC (meq/100 g)","strip.plot.random","Strip and plot random effects","C","Seedling",1.002106103
+"cec","CEC (meq/100 g)","strip.plot.random","Strip and plot random effects","D","Acorn",1.001777314
+"cec","CEC (meq/100 g)","strip.plot.random","Strip and plot random effects","E","Seedbank",1.00018963
+"cec","CEC (meq/100 g)","strip.plot.random","Strip and plot random effects","R","Reference",1.001420705
+"k.meq","K (meq/100 g)","simple","Fixed effects only","A","Balled-and-burlapped",1.00012476
+"k.meq","K (meq/100 g)","simple","Fixed effects only","B","Bareroot",1.000045622
+"k.meq","K (meq/100 g)","simple","Fixed effects only","C","Seedling",1.000066383
+"k.meq","K (meq/100 g)","simple","Fixed effects only","D","Acorn",1.000069756
+"k.meq","K (meq/100 g)","simple","Fixed effects only","E","Seedbank",1.000108974
+"k.meq","K (meq/100 g)","simple","Fixed effects only","R","Reference",1.000097358
+"k.meq","K (meq/100 g)","strip.random","Strip random effects","A","Balled-and-burlapped",1.000163943
+"k.meq","K (meq/100 g)","strip.random","Strip random effects","B","Bareroot",1.000253709
+"k.meq","K (meq/100 g)","strip.random","Strip random effects","C","Seedling",1.000128151
+"k.meq","K (meq/100 g)","strip.random","Strip random effects","D","Acorn",1.000193707
+"k.meq","K (meq/100 g)","strip.random","Strip random effects","E","Seedbank",1.000162358
+"k.meq","K (meq/100 g)","strip.random","Strip random effects","R","Reference",1.000195656
+"k.meq","K (meq/100 g)","strip.plot.random","Strip and plot random effects","A","Balled-and-burlapped",1.000674082
+"k.meq","K (meq/100 g)","strip.plot.random","Strip and plot random effects","B","Bareroot",1.000377927
+"k.meq","K (meq/100 g)","strip.plot.random","Strip and plot random effects","C","Seedling",1.000253853
+"k.meq","K (meq/100 g)","strip.plot.random","Strip and plot random effects","D","Acorn",1.000526651
+"k.meq","K (meq/100 g)","strip.plot.random","Strip and plot random effects","E","Seedbank",1.000342972
+"k.meq","K (meq/100 g)","strip.plot.random","Strip and plot random effects","R","Reference",1.000328253
+"ca.meq","Ca (meq/100 g)","simple","Fixed effects only","A","Balled-and-burlapped",1.000129756
+"ca.meq","Ca (meq/100 g)","simple","Fixed effects only","B","Bareroot",1.000069229
+"ca.meq","Ca (meq/100 g)","simple","Fixed effects only","C","Seedling",1.000134028
+"ca.meq","Ca (meq/100 g)","simple","Fixed effects only","D","Acorn",1.000123866
+"ca.meq","Ca (meq/100 g)","simple","Fixed effects only","E","Seedbank",1.000118305
+"ca.meq","Ca (meq/100 g)","simple","Fixed effects only","R","Reference",1.000097451
+"ca.meq","Ca (meq/100 g)","strip.random","Strip random effects","A","Balled-and-burlapped",1.00040344
+"ca.meq","Ca (meq/100 g)","strip.random","Strip random effects","B","Bareroot",1.000426567
+"ca.meq","Ca (meq/100 g)","strip.random","Strip random effects","C","Seedling",1.000125389
+"ca.meq","Ca (meq/100 g)","strip.random","Strip random effects","D","Acorn",1.000447901
+"ca.meq","Ca (meq/100 g)","strip.random","Strip random effects","E","Seedbank",1.00013829
+"ca.meq","Ca (meq/100 g)","strip.random","Strip random effects","R","Reference",1.000811672
+"ca.meq","Ca (meq/100 g)","strip.plot.random","Strip and plot random effects","A","Balled-and-burlapped",1.000117799
+"ca.meq","Ca (meq/100 g)","strip.plot.random","Strip and plot random effects","B","Bareroot",1.000188934
+"ca.meq","Ca (meq/100 g)","strip.plot.random","Strip and plot random effects","C","Seedling",1.000089042
+"ca.meq","Ca (meq/100 g)","strip.plot.random","Strip and plot random effects","D","Acorn",1.000143426
+"ca.meq","Ca (meq/100 g)","strip.plot.random","Strip and plot random effects","E","Seedbank",1.000152058
+"ca.meq","Ca (meq/100 g)","strip.plot.random","Strip and plot random effects","R","Reference",1.00021022
+"mg.meq","Mg (meq/100 g)","simple","Fixed effects only","A","Balled-and-burlapped",1.00016115598586
+"mg.meq","Mg (meq/100 g)","simple","Fixed effects only","B","Bareroot",1.00013876367558
+"mg.meq","Mg (meq/100 g)","simple","Fixed effects only","C","Seedling",1.00011317907217
+"mg.meq","Mg (meq/100 g)","simple","Fixed effects only","D","Acorn",1.00014351511266
+"mg.meq","Mg (meq/100 g)","simple","Fixed effects only","E","Seedbank",1.00004134621152
+"mg.meq","Mg (meq/100 g)","simple","Fixed effects only","R","Reference",1.00009311038884
+"mg.meq","Mg (meq/100 g)","strip.random","Strip random effects","A","Balled-and-burlapped",1.00007328882884
+"mg.meq","Mg (meq/100 g)","strip.random","Strip random effects","B","Bareroot",1.00017984058271
+"mg.meq","Mg (meq/100 g)","strip.random","Strip random effects","C","Seedling",1.0000177978354
+"mg.meq","Mg (meq/100 g)","strip.random","Strip random effects","D","Acorn",1.00008400356536
+"mg.meq","Mg (meq/100 g)","strip.random","Strip random effects","E","Seedbank",1.00007833007456
+"mg.meq","Mg (meq/100 g)","strip.random","Strip random effects","R","Reference",1.00009713004529
+"mg.meq","Mg (meq/100 g)","strip.plot.random","Strip and plot random effects","A","Balled-and-burlapped",1.00005741071297
+"mg.meq","Mg (meq/100 g)","strip.plot.random","Strip and plot random effects","B","Bareroot",1.00006822200537
+"mg.meq","Mg (meq/100 g)","strip.plot.random","Strip and plot random effects","C","Seedling",1.00005275941443
+"mg.meq","Mg (meq/100 g)","strip.plot.random","Strip and plot random effects","D","Acorn",1.00008985724875
+"mg.meq","Mg (meq/100 g)","strip.plot.random","Strip and plot random effects","E","Seedbank",1.00005747415791
+"mg.meq","Mg (meq/100 g)","strip.plot.random","Strip and plot random effects","R","Reference",1.00008979608244
+"tn.percent","TN (%)","simple","Fixed effects only","A","Balled-and-burlapped",1.000124517
+"tn.percent","TN (%)","simple","Fixed effects only","B","Bareroot",1.000066906
+"tn.percent","TN (%)","simple","Fixed effects only","C","Seedling",1.000116251
+"tn.percent","TN (%)","simple","Fixed effects only","D","Acorn",1.000030867
+"tn.percent","TN (%)","simple","Fixed effects only","E","Seedbank",1.000125754
+"tn.percent","TN (%)","simple","Fixed effects only","R","Reference",1.000131489
+"tn.percent","TN (%)","strip.random","Strip random effects","A","Balled-and-burlapped",1.000114661
+"tn.percent","TN (%)","strip.random","Strip random effects","B","Bareroot",1.000121035
+"tn.percent","TN (%)","strip.random","Strip random effects","C","Seedling",1.000310999
+"tn.percent","TN (%)","strip.random","Strip random effects","D","Acorn",1.000120558
+"tn.percent","TN (%)","strip.random","Strip random effects","E","Seedbank",1.000205362
+"tn.percent","TN (%)","strip.random","Strip random effects","R","Reference",1.000290531
+"tn.percent","TN (%)","strip.plot.random","Strip and plot random effects","A","Balled-and-burlapped",1.000866455
+"tn.percent","TN (%)","strip.plot.random","Strip and plot random effects","B","Bareroot",1.000292999
+"tn.percent","TN (%)","strip.plot.random","Strip and plot random effects","C","Seedling",1.000323423
+"tn.percent","TN (%)","strip.plot.random","Strip and plot random effects","D","Acorn",1.001391423
+"tn.percent","TN (%)","strip.plot.random","Strip and plot random effects","E","Seedbank",1.001155754
+"tn.percent","TN (%)","strip.plot.random","Strip and plot random effects","R","Reference",1.000883567
+"tc.percent","TC (%)","simple","Fixed effects only","A","Balled-and-burlapped",1.000098451
+"tc.percent","TC (%)","simple","Fixed effects only","B","Bareroot",1.000283662
+"tc.percent","TC (%)","simple","Fixed effects only","C","Seedling",1.000095539
+"tc.percent","TC (%)","simple","Fixed effects only","D","Acorn",1.000142716
+"tc.percent","TC (%)","simple","Fixed effects only","E","Seedbank",1.000117877
+"tc.percent","TC (%)","simple","Fixed effects only","R","Reference",1.000145709
+"tc.percent","TC (%)","strip.random","Strip random effects","A","Balled-and-burlapped",1.000087939
+"tc.percent","TC (%)","strip.random","Strip random effects","B","Bareroot",1.000177029
+"tc.percent","TC (%)","strip.random","Strip random effects","C","Seedling",1.000187722
+"tc.percent","TC (%)","strip.random","Strip random effects","D","Acorn",1.000120515
+"tc.percent","TC (%)","strip.random","Strip random effects","E","Seedbank",1.000073075
+"tc.percent","TC (%)","strip.random","Strip random effects","R","Reference",1.000283499
+"tc.percent","TC (%)","strip.plot.random","Strip and plot random effects","A","Balled-and-burlapped",1.002310971
+"tc.percent","TC (%)","strip.plot.random","Strip and plot random effects","B","Bareroot",1.00433333
+"tc.percent","TC (%)","strip.plot.random","Strip and plot random effects","C","Seedling",1.004345471
+"tc.percent","TC (%)","strip.plot.random","Strip and plot random effects","D","Acorn",1.000564954
+"tc.percent","TC (%)","strip.plot.random","Strip and plot random effects","E","Seedbank",1.000839678
+"tc.percent","TC (%)","strip.plot.random","Strip and plot random effects","R","Reference",1.004402059
+"toc.percent","SOC (%)","simple","Fixed effects only","A","Balled-and-burlapped",1.000144384
+"toc.percent","SOC (%)","simple","Fixed effects only","B","Bareroot",1.000141866
+"toc.percent","SOC (%)","simple","Fixed effects only","C","Seedling",1.00007538
+"toc.percent","SOC (%)","simple","Fixed effects only","D","Acorn",1.000085064
+"toc.percent","SOC (%)","simple","Fixed effects only","E","Seedbank",1.000093089
+"toc.percent","SOC (%)","simple","Fixed effects only","R","Reference",1.000279351
+"toc.percent","SOC (%)","strip.random","Strip random effects","A","Balled-and-burlapped",1.000172871
+"toc.percent","SOC (%)","strip.random","Strip random effects","B","Bareroot",1.000274211
+"toc.percent","SOC (%)","strip.random","Strip random effects","C","Seedling",1.000126701
+"toc.percent","SOC (%)","strip.random","Strip random effects","D","Acorn",1.000208959
+"toc.percent","SOC (%)","strip.random","Strip random effects","E","Seedbank",1.000336378
+"toc.percent","SOC (%)","strip.random","Strip random effects","R","Reference",1.000390902
+"toc.percent","SOC (%)","strip.plot.random","Strip and plot random effects","A","Balled-and-burlapped",1.001239645
+"toc.percent","SOC (%)","strip.plot.random","Strip and plot random effects","B","Bareroot",1.000608863
+"toc.percent","SOC (%)","strip.plot.random","Strip and plot random effects","C","Seedling",1.000411308
+"toc.percent","SOC (%)","strip.plot.random","Strip and plot random effects","D","Acorn",1.000455522
+"toc.percent","SOC (%)","strip.plot.random","Strip and plot random effects","E","Seedbank",1.000860823
+"toc.percent","SOC (%)","strip.plot.random","Strip and plot random effects","R","Reference",1.001522791
+"poc.percent","POC (%)","simple","Fixed effects only","A","Balled-and-burlapped",1.000087409
+"poc.percent","POC (%)","simple","Fixed effects only","B","Bareroot",1.000244323
+"poc.percent","POC (%)","simple","Fixed effects only","C","Seedling",1.000068094
+"poc.percent","POC (%)","simple","Fixed effects only","D","Acorn",1.000153147
+"poc.percent","POC (%)","simple","Fixed effects only","E","Seedbank",1.000203717
+"poc.percent","POC (%)","simple","Fixed effects only","R","Reference",1.000145141
+"poc.percent","POC (%)","strip.random","Strip random effects","A","Balled-and-burlapped",1.000551403
+"poc.percent","POC (%)","strip.random","Strip random effects","B","Bareroot",1.000505414
+"poc.percent","POC (%)","strip.random","Strip random effects","C","Seedling",1.000544842
+"poc.percent","POC (%)","strip.random","Strip random effects","D","Acorn",1.000404269
+"poc.percent","POC (%)","strip.random","Strip random effects","E","Seedbank",1.000560066
+"poc.percent","POC (%)","strip.random","Strip random effects","R","Reference",1.000863552
+"poc.percent","POC (%)","strip.plot.random","Strip and plot random effects","A","Balled-and-burlapped",1.000675033
+"poc.percent","POC (%)","strip.plot.random","Strip and plot random effects","B","Bareroot",1.000366523
+"poc.percent","POC (%)","strip.plot.random","Strip and plot random effects","C","Seedling",1.000234455
+"poc.percent","POC (%)","strip.plot.random","Strip and plot random effects","D","Acorn",1.000642081
+"poc.percent","POC (%)","strip.plot.random","Strip and plot random effects","E","Seedbank",1.00030304
+"poc.percent","POC (%)","strip.plot.random","Strip and plot random effects","R","Reference",1.000494545
+"g475mm",">= 4.75 mm","simple","Fixed effects only","A","Balled-and-burlapped",1.000107774
+"g475mm",">= 4.75 mm","simple","Fixed effects only","B","Bareroot",1.000215183
+"g475mm",">= 4.75 mm","simple","Fixed effects only","C","Seedling",1.000177281
+"g475mm",">= 4.75 mm","simple","Fixed effects only","D","Acorn",1.000127381
+"g475mm",">= 4.75 mm","simple","Fixed effects only","E","Seedbank",1.000079178
+"g475mm",">= 4.75 mm","simple","Fixed effects only","R","Reference",1.000058205
+"g475mm",">= 4.75 mm","strip.random","Strip random effects","A","Balled-and-burlapped",1.000206606
+"g475mm",">= 4.75 mm","strip.random","Strip random effects","B","Bareroot",1.000130365
+"g475mm",">= 4.75 mm","strip.random","Strip random effects","C","Seedling",1.000155376
+"g475mm",">= 4.75 mm","strip.random","Strip random effects","D","Acorn",1.000278566
+"g475mm",">= 4.75 mm","strip.random","Strip random effects","E","Seedbank",1.000100907
+"g475mm",">= 4.75 mm","strip.random","Strip random effects","R","Reference",1.000244212
+"g475mm",">= 4.75 mm","strip.plot.random","Strip and plot random effects","A","Balled-and-burlapped",1.000308211
+"g475mm",">= 4.75 mm","strip.plot.random","Strip and plot random effects","B","Bareroot",1.000285342
+"g475mm",">= 4.75 mm","strip.plot.random","Strip and plot random effects","C","Seedling",1.000211248
+"g475mm",">= 4.75 mm","strip.plot.random","Strip and plot random effects","D","Acorn",1.000637106
+"g475mm",">= 4.75 mm","strip.plot.random","Strip and plot random effects","E","Seedbank",1.000442008
+"g475mm",">= 4.75 mm","strip.plot.random","Strip and plot random effects","R","Reference",1.000123822
+"g2mm","2-4.75 mm","simple","Fixed effects only","A","Balled-and-burlapped",1.000284286
+"g2mm","2-4.75 mm","simple","Fixed effects only","B","Bareroot",1.000220432
+"g2mm","2-4.75 mm","simple","Fixed effects only","C","Seedling",1.000101627
+"g2mm","2-4.75 mm","simple","Fixed effects only","D","Acorn",1.00012742
+"g2mm","2-4.75 mm","simple","Fixed effects only","E","Seedbank",1.000024199
+"g2mm","2-4.75 mm","simple","Fixed effects only","R","Reference",1.000061087
+"g2mm","2-4.75 mm","strip.random","Strip random effects","A","Balled-and-burlapped",1.000167803
+"g2mm","2-4.75 mm","strip.random","Strip random effects","B","Bareroot",1.000119046
+"g2mm","2-4.75 mm","strip.random","Strip random effects","C","Seedling",1.00033616
+"g2mm","2-4.75 mm","strip.random","Strip random effects","D","Acorn",1.000192695
+"g2mm","2-4.75 mm","strip.random","Strip random effects","E","Seedbank",1.000205818
+"g2mm","2-4.75 mm","strip.random","Strip random effects","R","Reference",1.000335055
+"g2mm","2-4.75 mm","strip.plot.random","Strip and plot random effects","A","Balled-and-burlapped",1.000292208
+"g2mm","2-4.75 mm","strip.plot.random","Strip and plot random effects","B","Bareroot",1.00025537
+"g2mm","2-4.75 mm","strip.plot.random","Strip and plot random effects","C","Seedling",1.000466123
+"g2mm","2-4.75 mm","strip.plot.random","Strip and plot random effects","D","Acorn",1.00046786
+"g2mm","2-4.75 mm","strip.plot.random","Strip and plot random effects","E","Seedbank",1.000441847
+"g2mm","2-4.75 mm","strip.plot.random","Strip and plot random effects","R","Reference",1.000698008
+"g250um","0.250-2 mm","simple","Fixed effects only","A","Balled-and-burlapped",1.000046834
+"g250um","0.250-2 mm","simple","Fixed effects only","B","Bareroot",1.00007279
+"g250um","0.250-2 mm","simple","Fixed effects only","C","Seedling",1.000079966
+"g250um","0.250-2 mm","simple","Fixed effects only","D","Acorn",1.000147333
+"g250um","0.250-2 mm","simple","Fixed effects only","E","Seedbank",1.000078847
+"g250um","0.250-2 mm","simple","Fixed effects only","R","Reference",1.000037227
+"g250um","0.250-2 mm","strip.random","Strip random effects","A","Balled-and-burlapped",1.000310772
+"g250um","0.250-2 mm","strip.random","Strip random effects","B","Bareroot",1.000176762
+"g250um","0.250-2 mm","strip.random","Strip random effects","C","Seedling",1.000210267
+"g250um","0.250-2 mm","strip.random","Strip random effects","D","Acorn",1.000251602
+"g250um","0.250-2 mm","strip.random","Strip random effects","E","Seedbank",1.000300586
+"g250um","0.250-2 mm","strip.random","Strip random effects","R","Reference",1.000265183
+"g250um","0.250-2 mm","strip.plot.random","Strip and plot random effects","A","Balled-and-burlapped",1.000184001
+"g250um","0.250-2 mm","strip.plot.random","Strip and plot random effects","B","Bareroot",1.000515093
+"g250um","0.250-2 mm","strip.plot.random","Strip and plot random effects","C","Seedling",1.000287693
+"g250um","0.250-2 mm","strip.plot.random","Strip and plot random effects","D","Acorn",1.000576397
+"g250um","0.250-2 mm","strip.plot.random","Strip and plot random effects","E","Seedbank",1.000332738
+"g250um","0.250-2 mm","strip.plot.random","Strip and plot random effects","R","Reference",1.000356713
+"g53um","0.053-0.250 mm","simple","Fixed effects only","A","Balled-and-burlapped",1.000233757
+"g53um","0.053-0.250 mm","simple","Fixed effects only","B","Bareroot",1.000048536
+"g53um","0.053-0.250 mm","simple","Fixed effects only","C","Seedling",1.000197226
+"g53um","0.053-0.250 mm","simple","Fixed effects only","D","Acorn",1.000219317
+"g53um","0.053-0.250 mm","simple","Fixed effects only","E","Seedbank",1.000043653
+"g53um","0.053-0.250 mm","simple","Fixed effects only","R","Reference",1.000130789
+"g53um","0.053-0.250 mm","strip.random","Strip random effects","A","Balled-and-burlapped",1.001429488
+"g53um","0.053-0.250 mm","strip.random","Strip random effects","B","Bareroot",1.001140828
+"g53um","0.053-0.250 mm","strip.random","Strip random effects","C","Seedling",1.001164115
+"g53um","0.053-0.250 mm","strip.random","Strip random effects","D","Acorn",1.001550083
+"g53um","0.053-0.250 mm","strip.random","Strip random effects","E","Seedbank",1.001933489
+"g53um","0.053-0.250 mm","strip.random","Strip random effects","R","Reference",1.000655512
+"g53um","0.053-0.250 mm","strip.plot.random","Strip and plot random effects","A","Balled-and-burlapped",1.000259857
+"g53um","0.053-0.250 mm","strip.plot.random","Strip and plot random effects","B","Bareroot",1.000308058
+"g53um","0.053-0.250 mm","strip.plot.random","Strip and plot random effects","C","Seedling",1.000145056
+"g53um","0.053-0.250 mm","strip.plot.random","Strip and plot random effects","D","Acorn",1.000109132
+"g53um","0.053-0.250 mm","strip.plot.random","Strip and plot random effects","E","Seedbank",1.000166971
+"g53um","0.053-0.250 mm","strip.plot.random","Strip and plot random effects","R","Reference",1.000079396
+"l53um","<0.053 mm","simple","Fixed effects only","A","Balled-and-burlapped",1.000174301
+"l53um","<0.053 mm","simple","Fixed effects only","B","Bareroot",1.000137005
+"l53um","<0.053 mm","simple","Fixed effects only","C","Seedling",1.000120252
+"l53um","<0.053 mm","simple","Fixed effects only","D","Acorn",1.000088569
+"l53um","<0.053 mm","simple","Fixed effects only","E","Seedbank",1.00006547
+"l53um","<0.053 mm","simple","Fixed effects only","R","Reference",1.000144616
+"l53um","<0.053 mm","strip.random","Strip random effects","A","Balled-and-burlapped",1.000411117
+"l53um","<0.053 mm","strip.random","Strip random effects","B","Bareroot",1.00024275
+"l53um","<0.053 mm","strip.random","Strip random effects","C","Seedling",1.000312354
+"l53um","<0.053 mm","strip.random","Strip random effects","D","Acorn",1.000326114
+"l53um","<0.053 mm","strip.random","Strip random effects","E","Seedbank",1.0009847
+"l53um","<0.053 mm","strip.random","Strip random effects","R","Reference",1.001760928
+"l53um","<0.053 mm","strip.plot.random","Strip and plot random effects","A","Balled-and-burlapped",1.000164492
+"l53um","<0.053 mm","strip.plot.random","Strip and plot random effects","B","Bareroot",1.000280031
+"l53um","<0.053 mm","strip.plot.random","Strip and plot random effects","C","Seedling",1.000128334
+"l53um","<0.053 mm","strip.plot.random","Strip and plot random effects","D","Acorn",1.000288096
+"l53um","<0.053 mm","strip.plot.random","Strip and plot random effects","E","Seedbank",1.000320665
+"l53um","<0.053 mm","strip.plot.random","Strip and plot random effects","R","Reference",1.000346424
+"mwd","Mean-weight diameter (mm)","simple","Fixed effects only","A","Balled-and-burlapped",1.000051759
+"mwd","Mean-weight diameter (mm)","simple","Fixed effects only","B","Bareroot",1.000160284
+"mwd","Mean-weight diameter (mm)","simple","Fixed effects only","C","Seedling",1.000132868
+"mwd","Mean-weight diameter (mm)","simple","Fixed effects only","D","Acorn",1.000207557
+"mwd","Mean-weight diameter (mm)","simple","Fixed effects only","E","Seedbank",1.00009128
+"mwd","Mean-weight diameter (mm)","simple","Fixed effects only","R","Reference",1.000224395
+"mwd","Mean-weight diameter (mm)","strip.random","Strip random effects","A","Balled-and-burlapped",1.000568963
+"mwd","Mean-weight diameter (mm)","strip.random","Strip random effects","B","Bareroot",1.000658858
+"mwd","Mean-weight diameter (mm)","strip.random","Strip random effects","C","Seedling",1.0004445
+"mwd","Mean-weight diameter (mm)","strip.random","Strip random effects","D","Acorn",1.000785781
+"mwd","Mean-weight diameter (mm)","strip.random","Strip random effects","E","Seedbank",1.000507489
+"mwd","Mean-weight diameter (mm)","strip.random","Strip random effects","R","Reference",1.001043757
+"mwd","Mean-weight diameter (mm)","strip.plot.random","Strip and plot random effects","A","Balled-and-burlapped",1.00216547
+"mwd","Mean-weight diameter (mm)","strip.plot.random","Strip and plot random effects","B","Bareroot",1.000204042
+"mwd","Mean-weight diameter (mm)","strip.plot.random","Strip and plot random effects","C","Seedling",1.001617859
+"mwd","Mean-weight diameter (mm)","strip.plot.random","Strip and plot random effects","D","Acorn",1.000476946
+"mwd","Mean-weight diameter (mm)","strip.plot.random","Strip and plot random effects","E","Seedbank",1.000245466
+"mwd","Mean-weight diameter (mm)","strip.plot.random","Strip and plot random effects","R","Reference",1.00190929
+"tic.percent","TIC (%)","simple","Fixed effects only","A","Balled-and-burlapped",1.000180411
+"tic.percent","TIC (%)","simple","Fixed effects only","B","Bareroot",1.000100991
+"tic.percent","TIC (%)","simple","Fixed effects only","C","Seedling",1.000052136
+"tic.percent","TIC (%)","simple","Fixed effects only","D","Acorn",1.000240629
+"tic.percent","TIC (%)","simple","Fixed effects only","E","Seedbank",1.000082174
+"tic.percent","TIC (%)","simple","Fixed effects only","R","Reference",1.000080715
+"tic.percent","TIC (%)","strip.random","Strip random effects","A","Balled-and-burlapped",1.000441144
+"tic.percent","TIC (%)","strip.random","Strip random effects","B","Bareroot",1.000160322
+"tic.percent","TIC (%)","strip.random","Strip random effects","C","Seedling",1.000323972
+"tic.percent","TIC (%)","strip.random","Strip random effects","D","Acorn",1.001098171
+"tic.percent","TIC (%)","strip.random","Strip random effects","E","Seedbank",1.000858892
+"tic.percent","TIC (%)","strip.random","Strip random effects","R","Reference",1.000617585
+"tic.percent","TIC (%)","strip.plot.random","Strip and plot random effects","A","Balled-and-burlapped",1.000251479
+"tic.percent","TIC (%)","strip.plot.random","Strip and plot random effects","B","Bareroot",1.000152258
+"tic.percent","TIC (%)","strip.plot.random","Strip and plot random effects","C","Seedling",1.000234455
+"tic.percent","TIC (%)","strip.plot.random","Strip and plot random effects","D","Acorn",1.000400302
+"tic.percent","TIC (%)","strip.plot.random","Strip and plot random effects","E","Seedbank",1.000446883
+"tic.percent","TIC (%)","strip.plot.random","Strip and plot random effects","R","Reference",1.000456128
+"maoc.percent","MAOC (%)","simple","Fixed effects only","A","Balled-and-burlapped",1.00010410003354
+"maoc.percent","MAOC (%)","simple","Fixed effects only","B","Bareroot",1.00005801737486
+"maoc.percent","MAOC (%)","simple","Fixed effects only","C","Seedling",1.00004512923436
+"maoc.percent","MAOC (%)","simple","Fixed effects only","D","Acorn",1.00004857816225
+"maoc.percent","MAOC (%)","simple","Fixed effects only","E","Seedbank",1.00010567781339
+"maoc.percent","MAOC (%)","simple","Fixed effects only","R","Reference",1.00010332120083
+"maoc.percent","MAOC (%)","strip.random","Strip random effects","A","Balled-and-burlapped",1.0005640400343
+"maoc.percent","MAOC (%)","strip.random","Strip random effects","B","Bareroot",1.00105828736402
+"maoc.percent","MAOC (%)","strip.random","Strip random effects","C","Seedling",1.00116625999477
+"maoc.percent","MAOC (%)","strip.random","Strip random effects","D","Acorn",1.0003908376007
+"maoc.percent","MAOC (%)","strip.random","Strip random effects","E","Seedbank",1.00037983912244
+"maoc.percent","MAOC (%)","strip.random","Strip random effects","R","Reference",1.00182032433724
+"maoc.percent","MAOC (%)","strip.plot.random","Strip and plot random effects","A","Balled-and-burlapped",1.00008925821221
+"maoc.percent","MAOC (%)","strip.plot.random","Strip and plot random effects","B","Bareroot",1.00004671890027
+"maoc.percent","MAOC (%)","strip.plot.random","Strip and plot random effects","C","Seedling",1.00006589591015
+"maoc.percent","MAOC (%)","strip.plot.random","Strip and plot random effects","D","Acorn",1.00014458060362
+"maoc.percent","MAOC (%)","strip.plot.random","Strip and plot random effects","E","Seedbank",1.00007905137375
+"maoc.percent","MAOC (%)","strip.plot.random","Strip and plot random effects","R","Reference",1.00012392051373
+"poc.maoc.ratio","POC:MAOC ratio","simple","Fixed effects only","A","Balled-and-burlapped",1.000076514
+"poc.maoc.ratio","POC:MAOC ratio","simple","Fixed effects only","B","Bareroot",1.000122024
+"poc.maoc.ratio","POC:MAOC ratio","simple","Fixed effects only","C","Seedling",1.000146672
+"poc.maoc.ratio","POC:MAOC ratio","simple","Fixed effects only","D","Acorn",1.000041896
+"poc.maoc.ratio","POC:MAOC ratio","simple","Fixed effects only","E","Seedbank",1.000011531
+"poc.maoc.ratio","POC:MAOC ratio","simple","Fixed effects only","R","Reference",1.000224402
+"poc.maoc.ratio","POC:MAOC ratio","strip.random","Strip random effects","A","Balled-and-burlapped",1.000567831
+"poc.maoc.ratio","POC:MAOC ratio","strip.random","Strip random effects","B","Bareroot",1.000911449
+"poc.maoc.ratio","POC:MAOC ratio","strip.random","Strip random effects","C","Seedling",1.000347328
+"poc.maoc.ratio","POC:MAOC ratio","strip.random","Strip random effects","D","Acorn",1.000730925
+"poc.maoc.ratio","POC:MAOC ratio","strip.random","Strip random effects","E","Seedbank",1.00073604
+"poc.maoc.ratio","POC:MAOC ratio","strip.random","Strip random effects","R","Reference",1.00111185
+"poc.maoc.ratio","POC:MAOC ratio","strip.plot.random","Strip and plot random effects","A","Balled-and-burlapped",1.000245289
+"poc.maoc.ratio","POC:MAOC ratio","strip.plot.random","Strip and plot random effects","B","Bareroot",1.00018835
+"poc.maoc.ratio","POC:MAOC ratio","strip.plot.random","Strip and plot random effects","C","Seedling",1.000149167
+"poc.maoc.ratio","POC:MAOC ratio","strip.plot.random","Strip and plot random effects","D","Acorn",1.000299789
+"poc.maoc.ratio","POC:MAOC ratio","strip.plot.random","Strip and plot random effects","E","Seedbank",1.000224667
+"poc.maoc.ratio","POC:MAOC ratio","strip.plot.random","Strip and plot random effects","R","Reference",1.000685881
+"cn.ratio","C:N Ratio","simple","Fixed effects only","A","Balled-and-burlapped",1.000026635
+"cn.ratio","C:N Ratio","simple","Fixed effects only","B","Bareroot",1.000275973
+"cn.ratio","C:N Ratio","simple","Fixed effects only","C","Seedling",1.000080246
+"cn.ratio","C:N Ratio","simple","Fixed effects only","D","Acorn",1.000272521
+"cn.ratio","C:N Ratio","simple","Fixed effects only","E","Seedbank",1.00010212
+"cn.ratio","C:N Ratio","simple","Fixed effects only","R","Reference",1.000204824
+"cn.ratio","C:N Ratio","strip.random","Strip random effects","A","Balled-and-burlapped",1.000190917
+"cn.ratio","C:N Ratio","strip.random","Strip random effects","B","Bareroot",1.000190567
+"cn.ratio","C:N Ratio","strip.random","Strip random effects","C","Seedling",1.000039818
+"cn.ratio","C:N Ratio","strip.random","Strip random effects","D","Acorn",1.000166867
+"cn.ratio","C:N Ratio","strip.random","Strip random effects","E","Seedbank",1.000101837
+"cn.ratio","C:N Ratio","strip.random","Strip random effects","R","Reference",1.000153196
+"cn.ratio","C:N Ratio","strip.plot.random","Strip and plot random effects","A","Balled-and-burlapped",1.003236611
+"cn.ratio","C:N Ratio","strip.plot.random","Strip and plot random effects","B","Bareroot",1.001520225
+"cn.ratio","C:N Ratio","strip.plot.random","Strip and plot random effects","C","Seedling",1.001242488
+"cn.ratio","C:N Ratio","strip.plot.random","Strip and plot random effects","D","Acorn",1.001950442
+"cn.ratio","C:N Ratio","strip.plot.random","Strip and plot random effects","E","Seedbank",1.001279909
+"cn.ratio","C:N Ratio","strip.plot.random","Strip and plot random effects","R","Reference",1.002197821
+"tc.stock","TC (Mg/ha)","simple","Fixed effects only","A","Balled-and-burlapped",1.000203078
+"tc.stock","TC (Mg/ha)","simple","Fixed effects only","B","Bareroot",1.00012884
+"tc.stock","TC (Mg/ha)","simple","Fixed effects only","C","Seedling",1.000163867
+"tc.stock","TC (Mg/ha)","simple","Fixed effects only","D","Acorn",1.000039404
+"tc.stock","TC (Mg/ha)","simple","Fixed effects only","E","Seedbank",1.000037968
+"tc.stock","TC (Mg/ha)","simple","Fixed effects only","R","Reference",1.000031424
+"tc.stock","TC (Mg/ha)","strip.random","Strip random effects","A","Balled-and-burlapped",1.000242166
+"tc.stock","TC (Mg/ha)","strip.random","Strip random effects","B","Bareroot",1.00027357
+"tc.stock","TC (Mg/ha)","strip.random","Strip random effects","C","Seedling",1.00026
+"tc.stock","TC (Mg/ha)","strip.random","Strip random effects","D","Acorn",1.000273913
+"tc.stock","TC (Mg/ha)","strip.random","Strip random effects","E","Seedbank",1.000175795
+"tc.stock","TC (Mg/ha)","strip.random","Strip random effects","R","Reference",1.000392988
+"tc.stock","TC (Mg/ha)","strip.plot.random","Strip and plot random effects","A","Balled-and-burlapped",1.000374856
+"tc.stock","TC (Mg/ha)","strip.plot.random","Strip and plot random effects","B","Bareroot",1.001396825
+"tc.stock","TC (Mg/ha)","strip.plot.random","Strip and plot random effects","C","Seedling",1.00033616
+"tc.stock","TC (Mg/ha)","strip.plot.random","Strip and plot random effects","D","Acorn",1.001199702
+"tc.stock","TC (Mg/ha)","strip.plot.random","Strip and plot random effects","E","Seedbank",1.000279473
+"tc.stock","TC (Mg/ha)","strip.plot.random","Strip and plot random effects","R","Reference",1.001761435
+"toc.stock","SOC (Mg/ha)","simple","Fixed effects only","A","Balled-and-burlapped",1.000203339
+"toc.stock","SOC (Mg/ha)","simple","Fixed effects only","B","Bareroot",1.000208449
+"toc.stock","SOC (Mg/ha)","simple","Fixed effects only","C","Seedling",1.000087165
+"toc.stock","SOC (Mg/ha)","simple","Fixed effects only","D","Acorn",1.000022102
+"toc.stock","SOC (Mg/ha)","simple","Fixed effects only","E","Seedbank",1.00010835
+"toc.stock","SOC (Mg/ha)","simple","Fixed effects only","R","Reference",1.000127566
+"toc.stock","SOC (Mg/ha)","strip.random","Strip random effects","A","Balled-and-burlapped",1.000477252
+"toc.stock","SOC (Mg/ha)","strip.random","Strip random effects","B","Bareroot",1.000217696
+"toc.stock","SOC (Mg/ha)","strip.random","Strip random effects","C","Seedling",1.000205142
+"toc.stock","SOC (Mg/ha)","strip.random","Strip random effects","D","Acorn",1.000682737
+"toc.stock","SOC (Mg/ha)","strip.random","Strip random effects","E","Seedbank",1.000479995
+"toc.stock","SOC (Mg/ha)","strip.random","Strip random effects","R","Reference",1.001074011
+"toc.stock","SOC (Mg/ha)","strip.plot.random","Strip and plot random effects","A","Balled-and-burlapped",1.000417468
+"toc.stock","SOC (Mg/ha)","strip.plot.random","Strip and plot random effects","B","Bareroot",1.000298308
+"toc.stock","SOC (Mg/ha)","strip.plot.random","Strip and plot random effects","C","Seedling",1.000249827
+"toc.stock","SOC (Mg/ha)","strip.plot.random","Strip and plot random effects","D","Acorn",1.000125778
+"toc.stock","SOC (Mg/ha)","strip.plot.random","Strip and plot random effects","E","Seedbank",1.000272201
+"toc.stock","SOC (Mg/ha)","strip.plot.random","Strip and plot random effects","R","Reference",1.000363353
+"maoc.stock","MAOC (Mg/ha)","simple","Fixed effects only","A","Balled-and-burlapped",1.000163857
+"maoc.stock","MAOC (Mg/ha)","simple","Fixed effects only","B","Bareroot",1.000079114
+"maoc.stock","MAOC (Mg/ha)","simple","Fixed effects only","C","Seedling",1.000141495
+"maoc.stock","MAOC (Mg/ha)","simple","Fixed effects only","D","Acorn",1.00017379
+"maoc.stock","MAOC (Mg/ha)","simple","Fixed effects only","E","Seedbank",1.000183423
+"maoc.stock","MAOC (Mg/ha)","simple","Fixed effects only","R","Reference",1.000078576
+"maoc.stock","MAOC (Mg/ha)","strip.random","Strip random effects","A","Balled-and-burlapped",1.001234017
+"maoc.stock","MAOC (Mg/ha)","strip.random","Strip random effects","B","Bareroot",1.000422431
+"maoc.stock","MAOC (Mg/ha)","strip.random","Strip random effects","C","Seedling",1.000801608
+"maoc.stock","MAOC (Mg/ha)","strip.random","Strip random effects","D","Acorn",1.000322776
+"maoc.stock","MAOC (Mg/ha)","strip.random","Strip random effects","E","Seedbank",1.001634301
+"maoc.stock","MAOC (Mg/ha)","strip.random","Strip random effects","R","Reference",1.001265989
+"maoc.stock","MAOC (Mg/ha)","strip.plot.random","Strip and plot random effects","A","Balled-and-burlapped",1.001016638
+"maoc.stock","MAOC (Mg/ha)","strip.plot.random","Strip and plot random effects","B","Bareroot",1.000949857
+"maoc.stock","MAOC (Mg/ha)","strip.plot.random","Strip and plot random effects","C","Seedling",1.00070789
+"maoc.stock","MAOC (Mg/ha)","strip.plot.random","Strip and plot random effects","D","Acorn",1.000516735
+"maoc.stock","MAOC (Mg/ha)","strip.plot.random","Strip and plot random effects","E","Seedbank",1.000280677
+"maoc.stock","MAOC (Mg/ha)","strip.plot.random","Strip and plot random effects","R","Reference",1.001307739
+"poc.stock","POC (Mg/ha)","simple","Fixed effects only","A","Balled-and-burlapped",1.000116622
+"poc.stock","POC (Mg/ha)","simple","Fixed effects only","B","Bareroot",1.000110507
+"poc.stock","POC (Mg/ha)","simple","Fixed effects only","C","Seedling",1.000138591
+"poc.stock","POC (Mg/ha)","simple","Fixed effects only","D","Acorn",1.000145018
+"poc.stock","POC (Mg/ha)","simple","Fixed effects only","E","Seedbank",1.000103735
+"poc.stock","POC (Mg/ha)","simple","Fixed effects only","R","Reference",1.000119404
+"poc.stock","POC (Mg/ha)","strip.random","Strip random effects","A","Balled-and-burlapped",1.000147573
+"poc.stock","POC (Mg/ha)","strip.random","Strip random effects","B","Bareroot",1.000237967
+"poc.stock","POC (Mg/ha)","strip.random","Strip random effects","C","Seedling",1.000431616
+"poc.stock","POC (Mg/ha)","strip.random","Strip random effects","D","Acorn",1.000316685
+"poc.stock","POC (Mg/ha)","strip.random","Strip random effects","E","Seedbank",1.000278695
+"poc.stock","POC (Mg/ha)","strip.random","Strip random effects","R","Reference",1.000801188
+"poc.stock","POC (Mg/ha)","strip.plot.random","Strip and plot random effects","A","Balled-and-burlapped",1.003651707
+"poc.stock","POC (Mg/ha)","strip.plot.random","Strip and plot random effects","B","Bareroot",1.003162117
+"poc.stock","POC (Mg/ha)","strip.plot.random","Strip and plot random effects","C","Seedling",1.001123193
+"poc.stock","POC (Mg/ha)","strip.plot.random","Strip and plot random effects","D","Acorn",1.001034553
+"poc.stock","POC (Mg/ha)","strip.plot.random","Strip and plot random effects","E","Seedbank",1.001361653
+"poc.stock","POC (Mg/ha)","strip.plot.random","Strip and plot random effects","R","Reference",1.004509991
+"tic.stock","TIC (Mg/ha)","simple","Fixed effects only","A","Balled-and-burlapped",1.000093343
+"tic.stock","TIC (Mg/ha)","simple","Fixed effects only","B","Bareroot",1.000157859
+"tic.stock","TIC (Mg/ha)","simple","Fixed effects only","C","Seedling",1.000087727
+"tic.stock","TIC (Mg/ha)","simple","Fixed effects only","D","Acorn",1.000078621
+"tic.stock","TIC (Mg/ha)","simple","Fixed effects only","E","Seedbank",1.000143909
+"tic.stock","TIC (Mg/ha)","simple","Fixed effects only","R","Reference",1.000060187
+"tic.stock","TIC (Mg/ha)","strip.random","Strip random effects","A","Balled-and-burlapped",1.00020211
+"tic.stock","TIC (Mg/ha)","strip.random","Strip random effects","B","Bareroot",1.000112684
+"tic.stock","TIC (Mg/ha)","strip.random","Strip random effects","C","Seedling",1.00009126
+"tic.stock","TIC (Mg/ha)","strip.random","Strip random effects","D","Acorn",1.000130975
+"tic.stock","TIC (Mg/ha)","strip.random","Strip random effects","E","Seedbank",1.000164178
+"tic.stock","TIC (Mg/ha)","strip.random","Strip random effects","R","Reference",1.000194891
+"tic.stock","TIC (Mg/ha)","strip.plot.random","Strip and plot random effects","A","Balled-and-burlapped",1.006320307
+"tic.stock","TIC (Mg/ha)","strip.plot.random","Strip and plot random effects","B","Bareroot",1.004917765
+"tic.stock","TIC (Mg/ha)","strip.plot.random","Strip and plot random effects","C","Seedling",1.000920656
+"tic.stock","TIC (Mg/ha)","strip.plot.random","Strip and plot random effects","D","Acorn",1.000867575
+"tic.stock","TIC (Mg/ha)","strip.plot.random","Strip and plot random effects","E","Seedbank",1.000576712
+"tic.stock","TIC (Mg/ha)","strip.plot.random","Strip and plot random effects","R","Reference",1.003574593

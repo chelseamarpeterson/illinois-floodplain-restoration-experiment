@@ -107,7 +107,7 @@ for (i in 1:n.v) {
 }
 rhat.df$model.label = rep(0, nrow(rhat.df))
 for (i in 1:n.m) { rhat.df$model.label[which(rhat.df$model == models[i])] = model.labels[i] }
-write.csv(rhat.df, "Tree_Analysis/Posteriors/Stock_Rhat_Statistic.csv", row.names=F)
+write.csv(rhat.df, "Tree_Analysis/Posteriors/Carbon_Stocks_Richness_Rhat_Statistic.csv", row.names=F)
 
 # compare models for each variale with WAIC and LOO
 criteria = c("waic","loo")
@@ -135,7 +135,7 @@ for (i in 1:n.v) {
 # write information criterion comparisons to file
 comp.df$model.label = rep(0, nrow(comp.df))
 for (i in 1:n.m) { comp.df$model.label[which(comp.df$model == models[i])] = model.labels[i] }
-write.csv(comp.df, "Tree_Analysis/Posteriors/Stock_Model_Information_Criteria.csv", row.names=F)
+write.csv(comp.df, "Tree_Analysis/Posteriors/Carbon_Stocks_Richness_Model_Information_Criteria.csv", row.names=F)
 
 # get posterior intervals and write to file
 df.int = data.frame(matrix(nrow=0, ncol=12))

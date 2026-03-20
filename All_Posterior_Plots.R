@@ -57,8 +57,10 @@ p.soil.carbon.rhat.comp = ggplot(soil.carbon.rhat.df,
                           geom_vline(xintercept=0) +     
                           geom_point() + 
                           scale_shape_discrete(solid = F) +
-                          labs(y="",x="(R-hat statistic - 1)*100",
-                               color="Model", shape="Model") +
+                          labs(y="",
+                               x="(R-hat statistic - 1)*100",
+                               color="Model", 
+                               shape="Model") +
                           geom_vline(xintercept=1) +
                           scale_x_continuous(breaks=seq(0,1,0.2),
                                              limits=c(-0.01,1)) + 
@@ -83,8 +85,10 @@ p.soil.noncarbon.rhat.comp = ggplot(soil.noncarbon.rhat.df,
                                     geom_vline(xintercept=0) +     
                                     geom_point() + 
                                     scale_shape_discrete(solid = F) +
-                                    labs(y="",x="(R-hat statistic - 1)*100",
-                                         color="Model",shape="Model") +
+                                    labs(y="",
+                                         x="(R-hat statistic - 1)*100",
+                                         color="Model",
+                                         shape="Model") +
                                     geom_vline(xintercept=1) +
                                     scale_x_continuous(breaks=seq(0,1,0.2),
                                                        limits=c(-0.01,1)) + 
@@ -112,8 +116,10 @@ p.stock.rhat.comp = ggplot(stock.rhat.df,
                            geom_vline(xintercept=0) +     
                            geom_point() + 
                            scale_shape_discrete(solid = F) +
-                           labs(y="",x="(R-hat statistic - 1)*100",
-                                color="Model",shape="Model") +
+                           labs(y="",
+                                x="(R-hat statistic - 1)*100",
+                                color="Model",
+                                shape="Model") +
                            geom_vline(xintercept=1) +
                            scale_x_continuous(breaks=seq(0,1,0.2),
                                               limits=c(-0.01,1)) + 

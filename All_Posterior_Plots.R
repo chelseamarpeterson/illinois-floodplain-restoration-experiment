@@ -35,7 +35,7 @@ soil.var.labs = unique(soil.rhat.df$variable.label)
 n.s.v = length(soil.vars)
 
 # stock and richness variables
-stock.rhat.df = read.csv("Tree_Analysis/Posteriors/Stock_Rhat_Statistic.csv")
+stock.rhat.df = read.csv("Tree_Analysis/Posteriors/Carbon_Stocks_Richness_Rhat_Statistic.csv")
 stock.vars = unique(stock.rhat.df$variable)
 stock.var.labs = unique(stock.rhat.df$variable.label)
 n.c.v = length(stock.vars)
@@ -133,7 +133,7 @@ ggsave("Supp_Figures/FigureB3_Carbon_Richness_Rhat_Score_Comparison.jpeg",
 
 # read in soil data model comparison dataframe
 comp.df.soil = read.csv("Soil_Analysis/Posteriors/Soil_Model_Information_Criteria.csv")
-comp.df.stocks = read.csv("Tree_Analysis/Posteriors/Stock_Model_Information_Criteria.csv")
+comp.df.stocks = read.csv("Tree_Analysis/Posteriors/Carbon_Stocks_Richness_Model_Information_Criteria.csv")
 
 # soil
 soil.min.ic.count.df = data.frame(matrix(nrow=n.c, ncol=n.m))

@@ -3,6 +3,7 @@ setwd(path_to_repo)
 
 library(tidyverse)
 library(reshape2)
+library(patchwork)
 
 # constants and conversions
 ch4.gwp100yr = 27
@@ -22,7 +23,7 @@ n.t = nrow(trt.df)
 stats = c("posterior.mean","X5","X95","X25","X75")
 n.s = length(stats)
 stock.df = read.csv("Tree_Analysis/Posteriors/Carbon_Stocks_Richness_Means_Intervals_10Chains_NaturalScale.csv")
-ecoC.df = stock.df[stock.df$model == "strip.random" & stock.df$variable.label == "Total ecosystem",
+ecoC.df = stock.df[stock.df$model == "strip.random" & stock.df$variable.label == "Total organic",
                    c("full.treatment.name",stats)]
 
 ################################################################################
@@ -55,8 +56,9 @@ p.ghg.offset = ggplot(ghg.offset.df,
                       geom_errorbar(aes(y=factor(full.treatment.name, levels=trt.names),
                                         xmin=X5, xmax=X95), orientation="y", width=0.2) +
                       facet_wrap(.~molecule, scales="free_x") +
-                      scale_x_continuous(labels = scales::comma, limits = function(X95) c(0, max(X95))) +
+                      #scale_x_continuous(labels = scales::comma, limits = function(X5, X95) c(min(X5), max(X95))) +
                       labs(y="",x="Annual emissions needed to offset carbon accrual (kg/ha/yr)")
+p.ghg.offset
 ggsave("Supp_Figures/FigureC1_Greenhouse_Gas_Offsets_By_GHG_and_Treament.jpeg", 
        plot=p.ghg.offset, width=20, height=10, units="cm", dpi=600)
 
@@ -132,8 +134,8 @@ p.ch4 = ggplot(ch4.melt,
                    y=factor(row.trt,levels=rev(trt.names)), 
                    fill=offset*1000)) +
                geom_tile(color="white", lwd=0.5) + 
-               geom_text(aes(label=signif(offset*1000, 3)),
-                         color="black") +
+               geom_text(aes(label=signif(offset*1000, 4)),
+                         color="black",size=8) +
                scale_fill_gradient(low = "white", high = "blue") +
                coord_cartesian() +
                labs(x="",y="",fill="Methane offset\n(kg/ha/yr)") +
@@ -141,7 +143,7 @@ p.ch4 = ggplot(ch4.melt,
                geom_label(x=1,y=6,label="a",
                           color="black",fill=alpha("white",0),
                           label.r=unit(0,"pt"),label.size=0,
-                          size=14,fontface="bold")
+                          size=16,fontface="bold")
 p.ch4
 
 ## add nitrous oxide offsets to matrix
@@ -171,7 +173,7 @@ for (i in 1:(n.t-1)) {
   }
 }
 
-# create methane tile plot
+# create nitrous oxide tile plot
 n2o.offsets = rownames_to_column(n2o.offsets, var = "row.trt")
 n2o.melt = melt(n2o.offsets, 
                 id.vars = "row.trt",
@@ -183,7 +185,7 @@ p.n2o = ggplot(n2o.melt,
                    fill=offset*1000)) +
                geom_tile(color="white", lwd=0.5) + 
                geom_text(aes(label=signif(offset*1000, 3)),
-                         color="black") +
+                         color="black",size=8) +
                coord_cartesian() +
                scale_fill_gradient(low="white", high="darkorange") +
                labs(x="",y="",fill="Nitrous oxide\noffset (kg/ha/yr)") +
@@ -191,7 +193,7 @@ p.n2o = ggplot(n2o.melt,
                geom_label(x=1,y=6,label="b",
                           color="black",fill=alpha("white",0),
                           label.r=unit(0,"pt"),label.size=0,
-                          size=14,fontface="bold")
+                          size=16,fontface="bold")
 p.n2o
 p.gdg.tiles = p.ch4 + p.n2o
 ggsave("Supp_Figures/FigureC3_Greenhouse_Gas_Offsets_Pairwise_Comparisons.jpeg", 

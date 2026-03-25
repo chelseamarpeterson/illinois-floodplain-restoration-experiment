@@ -50,13 +50,13 @@ for (i in 1:n.v) {
                         strip = factor(stock.richness.df$strip), 
                         plot = factor(stock.richness.df$plot),
                         y = stock.richness.df[,v]/all.means[[v]])
-  hist(all.lists[[v]]$y, main=v, xlim=c(0,6))
 }
 
 # fit simple models
 seed = 3141; n.iter=20000; n.chain=20
 stock.model.list = list()
-for (i in 1:n.v) {
+#for (i in 1:n.v) {
+for (i in 23:23) {
   v.i = vars[i]
   stock.model.list[[v.i]] = list()
   for (j in 1:n.m) {
@@ -85,16 +85,17 @@ for (i in 1:n.v) {
 }
 
 # save Rhat statistic for each variable and model
-rhat.df = data.frame(matrix(nrow=0,ncol=7))
-colnames(rhat.df) = c("variable","variable.label","model","model.label","treatment","full.treatment.name","Rhat")
-for (i in 1:n.v) {
+rhat.df = read.csv("Tree_Analysis/Posteriors/Carbon_Stocks_Richness_Rhat_Statistic.csv")
+#rhat.df = data.frame(matrix(nrow=0,ncol=7))
+#colnames(rhat.df) = c("variable","variable.label","model","model.label","treatment","full.treatment.name","Rhat")
+#for (i in 1:n.v) {
+for (i in 23:23) {
   v.i = vars[i]
   for (j in 1:n.m) {
     m.j = models[j]
     model.sum.ij = summary(stock.model.list[[v.i]][[m.j]])
     model.df.ij = data.frame(matrix(nrow=6,ncol=7))
-    colnames(model.df.ij) = c("variable","variable.label","model","model.label",
-                              "treatment","full.treatment.name","Rhat")
+    colnames(model.df.ij) = c("variable","variable.label","model","model.label","treatment","full.treatment.name","Rhat")
     model.df.ij$variable = v.i
     model.df.ij$variable.label = var.labels[i]
     model.df.ij$model = m.j
@@ -105,18 +106,18 @@ for (i in 1:n.v) {
     rhat.df = rbind(rhat.df, model.df.ij)
   }
 }
-rhat.df$model.label = rep(0, nrow(rhat.df))
-for (i in 1:n.m) { rhat.df$model.label[which(rhat.df$model == models[i])] = model.labels[i] }
 write.csv(rhat.df, "Tree_Analysis/Posteriors/Carbon_Stocks_Richness_Rhat_Statistic.csv", row.names=F)
 
 # compare models for each variale with WAIC and LOO
+comp.df = read.csv("Tree_Analysis/Posteriors/Carbon_Stocks_Richness_Model_Information_Criteria.csv")
 criteria = c("waic","loo")
 criteria.labels = c("WAIC","LOO")
 n.c = length(criteria)
-comp.df = data.frame(matrix(nrow=0, ncol=13))
-colnames(comp.df) = c("elpd_diff","se_diff","elpd","se_elpd","p","se_p","ic","se_ic",
-                      "variable","variable.label","criterion","model","best.model")
-for (i in 1:n.v) {
+#comp.df = data.frame(matrix(nrow=0, ncol=13))
+#colnames(comp.df) = c("elpd_diff","se_diff","elpd","se_elpd","p","se_p","ic","se_ic",
+#                      "variable","variable.label","criterion","model","best.model")
+#for (i in 1:n.v) {
+for (i in 23:23) {
   v.i = vars[i]
   for (j in 1:n.c) {
     m1 = stock.model.list[[v.i]][[models[1]]]
@@ -128,21 +129,21 @@ for (i in 1:n.v) {
     comp.ij$criterion = criteria.labels[j]
     comp.ij$model = row.names(comp.ij)
     comp.ij$best.model = c("Yes","No")
+    comp.ij$model.label = 0
+    for (k in 1:n.m) { comp.ij$model.label[comp.ij$model == models[k]] = model.labels[k] }
     comp.df = rbind(comp.df, comp.ij)
   }
 }
-
-# write information criterion comparisons to file
-comp.df$model.label = rep(0, nrow(comp.df))
-for (i in 1:n.m) { comp.df$model.label[which(comp.df$model == models[i])] = model.labels[i] }
 write.csv(comp.df, "Tree_Analysis/Posteriors/Carbon_Stocks_Richness_Model_Information_Criteria.csv", row.names=F)
 
 # get posterior intervals and write to file
-df.int = data.frame(matrix(nrow=0, ncol=12))
+df.int = read.csv("Tree_Analysis/Posteriors/Carbon_Stocks_Richness_Means_Intervals_10Chains_NaturalScale.csv")
+#df.int = data.frame(matrix(nrow=0, ncol=12))
 int.cols = c("model","model.label","variable","variable.label","variable.mean","treatment",
              "full.treatment.name","posterior.mean","5","95","25","75")
 colnames(df.int) = int.cols
-for (i in 1:n.v) {
+#for (i in 1:n.v) {
+for (i in 23:23) {
   v.i = vars[i]
   for (j in 1:n.m) {
     m.j = models[j]

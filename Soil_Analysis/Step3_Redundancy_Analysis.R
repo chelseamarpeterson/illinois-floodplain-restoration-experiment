@@ -130,6 +130,20 @@ cor(df.scale$SOC, df.scale$MAOC, method = "pearson")
 cor(df.scale$SOC, df.scale$POC, method = "pearson")
 cor(df.scale$SOC, df.scale$POC_MAOC, method = "pearson")
 
+
+cor(df.scale$HJB, df.scale$POC, method = "pearson")
+cor(df.scale$HL, df.scale$POC, method = "pearson")
+cor(df.scale$HT, df.scale$POC, method = "pearson")
+cor(df.scale$FWD, df.scale$POC, method = "pearson")
+
+cor(df.scale$HJB, df.scale$POC_MAOC, method = "pearson")
+cor(df.scale$HL, df.scale$POC_MAOC, method = "pearson")
+cor(df.scale$HT, df.scale$POC_MAOC, method = "pearson")
+cor(df.scale$FWD, df.scale$POC_MAOC, method = "pearson")
+cor(df.scale$FWD, df.scale$CN, method = "pearson")
+cor(df.scale$CN, df.scale$POC_MAOC, method = "pearson")
+
+
 ## make heatmap of pearson R^2 for all RDA variables
 
 # variable names

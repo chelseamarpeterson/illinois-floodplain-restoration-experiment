@@ -30,7 +30,8 @@ c.data = read.csv("Tree_Analysis/Clean_Data_By_Plot/All_Vegetation_C_Stocks_By_P
 soil.data = read.csv("Soil_Analysis/Clean_Data/Soil_Data_by_Quadrat_June2023.csv")
 soil.aves = soil.data %>%
             group_by(treatment, plot) %>% 
-            summarize(tc.stock = mean(tc.stock))
+            summarize(tc.stock = mean(tc.stock),
+                      toc.stock = mean(toc.stock))
 c.data = left_join(c.data, soil.aves, 
                    by=c("treatment", "plot"))
 
@@ -43,13 +44,14 @@ c.data = c.data %>%
                 total.live.carbon = total.abg.wood.carbon + total.bg.wood.carbon + herbaceous.biomass.c.stock,
                 total.dead.carbon = total.snag.carbon + total.cwd.carbon + total.fwd.carbon + herbaceous.litter.c.stock,
                 total.vegetation.carbon = total.live.carbon + total.dead.carbon,
+                total.organic.carbon = total.vegetation.carbon + toc.stock,
                 total.ecosystem.carbon = tc.stock + total.vegetation.carbon)
 
 ################################################################################
 ## estimating richness by in tree and understory layer
 
 # read in tree species data
-tree.C.df = read.csv("Tree_Analysis/Clean_Data_By_Species/Woody_Biomass_C_Stocks_By_Species.csv", header=T)
+tree.C.df = read.csv("Tree_Analysis/Clean_Data_By_Species/Woody_Biomass_Carbon_Stocks_By_Species.csv", header=T)
 
 # combine genus and specific epithet
 tree.C.df$spp = paste(tree.C.df$genus, tree.C.df$species, sep=" ")
@@ -99,7 +101,7 @@ c.sp.data = left_join(c.sp.data,
 
 # re-order columns
 id.cols = c("treatment","full.treatment.name","strip","plot")
-var.cols = colnames(c.sp.data)[4:37]
+var.cols = colnames(c.sp.data)[4:39]
 c.sp.data = c.sp.data[,c(id.cols,var.cols)]
 
 # write data to file

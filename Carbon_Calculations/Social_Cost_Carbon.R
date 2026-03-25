@@ -12,6 +12,10 @@ library(dplyr)
 ################################################################################
 # load data
 
+# constants and conversions
+years.since.restoration = 25
+baseline.cstock = 55.9
+
 # treatments
 trt.df = read.csv("Metadata/Treatment_Letters_Names.csv")
 trt.letters = trt.df[,"Treatment.letters"]
@@ -31,9 +35,15 @@ est.df$cost.2023 = as.numeric(est.df$cost.2023)
 
 # ecosystem carbon estimates
 stock.df = read.csv("Tree_Analysis/Posteriors/Carbon_Stocks_Richness_Means_Intervals_10Chains_NaturalScale.csv")
-ecoC.df = stock.df[stock.df$model == "strip.random" & stock.df$variable.label == "Total ecosystem",
+ecoC.df.total = stock.df[stock.df$model == "strip.random" & stock.df$variable == "total.organic.carbon",
                    c("full.treatment.name","posterior.mean","X5","X95")]
-colnames(ecoC.df) = c("trt","mean","lower","upper")
+stats = c("mean","lower","upper")
+colnames(ecoC.df.total) = c("trt",stats)
+ecoC.df.total[,stats] = ecoC.df.total[,stats] - baseline.cstock
+
+# annual accumulation rates
+ecoC.df.annual = ecoC.df.total
+ecoC.df.annual[,stats] = ecoC.df.annual[,stats]/years.since.restoration
 
 # constants and conversions
 co2.molecular.mass = 44.01
@@ -43,29 +53,42 @@ c.molecular.mass = 12.01
 ## combine datasets to estimate carbon benefit
 
 # melt ecosystem carbon estimates by statistic
-ecoC.df.melt = melt(ecoC.df, 
-                    id.vars=c("trt"), 
-                    variable.name="stat",
-                    value.name="stock")
+ecoC.df.total.melt = melt(ecoC.df.total, 
+                          id.vars=c("trt"), 
+                          variable.name="stat",
+                          value.name="stock")
+ecoC.df.annual.melt = melt(ecoC.df.annual, 
+                           id.vars=c("trt"), 
+                           variable.name="stat",
+                           value.name="rate")
 
 # estimate carbon benefit of each treatment
-ecoC.df.melt$carbon.benefit = 0
+ecoC.df.total.melt$carbon.benefit = 0
 stats = c("mean","lower","upper")
 n.s = length(stats)
 for (i in 1:n.s) {
   stat.i = stats[i]
-  stat.id = which(ecoC.df.melt$stat == stat.i)
-  ecoC.df.melt[stat.id,"carbon.benefit"] = ecoC.df.melt[stat.id,"stock"]*scc.df[stat.i,"per.CO2.C"]
+  stat.id = which(ecoC.df.total.melt$stat == stat.i)
+  ecoC.df.total.melt[stat.id,"carbon.benefit"] = ecoC.df.total.melt[stat.id,"stock"] * scc.df[stat.i,"per.CO2.C"]
+}
+
+ecoC.df.annual.melt$carbon.benefit = 0
+stats = c("mean","lower","upper")
+n.s = length(stats)
+for (i in 1:n.s) {
+  stat.i = stats[i]
+  stat.id = which(ecoC.df.annual.melt$stat == stat.i)
+  ecoC.df.annual.melt[stat.id,"carbon.benefit"] = ecoC.df.annual.melt[stat.id,"rate"] * scc.df[stat.i,"per.CO2.C"]
 }
 
 # estimate net benefit of each treatment by subtracting the establishment cost
-ecoC.df.melt$net.benefit = 0
-ecoC.df.melt$breakeven.scc = 0
+ecoC.df.total.melt$net.benefit = 0
+ecoC.df.total.melt$breakeven.scc = 0
 for (i in 1:n.t) {
   cost.i = est.df[est.df$trt == trt.names[i],"cost.2023"]
-  trt.id = which(ecoC.df.melt$trt == trt.names[i])
-  ecoC.df.melt[trt.id,"net.benefit"] = ecoC.df.melt[trt.id,"carbon.benefit"] - cost.i
-  ecoC.df.melt[trt.id,"breakeven.scc"] = cost.i/ecoC.df.melt[trt.id,"stock"] * c.molecular.mass/co2.molecular.mass
+  trt.id = which(ecoC.df.total.melt$trt == trt.names[i])
+  ecoC.df.total.melt[trt.id,"net.benefit"] = ecoC.df.total.melt[trt.id,"carbon.benefit"] - cost.i
+  ecoC.df.total.melt[trt.id,"breakeven.scc"] = cost.i/ecoC.df.total.melt[trt.id,"stock"] * c.molecular.mass/co2.molecular.mass
 }
 
 # get species richness estimates
@@ -75,7 +98,7 @@ colnames(n.df) = c("trt","mean","lower","upper")
 n.df.melt = melt(n.df, id.vars=c("trt"), variable.name="stat",value.name="richness")
 
 # join richness estimates 
-ecoC.n.df.join = left_join(ecoC.df.melt, n.df.melt, by=c("trt","stat"))
+ecoC.n.df.join = left_join(ecoC.df.total.melt, n.df.melt, by=c("trt","stat"))
 
 # plot net carbon benefit v. richness
 mean.df = ecoC.n.df.join[ecoC.n.df.join$stat == "mean",]

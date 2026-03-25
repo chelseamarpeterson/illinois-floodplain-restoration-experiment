@@ -32,4 +32,5 @@ total.bg.wood.carbon,Belowground woody biomass,Mg C per ha,"total belowground ca
 total.live.carbon,Total live vegetation,Mg C per ha,"total carbon stock in living woody biomass, including large trees (>= 2.5 cm), small stems (< 2.5 cm), and herbaceous biomass"
 total.dead.carbon,Total dead vegetation,Mg C per ha,"total carbon stock in dead vegetation, including large standing dead trees (>= 2.5 cm), small dead stems (<2.5 cm), coarse woody debris (>= 7.6 cm), and all fine woody debris (<7.6 cm)"
 total.vegetation.carbon,Total vegetation,Mg C per ha,total carbon stock in living and dead vegetation
+total.organic.carbon,Total organic,Mg C per ha,"total carbon stock in organic material, including SOM and living and dead vegetation"
 total.ecosystem.carbon,Total ecosystem,Mg C per ha,"total ecosystem carbon stock, which is the sum of the total vegetation and total soil carbon stocks"

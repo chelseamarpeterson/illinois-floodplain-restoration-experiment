@@ -265,7 +265,7 @@ p.soil.carbon.hdi.comp = ggplot(hdi.df.soil.carbon,
                              x=posterior.mean,
                              color=factor(model.label, levels=model.labels),
                              shape=factor(model.label, levels=model.labels))) +
-                         geom_point(position=position_dodge(0.8),size=1.5) +
+                         geom_point(position=position_dodge(0.8),size=1.25) +
                          geom_errorbarh(aes(xmin=`X5`,xmax=`X95`,
                                             y=factor(full.treatment.name, levels=trt.names),
                                             color=factor(model.label, levels=model.labels)),
@@ -281,7 +281,7 @@ p.soil.carbon.hdi.comp = ggplot(hdi.df.soil.carbon,
                          labs(y="", x="Posterior estimate", color="Model", shape="Model")
 p.soil.carbon.hdi.comp
 ggsave("Supp_Figures/FigureB7_Soil_Carbon_HDI_Comparison.jpeg", 
-       plot=p.soil.carbon.hdi.comp, width=20, height=18, units="cm",dpi=600)
+       plot=p.soil.carbon.hdi.comp, width=22, height=20, units="cm",dpi=600)
 
 # soil non-carbon: plot posterior HDIs for all soil variables and models
 soil.noncarbon.vars = soil.vars[-which(soil.vars %in% soil.carbon.vars)]
@@ -295,7 +295,7 @@ p.soil.noncarbon.hdi.comp = ggplot(hdi.df.soil.noncarbon,
                                        x=posterior.mean,
                                        color=factor(model.label, levels=model.labels),
                                        shape=factor(model.label, levels=model.labels))) +
-                                   geom_point(position=position_dodge(0.8),size=1.5) +
+                                   geom_point(position=position_dodge(0.8),size=1.25) +
                                    geom_errorbarh(aes(xmin=`X5`,xmax=`X95`,
                                                       y=factor(full.treatment.name, levels=trt.names),
                                                       color=factor(model.label, levels=model.labels)),
@@ -313,7 +313,7 @@ p.soil.noncarbon.hdi.comp
 ggsave("Supp_Figures/FigureB8_NonCarbon_Soil_HDI_Comparison.jpeg", 
        plot=p.soil.noncarbon.hdi.comp, width=32, height=30, units="cm",dpi=600)
 
-# soil: plot posterior HDIs for all soil variables and models
+# stocks: plot posterior HDIs for all stock variables and models
 stock.hdi.df$variable.label[stock.hdi.df$variable.label == "Both tree and herbaceous layer"] = "Both tree & herbaceous\nlayer richness"
 stock.hdi.df$variable.label[stock.hdi.df$variable.label == "Live F. pennsylvanica (>= 2.5 cm)"] = "Live F. pennsylvanica\n(>= 2.5 cm)"
 stock.hdi.df$variable.label[stock.hdi.df$variable.label == "Dead F. pennsylvanica (>= 2.5 cm)"] = "Dead F. pennsylvanica\n(>= 2.5 cm)"
@@ -324,7 +324,7 @@ p.stock.hdi.comp = ggplot(stock.hdi.df,
                               x=posterior.mean,
                               color=factor(model.label, levels=model.labels),
                               shape=factor(model.label, levels=model.labels))) +
-                          geom_point(position=position_dodge(0.8),size=1.75) +
+                          geom_point(position=position_dodge(0.8),size=1.5) +
                           geom_errorbarh(aes(xmin=`X5`,xmax=`X95`,
                                              y=factor(full.treatment.name, levels=trt.names),
                                              color=factor(model.label, levels=model.labels)),

@@ -8,10 +8,13 @@ library(patchwork)
 # constants and conversions
 ch4.gwp100yr = 27
 n2o.gwp100yr = 273
-co2.molecular.mass = 44.01
-c.molecular.mass = 12.01
+co2.molecular.mass = 44.009
+c.molecular.mass = 12.011
+n.molecular.mass = 14.007
 years.since.restoration = 25
 baseline.cstock = 55.9
+ch4.molecular.mass = 16.043
+n2o.molecular.mass = 44.013
 
 # treatments
 trt.df = read.csv("Metadata/Treatment_Letters_Names.csv")
@@ -46,21 +49,29 @@ nitrous.offset.df$molecule = "Nitrous oxide"
 # combine methane and nitrous oxide dataframes
 ghg.offset.df = rbind(methane.offset.df,nitrous.offset.df)
 
+# read in meta-analysis GHG emission estimates
+ghg.meta = read.csv("Carbon_Calculations/He_2024_Meta_Analysis_GHG_Estimates.csv")
+ghg.stats = c("Average","Standard.deviation")
+colnames(ghg.meta)[1:2] = c("Ecosystem change","molecule")
+
 # plot results
-p.ghg.offset = ggplot(ghg.offset.df, 
-                      aes(y=factor(full.treatment.name, levels=trt.names),
-                          x=posterior.mean)) + 
-                      geom_point(size=2.5) + 
+p.ghg.offset = ggplot(ghg.offset.df) + 
+                      geom_vline(data=ghg.meta[ghg.meta$Unit == "kg/ha/y",], 
+                                 aes(xintercept=Average, 
+                                     color=`Ecosystem change`,
+                                     linetype=`Ecosystem change`), linewidth=1) +
+                      geom_point(aes(y=factor(full.treatment.name, levels=trt.names),
+                                     x=posterior.mean), size=2.5) + 
                       geom_errorbar(aes(y=factor(full.treatment.name, levels=trt.names),
                                         xmin=X25, xmax=X75), orientation="y", height=0.01, linewidth=1) +
                       geom_errorbar(aes(y=factor(full.treatment.name, levels=trt.names),
                                         xmin=X5, xmax=X95), orientation="y", width=0.2) +
                       facet_wrap(.~molecule, scales="free_x") +
-                      #scale_x_continuous(labels = scales::comma, limits = function(X5, X95) c(min(X5), max(X95))) +
+                      scale_x_continuous(labels = scales::comma) + #limits = function(X5, X95) c(min(X5), max(X95))) +
                       labs(y="",x="Annual emissions needed to offset carbon accrual (kg/ha/yr)")
 p.ghg.offset
 ggsave("Supp_Figures/FigureC1_Greenhouse_Gas_Offsets_By_GHG_and_Treament.jpeg", 
-       plot=p.ghg.offset, width=20, height=10, units="cm", dpi=600)
+       plot=p.ghg.offset, width=24, height=8, units="cm", dpi=600)
 
 # make lines for combined methane and nitrous oxide emissions
 n = 1000
@@ -81,17 +92,30 @@ for (i in 1:n.t) {
   ghg.offset.line.plot.df = rbind(ghg.offset.line.plot.df, line.plot.i)
 }
 
-p.ghg.abs = ggplot(ghg.offset.line.plot.df,
-                   aes(x=del.methane*1000,
-                       y=posterior.mean*1000,
-                       color=factor(treatment,levels=trt.names))) + 
-                   geom_line(linewidth=0.5,linetype="dashed") + 
-                   ylim(0,40) + xlim(0,400) + 
+cols = c("Ecosystem change","molecule","Average")
+ghg.meta = ghg.meta[ghg.meta$Unit == "kg/ha/y",]
+cropland.to.wetland = pivot_wider(ghg.meta[ghg.meta$`Ecosystem change` == "Cropland to wetland",cols],
+                                  names_from = "molecule", values_from = "Average")
+restored.floodplain = pivot_wider(ghg.meta[ghg.meta$`Ecosystem change` == "Degraded to restored floodplain",cols],
+                                  names_from = "molecule", values_from = "Average")
+box.df = rbind(cropland.to.wetland, restored.floodplain)
+p.ghg.abs = ggplot(ghg.offset.line.plot.df) + 
+                   geom_rect(data=box.df, 
+                             aes(xmin=0, xmax=Methane, 
+                                 ymin=0, ymax=`Nitrous oxide`, 
+                                 fill=`Ecosystem change`), 
+                             alpha = 0.3, inherit.aes = FALSE) +
+                   geom_line(aes(x=del.methane*1000,
+                                 y=posterior.mean*1000,
+                                 color=factor(treatment,levels=trt.names)),
+                             linewidth=0.5,linetype="dashed") + 
+                   xlim(0,350) + ylim(0,35) +
                    labs(color="Treatment",
                         x="Methane offset (kg/ha/yr)",
                         y="Nitrous oxide offset (kg/ha/yr)")
+p.ghg.abs
 ggsave("Supp_Figures/FigureC2_Combined_GHG_Thresholds_By_Treatment.jpeg", 
-       plot=p.ghg.abs, width=12, height=7.5, units="cm", dpi=600)
+       plot=p.ghg.abs, width=16, height=10, units="cm", dpi=600)
 
 ################################################################################
 # pairwise treatment comparisons
@@ -135,15 +159,15 @@ p.ch4 = ggplot(ch4.melt,
                    fill=offset*1000)) +
                geom_tile(color="white", lwd=0.5) + 
                geom_text(aes(label=signif(offset*1000, 4)),
-                         color="black",size=8) +
+                         color="black", size=8) +
                scale_fill_gradient(low = "white", high = "blue") +
                coord_cartesian() +
-               labs(x="",y="",fill="Methane offset\n(kg/ha/yr)") +
+               labs(x="", y="", fill="Methane offset\n(kg/ha/yr)") +
                theme(text=element_text(size=12)) + 
-               geom_label(x=1,y=6,label="a",
-                          color="black",fill=alpha("white",0),
-                          label.r=unit(0,"pt"),label.size=0,
-                          size=16,fontface="bold")
+               geom_label(x=1, y=6, label="a",
+                          color="black", fill=alpha("white",0),
+                          label.r=unit(0,"pt"), label.size=0,
+                          size=16, fontface="bold")
 p.ch4
 
 ## add nitrous oxide offsets to matrix
@@ -254,7 +278,7 @@ p.line.n2o.ch4 = ggplot(line.plot.df,
                             color=factor(trt2,levels=trt.names))) + 
                        geom_line(linetype="dashed",linewidth=0.5) +
                        ylim(-0.01,100) + xlim(0,1000) +
-                       facet_wrap(~factor(trt1,levels=trt.names),ncol=3) +
+                       facet_wrap(~factor(trt1,levels=trt.names), ncol=3) +
                        labs(color="Treatment",
                             x="Methane offset (kg/ha/yr)",
                             y="Nitrous oxide offset (kg/ha/yr)") + 
@@ -265,4 +289,5 @@ p.line.n2o.ch4 = ggplot(line.plot.df,
                                           labels = scales::comma)
 p.line.n2o.ch4
 ggsave("Supp_Figures/FigureC4_Methane_Nitrous_Oxide_Threshold.jpeg", 
-       plot=p.line.n2o.ch4,width=18,height=10,units="cm",dpi=600)
+       plot=p.line.n2o.ch4,width=20,height=11,units="cm",dpi=600)
+

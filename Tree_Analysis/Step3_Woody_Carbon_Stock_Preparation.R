@@ -215,7 +215,7 @@ snag.diams = snag.diams %>% separate(species, c("genus","spp"), sep=" ", remove=
 # calculate snag volume (m3/ha)
 snag.diams$dbh.cm = as.numeric(snag.diams$dbh.cm) # cm
 snag.diams$basal.area = (pi * (snag.diams$dbh.cm/2)^2) / dim.list[["plot.area.m2"]] #m2/ha = cm2/m2
-snag.diams$height.m = dim.list[["snag.height.m.intercept"]] + dim.list[["snag.height.cm.m.slope"]] * snag.diams$dbh.cm
+snag.diams$height.m = dim.list[["snag.height.m.intercept"]] + dim.list[["snag.height.m.cm.slope"]] * snag.diams$dbh.cm
 snag.diams$volume.min = snag.diams$basal.area * snag.diams$height.m #m3/ha
 
 # calculate snag C storage
@@ -269,7 +269,7 @@ snag.sum = snag.sum[treatment.sort$ix,]
 snag.counts = subset(snag.data, dbh.cm == "<2.5")
 snag.counts = snag.counts[,-which(colnames(snag.counts) %in% c("redo","live","dbh.cm","notes"))]
 snag.counts$dead.stem.count = snag.counts$stem.count / dim.list[["plot.area.ha"]] # count/ha
-snag.counts$height.ft = dim.list[["snag.height.ft.intercept"]] + dim.list[["snag.height.ft.slope"]] * dim.list[["median.stem.diameter.cm"]]
+snag.counts$height.ft = dim.list[["snag.height.m.intercept"]] + dim.list[["snag.height.m.cm.slope"]] * dim.list[["median.stem.diameter.cm"]]
 snag.counts$dead.stem.volume = snag.counts$dead.stem.count * pi * ((dim.list[["median.stem.diameter.cm"]] / dim.list[["cm.per.m"]])^2) * (snag.counts$height.ft / dim.list[["ft.per.m"]]) # m3/ha
 
 # calculate dead stem C storage
@@ -584,8 +584,8 @@ snag.frax.sum = left_join(snag.frax.live,
 # read in calculated tree C stock data
 
 # tree data
-C.stock.data = read.csv("Tree_Analysis/Clean_Data_By_Plot/Woody_Biomass_C_Stocks_By_Plot.csv", header=T)
-C.stock.data = C.stock.data[,c("treatment","full.treatment.name","plot","abC.ha3","bgC.ha3","bmC.ha3")]
+C.stock.data = read.csv("Tree_Analysis/Clean_Data_By_Plot/Woody_Biomass_Carbon_Stocks_By_Plot.csv", header=T)
+C.stock.data = C.stock.data[,c("treatment","full.treatment.name","plot","abC.ha.allodb","bgC.ha.allodb","bmC.ha.allodb")]
 C.stock.data$plot = as.character(C.stock.data$plot)
 
 # update column names and sort data
@@ -597,7 +597,7 @@ C.stock.data = C.stock.data[treatment.sort$ix,]
 # read in C stocks for herbaceous litter, fine woody debris, and biomass
 
 # read in understory data
-understory.data = read.csv("Understory_Analysis/Clean_Data/CN_Stock_Summary_Sep2022.csv", header=T)
+understory.data = read.csv("Understory_Analysis/Clean_Data/Understory_Material_Carbon_Stocks_By_Species_Sep2022.csv", header=T)
 
 # convert g/m2 to Mg/ha [(g/m2) * (1 Mg/10^6 g) * (10^4 m2/ha)]
 understory.data$c.mg.ha = understory.data$c.g.m2 / 100
@@ -674,4 +674,4 @@ all.bm.data = left_join(all.bm.data, understory.wide,
                         by=c("treatment","plot"))
 
 # write all C stock and C:N ratio to file
-write.csv(all.bm.data, "Tree_Analysis/Clean_Data_By_Plot/All_Vegetation_C_Stocks_By_Plot.csv", row.names=F)
+write.csv(all.bm.data, "Tree_Analysis/Clean_Data_By_Plot/All_Vegetation_Carbon_Stocks_By_Plot.csv", row.names=F)

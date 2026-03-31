@@ -38,7 +38,7 @@ criteria.labels = c("WAIC","LOO")
 n.c = length(criteria)
 
 # variable labels
-soil.var.labs = read.csv("Metadata/Quadrat_Level_Soil_Variables.csv")
+soil.var.labs = read.csv("Metadata/Quadrat_Level_Soil_Variable_Metadata.csv")
 soil.var.list = list()
 for (i in 1:nrow(soil.var.labs)) {
   v1 = soil.var.labs[i,"variable"]
@@ -111,16 +111,18 @@ for (i in 1:n.v) {
 
 
 # save Rhat statistic for each variable and model
-rhat.df = read.csv("Soil_Analysis/Posteriors/Soil_Rhat_Statistic_Old.csv")
-#rhat.df = data.frame(matrix(nrow=0,ncol=7))
-#colnames(rhat.df) = c("variable","variable.label","model","model.label","treatment","full.treatment.name","Rhat")
+#rhat.df = read.csv("Soil_Analysis/Posteriors/Soil_Rhat_Statistic.csv")
+rhat.df = data.frame(matrix(nrow=0,ncol=7))
+colnames(rhat.df) = c("variable","variable.label","model","model.label",
+                      "treatment","full.treatment.name","Rhat")
 for (i in 1:n.v) {
   v.i = select.vars[i]
   for (j in 1:n.m) {
     m.j = models[j]
     model.sum.ij = summary(soil.model.list[[v.i]][[m.j]])
     rhat.df.ij = data.frame(matrix(nrow=6,ncol=7))
-    colnames(rhat.df.ij) = c("variable","variable.label","model","model.label","treatment","full.treatment.name","Rhat")
+    colnames(rhat.df.ij) = c("variable","variable.label","model","model.label",
+                             "treatment","full.treatment.name","Rhat")
     rhat.df.ij$variable = v.i
     rhat.df.ij$variable.label = soil.var.list[[v.i]]
     rhat.df.ij$model = m.j
@@ -128,17 +130,17 @@ for (i in 1:n.v) {
     rhat.df.ij$treatment = trt.letters
     rhat.df.ij$full.treatment.name = trt.names
     rhat.df.ij$Rhat = model.sum.ij$fixed$Rhat
-    rhat.df[rhat.df$variable == v.i & rhat.df$model == m.j,] = rhat.df.ij
-    #rhat.df = rbind(rhat.df, rhat.df.ij)
+    #rhat.df[rhat.df$variable == v.i & rhat.df$model == m.j,] = rhat.df.ij
+    rhat.df = rbind(rhat.df, rhat.df.ij)
   }
 }
 write.csv(rhat.df, "Soil_Analysis/Posteriors/Soil_Rhat_Statistic.csv", row.names=F)
 
 # compare models for each variale with WAIC, LOO, and kfold
-comp.df = read.csv("Soil_Analysis/Posteriors/Soil_Model_Information_Criteria_Old.csv")
-#comp.df = data.frame(matrix(nrow=0, ncol=13))
-#colnames(comp.df) = c("elpd_diff","se_diff","elpd","se_elpd","p","se_p","ic","se_ic",
-#                      "variable","variable.label","criterion","model","best.model")
+#comp.df = read.csv("Soil_Analysis/Posteriors/Soil_Model_Information_Criteria.csv")
+comp.df = data.frame(matrix(nrow=0, ncol=13))
+colnames(comp.df) = c("elpd_diff","se_diff","elpd","se_elpd","p","se_p","ic","se_ic",
+                      "variable","variable.label","criterion","model","best.model")
 for (i in 1:n.v) {
   v.i = select.vars[i]
   for (j in 1:n.c) {
@@ -152,8 +154,8 @@ for (i in 1:n.v) {
     comp.ij$criterion = criteria.labels[j]
     comp.ij$model = row.names(comp.ij)
     comp.ij$best.model = c("Yes","No","No")
-    comp.df[comp.df$variable == v.i & comp.df$criterion == toupper(criteria[j]),1:13] = comp.ij
-    #comp.df = rbind(comp.df, comp.ij)
+    #comp.df[comp.df$variable == v.i & comp.df$criterion == toupper(criteria[j]),1:13] = comp.ij
+    comp.df = rbind(comp.df, comp.ij)
   }
 }
 comp.df$model.label = 0
@@ -161,10 +163,10 @@ for (i in 1:n.m) { comp.df$model.label[which(comp.df$model == models[i])] = mode
 write.csv(comp.df, "Soil_Analysis/Posteriors/Soil_Model_Information_Criteria.csv", row.names=F)
 
 # get posterior intervals and write to file
-df.int = read.csv("Soil_Analysis/Posteriors/Soil_Posterior_Intervals_10Chains_NaturalScale_Old.csv")
-#df.int = data.frame(matrix(nrow=0, ncol=12))
-#colnames(df.int) = c("model","model.label","variable","variable.label","variable.mean",
-#                     "treatment","full.treatment.name","posterior.mean","X5","X95","X25","X75")
+#df.int = read.csv("Soil_Analysis/Posteriors/Soil_Posterior_Intervals_10Chains_NaturalScale.csv")
+df.int = data.frame(matrix(nrow=0, ncol=12))
+colnames(df.int) = c("model","model.label","variable","variable.label","variable.mean",
+                     "treatment","full.treatment.name","posterior.mean","X5","X95","X25","X75")
 for (i in 1:n.v) {
   v.i = select.vars[i]
   for (j in 1:n.m) {

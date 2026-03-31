@@ -1,16 +1,16 @@
 "treatment","strip","plot","species","large.snag.carbon"
-"A",1,1,"Fraxinus pennsylvanica",3.61921069368372
+"A",1,1,"Fraxinus pennsylvanica",6.14225452261456
 "A",2,2,"Fraxinus pennsylvanica",0
-"A",2,3,"Fraxinus pennsylvanica",3.31524054592614
+"A",2,3,"Fraxinus pennsylvanica",5.806616417192
 "A",1,1,"Betula nigra",0
-"A",2,2,"Betula nigra",1.48126208723059
+"A",2,2,"Betula nigra",2.53868282587674
 "A",2,3,"Betula nigra",0
 "A",1,1,"Unknown",0
-"A",2,2,"Unknown",1.70253547140767
+"A",2,2,"Unknown",2.97668537159793
 "A",2,3,"Unknown",0
 "A",1,1,"Quercus bicolor",0
 "A",2,2,"Quercus bicolor",0
-"A",2,3,"Quercus bicolor",0.626026989604096
+"A",2,3,"Quercus bicolor",0.972969993445942
 "A",1,1,"Acer saccharinum",0
 "A",2,2,"Acer saccharinum",0
 "A",2,3,"Acer saccharinum",0
@@ -32,21 +32,21 @@
 "A",1,1,"Ulmus americana",0
 "A",2,2,"Ulmus americana",0
 "A",2,3,"Ulmus americana",0
-"B",1,1,"Fraxinus pennsylvanica",8.83956902802049
-"B",2,2,"Fraxinus pennsylvanica",0.533867337987586
-"B",3,3,"Fraxinus pennsylvanica",0.590847515982301
+"B",1,1,"Fraxinus pennsylvanica",14.8002688540565
+"B",2,2,"Fraxinus pennsylvanica",0.810057385167546
+"B",3,3,"Fraxinus pennsylvanica",0.842682879749297
 "B",1,1,"Betula nigra",0
 "B",2,2,"Betula nigra",0
 "B",3,3,"Betula nigra",0
-"B",1,1,"Unknown",9.2049919988251
-"B",2,2,"Unknown",10.6273322953337
-"B",3,3,"Unknown",12.1498587809503
+"B",1,1,"Unknown",19.6158315443947
+"B",2,2,"Unknown",20.6198959532853
+"B",3,3,"Unknown",22.8259800210956
 "B",1,1,"Quercus bicolor",0
 "B",2,2,"Quercus bicolor",0
 "B",3,3,"Quercus bicolor",0
 "B",1,1,"Acer saccharinum",0
-"B",2,2,"Acer saccharinum",6.6557160394075
-"B",3,3,"Acer saccharinum",5.19410406623017
+"B",2,2,"Acer saccharinum",12.1359447630315
+"B",3,3,"Acer saccharinum",10.3854085088569
 "B",1,1,"Carya illinoiensis",0
 "B",2,2,"Carya illinoiensis",0
 "B",3,3,"Carya illinoiensis",0
@@ -65,27 +65,27 @@
 "B",1,1,"Ulmus americana",0
 "B",2,2,"Ulmus americana",0
 "B",3,3,"Ulmus americana",0
-"C",1,1,"Fraxinus pennsylvanica",0.993498114786766
-"C",2,2,"Fraxinus pennsylvanica",0.121313329721768
+"C",1,1,"Fraxinus pennsylvanica",1.49510427350469
+"C",2,2,"Fraxinus pennsylvanica",0.157069970945963
 "C",3,3,"Fraxinus pennsylvanica",0
 "C",1,1,"Betula nigra",0
 "C",2,2,"Betula nigra",0
 "C",3,3,"Betula nigra",0
 "C",1,1,"Unknown",0
-"C",2,2,"Unknown",14.7887521450791
-"C",3,3,"Unknown",2.51707380179297
+"C",2,2,"Unknown",28.0664047548513
+"C",3,3,"Unknown",3.72310177460172
 "C",1,1,"Quercus bicolor",0
 "C",2,2,"Quercus bicolor",0
 "C",3,3,"Quercus bicolor",0
 "C",1,1,"Acer saccharinum",0
-"C",2,2,"Acer saccharinum",0.384088432443912
+"C",2,2,"Acer saccharinum",0.520341103090665
 "C",3,3,"Acer saccharinum",0
-"C",1,1,"Carya illinoiensis",0.150035062105502
+"C",1,1,"Carya illinoiensis",0.198233410796254
 "C",2,2,"Carya illinoiensis",0
 "C",3,3,"Carya illinoiensis",0
 "C",1,1,"Platanus occidentalis",0
 "C",2,2,"Platanus occidentalis",0
-"C",3,3,"Platanus occidentalis",5.13825815000847
+"C",3,3,"Platanus occidentalis",10.2609559405306
 "C",1,1,"Salix interior",0
 "C",2,2,"Salix interior",0
 "C",3,3,"Salix interior",0
@@ -104,11 +104,11 @@
 "D",1,1,"Betula nigra",0
 "D",2,2,"Betula nigra",0
 "D",2,3,"Betula nigra",0
-"D",1,1,"Unknown",3.30828464030075
+"D",1,1,"Unknown",6.27280887904598
 "D",2,2,"Unknown",0
-"D",2,3,"Unknown",0.821570079694474
+"D",2,3,"Unknown",1.31300148025903
 "D",1,1,"Quercus bicolor",0
-"D",2,2,"Quercus bicolor",3.15166715537677
+"D",2,2,"Quercus bicolor",5.23546927302312
 "D",2,3,"Quercus bicolor",0
 "D",1,1,"Acer saccharinum",0
 "D",2,2,"Acer saccharinum",0
@@ -119,12 +119,12 @@
 "D",1,1,"Platanus occidentalis",0
 "D",2,2,"Platanus occidentalis",0
 "D",2,3,"Platanus occidentalis",0
-"D",1,1,"Salix interior",0.136443867268835
+"D",1,1,"Salix interior",0.178279247916271
 "D",2,2,"Salix interior",0
 "D",2,3,"Salix interior",0
 "D",1,1,"Quercus palustris",0
-"D",2,2,"Quercus palustris",0.664448563545893
-"D",2,3,"Quercus palustris",1.77061013444875
+"D",2,2,"Quercus palustris",1.04012971026786
+"D",2,3,"Quercus palustris",3.12680509885004
 "D",1,1,"Salix nigra",0
 "D",2,2,"Salix nigra",0
 "D",2,3,"Salix nigra",0
@@ -158,27 +158,27 @@
 "E",1,1,"Quercus palustris",0
 "E",2,2,"Quercus palustris",0
 "E",3,3,"Quercus palustris",0
-"E",1,1,"Salix nigra",0.066317295654176
+"E",1,1,"Salix nigra",0.0813610488351382
 "E",2,2,"Salix nigra",0
 "E",3,3,"Salix nigra",0
 "E",1,1,"Ulmus americana",0
 "E",2,2,"Ulmus americana",0
 "E",3,3,"Ulmus americana",0
-"R",1,1,"Fraxinus pennsylvanica",16.0634231520103
-"R",1,2,"Fraxinus pennsylvanica",8.57443988054449
-"R",1,3,"Fraxinus pennsylvanica",25.1146344228194
+"R",1,1,"Fraxinus pennsylvanica",32.2626325397877
+"R",1,2,"Fraxinus pennsylvanica",18.1329560939356
+"R",1,3,"Fraxinus pennsylvanica",53.6252343707353
 "R",1,1,"Betula nigra",0
 "R",1,2,"Betula nigra",0
 "R",1,3,"Betula nigra",0
 "R",1,1,"Unknown",0
-"R",1,2,"Unknown",0.947999351022511
-"R",1,3,"Unknown",2.09476575683756
+"R",1,2,"Unknown",1.44812195806302
+"R",1,3,"Unknown",3.42617041114338
 "R",1,1,"Quercus bicolor",0
 "R",1,2,"Quercus bicolor",0
 "R",1,3,"Quercus bicolor",0
-"R",1,1,"Acer saccharinum",1.13036045280751
-"R",1,2,"Acer saccharinum",8.88487670224639
-"R",1,3,"Acer saccharinum",4.34556116085507
+"R",1,1,"Acer saccharinum",1.87871304666501
+"R",1,2,"Acer saccharinum",17.545109264741
+"R",1,3,"Acer saccharinum",8.51050422140077
 "R",1,1,"Carya illinoiensis",0
 "R",1,2,"Carya illinoiensis",0
 "R",1,3,"Carya illinoiensis",0
@@ -194,6 +194,6 @@
 "R",1,1,"Salix nigra",0
 "R",1,2,"Salix nigra",0
 "R",1,3,"Salix nigra",0
-"R",1,1,"Ulmus americana",0.809555640303755
-"R",1,2,"Ulmus americana",0.416548252967916
+"R",1,1,"Ulmus americana",1.18947015646427
+"R",1,2,"Ulmus americana",0.613968657020636
 "R",1,3,"Ulmus americana",0

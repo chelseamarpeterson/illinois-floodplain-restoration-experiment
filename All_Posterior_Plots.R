@@ -584,8 +584,9 @@ ggsave("Main_Figures/Figure6_Soil_Vegetation_Ecosystem_Cstocks_Richness.jpeg",
        plot=p.c.stocks, width=40, height=23, units="cm", dpi=1000)
 
 ################################################################################
-# summarize Frax penn results for Table B3
+# Appendix B.4: C stocks by species
 
+# Table B3: summarize Frax penn results for 
 live.frax.stock.df = stock.hdi.df.best[which(stock.hdi.df.best$variable == "snag.frax.live.carbon"),]
 dead.frax.stock.df = stock.hdi.df.best[which(stock.hdi.df.best$variable == "snag.frax.dead.carbon"),]
 
@@ -594,17 +595,6 @@ cbind(live.frax.stock.df[,"full.treatment.name"],
 
 cbind(dead.frax.stock.df[,"full.treatment.name"],
       signif(dead.frax.stock.df[,c("posterior.mean","X5","X95")],digits=3))
-
-################################################################################
-# print C stock results for comparing with IPCC values
-
-soc.stock.df = stock.hdi.df.best[which(stock.hdi.df.best$variable == "SOC"),]
-cbind(soc.stock.df[,"full.treatment.name"],
-      signif(soc.stock.df[,c("posterior.mean","X5","X95")]-88,digits=3))
-
-
-################################################################################
-# Appendix B.4: C stocks by species
 
 # Figure B10: plot C stocks by species for snags, coarse woody debris, live trees,
 # and herbaceous layer species
@@ -659,16 +649,16 @@ for (i in 1:n.t) { mean.df.all$full.treatment.name[mean.df.all$treatment == trt.
 # plot means for live trees
 uni.spp = unique(mean.df.all$species)
 p.species = ggplot(mean.df.all, 
-            aes(y=factor(full.treatment.name,levels=trt.names),
-                x=mean,
-                fill=forcats::fct_rev(species))) + 
-            geom_bar(stat="identity",
-                     position="stack") +
-            labs(x="Empirical plot-level mean C stock (Mg/ha)", 
-                 y="", fill="Species") +
-            facet_wrap(.~factor(pool, levels=pool.labels), 
-                       ncol=1, scales="free_x") + 
-            guides(fill = guide_legend(reverse = TRUE))
+                   aes(y=factor(full.treatment.name,levels=trt.names),
+                       x=mean,
+                       fill=forcats::fct_rev(species))) + 
+                   geom_bar(stat="identity",
+                            position="stack") +
+                   labs(x="Empirical plot-level mean C stock (Mg/ha)", 
+                        y="", fill="Species") +
+                   facet_wrap(.~factor(pool, levels=pool.labels), 
+                              ncol=1, scales="free_x") + 
+                   guides(fill = guide_legend(reverse = TRUE))
 ggsave("Manuscript/Supp_Figures/FigureB10_Woody_C_Stocks_By_Species.jpeg", 
        plot=p.species, width=14, height=16, units="cm", dpi=1200)
 

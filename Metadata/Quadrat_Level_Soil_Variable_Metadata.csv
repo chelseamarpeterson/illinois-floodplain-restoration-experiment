@@ -1,9 +1,9 @@
 variable,label,description,unit,method
-temperature,Temperature (C),soil temperature,celsius,in-situ digital probe measurement
+temperature,Temperature (C),surface soil temperature,celsius,in-situ digital probe measurement
 gravimetric.moisture,Gravitational moisture (%),soil gravitational moisture,mass percent (%; g water/g soil),mass difference between field moist and oven-dry soil after 24 hours at 105 degrees celsius divided by oven-dry soil mass without coarse material (>= 2 mm)
-volumetric.moisture,Volumetric moisture (g/cm3),soil volumetric moisture,g water/cm3 soil,mass difference between field moist and oven-dry soil after 24 hours at 105 degrees celsius divided by oven-dry soil mass without coarse material (>= 2 mm)
-bulk.density,Bulk density (g/cm3),soil bulk density,g soil/cm3 soil,mass of oven-dry soil after 24 hours at 105 degrees celsius minus coarse material  (>= 2 mm) mass divided by core volume minus coarse material  (>= 2 mm) volume
-root.fragment.density,Root and wood fragment density (g/cm3),coarse root and wood fragment density,g coarse roots and wood fragments/cm3 soil,oven-dry (48 h at 24 degrees C) coarse roots and wood fragments (>= 2 mm) mass divided by core volume minus coarse material  (>= 2 mm) volume
+volumetric.moisture,Volumetric moisture (g/cm3),soil volumetric moisture,g water/cm3 soil,mass difference between field moist and oven-dry soil after 24 hours at 105 degrees celsius divided by the steel core volume minus coarse material  (>= 2 mm) volume
+bulk.density,Bulk density (g/cm3),soil bulk density,g soil/cm3 soil,mass of oven-dry soil after 24 hours at 105 degrees celsius minus coarse material  (>= 2 mm) mass divided by steel core volume minus coarse material  (>= 2 mm) volume
+root.fragment.density,Root and wood fragment density (g/cm3),coarse root and wood fragment density,g coarse roots and wood fragments/cm3 soil,oven-dry (48 h at 24 degrees C) coarse roots and wood fragments (>= 2 mm) mass divided by steel core volume minus coarse material  (>= 2 mm) volume
 sand,Sand (%),sand percent,mass percent (%; g sand/g soil),hydrometer method
 silt,Silt (%),silt percent,mass percent (%; g silt/g soil),hydrometer method
 clay,Clay (%),clay percent,mass percent (%; g clay/g soil),hydrometer method
@@ -14,17 +14,17 @@ k,K (ppm),potassium concentration,parts per million (1 kg K/1000 m3 of soil solu
 ca,Ca (ppm),calcium concentration,parts per million (1 kg Ca/1000 m3 of soil solution),mehlich 3 extraction followed by concentration measurement with inductively coupled plasma spectrometer
 mg,Mg (ppm),magnesium concentration,parts per million (1 kg Mg/1000 m3 of soil solution),mehlich 3 extraction followed by concentration measurement with inductively coupled plasma spectrometer
 som.percent,SOM (%),soil organic matter concentration,mass percent (%; g organic matter/g soil),loss on ignition at 405 degrees celsis for 2.5 hours
-no3.n,NO3-N (ppm),nitrate-nitrogen concentration,parts per million (1 kg NO3-N/1000 m3 of soil solution),extraction with 2 molar potassium chlorid (KCl) solution followed by concentration measruement with a flow injection analyzer
-nh4.n,NH4-N (ppm),ammonium-nitrogen concentration,parts per million (1 kg NH4-N/1000 m3 of soil solution),extraction with 2 molar potassium chlorid (KCl) solution followed by concentration measruement with a flow injection analyzer
+no3.n,NO3-N (ppm),nitrate-nitrogen concentration,parts per million (1 kg NO3-N/1000 m3 of soil solution),extraction with 2 molar potassium chloride (KCl) solution followed by concentration measruement with a flow injection analyzer
+nh4.n,NH4-N (ppm),ammonium-nitrogen concentration,parts per million (1 kg NH4-N/1000 m3 of soil solution),extraction with 2 molar potassium chloride (KCl) solution followed by concentration measruement with a flow injection analyzer
 cec,CEC (meq/100 g),cation exchange capacity,milliequivalents per 100 grams,"calculated as sum of K, Ca, Mg, and H (meq/100 g)"
 k.meq,K (meq/100 g),contribution of potassium (K+) to base saturation,milliequivalents per 100 grams,meq K / 100 g = ppm  K / 390
 ca.meq,Ca (meq/100 g),contribution of calcium (Ca2+) to base saturation,milliequivalents per 100 grams,meq Ca / 100 g = ppm Ca / 200
 mg.meq,Mg (meq/100 g),contribution of magnesium (Mg2+) to base saturation,milliequivalents per 100 grams,meq Mg / 100 g = ppm Mg / 120
 h.meq,H (meq/100 g),contribution of hydrogen (H+) to base saturation,milliequivalents per 100 grams,meq H / 100 g = ppm H / 10.8
 tn.percent,TN (%),total nitrogen concentration,mass percent (%; g N/g soil),elemental analysis
-tc.percent,TC (%),total carbon concentration,mass percent (%; g C/g soil),elemental analysis; used maxium of C concentration of bulk soil and acid-fumigated soil to ensure non-negative TIC concentration and that TOC concentrations did not exceed TC concentrations
-toc.percent,SOC (%),total organic carbon concentration,mass percent (%; g organic carbon/g soil),elemental analysis after 8 hour acid-fumigation with hydrochloric(HCl) acid (100 cm3 of 10 molar solution)
-poc.percent,POC (%),concentration of coarse particulate organic carbon (>= 53 microns),mass percent (%; g particulate organic carbon [>=53 microns]/g soil),"size fractionation procedure in Ugarte et al. (2018) where 10 g samples were shaken in 10% sodium hexametaphosphate solution for 1 hour at 180 oscillations per minute, followed by ten 10-minute shakes with distilled water, transferring to new 53-micron mesh, oven-drying at 50 degrees C for 24 hours, and elemental analysis; raw C concentrations were multiplied by the particulate organic matter (>= 53 micron) mass out of the 10 g soil sample"
+tc.percent,TC (%),total carbon concentration,mass percent (%; g C/g soil),elemental analysis
+toc.percent,SOC (%),total organic carbon concentration,mass percent (%; g organic carbon/g soil),elemental analysis after 24-hour acid fumigation with hydrochloric (HCl) acid (100 cm3 of 10 molar solution)
+poc.percent,POC (%),concentration of coarse particulate organic carbon (>= 53 microns),mass percent (%; g particulate organic carbon [>=53 microns]/g soil),"size fractionation procedure in Ugarte et al. (2018) where 10 g samples were shaken in 10% sodium hexametaphosphate solution for 1 hour at 180 oscillations per minute, followed by ten 10-minute shakes with distilled water, transferring to new 53-micron mesh, oven-drying at 50 degrees C for 24 hours, and elemental analysis; raw C concentrations were multiplied by the particulate organic matter (>= 53 micron) mass percent of the 10 g soil subsample"
 elevation.mean,EV (m),average ground elevation with 1-m x 1-m quadrat,meters,estimated using zonal statistics based on LiDAR-derived digital elevation model
 vegetation.height.mean,HT (m),average vegetation height with 1-m x 1-m quadrat,meters,estimated using zonal statistics based on LiDAR-derived vegetation height raster
 fpom,Floating POM,mass of floating particulate organic matter,mass percent (%; g floating particulate organic matter/g soil),skimmed from water surface and oven-dried at 60 degrees celsius for 48 hours after wet sieving with 5 minutes of submersion in distilled water followed by automated sieving for 2 minutes (30 repititions/minutes)

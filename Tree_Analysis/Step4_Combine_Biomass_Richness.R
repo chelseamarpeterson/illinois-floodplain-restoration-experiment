@@ -26,7 +26,7 @@ for (i in 1:nrow(dim.df)) { dim.list[[dim.df[i,"Name"]]] = dim.df[i,"Value"] }
 # read in vegetation carbon stocks
 
 # read in woody biomass/debris and understory C stock data
-c.data = read.csv("Tree_Analysis/Clean_Data_By_Plot/All_Vegetation_C_Stocks_By_Plot.csv")
+c.data = read.csv("Tree_Analysis/Clean_Data_By_Plot/All_Vegetation_Carbon_Stocks_By_Plot.csv")
 soil.data = read.csv("Soil_Analysis/Clean_Data/Soil_Data_by_Quadrat_June2023.csv")
 soil.aves = soil.data %>%
             group_by(treatment, plot) %>% 
@@ -105,4 +105,4 @@ var.cols = colnames(c.sp.data)[4:39]
 c.sp.data = c.sp.data[,c(id.cols,var.cols)]
 
 # write data to file
-write.csv(c.sp.data, "Tree_Analysis/Clean_Data_By_Plot/Clean_Veg_Soil_C_Stocks_Richness_by_Plot.csv", row.names=F)
+write.csv(c.sp.data, "Tree_Analysis/Clean_Data_By_Plot/Vegetation_Soil_Carbon_Stocks_Richness_by_Plot.csv", row.names=F)

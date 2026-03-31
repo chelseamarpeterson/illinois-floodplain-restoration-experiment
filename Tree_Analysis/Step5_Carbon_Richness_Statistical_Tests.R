@@ -38,7 +38,7 @@ n.m = length(models)
 ## statistical analyses on live and dead C stock components by plot
 
 # read in biomass C stock estimates
-stock.richness.df = read.csv("Tree_Analysis/Clean_Data_By_Plot/Clean_Veg_Soil_C_Stocks_Richness_by_Plot.csv")
+stock.richness.df = read.csv("Tree_Analysis/Clean_Data_By_Plot/Vegetation_Soil_Carbon_Stocks_Richness_by_Plot.csv")
 
 # make simplified data lists
 all.lists = list()
@@ -55,8 +55,7 @@ for (i in 1:n.v) {
 # fit simple models
 seed = 3141; n.iter=20000; n.chain=20
 stock.model.list = list()
-#for (i in 1:n.v) {
-for (i in 23:23) {
+for (i in 1:n.v) {
   v.i = vars[i]
   stock.model.list[[v.i]] = list()
   for (j in 1:n.m) {
@@ -85,11 +84,10 @@ for (i in 23:23) {
 }
 
 # save Rhat statistic for each variable and model
-rhat.df = read.csv("Tree_Analysis/Posteriors/Carbon_Stocks_Richness_Rhat_Statistic.csv")
-#rhat.df = data.frame(matrix(nrow=0,ncol=7))
-#colnames(rhat.df) = c("variable","variable.label","model","model.label","treatment","full.treatment.name","Rhat")
-#for (i in 1:n.v) {
-for (i in 23:23) {
+#rhat.df = read.csv("Tree_Analysis/Posteriors/Carbon_Stocks_Richness_Rhat_Statistic.csv")
+rhat.df = data.frame(matrix(nrow=0,ncol=7))
+colnames(rhat.df) = c("variable","variable.label","model","model.label","treatment","full.treatment.name","Rhat")
+for (i in 1:n.v) {
   v.i = vars[i]
   for (j in 1:n.m) {
     m.j = models[j]
@@ -109,15 +107,14 @@ for (i in 23:23) {
 write.csv(rhat.df, "Tree_Analysis/Posteriors/Carbon_Stocks_Richness_Rhat_Statistic.csv", row.names=F)
 
 # compare models for each variale with WAIC and LOO
-comp.df = read.csv("Tree_Analysis/Posteriors/Carbon_Stocks_Richness_Model_Information_Criteria.csv")
+#comp.df = read.csv("Tree_Analysis/Posteriors/Carbon_Stocks_Richness_Model_Information_Criteria.csv")
 criteria = c("waic","loo")
 criteria.labels = c("WAIC","LOO")
 n.c = length(criteria)
-#comp.df = data.frame(matrix(nrow=0, ncol=13))
-#colnames(comp.df) = c("elpd_diff","se_diff","elpd","se_elpd","p","se_p","ic","se_ic",
-#                      "variable","variable.label","criterion","model","best.model")
-#for (i in 1:n.v) {
-for (i in 23:23) {
+comp.df = data.frame(matrix(nrow=0, ncol=13))
+colnames(comp.df) = c("elpd_diff","se_diff","elpd","se_elpd","p","se_p","ic","se_ic",
+                      "variable","variable.label","criterion","model","best.model")
+for (i in 1:n.v) {
   v.i = vars[i]
   for (j in 1:n.c) {
     m1 = stock.model.list[[v.i]][[models[1]]]
@@ -137,13 +134,12 @@ for (i in 23:23) {
 write.csv(comp.df, "Tree_Analysis/Posteriors/Carbon_Stocks_Richness_Model_Information_Criteria.csv", row.names=F)
 
 # get posterior intervals and write to file
-df.int = read.csv("Tree_Analysis/Posteriors/Carbon_Stocks_Richness_Means_Intervals_10Chains_NaturalScale.csv")
-#df.int = data.frame(matrix(nrow=0, ncol=12))
+#df.int = read.csv("Tree_Analysis/Posteriors/Carbon_Stocks_Richness_Means_Intervals_10Chains_NaturalScale.csv")
+df.int = data.frame(matrix(nrow=0, ncol=12))
 int.cols = c("model","model.label","variable","variable.label","variable.mean","treatment",
              "full.treatment.name","posterior.mean","5","95","25","75")
 colnames(df.int) = int.cols
-#for (i in 1:n.v) {
-for (i in 23:23) {
+for (i in 1:n.v) {
   v.i = vars[i]
   for (j in 1:n.m) {
     m.j = models[j]

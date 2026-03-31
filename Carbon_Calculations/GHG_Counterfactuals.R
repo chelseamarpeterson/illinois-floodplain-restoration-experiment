@@ -1,4 +1,4 @@
-path_to_repo= "C:/Users/Chels/OneDrive - University of Illinois - Urbana/Ch2_Floodplain_Experiment/floodplain-experiment-repo"
+path_to_repo= "C:/Users/Chels/OneDrive - University of Illinois - Urbana/Ch2_Floodplain_Experiment"
 setwd(path_to_repo)
 
 library(tidyverse)
@@ -17,7 +17,7 @@ ch4.molecular.mass = 16.043
 n2o.molecular.mass = 44.013
 
 # treatments
-trt.df = read.csv("Metadata/Treatment_Letters_Names.csv")
+trt.df = read.csv("floodplain-experiment-repo/Metadata/Treatment_Letters_Names.csv")
 trt.letters = trt.df[,"Treatment.letters"]
 trt.names = trt.df[,"Treatment.names"]
 n.t = nrow(trt.df)
@@ -25,53 +25,64 @@ n.t = nrow(trt.df)
 # read in ecosystem C stock estimates
 stats = c("posterior.mean","X5","X95","X25","X75")
 n.s = length(stats)
-stock.df = read.csv("Tree_Analysis/Posteriors/Carbon_Stocks_Richness_Means_Intervals_10Chains_NaturalScale.csv")
-ecoC.df = stock.df[stock.df$model == "strip.random" & stock.df$variable.label == "Total organic",
-                   c("full.treatment.name",stats)]
+stock.df = read.csv("floodplain-experiment-repo/Tree_Analysis/Posteriors/Carbon_Stocks_Richness_Means_Intervals_10Chains_NaturalScale.csv")
+ecoC.df = subset(stock.df, model == "strip.random" & variable.label == "Total organic")[c("full.treatment.name",stats)]
 
 ################################################################################
-# individual treatment estimates
+# Figures C1-C2: Individual treatment estimates
 
 # estimate c stock relative to baseline
 ecoC.accrual.df = ecoC.df
 ecoC.accrual.df[,stats] = (ecoC.accrual.df[,stats]-baseline.cstock)/years.since.restoration
 
 # estimate methane emissions necessary to offset co2 benefit
+# Mg C/ha * (Mg CO2/Mg C) * (1000 kg/Mg) (1 kg CH4 / 27 kg CO2) = kg CH4/ha/yr
 methane.offset.df = ecoC.accrual.df
-methane.offset.df[,stats] = ecoC.accrual.df[,stats]*(co2.molecular.mass/c.molecular.mass)/ch4.gwp100yr*1000
+methane.offset.df[,stats] = ecoC.accrual.df[,stats]*(co2.molecular.mass/c.molecular.mass)/ch4.gwp100yr*1000 
 methane.offset.df$molecule = "Methane"
 
 # estimate nitrous oxide emissions necessary to offset co2 benefit
+# Mg C/ha/yr * (Mg CO2/Mg C) * (1000 kg/Mg) (1 kg N2O / 273 kg CO2) = kg N2O/ha/yr
 nitrous.offset.df = ecoC.accrual.df
-nitrous.offset.df[,stats] = ecoC.accrual.df[,stats]*(co2.molecular.mass/c.molecular.mass)/n2o.gwp100yr*1000
+nitrous.offset.df[,stats] = ecoC.accrual.df[,stats]*(co2.molecular.mass/c.molecular.mass)/n2o.gwp100yr*1000 
 nitrous.offset.df$molecule = "Nitrous oxide"
 
 # combine methane and nitrous oxide dataframes
-ghg.offset.df = rbind(methane.offset.df,nitrous.offset.df)
+ghg.offset.df = rbind(methane.offset.df, nitrous.offset.df)
 
 # read in meta-analysis GHG emission estimates
-ghg.meta = read.csv("Carbon_Calculations/He_2024_Meta_Analysis_GHG_Estimates.csv")
-ghg.stats = c("Average","Standard.deviation")
+ghg.meta = read.csv("floodplain-experiment-repo/Carbon_Calculations/He_2024_Meta_Analysis_GHG_Estimates.csv")
 colnames(ghg.meta)[1:2] = c("Ecosystem change","molecule")
+ghg.meta$Lower = ghg.meta$Average - 1.645*ghg.meta$Standard.error
+ghg.meta$Upper = ghg.meta$Average + 1.645*ghg.meta$Standard.error
 
 # plot results
 p.ghg.offset = ggplot(ghg.offset.df) + 
                       geom_vline(data=ghg.meta[ghg.meta$Unit == "kg/ha/y",], 
                                  aes(xintercept=Average, 
                                      color=`Ecosystem change`,
-                                     linetype=`Ecosystem change`), linewidth=1) +
+                                     linetype=`Ecosystem change`), 
+                                 linewidth=1) + 
+                      geom_rect(data=ghg.meta[ghg.meta$Unit == "kg/ha/y",],
+                                aes(xmin = Lower, xmax = Upper, 
+                                    ymin = -Inf, ymax = Inf,
+                                    fill=`Ecosystem change`),
+                                    alpha = 0.15, inherit.aes = FALSE) +
                       geom_point(aes(y=factor(full.treatment.name, levels=trt.names),
-                                     x=posterior.mean), size=2.5) + 
+                                     x=posterior.mean), 
+                                 size=2.5) + 
                       geom_errorbar(aes(y=factor(full.treatment.name, levels=trt.names),
-                                        xmin=X25, xmax=X75), orientation="y", height=0.01, linewidth=1) +
+                                        xmin=X25, xmax=X75), 
+                                    orientation="y", height=0.01, linewidth=1) +
                       geom_errorbar(aes(y=factor(full.treatment.name, levels=trt.names),
-                                        xmin=X5, xmax=X95), orientation="y", width=0.2) +
+                                        xmin=X5, xmax=X95), 
+                                    orientation="y", width=0.2) +
                       facet_wrap(.~molecule, scales="free_x") +
-                      scale_x_continuous(labels = scales::comma) + #limits = function(X5, X95) c(min(X5), max(X95))) +
+                      scale_x_continuous(labels = scales::comma) + 
                       labs(y="",x="Annual emissions needed to offset carbon accrual (kg/ha/yr)")
 p.ghg.offset
-ggsave("Supp_Figures/FigureC1_Greenhouse_Gas_Offsets_By_GHG_and_Treament.jpeg", 
-       plot=p.ghg.offset, width=24, height=8, units="cm", dpi=600)
+ggsave("Manuscript/Supp_Figures/FigureC1_Greenhouse_Gas_Offsets_By_GHG_and_Treament.jpeg", 
+       plot=p.ghg.offset, width=24, height=8, units="cm", dpi=1200)
 
 # make lines for combined methane and nitrous oxide emissions
 n = 1000
@@ -114,11 +125,11 @@ p.ghg.abs = ggplot(ghg.offset.line.plot.df) +
                         x="Methane offset (kg/ha/yr)",
                         y="Nitrous oxide offset (kg/ha/yr)")
 p.ghg.abs
-ggsave("Supp_Figures/FigureC2_Combined_GHG_Thresholds_By_Treatment.jpeg", 
-       plot=p.ghg.abs, width=16, height=10, units="cm", dpi=600)
+ggsave("Manuscript/Supp_Figures/FigureC2_Combined_GHG_Thresholds_By_Treatment.jpeg", 
+       plot=p.ghg.abs, width=16, height=10, units="cm", dpi=1200)
 
 ################################################################################
-# pairwise treatment comparisons
+# Figures C3-C4: Pairwise treatment comparisons
 
 ## add methane offsets to matrix
 ch4.offsets = data.frame(matrix(nrow=n.t, ncol=n.t))
@@ -158,12 +169,13 @@ p.ch4 = ggplot(ch4.melt,
                    y=factor(row.trt,levels=rev(trt.names)), 
                    fill=offset*1000)) +
                geom_tile(color="white", lwd=0.5) + 
-               geom_text(aes(label=signif(offset*1000, 4)),
+               geom_text(aes(label=signif(offset*1000, 3)),
                          color="black", size=8) +
-               scale_fill_gradient(low = "white", high = "blue") +
+               scale_fill_gradient(low="white", high="blue") +
                coord_cartesian() +
                labs(x="", y="", fill="Methane offset\n(kg/ha/yr)") +
-               theme(text=element_text(size=12)) + 
+               theme(text=element_text(size=16),
+                     axis.text.x=element_text(angle=45, vjust=1, hjust=1)) + 
                geom_label(x=1, y=6, label="a",
                           color="black", fill=alpha("white",0),
                           label.r=unit(0,"pt"), label.size=0,
@@ -213,15 +225,17 @@ p.n2o = ggplot(n2o.melt,
                coord_cartesian() +
                scale_fill_gradient(low="white", high="darkorange") +
                labs(x="",y="",fill="Nitrous oxide\noffset (kg/ha/yr)") +
-               theme(text=element_text(size=12)) + 
+               theme(text=element_text(size=16),
+                     axis.text.x=element_text(angle=45, vjust=1, hjust=1),
+                     axis.text.y=element_blank()) +  
                geom_label(x=1,y=6,label="b",
                           color="black",fill=alpha("white",0),
                           label.r=unit(0,"pt"),label.size=0,
                           size=16,fontface="bold")
 p.n2o
-p.gdg.tiles = p.ch4 + p.n2o
-ggsave("Supp_Figures/FigureC3_Greenhouse_Gas_Offsets_Pairwise_Comparisons.jpeg", 
-       plot=p.gdg.tiles,, width=48, height=18, units="cm", dpi=600)
+p.gdg.tiles = p.ch4 + p.n2o + plot_layout(guides = "collect")
+ggsave("Manuscript/Supp_Figures/FigureC3_Greenhouse_Gas_Offsets_Pairwise_Comparisons.jpeg", 
+       plot=p.gdg.tiles, width=36, height=18, units="cm", dpi=1000)
 
 ## calculate slopes and intercepts for combined methane and nitrous oxide threshold needed to offset CO2 benefit
 line.df = data.frame(matrix(nrow=15,ncol=4))
@@ -288,6 +302,6 @@ p.line.n2o.ch4 = ggplot(line.plot.df,
                        scale_x_continuous(breaks=seq(0,1000,250),
                                           labels = scales::comma)
 p.line.n2o.ch4
-ggsave("Supp_Figures/FigureC4_Methane_Nitrous_Oxide_Threshold.jpeg", 
-       plot=p.line.n2o.ch4,width=20,height=11,units="cm",dpi=600)
+ggsave("Manuscript/Supp_Figures/FigureC4_Methane_Nitrous_Oxide_Threshold.jpeg", 
+       plot=p.line.n2o.ch4,width=20,height=11,units="cm",dpi=1000)
 

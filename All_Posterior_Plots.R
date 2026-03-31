@@ -1,4 +1,4 @@
-path_to_repo= "C:/Users/Chels/OneDrive - University of Illinois - Urbana/Ch2_Floodplain_Experiment/floodplain-experiment-repo"
+path_to_repo= "C:/Users/Chels/OneDrive - University of Illinois - Urbana/Ch2_Floodplain_Experiment"
 setwd(path_to_repo)
 
 library(ggplot2)
@@ -11,10 +11,10 @@ library(ggtext)
 library(scales)
 
 ################################################################################
-# load metadata
+# Metadata
 
 # treatments
-trt.df = read.csv("Metadata/Treatment_Letters_Names.csv")
+trt.df = read.csv("floodplain-experiment-repo/Metadata/Treatment_Letters_Names.csv")
 trt.letters = trt.df[,"Treatment.letters"]
 trt.names = trt.df[,"Treatment.names"]
 n.t = nrow(trt.df)
@@ -29,25 +29,25 @@ criteria = c("WAIC","LOO")
 n.c = length(criteria)
 
 # variable labels
-soil.rhat.df = read.csv("Soil_Analysis/Posteriors/Soil_Rhat_Statistic.csv")
+soil.rhat.df = read.csv("floodplain-experiment-repo/Soil_Analysis/Posteriors/Soil_Rhat_Statistic.csv")
 soil.vars = unique(soil.rhat.df$variable)
 soil.var.labs = unique(soil.rhat.df$variable.label)
 n.s.v = length(soil.vars)
 
 # stock and richness variables
-stock.rhat.df = read.csv("Tree_Analysis/Posteriors/Carbon_Stocks_Richness_Rhat_Statistic.csv")
+stock.rhat.df = read.csv("floodplain-experiment-repo/Tree_Analysis/Posteriors/Carbon_Stocks_Richness_Rhat_Statistic.csv")
 stock.vars = unique(stock.rhat.df$variable)
 stock.var.labs = unique(stock.rhat.df$variable.label)
 n.c.v = length(stock.vars)
 
 ################################################################################
-# evaluate model convergence (Figures B1-B3)
+# Appendix B.1: Convergence criteria (Figures B1-B3)
 
-# soil carbon variables: plot rhat's for each model and variable
+# Figure B1: Soil carbon variable R-hat statistics by model and variable
 soil.carbon.vars = c("tc.percent","tic.percent","toc.percent","maoc.percent","poc.percent",
                      "tc.stock","tic.stock","toc.stock","maoc.stock","poc.stock")
 soil.carbon.labs = 0
-for (i in 1:10) { soil.carbon.labs[i] = soil.rhat.df[soil.rhat.df$variable == soil.carbon.vars[i],"variable.label"][1] }
+for (i in 1:length(soil.carbon.vars)) { soil.carbon.labs[i] = soil.rhat.df[soil.rhat.df$variable == soil.carbon.vars[i],"variable.label"][1] }
 soil.carbon.rhat.df = soil.rhat.df[soil.rhat.df$variable %in% soil.carbon.vars,]
 p.soil.carbon.rhat.comp = ggplot(soil.carbon.rhat.df, 
                           aes(x=(Rhat-1)*100, 
@@ -67,10 +67,10 @@ p.soil.carbon.rhat.comp = ggplot(soil.carbon.rhat.df,
                           facet_wrap(.~factor(variable.label, levels=soil.carbon.labs), 
                                      ncol=2, dir="v")
 p.soil.carbon.rhat.comp
-ggsave("Supp_Figures/FigureB1_Soil_Carbon_Rhat_Score_Comparison.jpeg", 
-       plot=p.soil.carbon.rhat.comp, width=18, height=16, units="cm",dpi=600)
+ggsave("Manuscript/Supp_Figures/FigureB1_Soil_Carbon_Rhat_Score_Comparison.jpeg", 
+       plot=p.soil.carbon.rhat.comp, width=18, height=16, units="cm",dpi=1600)
 
-# non-carbon soil variables: plot rhat's for each model and variable
+# Figure B2: Non-carbon soil chemical and physical variable R-hat statistics by model and variable
 soil.noncarbon.vars = soil.vars[-which(soil.vars %in% soil.carbon.vars)]
 soil.noncarbon.labs = 0
 for (i in 1:length(soil.noncarbon.vars)) { soil.noncarbon.labs[i] = soil.rhat.df[soil.rhat.df$variable == soil.noncarbon.vars[i],"variable.label"][1] }
@@ -94,10 +94,10 @@ p.soil.noncarbon.rhat.comp = ggplot(soil.noncarbon.rhat.df,
                                                        limits=c(-0.01,1)) + 
                                     facet_wrap(.~factor(variable.label, levels=soil.noncarbon.labs), ncol=4)
 p.soil.noncarbon.rhat.comp
-ggsave("Supp_Figures/FigureB2_Non_Carbon_Soil_Rhat_Score_Comparison.jpeg", 
-       plot=p.soil.noncarbon.rhat.comp, width=26, height=24, units="cm",dpi=600)
+ggsave("Manuscript/Supp_Figures/FigureB2_Non_Carbon_Soil_Rhat_Score_Comparison.jpeg", 
+       plot=p.soil.noncarbon.rhat.comp, width=26, height=24, units="cm",dpi=1600)
 
-# carbon stocks: plot rhat's for each model and variable
+# Figure B3: Species richness and carbon stock R-hat statistics by model and variable
 stock.rhat.df$variable.label[stock.rhat.df$variable.label == "Both tree and herbaceous layer"] = "Both tree & herbaceous\nlayer richness"
 stock.rhat.df$variable.label[stock.rhat.df$variable.label == "Live F. pennsylvanica (>= 2.5 cm)"] = "Live F. pennsylvanica\n(>= 2.5 cm)"
 stock.rhat.df$variable.label[stock.rhat.df$variable.label == "Dead F. pennsylvanica (>= 2.5 cm)"] = "Dead F. pennsylvanica\n(>= 2.5 cm)"
@@ -116,63 +116,26 @@ p.stock.rhat.comp = ggplot(stock.rhat.df,
                            geom_vline(xintercept=0) +     
                            geom_point() + 
                            scale_shape_discrete(solid = F) +
-                           labs(y="",
-                                x="(R-hat statistic - 1)*100",
-                                color="Model",
-                                shape="Model") +
+                           labs(y="", x="(R-hat statistic - 1)*100",
+                                color="Model", shape="Model") +
                            geom_vline(xintercept=1) +
                            scale_x_continuous(breaks=seq(0,1,0.2),
                                               limits=c(-0.01,1)) + 
                            facet_wrap(.~factor(variable.label, levels=stock.var.labs), ncol=4)
 p.stock.rhat.comp
-ggsave("Supp_Figures/FigureB3_Carbon_Richness_Rhat_Score_Comparison.jpeg", 
-       plot=p.stock.rhat.comp, width=26, height=24, units="cm",dpi=600)
+ggsave("Manuscript/Supp_Figures/FigureB3_Carbon_Richness_Rhat_Score_Comparison.jpeg", 
+       plot=p.stock.rhat.comp, width=26, height=24, units="cm",dpi=1600)
 
 ################################################################################
-# count the number of variables for which each model type minimizes the loo v. waic (Tables B1 & B2)
+# Appendix B.2: Information criteria (Figures B4-B6)
 
 # read in soil data model comparison dataframe
-comp.df.soil = read.csv("Soil_Analysis/Posteriors/Soil_Model_Information_Criteria.csv")
-comp.df.stocks = read.csv("Tree_Analysis/Posteriors/Carbon_Stocks_Richness_Model_Information_Criteria.csv")
+comp.df.soil = read.csv("floodplain-experiment-repo/Soil_Analysis/Posteriors/Soil_Model_Information_Criteria.csv")
+comp.df.stocks = read.csv("floodplain-experiment-repo/Tree_Analysis/Posteriors/Carbon_Stocks_Richness_Model_Information_Criteria.csv")
 
-# soil
-soil.min.ic.count.df = data.frame(matrix(nrow=n.c, ncol=n.m))
-colnames(soil.min.ic.count.df) = model.labels
-row.names(soil.min.ic.count.df) = criteria
-for (i in 1:n.c) {
-  criterion.i = criteria[i]
-  soil.min.ic.count.df[i,] = 0
-  for (j in 1:n.s.v) {
-    var.j = soil.vars[j]
-    row.ij.ind = which(comp.df.soil$variable == var.j & comp.df.soil$criterion == criterion.i)
-    row.ij = comp.df.soil[row.ij.ind,]
-    min.ic.model = row.ij[which.min(row.ij$ic), "model.label"]
-    soil.min.ic.count.df[i,min.ic.model] = soil.min.ic.count.df[i,min.ic.model] + 1
-  }
-}
-
-# carbon stocks
-stock.min.ic.count.df = data.frame(matrix(nrow=n.c, ncol=2))
-colnames(stock.min.ic.count.df) = model.labels[1:2]
-row.names(stock.min.ic.count.df) = criteria
-for (i in 1:n.c) {
-  criterion.i = criteria[i]
-  stock.min.ic.count.df[i,] = 0
-  for (j in 1:n.c.v) {
-    var.j = stock.vars[j]
-    row.ij.ind = which(comp.df.stocks$variable == var.j & comp.df.stocks$criterion == criterion.i)
-    row.ij = comp.df.stocks[row.ij.ind,]
-    min.ic.model = row.ij[which.min(row.ij$ic), "model.label"]
-    stock.min.ic.count.df[i,min.ic.model] = stock.min.ic.count.df[i,min.ic.model] + 1
-  }
-}
-
-################################################################################
-# compare model information criteria (Figures B4-B6)
-
-# soil carbon properties: plot comparison of information criteria
+# Figure B4: Soil carbon variable information criteria by model and variable
 soil.carbon.labs = 0
-for (i in 1:10) { soil.carbon.labs[i] = comp.df.soil[comp.df.soil$variable == soil.carbon.vars[i],"variable.label"][1] }
+for (i in 1:length(soil.carbon.vars)) { soil.carbon.labs[i] = comp.df.soil[comp.df.soil$variable == soil.carbon.vars[i],"variable.label"][1] }
 comp.df.soil.carbon = comp.df.soil[comp.df.soil$variable %in% soil.carbon.vars,]
 p.carbon.soil.ic.score.comp = ggplot(comp.df.soil.carbon, 
                               aes(x=ic, y=factor(model.label, levels=model.labels), 
@@ -193,10 +156,10 @@ p.carbon.soil.ic.score.comp = ggplot(comp.df.soil.carbon,
                                    linetype="Information criterion",
                                    shape="Best model")
 p.carbon.soil.ic.score.comp
-ggsave("Supp_Figures/FigureB4_Soil_Carbon_IC_Score_Comparison.jpeg", 
-       plot=p.carbon.soil.ic.score.comp, width=20, height=18, units="cm",dpi=600)
+ggsave("Manuscript/Supp_Figures/FigureB4_Soil_Carbon_IC_Score_Comparison.jpeg", 
+       plot=p.carbon.soil.ic.score.comp, width=20, height=18, units="cm", dpi=1600)
 
-# soil non-carbon properties: plot comparison of information criteria
+# Figure B5: Non-carbon soil chemical and physical variable information criteria by model and variable
 soil.noncarbon.vars = soil.vars[-which(soil.vars %in% soil.carbon.vars)]
 soil.noncarbon.labs = 0
 for (i in 1:length(soil.noncarbon.vars)) { soil.noncarbon.labs[i] = comp.df.soil[comp.df.soil$variable == soil.noncarbon.vars[i],"variable.label"][1] }
@@ -220,10 +183,10 @@ p.noncarbon.soil.ic.score.comp = ggplot(comp.df.soil.noncarbon,
                                         labs(y="", x="Score",color="Information criterion",
                                              linetype="Information criterion",shape="Best model")
 p.noncarbon.soil.ic.score.comp
-ggsave("Supp_Figures/FigureB5_NonCarbon_Soil_IC_Score_Comparison.jpeg", 
-       plot=p.noncarbon.soil.ic.score.comp, width=32, height=30, units="cm",dpi=600)
+ggsave("Manuscript/Supp_Figures/FigureB5_NonCarbon_Soil_IC_Score_Comparison.jpeg", 
+       plot=p.noncarbon.soil.ic.score.comp, width=32, height=30, units="cm",dpi=1600)
 
-# soil: plot comparison of information criteria
+# Figure B6: Species richness and carbon stock information criteria by model and variable
 comp.df.stocks$variable.label[comp.df.stocks$variable.label == "Both tree and herbaceous layer"] = "Both tree & herbaceous\nlayer richness"
 comp.df.stocks$variable.label[comp.df.stocks$variable.label == "Live F. pennsylvanica (>= 2.5 cm)"] = "Live F. pennsylvanica\n(>= 2.5 cm)"
 comp.df.stocks$variable.label[comp.df.stocks$variable.label == "Dead F. pennsylvanica (>= 2.5 cm)"] = "Dead F. pennsylvanica\n(>= 2.5 cm)"
@@ -246,19 +209,19 @@ p.stock.ic.score.comp = ggplot(comp.df.stocks,
                                labs(y="", x="Score",color="Information criterion",
                                     linetype="Information criterion",shape="Best model")
 p.stock.ic.score.comp
-ggsave("Supp_Figures/FigureB6_Stock_Richness_IC_Score_Comparison.jpeg", 
-       plot=p.stock.ic.score.comp, width=32, height=30, units="cm",dpi=600)
+ggsave("Manuscript/Supp_Figures/FigureB6_Stock_Richness_IC_Score_Comparison.jpeg", 
+       plot=p.stock.ic.score.comp, width=32, height=30, units="cm",dpi=1600)
 
 ###############################################################################
-# plot HDIs for each model and variable (Figures B3 & B4)
+# Appendix B.3 Highest posterior density intervals (HPDIs) (Figures B7-B9)
 
 # read posterior distributions for soil properties, carbon stocks, and species richness
-soil.hdi.df = read.csv("Soil_Analysis/Posteriors/Soil_Posterior_Intervals_10Chains_NaturalScale.csv")
-stock.hdi.df = read.csv("Tree_Analysis/Posteriors/Carbon_Stocks_Richness_Means_Intervals_10Chains_NaturalScale.csv")
+soil.hdi.df = read.csv("floodplain-experiment-repo/Soil_Analysis/Posteriors/Soil_Posterior_Intervals_10Chains_NaturalScale.csv")
+stock.hdi.df = read.csv("floodplain-experiment-repo/Tree_Analysis/Posteriors/Carbon_Stocks_Richness_Means_Intervals_10Chains_NaturalScale.csv")
 
-# soil carbon: plot posterior HDIs for all soil variables and models
+# Figure B7: Soil carbon variable HPDIs by model and variable
 soil.carbon.labs = 0
-for (i in 1:10) { soil.carbon.labs[i] = soil.hdi.df[soil.hdi.df$variable == soil.carbon.vars[i],"variable.label"][1] }
+for (i in 1:length(soil.carbon.vars)) { soil.carbon.labs[i] = soil.hdi.df[soil.hdi.df$variable == soil.carbon.vars[i],"variable.label"][1] }
 hdi.df.soil.carbon = soil.hdi.df[soil.hdi.df$variable %in% soil.carbon.vars,]
 p.soil.carbon.hdi.comp = ggplot(hdi.df.soil.carbon, 
                          aes(y=factor(full.treatment.name, levels=trt.names),
@@ -280,10 +243,10 @@ p.soil.carbon.hdi.comp = ggplot(hdi.df.soil.carbon,
                                panel.spacing.x = unit(1,"lines")) + 
                          labs(y="", x="Posterior estimate", color="Model", shape="Model")
 p.soil.carbon.hdi.comp
-ggsave("Supp_Figures/FigureB7_Soil_Carbon_HDI_Comparison.jpeg", 
-       plot=p.soil.carbon.hdi.comp, width=22, height=20, units="cm",dpi=600)
+ggsave("Manuscript/Supp_Figures/FigureB7_Soil_Carbon_HDI_Comparison.jpeg", 
+       plot=p.soil.carbon.hdi.comp, width=22, height=20, units="cm",dpi=1600)
 
-# soil non-carbon: plot posterior HDIs for all soil variables and models
+# Figure B8: Non-carbon soil chemical and physical variable HPDIs by model and variable
 soil.noncarbon.vars = soil.vars[-which(soil.vars %in% soil.carbon.vars)]
 soil.noncarbon.labs = 0
 for (i in 1:length(soil.noncarbon.vars)) { soil.noncarbon.labs[i] = soil.hdi.df[soil.hdi.df$variable == soil.noncarbon.vars[i],"variable.label"][1] }
@@ -310,10 +273,10 @@ p.soil.noncarbon.hdi.comp = ggplot(hdi.df.soil.noncarbon,
                                          panel.spacing.x = unit(1,"lines")) + 
                                    labs(y="", x="Posterior estimate", color="Model", shape="Model")
 p.soil.noncarbon.hdi.comp
-ggsave("Supp_Figures/FigureB8_NonCarbon_Soil_HDI_Comparison.jpeg", 
-       plot=p.soil.noncarbon.hdi.comp, width=32, height=30, units="cm",dpi=600)
+ggsave("Manuscript/Supp_Figures/FigureB8_NonCarbon_Soil_HDI_Comparison.jpeg", 
+       plot=p.soil.noncarbon.hdi.comp, width=32, height=30, units="cm",dpi=1600)
 
-# stocks: plot posterior HDIs for all stock variables and models
+# Figure B9: Species richness and carbon stock HPDIs by model and variable
 stock.hdi.df$variable.label[stock.hdi.df$variable.label == "Both tree and herbaceous layer"] = "Both tree & herbaceous\nlayer richness"
 stock.hdi.df$variable.label[stock.hdi.df$variable.label == "Live F. pennsylvanica (>= 2.5 cm)"] = "Live F. pennsylvanica\n(>= 2.5 cm)"
 stock.hdi.df$variable.label[stock.hdi.df$variable.label == "Dead F. pennsylvanica (>= 2.5 cm)"] = "Dead F. pennsylvanica\n(>= 2.5 cm)"
@@ -338,8 +301,8 @@ p.stock.hdi.comp = ggplot(stock.hdi.df,
                           theme(text = element_text(size=12)) +
                           labs(y="", x="Posterior estimate", color="Model", shape="Model")
 p.stock.hdi.comp
-ggsave("Supp_Figures/FigureB9_Stock_Richness_HDI_Comparison.jpeg", 
-       plot=p.stock.hdi.comp, width=32, height=30, units="cm",dpi=600)
+ggsave("Manuscript/Supp_Figures/FigureB9_Stock_Richness_HDI_Comparison.jpeg", 
+       plot=p.stock.hdi.comp, width=32, height=30, units="cm",dpi=1600)
 
 ################################################################################
 # make combined plot for carbon concentrations and stocks (Figure 3)
@@ -641,7 +604,9 @@ cbind(soc.stock.df[,"full.treatment.name"],
 
 
 ################################################################################
-# plot C stocks by species for snags, coarse woody debris, live trees,
+# Appendix B.4: C stocks by species
+
+# Figure B10: plot C stocks by species for snags, coarse woody debris, live trees,
 # and herbaceous layer species
 
 # ecosystem carbon pools
@@ -653,7 +618,7 @@ n.pool = length(pools)
 
 ## read in data frames
 df.list = list()
-for (i in 1:n.pool) { df.list[[pools[i]]] = read.csv(paste("Tree_Analysis/",df.paths[i],sep="")) }
+for (i in 1:n.pool) { df.list[[pools[i]]] = read.csv(paste("floodplain-experiment-repo/Tree_Analysis/",df.paths[i],sep="")) }
 
 # make full species name column
 df.list[["live.tree.carbon"]] = unite(df.list[["live.tree.carbon"]], col='species', c('genus','species'), sep=' ')
@@ -704,12 +669,10 @@ p.species = ggplot(mean.df.all,
             facet_wrap(.~factor(pool, levels=pool.labels), 
                        ncol=1, scales="free_x") + 
             guides(fill = guide_legend(reverse = TRUE))
-ggsave("Supp_Figures/FigureB10_Woody_C_Stocks_By_Species.jpeg", 
-       plot=p.species, width=14, height=16, units="cm")
+ggsave("Manuscript/Supp_Figures/FigureB10_Woody_C_Stocks_By_Species.jpeg", 
+       plot=p.species, width=14, height=16, units="cm", dpi=1200)
 
-################################################################################
-# plot stacked means for herbaceous species groups
-
+# Figure B11: Stacked means for herbaceous species groups
 sp.groups = c("mixed.biomass.c.stock","h.japonicus.c.stock","p.arundinacea.c.stock")
 sp.labels = c("Mixed biomass","H. japonicus biomass","P. arundinacea biomass")
 herbaceous.biomass.c.stock.hdi.df = stock.hdi.df.best[stock.hdi.df.best$variable %in% sp.groups,]
@@ -723,5 +686,5 @@ p.herbC = ggplot(herbaceous.biomass.c.stock.hdi.df,
                fill="Species group") + 
           theme(text = element_text(size=12))
 p.herbC
-ggsave("Supp_Figures/FigureB11_Herbaceous_C_Stocks_By_Species.jpeg", 
-       plot=p.herbC, width=18, height=10, units="cm")
+ggsave("Manuscript/Supp_Figures/FigureB11_Herbaceous_C_Stocks_By_Species.jpeg", 
+       plot=p.herbC, width=18, height=10, units="cm", dpi=1200)

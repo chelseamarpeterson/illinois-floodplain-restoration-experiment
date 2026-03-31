@@ -1,4 +1,4 @@
-path_to_repo= "C:/Users/Chels/OneDrive - University of Illinois - Urbana/Ch2_Floodplain_Experiment/floodplain-experiment-repo"
+path_to_repo= "C:/Users/Chels/OneDrive - University of Illinois - Urbana/Ch2_Floodplain_Experiment"
 setwd(path_to_repo)
 
 library(reshape2)
@@ -24,7 +24,7 @@ ch4.molecular.mass = 16.043
 n2o.molecular.mass = 44.013
 
 # treatments
-trt.df = read.csv("Metadata/Treatment_Letters_Names.csv")
+trt.df = read.csv("floodplain-experiment-repo/Metadata/Treatment_Letters_Names.csv")
 trt.letters = trt.df[,"Treatment.letters"]
 trt.names = trt.df[,"Treatment.names"]
 n.t = nrow(trt.df)
@@ -34,20 +34,19 @@ stats = c("mean","lower","upper")
 n.s = length(stats)
 
 # social cost of carbon estimates 
-scc.df = read.csv("Carbon_Calculations/SCC_Estimates.csv")
+scc.df = read.csv("floodplain-experiment-repo/Carbon_Calculations/SCC_Estimates.csv")
 colnames(scc.df) = c("stat","per.CO2","per.CO2.C")
 scc.df$stat = stats
 rownames(scc.df) = stats
 
 # establishment costs
-est.df = read.csv("Carbon_Calculations/Treatment_Establishment_Costs.csv")
+est.df = read.csv("floodplain-experiment-repo/Carbon_Calculations/Treatment_Establishment_Costs.csv")
 colnames(est.df) = c("trt","cost.2019","cost.2023")
 est.df$cost.2023 = as.numeric(est.df$cost.2023)
 
 # ecosystem carbon estimates
-stock.df = read.csv("Tree_Analysis/Posteriors/Carbon_Stocks_Richness_Means_Intervals_10Chains_NaturalScale.csv")
-ecoC.df.total = stock.df[stock.df$model == "strip.random" & stock.df$variable == "total.organic.carbon",
-                   c("full.treatment.name","posterior.mean","X5","X95")]
+stock.df = read.csv("floodplain-experiment-repo/Tree_Analysis/Posteriors/Carbon_Stocks_Richness_Means_Intervals_10Chains_NaturalScale.csv")
+ecoC.df.total = subset(stock.df, model == "strip.random" & variable == "total.organic.carbon")[,c("full.treatment.name","posterior.mean","X5","X95")]
 
 colnames(ecoC.df.total) = c("trt",stats)
 ecoC.df.total[,stats] = ecoC.df.total[,stats] - baseline.cstock
@@ -57,7 +56,7 @@ ecoC.df.annual = ecoC.df.total
 ecoC.df.annual[,stats] = ecoC.df.annual[,stats]/years.since.restoration
 
 # read in meta-analysis GHG emission estimates
-ghg.meta = read.csv("Carbon_Calculations/He_2024_Meta_Analysis_GHG_Estimates.csv")
+ghg.meta = read.csv("floodplain-experiment-repo/Carbon_Calculations/He_2024_Meta_Analysis_GHG_Estimates.csv")
 ghg.meta = subset(ghg.meta, Unit == "kg/ha/y")
 colnames(ghg.meta) = c("Ecosystem change","molecule","mean","se","unit")
 ghg.meta$lower = ghg.meta$mean - 1.645*ghg.meta$se
@@ -123,7 +122,7 @@ signif(subset(ecoC.df.total.melt, stat=="lower")[,"breakeven.scc"],3)
 signif(subset(ecoC.df.total.melt, stat=="upper")[,"breakeven.scc"],3)
 
 ################################################################################
-# plot species richness v. social benefit of carbon 
+# Figure C5: Plot species richness v. social benefit of carbon 
 
 # get species richness estimates
 n.df = stock.df[stock.df$model == "strip.random" & stock.df$variable == "n.total",
@@ -165,7 +164,6 @@ p1 = ggplot(data=stock.richness.df) +
             labs(x="Total organic carbon stock\nbeyond row-crop basline (Mg/ha)",
                  y="Total species richness") +
             theme(text=element_text(size=12))
-#p1
 carbon.benefit.df = pivot_wider(ecoC.n.df.join[,c("trt","stat","carbon.benefit")],
                                 names_from = "stat", values_from = "carbon.benefit")
 colnames(carbon.benefit.df)[2:4] = paste("carbon.benefit", stats, sep=".")
@@ -187,11 +185,10 @@ p2 = ggplot(data=carbon.benefit.richness.df) +
             guides(color="none") + 
             scale_y_continuous(breaks=seq(0,30,by=10),limits=c(0,30)) +
             scale_x_continuous(breaks=seq(-0,400,by=100),limits=c(-10,410)) +
-            labs(x="Total carbon benefit ($1,000/ha)",
+            labs(x="Total social carbon benefit ($1,000/ha)",
                  y="") +
             theme(axis.text.y=element_blank(),
                   text=element_text(size=12))
-#p2
 net.benefit.df = pivot_wider(ecoC.n.df.join[,c("trt","stat","net.benefit")],
                                 names_from = "stat", values_from = "net.benefit")
 colnames(net.benefit.df)[2:4] = paste("net.benefit", stats, sep=".")
@@ -217,7 +214,6 @@ p3 = ggplot(data=net.benefit.richness.df) +
             labs(x="Relative economic benefit ($1,000/ha)",
                  y="Total species richness") +
             theme(text=element_text(size=12))
-#p3
 breakeven.df = pivot_wider(ecoC.n.df.join[,c("trt","stat","breakeven.scc")],
                              names_from = "stat", values_from = "breakeven.scc")
 colnames(breakeven.df)[2:4] = paste("breakeven", stats, sep=".")
@@ -246,11 +242,10 @@ p4 = ggplot(data=breakeven.richness.df) +
                  y="",color="Treatment") +
             theme(axis.text.y=element_blank(),
                   text=element_text(size=12))
-#p4
 p.all = (p1 + p2)/(p3 + p4) + plot_layout(guides = "collect")
 p.all
-ggsave("Supp_Figures/FigureC5_Social_Cost_Carbon.jpeg", 
-       plot=p.all,width=24,height=18,units="cm",dpi=600)
+ggsave("Manuscript/Supp_Figures/FigureC5_Social_Cost_Carbon.jpeg", 
+       plot=p.all,width=24,height=18,units="cm",dpi=1200)
 
 ################################################################################
 # plot social cost of carbon as a function of GHG emissions
@@ -323,11 +318,11 @@ p.scc.nitrous = ggplot(nitrous.line.df) +
 p.scc.nitrous
 p.scc.ghgs = p.scc.methane + p.scc.nitrous + plot_layout(guides = "collect")
 p.scc.ghgs
-ggsave("Supp_Figures/FigureC6_Social_Cost_Carbon_Versus_GHGs.jpeg", 
-       plot=p.scc.ghgs, width=24, height=9, units="cm", dpi=600)
+ggsave("Manuscript/Supp_Figures/FigureC6_Social_Cost_Carbon_Versus_GHGs.jpeg", 
+       plot=p.scc.ghgs, width=24, height=9, units="cm", dpi=1200)
 
 ################################################################################
-# 3D plot
+# Fugre C7: 3D plot
 
 library(plotly)
 library(pracma)

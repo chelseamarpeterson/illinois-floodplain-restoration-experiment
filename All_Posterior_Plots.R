@@ -308,11 +308,20 @@ ggsave("Manuscript/Supp_Figures/FigureB9_Stock_Richness_HDI_Comparison.jpeg",
 # make combined plot for carbon concentrations and stocks (Figure 3)
 
 # IPCC estimates
-ipcc.df = read.csv("Carbon_Calculations/IPCC_Carbon_Estimates.csv")
+ipcc.df = read.csv("floodplain-experiment-repo/Carbon_Calculations/IPCC_Carbon_Estimates.csv")
 
 # isolate soil data for best model
 soil.hdi.df.best = soil.hdi.df[which(soil.hdi.df$model == "strip.plot.random"),]
 stock.hdi.df.best = stock.hdi.df[which(stock.hdi.df$model == "strip.random"),]
+signif(subset(soil.hdi.df.best, variable == "poc.percent")[1:5,"posterior.mean"] - subset(soil.hdi.df.best, variable == "poc.percent")[6,"posterior.mean"],1)
+range(signif((subset(soil.hdi.df.best, variable == "poc.percent")[1:5,"posterior.mean"] - subset(soil.hdi.df.best, variable == "poc.percent")[6,"posterior.mean"])/subset(soil.hdi.df.best, variable == "poc.percent")[6,"posterior.mean"]*100,3))
+signif(subset(soil.hdi.df.best, variable == "poc.stock")[1:5,"posterior.mean"] - subset(soil.hdi.df.best, variable == "poc.stock")[6,"posterior.mean"],2)
+range(signif((subset(soil.hdi.df.best, variable == "poc.stock")[1:5,"posterior.mean"] - subset(soil.hdi.df.best, variable == "poc.stock")[6,"posterior.mean"])/subset(soil.hdi.df.best, variable == "poc.stock")[6,"posterior.mean"]*100,3))
+signif(subset(soil.hdi.df.best, variable == "maoc.percent")[1:5,"posterior.mean"] - subset(soil.hdi.df.best, variable == "maoc.percent")[6,"posterior.mean"],1)
+range(signif((subset(soil.hdi.df.best, variable == "maoc.percent")[1:5,"posterior.mean"] - subset(soil.hdi.df.best, variable == "maoc.percent")[6,"posterior.mean"])/subset(soil.hdi.df.best, variable == "maoc.percent")[6,"posterior.mean"]*100,3))
+signif(subset(soil.hdi.df.best, variable == "maoc.stock")[1:5,"posterior.mean"] - subset(soil.hdi.df.best, variable == "maoc.stock")[6,"posterior.mean"],2)
+range(signif((subset(soil.hdi.df.best, variable == "maoc.stock")[1:5,"posterior.mean"] - subset(soil.hdi.df.best, variable == "maoc.stock")[6,"posterior.mean"])/subset(soil.hdi.df.best, variable == "maoc.stock")[6,"posterior.mean"]*100,3))
+
 
 # Georgiu MAOC estimate
 #soc.df = data.frame(matrix(nrow=1,ncol=2))
@@ -378,7 +387,7 @@ p.c.stocks
 p.c.all = p.c.concentrations + p.c.stocks
 p.c.all =  p.c.all + theme(plot.margin = margin(0,0,0,0, "cm"))
 p.c.all
-ggsave("Main_Figures/Figure3_Soil_Carbon_Concentrations_and_Stocks.jpeg", 
+ggsave("Manuscript/Main_Figures/Figure3_Soil_Carbon_Concentrations_and_Stocks.jpeg", 
        plot=p.c.all, width=30, height=12, units="cm",dpi=600)
 
 ################################################################################
@@ -421,7 +430,7 @@ p.chem.phys = ggplot(df.plot,
                      labs(y="",x="Posterior estimate") + 
                      scale_x_continuous(breaks=breaks_extended(n=4))
 p.chem.phys
-ggsave("Main_Figures/Figure4_All_Except_CEC_MWD.jpeg", 
+ggsave("Manuscript/Main_Figures/Figure4_All_Except_CEC_MWD.jpeg", 
        plot=p.chem.phys,width=24,height=24,units="cm",dpi=600)
 
 ################################################################################
@@ -580,7 +589,7 @@ p.r
 # combine all plots
 p.c.stocks = (p.l+theme(plot.margin=unit(c(0,0,0,0),"pt"))+p.d)/(p.e+theme(plot.margin=unit(c(0,16,0,0),"pt"))+p.r)
 p.c.stocks
-ggsave("Main_Figures/Figure6_Soil_Vegetation_Ecosystem_Cstocks_Richness.jpeg", 
+ggsave("Manuscript/Main_Figures/Figure6_Soil_Vegetation_Ecosystem_Cstocks_Richness.jpeg", 
        plot=p.c.stocks, width=40, height=23, units="cm", dpi=1000)
 
 ################################################################################

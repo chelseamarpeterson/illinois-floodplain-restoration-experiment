@@ -78,7 +78,7 @@ treatment.sort = sort(fwd.counts$treatment, index.return=T)
 fwd.counts = fwd.counts[treatment.sort$ix,]
 
 # estimate FWD volume (m^3/ha) and C storage (Mg/ha)
-wd.vol.coef = (1/dim.list[["plot.length.ft"]]) * (dim.list[["C1"]]*(pi^2)/8)
+wd.vol.coef = (1/dim.list[["plot.length.ft"]]) * (dim.list[["C1"]] * (pi^2) / 8)
 fwd.counts$fwd.volume = wd.vol.coef * fwd.counts$fwd.count * ((dim.list[["median.int.fwd.diameter.cm"]] / dim.list[["cm.per.in"]])^2) #m3/ha
 fwd.counts$intermediate.fwd.carbon = fwd.counts$fwd.volume * dim.list[["cwd.wood.density"]] * dim.list[["fwd.C.content"]]  # m3/ha * g/cm3 * g/g = Mg/ha
 
@@ -111,7 +111,7 @@ for (i in 1:nrow(cwd.diams)) {
 }
 
 # estimate CWD volume (m^3/ha) and carbon storage (Mg/ha)
-cwd.diams$cwd.volume = wd.vol.coef * (cwd.diams$diameter/dim.list[["cm.per.in"]])^2 # m3/ha
+cwd.diams$cwd.volume = wd.vol.coef * (cwd.diams$diameter / dim.list[["cm.per.in"]])^2 # m3/ha
 cwd.diams$total.cwd.carbon = cwd.diams$cwd.volume * dim.list[["cwd.wood.density"]] * cwd.diams$taxon.c.content  # Mg/ha
 
 # sum carbon stocks (Mg/ha) by plot
@@ -215,8 +215,8 @@ snag.diams = snag.diams %>% separate(species, c("genus","spp"), sep=" ", remove=
 # calculate snag volume (m3/ha)
 snag.diams$dbh.cm = as.numeric(snag.diams$dbh.cm) # cm
 snag.diams$basal.area = (pi * (snag.diams$dbh.cm/2)^2) / dim.list[["plot.area.m2"]] #m2/ha = cm2/m2
-snag.diams$height.m = dim.list[["snag.height.m.intercept"]] + dim.list[["snag.height.m.cm.slope"]] * snag.diams$dbh.cm
-snag.diams$volume.min = snag.diams$basal.area * snag.diams$height.m #m3/ha
+snag.diams$height = dim.list[["snag.height.m.intercept"]] + dim.list[["snag.height.m.cm.slope"]] * snag.diams$dbh.cm
+snag.diams$volume = snag.diams$basal.area * snag.diams$height #m3/ha
 
 # calculate snag C storage
 standing.dead.stem.c.df = subset(dead.stem.c.df, position == "standing")
@@ -269,8 +269,9 @@ snag.sum = snag.sum[treatment.sort$ix,]
 snag.counts = subset(snag.data, dbh.cm == "<2.5")
 snag.counts = snag.counts[,-which(colnames(snag.counts) %in% c("redo","live","dbh.cm","notes"))]
 snag.counts$dead.stem.count = snag.counts$stem.count / dim.list[["plot.area.ha"]] # count/ha
-snag.counts$height.ft = dim.list[["snag.height.m.intercept"]] + dim.list[["snag.height.m.cm.slope"]] * dim.list[["median.stem.diameter.cm"]]
-snag.counts$dead.stem.volume = snag.counts$dead.stem.count * pi * ((dim.list[["median.stem.diameter.cm"]] / dim.list[["cm.per.m"]])^2) * (snag.counts$height.ft / dim.list[["ft.per.m"]]) # m3/ha
+snag.counts$height = dim.list[["snag.height.m.intercept"]] + dim.list[["snag.height.m.cm.slope"]] * dim.list[["median.stem.diameter.cm"]] #m
+snag.counts$basal.area = pi * ((dim.list[["median.stem.diameter.cm"]] / dim.list[["cm.per.m"]])^2) #m2
+snag.counts$dead.stem.volume = snag.counts$dead.stem.count * snag.counts$basal.area * snag.counts$height # m3/ha
 
 # calculate dead stem C storage
 snag.counts = snag.counts %>% separate(species, c("genus","spp"), sep = " ", remove=F)

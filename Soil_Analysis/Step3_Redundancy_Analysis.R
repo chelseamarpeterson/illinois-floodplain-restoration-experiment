@@ -7,6 +7,7 @@ library(ggrepel)
 library(tidyr)
 library(dplyr)
 library(vegan)
+library(corrplot)
 
 ### script that implements redundancy analysis on subset of independent variables
 ### to explain variation in SOC, POC, MAOC, and the POC:MAOC ratio
@@ -115,23 +116,16 @@ var.sort1 = sort(df3[,"RDA1"], decreasing=T, index.return=T)
 df3[var.sort1$ix, c("RDA1","rows")]
 
 var.sort2 = sort(df3[,"RDA2"], decreasing=T, index.return=T)
-df3[var.sort2$ix, c("RDA2","rows")]
-
-# compute Pearsons r^2 to confirm inference about correlations
-# among SOC, MAOC, POC, and POC:MAOC ratio
-cor(df.scale$SOC, df.scale$MAOC, method = "pearson")
-cor(df.scale$SOC, df.scale$POC, method = "pearson")
-cor(df.scale$SOC, df.scale$POC_MAOC, method = "pearson")
+df3[var.sort2$ix, c("RDA2","rows")
 
 
-cor(df.scale$HJB, df.scale$POC, method = "pearson")
-cor(df.scale$HL, df.scale$POC, method = "pearson")
-cor(df.scale$HT, df.scale$POC, method = "pearson")
-cor(df.scale$FWD, df.scale$POC, method = "pearson")
+## make correlation matrix
 
-cor(df.scale$HJB, df.scale$POC_MAOC, method = "pearson")
-cor(df.scale$HL, df.scale$POC_MAOC, method = "pearson")
-cor(df.scale$HT, df.scale$POC_MAOC, method = "pearson")
-cor(df.scale$FWD, df.scale$POC_MAOC, method = "pearson")
-cor(df.scale$FWD, df.scale$CN, method = "pearson")
-cor(df.scale$CN, df.scale$POC_MAOC, method = "pearson")
+# Generate sample data and correlation matrix
+corr_matrix <- cor(df.scale)
+
+# Create the plot
+corrplot(corr_matrix, 
+         method = "circle", 
+         type = "upper", 
+         tl.col = "black")

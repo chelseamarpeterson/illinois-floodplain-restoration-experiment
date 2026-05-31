@@ -19,7 +19,7 @@ co2.molecular.mass = 44.009
 c.molecular.mass = 12.011
 n.molecular.mass = 14.007
 years.since.restoration = 25
-baseline.cstock = 55.9
+baseline.cstock = data.frame(mean=55.9, lower=39.1, upper=75.6)
 ch4.molecular.mass = 16.043
 n2o.molecular.mass = 44.013
 
@@ -47,13 +47,16 @@ est.df$cost.2023 = as.numeric(est.df$cost.2023)
 # ecosystem carbon estimates
 stock.df = read.csv("floodplain-experiment-repo/Tree_Analysis/Posteriors/Carbon_Stocks_Richness_Means_Intervals_10Chains_NaturalScale.csv")
 ecoC.df.total = subset(stock.df, model == "strip.random" & variable == "total.organic.carbon")[,c("full.treatment.name","posterior.mean","X5","X95")]
-
 colnames(ecoC.df.total) = c("trt",stats)
-ecoC.df.total[,stats] = ecoC.df.total[,stats] - baseline.cstock
+cbind(ecoC.df.total[1:6,"trt"],signif(ecoC.df.total[1:6,stats],3))
+
+for (i in 1:n.s) { ecoC.df.total[,stats[i]] = ecoC.df.total[,stats[i]] - baseline.cstock[,stats[i]] }
+cbind(ecoC.df.total[1:6,"trt"],signif(ecoC.df.total[1:6,stats],3))
 
 # annual accumulation rates
 ecoC.df.annual = ecoC.df.total
 ecoC.df.annual[,stats] = ecoC.df.annual[,stats]/years.since.restoration
+cbind(ecoC.df.annual[1:6,"trt"],signif(ecoC.df.annual[1:6,stats],3))
 
 # read in meta-analysis GHG emission estimates
 ghg.meta = read.csv("floodplain-experiment-repo/Carbon_Calculations/He_2024_Meta_Analysis_GHG_Estimates.csv")
@@ -84,9 +87,9 @@ for (i in 1:n.s) {
   stat.id = which(ecoC.df.total.melt$stat == stat.i)
   ecoC.df.total.melt[stat.id,"carbon.benefit"] = (ecoC.df.total.melt[stat.id,"stock"]/c.molecular.mass*co2.molecular.mass - ch4.gwp100yr*tot.crop.ch4[1,stat.i] - n2o.gwp100yr*tot.crop.n2o[1,stat.i]) * scc.df[stat.i,"per.CO2"]
 }
-signif(subset(ecoC.df.total.melt, stat=="mean")[,"carbon.benefit"]/1000,3)
-signif(subset(ecoC.df.total.melt, stat=="lower")[,"carbon.benefit"]/1000,3)
-signif(subset(ecoC.df.total.melt, stat=="upper")[,"carbon.benefit"]/1000,3)
+cbind(subset(ecoC.df.total.melt, stat=="mean")[1:6,"trt"], signif(subset(ecoC.df.total.melt, stat=="mean")[1:6,"carbon.benefit"]/1000,3))
+cbind(subset(ecoC.df.total.melt, stat=="lower")[1:6,"trt"], signif(subset(ecoC.df.total.melt, stat=="lower")[1:6,"carbon.benefit"]/1000,3))
+cbind(subset(ecoC.df.total.melt, stat=="upper")[1:6,"trt"], signif(subset(ecoC.df.total.melt, stat=="upper")[1:6,"carbon.benefit"]/1000,3))
 
 ecoC.df.annual.melt$carbon.benefit = 0
 ann.crop.ch4 = subset(ghg.meta, `Ecosystem change` == "Cropland to wetland" & molecule == "Methane")[1,stats]/1000 # (kg/ha/y)*(1 Mg/1000 kg) = Mg CH4/ha/y
@@ -96,9 +99,9 @@ for (i in 1:n.s) {
   stat.id = which(ecoC.df.annual.melt$stat == stat.i)
   ecoC.df.annual.melt[stat.id,"carbon.benefit"] = (ecoC.df.annual.melt[stat.id,"rate"]/c.molecular.mass*co2.molecular.mass - ch4.gwp100yr*ann.crop.ch4[1,stat.i] - n2o.gwp100yr*ann.crop.n2o[1,stat.i]) * scc.df[stat.i,"per.CO2"]
 }
-signif(subset(ecoC.df.annual.melt, stat=="mean")[,"carbon.benefit"],3)
-signif(subset(ecoC.df.annual.melt, stat=="lower")[,"carbon.benefit"],3)
-signif(subset(ecoC.df.annual.melt, stat=="upper")[,"carbon.benefit"],3)
+cbind(subset(ecoC.df.annual.melt, stat=="mean")[1:6,"trt"], signif(subset(ecoC.df.annual.melt, stat=="mean")[1:6,"carbon.benefit"],3))
+cbind(subset(ecoC.df.annual.melt, stat=="lower")[1:6,"trt"],signif(subset(ecoC.df.annual.melt, stat=="lower")[1:6,"carbon.benefit"],3))
+cbind(subset(ecoC.df.annual.melt, stat=="upper")[1:6,"trt"],signif(subset(ecoC.df.annual.melt, stat=="upper")[1:6,"carbon.benefit"],3))
 
 # estimate net benefit of each treatment by subtracting the establishment cost
 ecoC.df.total.melt$net.benefit = 0
@@ -117,9 +120,13 @@ for (i in 1:n.t) {
     }
   }
 }
-signif(subset(ecoC.df.total.melt, stat=="mean")[,"breakeven.scc"],3)
-signif(subset(ecoC.df.total.melt, stat=="lower")[,"breakeven.scc"],3)
-signif(subset(ecoC.df.total.melt, stat=="upper")[,"breakeven.scc"],3)
+cbind(subset(ecoC.df.total.melt, stat=="mean")[1:6,"trt"], signif(subset(ecoC.df.total.melt, stat=="mean")[1:6,"net.benefit"]/1000,3))
+cbind(subset(ecoC.df.total.melt, stat=="lower")[1:6,"trt"],signif(subset(ecoC.df.total.melt, stat=="lower")[1:6,"net.benefit"]/1000,3))
+cbind(subset(ecoC.df.total.melt, stat=="upper")[1:6,"trt"],signif(subset(ecoC.df.total.melt, stat=="upper")[1:6,"net.benefit"]/1000,3))
+
+cbind(subset(ecoC.df.total.melt, stat=="mean")[1:6,"trt"], signif(subset(ecoC.df.total.melt, stat=="mean")[1:6,"breakeven.scc"],3))
+cbind(subset(ecoC.df.total.melt, stat=="lower")[1:6,"trt"],signif(subset(ecoC.df.total.melt, stat=="lower")[1:6,"breakeven.scc"],3))
+cbind(subset(ecoC.df.total.melt, stat=="upper")[1:6,"trt"],signif(subset(ecoC.df.total.melt, stat=="upper")[1:6,"breakeven.scc"],3))
 
 ################################################################################
 # Figure C5: Plot species richness v. social benefit of carbon 

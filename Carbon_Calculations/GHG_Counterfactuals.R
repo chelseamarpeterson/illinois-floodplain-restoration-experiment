@@ -12,7 +12,7 @@ co2.molecular.mass = 44.009
 c.molecular.mass = 12.011
 n.molecular.mass = 14.007
 years.since.restoration = 25
-baseline.cstock = 55.9
+baseline.cstock = data.frame(mean=55.9, lower=39.1, upper=75.6)
 ch4.molecular.mass = 16.043
 n2o.molecular.mass = 44.013
 
@@ -23,17 +23,20 @@ trt.names = trt.df[,"Treatment.names"]
 n.t = nrow(trt.df)
 
 # read in ecosystem C stock estimates
-stats = c("posterior.mean","X5","X95","X25","X75")
+stats = c("mean","lower","upper")
 n.s = length(stats)
 stock.df = read.csv("floodplain-experiment-repo/Tree_Analysis/Posteriors/Carbon_Stocks_Richness_Means_Intervals_10Chains_NaturalScale.csv")
-ecoC.df = subset(stock.df, model == "strip.random" & variable.label == "Total organic")[c("full.treatment.name",stats)]
+ecoC.df = subset(stock.df, model == "strip.random" & variable.label == "Total organic")[,c("full.treatment.name","posterior.mean","X5","X95")]
 
 ################################################################################
 # Figures C1-C2: Individual treatment estimates
 
 # estimate c stock relative to baseline
+colnames(ecoC.df) = c("trt",stats)
 ecoC.accrual.df = ecoC.df
-ecoC.accrual.df[,stats] = (ecoC.accrual.df[,stats]-baseline.cstock)/years.since.restoration
+for (i in 1:n.s) {
+  ecoC.accrual.df[,stats[i]] = (ecoC.accrual.df[,stats[i]]-baseline.cstock[,stats[i]])/years.since.restoration
+}
 
 # estimate methane emissions necessary to offset co2 benefit
 # Mg C/ha * (Mg CO2/Mg C) * (1000 kg/Mg) (1 kg CH4 / 27 kg CO2) = kg CH4/ha/yr
@@ -68,15 +71,12 @@ p.ghg.offset = ggplot(ghg.offset.df) +
                                     ymin = -Inf, ymax = Inf,
                                     fill=`Ecosystem change`),
                                     alpha = 0.15, inherit.aes = FALSE) +
-                      geom_point(aes(y=factor(full.treatment.name, levels=trt.names),
-                                     x=posterior.mean), 
-                                 size=2.5) + 
-                      geom_errorbar(aes(y=factor(full.treatment.name, levels=trt.names),
-                                        xmin=X25, xmax=X75), 
-                                    orientation="y", height=0.01, linewidth=1) +
-                      geom_errorbar(aes(y=factor(full.treatment.name, levels=trt.names),
-                                        xmin=X5, xmax=X95), 
-                                    orientation="y", width=0.2) +
+                      geom_point(aes(y=factor(trt, levels=trt.names),
+                                     x=mean), 
+                                 size=1.5) + 
+                      geom_errorbar(aes(y=factor(trt, levels=trt.names),
+                                        xmin=lower, xmax=upper), 
+                                    orientation="y", width=0.15) +
                       facet_wrap(.~molecule, scales="free_x") +
                       scale_x_continuous(labels = scales::comma) + 
                       labs(y="",x="Annual emissions needed to offset carbon accrual (kg/ha/yr)")
@@ -90,11 +90,11 @@ ghg.offset.intercept.df = ecoC.accrual.df
 ghg.offset.intercept.df[,stats] = ecoC.accrual.df[,stats]/n2o.gwp100yr
 ghg.offset.slope = -ch4.gwp100yr/n2o.gwp100yr
 ghg.offset.line.plot.df = data.frame(matrix(nrow=0,ncol=7))
-colnames(ghg.offset.line.plot.df) = c("treatment","del.methane",stats)
+colnames(ghg.offset.line.plot.df) = c("trt","del.methane",stats)
 for (i in 1:n.t) {
   trt.i = trt.names[i]
   line.plot.i = data.frame(matrix(nrow=n, ncol=7))
-  colnames(line.plot.i) = c("treatment","del.methane",stats)
+  colnames(line.plot.i) = c("trt","del.methane",stats)
   line.plot.i$treatment = trt.i
   line.plot.i$del.methane = seq(0,1,length.out=n)
   for (j in 1:n.s) {
@@ -117,7 +117,7 @@ p.ghg.abs = ggplot(ghg.offset.line.plot.df) +
                                  fill=`Ecosystem change`), 
                              alpha = 0.3, inherit.aes = FALSE) +
                    geom_line(aes(x=del.methane*1000,
-                                 y=posterior.mean*1000,
+                                 y=mean*1000,
                                  color=factor(treatment,levels=trt.names)),
                              linewidth=0.5,linetype="dashed") + 
                    xlim(0,350) + ylim(0,35) +
@@ -139,8 +139,8 @@ for (i in 1:(n.t-1)) {
   trt.i = trt.names[i]
   for (j in (i+1):n.t) {
     trt.j = trt.names[j]
-    eco.cstock.i = subset(ecoC.df, full.treatment.name==trt.i)[,"posterior.mean"]
-    eco.cstock.j = subset(ecoC.df, full.treatment.name==trt.j)[,"posterior.mean"]
+    eco.cstock.i = subset(ecoC.df, trt==trt.i)[,"mean"]
+    eco.cstock.j = subset(ecoC.df, trt==trt.j)[,"mean"]
     ch4.offsets[i,j] = (eco.cstock.i-eco.cstock.j)*(co2.molecular.mass/c.molecular.mass)/ch4.gwp100yr/years.since.restoration
   }
 }
@@ -164,6 +164,7 @@ ch4.melt = melt(ch4.offsets,
                 id.vars = "row.trt",
                 value.name="offset",
                 variable.name="col.trt")
+meta.methane.mean = subset(ghg.meta, molecule == "Methane" & `Ecosystem change` == "Cropland to wetland")[1,"Average"]
 p.ch4 = ggplot(ch4.melt, 
                aes(x=factor(col.trt,levels=trt.names), 
                    y=factor(row.trt,levels=rev(trt.names)), 
@@ -173,7 +174,7 @@ p.ch4 = ggplot(ch4.melt,
                          color="black", size=8) +
                scale_fill_gradient(low="white", high="blue") +
                coord_cartesian() +
-               labs(x="", y="", fill="Methane offset\n(kg/ha/yr)") +
+               labs(x="", y="", fill="Methane offset\n(kg/ha/y)") +
                theme(text=element_text(size=16),
                      axis.text.x=element_text(angle=45, vjust=1, hjust=1)) + 
                geom_label(x=1, y=6, label="a",
@@ -190,8 +191,8 @@ for (i in 1:(n.t-1)) {
   trt.i = trt.names[i]
   for (j in (i+1):n.t) {
     trt.j = trt.names[j]
-    eco.cstock.i = subset(ecoC.df, full.treatment.name==trt.i)[,"posterior.mean"]
-    eco.cstock.j = subset(ecoC.df, full.treatment.name==trt.j)[,"posterior.mean"]
+    eco.cstock.i = subset(ecoC.df, trt==trt.i)[,"mean"]
+    eco.cstock.j = subset(ecoC.df, trt==trt.j)[,"mean"]
     n2o.offsets[i,j] = (eco.cstock.i-eco.cstock.j)*(co2.molecular.mass/c.molecular.mass)/n2o.gwp100yr/years.since.restoration
   }
 }
@@ -215,6 +216,7 @@ n2o.melt = melt(n2o.offsets,
                 id.vars = "row.trt",
                 value.name="offset",
                 variable.name="col.trt")
+meta.nitrous.mean = subset(ghg.meta, molecule == "Nitrous oxide" & `Ecosystem change` == "Cropland to wetland")[1,"Average"]
 p.n2o = ggplot(n2o.melt, 
                aes(x=factor(col.trt,levels=trt.names), 
                    y=factor(row.trt,levels=rev(trt.names)), 
@@ -224,7 +226,7 @@ p.n2o = ggplot(n2o.melt,
                          color="black",size=8) +
                coord_cartesian() +
                scale_fill_gradient(low="white", high="darkorange") +
-               labs(x="",y="",fill="Nitrous oxide\noffset (kg/ha/yr)") +
+               labs(x="",y="",fill="Nitrous oxide\noffset (kg/ha/y)") +
                theme(text=element_text(size=16),
                      axis.text.x=element_text(angle=45, vjust=1, hjust=1),
                      axis.text.y=element_blank()) +  
@@ -248,8 +250,8 @@ for (i in 1:(n.t-1)) {
     trt.j = trt.names[j]
     line.df[n,"trt1"] = trt.i
     line.df[n,"trt2"] = trt.j
-    eco.cstock.i = subset(ecoC.df, full.treatment.name==trt.i)[,"posterior.mean"]
-    eco.cstock.j = subset(ecoC.df, full.treatment.name==trt.j)[,"posterior.mean"]
+    eco.cstock.i = subset(ecoC.df, trt==trt.i)[,"mean"]
+    eco.cstock.j = subset(ecoC.df, trt==trt.j)[,"mean"]
     line.df[n,"intercept"] = (eco.cstock.i-eco.cstock.j)*(co2.molecular.mass/c.molecular.mass)/n2o.gwp100yr
     n = n + 1
   }

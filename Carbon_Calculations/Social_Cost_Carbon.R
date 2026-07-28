@@ -1,5 +1,4 @@
-path_to_repo= "C:/Users/Chels/OneDrive - University of Illinois - Urbana/Ch2_Floodplain_Experiment"
-setwd(path_to_repo)
+setwd("C:/Users/Chels/OneDrive - University of Illinois - Urbana/Ch2_Floodplain_Experiment")
 
 library(reshape2)
 library(patchwork)
@@ -13,15 +12,17 @@ library(tidyverse)
 # load data
 
 # constants and conversions
-ch4.gwp100yr = 27
-n2o.gwp100yr = 273
-co2.molecular.mass = 44.009
-c.molecular.mass = 12.011
-n.molecular.mass = 14.007
-years.since.restoration = 25
+ch4.100y = 27
+n2o.100y = 273
+c.mol.mass = 12.011
+n.mol.mass = 14.007
+o.mol.mass = 15.999
+h.mol.mass = 1.008
+y.sr = 25
 baseline.cstock = data.frame(mean=55.9, lower=39.1, upper=75.6)
-ch4.molecular.mass = 16.043
-n2o.molecular.mass = 44.013
+ch4.mol.mass = c.mol.mass + 4*h.mol.mass # 16.043
+n2o.mol.mass = 2*n.mol.mass + o.mol.mass # 44.013
+co2.mol.mass = c.mol.mass + 2*o.mol.mass # 44.009
 
 # treatments
 trt.df = read.csv("floodplain-experiment-repo/Metadata/Treatment_Letters_Names.csv")
@@ -55,7 +56,7 @@ cbind(ecoC.df.total[1:6,"trt"],signif(ecoC.df.total[1:6,stats],3))
 
 # annual accumulation rates
 ecoC.df.annual = ecoC.df.total
-ecoC.df.annual[,stats] = ecoC.df.annual[,stats]/years.since.restoration
+ecoC.df.annual[,stats] = ecoC.df.annual[,stats]/y.sr
 cbind(ecoC.df.annual[1:6,"trt"],signif(ecoC.df.annual[1:6,stats],3))
 
 # read in meta-analysis GHG emission estimates
@@ -80,12 +81,12 @@ ecoC.df.annual.melt = melt(ecoC.df.annual,
 
 # estimate carbon benefit of each treatment
 ecoC.df.total.melt$carbon.benefit = 0
-tot.crop.ch4 = subset(ghg.meta, `Ecosystem change` == "Cropland to wetland" & molecule == "Methane")[1,stats]*years.since.restoration/1000 # (kg/ha/y)*(25 y)*(1 Mg/1000 kg) = Mg CH4/ha
-tot.crop.n2o = subset(ghg.meta, `Ecosystem change` == "Cropland to wetland" & molecule == "Nitrous oxide")[1,stats]*years.since.restoration/1000 # (kg/ha/y)*(25 y)*(1 Mg/1000 kg) = Mg N2O/ha
+tot.crop.ch4 = subset(ghg.meta, `Ecosystem change` == "Cropland to wetland" & molecule == "Methane")[1,stats]*y.sr/1000 # (kg/ha/y)*(25 y)*(1 Mg/1000 kg) = Mg CH4/ha
+tot.crop.n2o = subset(ghg.meta, `Ecosystem change` == "Cropland to wetland" & molecule == "Nitrous oxide")[1,stats]*y.sr/1000 # (kg/ha/y)*(25 y)*(1 Mg/1000 kg) = Mg N2O/ha
 for (i in 1:n.s) {
-  stat.i = stats[i]
-  stat.id = which(ecoC.df.total.melt$stat == stat.i)
-  ecoC.df.total.melt[stat.id,"carbon.benefit"] = (ecoC.df.total.melt[stat.id,"stock"]/c.molecular.mass*co2.molecular.mass - ch4.gwp100yr*tot.crop.ch4[1,stat.i] - n2o.gwp100yr*tot.crop.n2o[1,stat.i]) * scc.df[stat.i,"per.CO2"]
+  s.i = stats[i]
+  s.id = which(ecoC.df.total.melt$stat == s.i)
+  ecoC.df.total.melt[s.id,"carbon.benefit"] = (ecoC.df.total.melt[s.id,"stock"]/c.mol.mass*co2.mol.mass - ch4.100y*tot.crop.ch4[1,s.i] - n2o.100y*tot.crop.n2o[1,s.i]) * scc.df[s.i,"per.CO2"]
 }
 cbind(subset(ecoC.df.total.melt, stat=="mean")[1:6,"trt"], signif(subset(ecoC.df.total.melt, stat=="mean")[1:6,"carbon.benefit"]/1000,3))
 cbind(subset(ecoC.df.total.melt, stat=="lower")[1:6,"trt"], signif(subset(ecoC.df.total.melt, stat=="lower")[1:6,"carbon.benefit"]/1000,3))
@@ -95,9 +96,9 @@ ecoC.df.annual.melt$carbon.benefit = 0
 ann.crop.ch4 = subset(ghg.meta, `Ecosystem change` == "Cropland to wetland" & molecule == "Methane")[1,stats]/1000 # (kg/ha/y)*(1 Mg/1000 kg) = Mg CH4/ha/y
 ann.crop.n2o = subset(ghg.meta, `Ecosystem change` == "Cropland to wetland" & molecule == "Nitrous oxide")[1,stats]/1000 # (kg/ha/y)*(1 Mg/1000 kg) = Mg N2O/ha/y
 for (i in 1:n.s) {
-  stat.i = stats[i]
-  stat.id = which(ecoC.df.annual.melt$stat == stat.i)
-  ecoC.df.annual.melt[stat.id,"carbon.benefit"] = (ecoC.df.annual.melt[stat.id,"rate"]/c.molecular.mass*co2.molecular.mass - ch4.gwp100yr*ann.crop.ch4[1,stat.i] - n2o.gwp100yr*ann.crop.n2o[1,stat.i]) * scc.df[stat.i,"per.CO2"]
+  s.i = stats[i]
+  s.id = which(ecoC.df.annual.melt$stat == s.i)
+  ecoC.df.annual.melt[s.id,"carbon.benefit"] = (ecoC.df.annual.melt[s.id,"rate"]/c.mol.mass*co2.mol.mass - ch4.100y*ann.crop.ch4[1,s.i] - n2o.100y*ann.crop.n2o[1,s.i]) * scc.df[s.i,"per.CO2"]
 }
 cbind(subset(ecoC.df.annual.melt, stat=="mean")[1:6,"trt"], signif(subset(ecoC.df.annual.melt, stat=="mean")[1:6,"carbon.benefit"],3))
 cbind(subset(ecoC.df.annual.melt, stat=="lower")[1:6,"trt"],signif(subset(ecoC.df.annual.melt, stat=="lower")[1:6,"carbon.benefit"],3))
@@ -111,8 +112,8 @@ for (i in 1:n.t) {
   trt.id = which(ecoC.df.total.melt$trt == trt.names[i])
   ecoC.df.total.melt[trt.id,"net.benefit"] = ecoC.df.total.melt[trt.id,"carbon.benefit"] - cost.i
   for (j in 1:n.s) {
-    stat.j = stats[j]
-    scc.ij = cost.i/(ecoC.df.total.melt[trt.id[j],"stock"]/c.molecular.mass*co2.molecular.mass - ch4.gwp100yr*tot.crop.ch4[1,stat.j] - n2o.gwp100yr*tot.crop.n2o[1,stat.j])
+    s.j = stats[j]
+    scc.ij = cost.i/(ecoC.df.total.melt[trt.id[j],"stock"]/c.mol.mass*co2.mol.mass - ch4.100y*tot.crop.ch4[1,s.j] - n2o.100y*tot.crop.n2o[1,s.j])
     if (scc.ij >= 0) {
       ecoC.df.total.melt[trt.id[j],"breakeven.scc"] = scc.ij
     } else {
@@ -127,6 +128,21 @@ cbind(subset(ecoC.df.total.melt, stat=="upper")[1:6,"trt"],signif(subset(ecoC.df
 cbind(subset(ecoC.df.total.melt, stat=="mean")[1:6,"trt"], signif(subset(ecoC.df.total.melt, stat=="mean")[1:6,"breakeven.scc"],3))
 cbind(subset(ecoC.df.total.melt, stat=="lower")[1:6,"trt"],signif(subset(ecoC.df.total.melt, stat=="lower")[1:6,"breakeven.scc"],3))
 cbind(subset(ecoC.df.total.melt, stat=="upper")[1:6,"trt"],signif(subset(ecoC.df.total.melt, stat=="upper")[1:6,"breakeven.scc"],3))
+
+# estimate the breakeven year of each treatment 
+ecoC.df.annual.melt$breakeven.year = 0
+for (i in 1:n.t) {
+  cost.i = est.df[est.df$trt == trt.names[i],"cost.2023"]
+  trt.id = which(ecoC.df.total.melt$trt == trt.names[i])
+  for (j in 1:n.s) {
+    stat.j = stats[j]
+    years.ij = cost.i/((ecoC.df.annual.melt[trt.id[j],"rate"]/c.mol.mass*co2.mol.mass - ch4.100y*ann.crop.ch4[1,stat.j] - n2o.100y*ann.crop.n2o[1,stat.j])*scc.df[stat.j,"per.CO2"])
+    ecoC.df.annual.melt[trt.id[j],"breakeven.year"] = ceiling(years.ij + 1998)
+  }
+}
+cbind(subset(ecoC.df.annual.melt, stat=="mean")[1:6,"trt"], round(subset(ecoC.df.annual.melt, stat=="mean")[1:6,"breakeven.year"]))
+cbind(subset(ecoC.df.annual.melt, stat=="lower")[1:6,"trt"], round(subset(ecoC.df.annual.melt, stat=="lower")[1:6,"breakeven.year"]))
+cbind(subset(ecoC.df.annual.melt, stat=="upper")[1:6,"trt"], round(subset(ecoC.df.annual.melt, stat=="upper")[1:6,"breakeven.year"]))
 
 ################################################################################
 # Figure C5: Plot species richness v. social benefit of carbon 
@@ -251,8 +267,8 @@ p4 = ggplot(data=breakeven.richness.df) +
                   text=element_text(size=12))
 p.all = (p1 + p2)/(p3 + p4) + plot_layout(guides = "collect")
 p.all
-ggsave("Manuscript/Supp_Figures/FigureC5_Social_Cost_Carbon.jpeg", 
-       plot=p.all,width=24,height=18,units="cm",dpi=1200)
+#ggsave("Manuscript/Supp_Figures/FigureC5_Social_Cost_Carbon.jpeg", 
+#       plot=p.all,width=24,height=18,units="cm",dpi=1200)
 
 ################################################################################
 # plot social cost of carbon as a function of GHG emissions
@@ -261,20 +277,20 @@ ggsave("Manuscript/Supp_Figures/FigureC5_Social_Cost_Carbon.jpeg",
 methane.line.df = data.frame(matrix(nrow=0, ncol=3))
 colnames(methane.line.df) = c("trt","del.methane","mean")
 for (i in 1:n.t) {
-  max.x = ceiling(ecoC.df.total[i,"mean"]/c.molecular.mass*co2.molecular.mass/ch4.gwp100yr)
+  max.x = ceiling(ecoC.df.total[i,"mean"]/c.mol.mass*co2.mol.mass/ch4.100y)
   x = seq(0, max.x+50, 1)
   n.x = length(x)
   methane.df.i = data.frame(matrix(nrow=n.x, ncol=3))
   colnames(methane.df.i) = c("trt","del.methane","mean")
   methane.df.i$trt = trt.names[i]
   methane.df.i$del.methane = x
-  methane.df.i[1:n.x,"mean"] = pmax((ecoC.df.total[i,"mean"]/c.molecular.mass*co2.molecular.mass - ch4.gwp100yr*x)*scc.df["mean","per.CO2"],0)
+  methane.df.i[1:n.x,"mean"] = pmax((ecoC.df.total[i,"mean"]/c.mol.mass*co2.mol.mass - ch4.100y*x)*scc.df["mean","per.CO2"],0)
   methane.line.df = rbind(methane.line.df, methane.df.i)
 }
 
 p.scc.methane = ggplot(methane.line.df) +
                        geom_vline(data=subset(ghg.meta, molecule == "Methane"), 
-                                  aes(xintercept=mean/1000*years.since.restoration,
+                                  aes(xintercept=mean/1000*y.sr,
                                       linetype=`Ecosystem change`),
                                   linewidth=0.75) +
                        geom_line(aes(x=del.methane,
@@ -294,20 +310,20 @@ p.scc.methane
 nitrous.line.df = data.frame(matrix(nrow=0, ncol=3))
 colnames(nitrous.line.df) = c("trt","del.nitrous","mean")
 for (i in 1:n.t) {
-  max.x = ceiling(ecoC.df.total[i,"mean"]/c.molecular.mass*co2.molecular.mass/n2o.gwp100yr)
+  max.x = ceiling(ecoC.df.total[i,"mean"]/c.mol.mass*co2.mol.mass/n2o.100y)
   x = seq(0, max.x+5, 0.01)
   n.x = length(x)
   nitrous.df.i = data.frame(matrix(nrow=n.x, ncol=3))
   colnames(nitrous.df.i) = c("trt","del.nitrous","mean")
   nitrous.df.i$trt = trt.names[i]
   nitrous.df.i$del.nitrous = x
-  nitrous.df.i[1:n.x,"mean"] = pmax((ecoC.df.total[i,"mean"]/c.molecular.mass*co2.molecular.mass - n2o.gwp100yr*x)*scc.df["mean","per.CO2"],0)
+  nitrous.df.i[1:n.x,"mean"] = pmax((ecoC.df.total[i,"mean"]/c.mol.mass*co2.mol.mass - n2o.100y*x)*scc.df["mean","per.CO2"],0)
   nitrous.line.df = rbind(nitrous.line.df, nitrous.df.i)
 }
 
 p.scc.nitrous = ggplot(nitrous.line.df) +
                         geom_vline(data=subset(ghg.meta, molecule == "Nitrous oxide"), 
-                                   aes(xintercept=mean/1000*years.since.restoration,
+                                   aes(xintercept=mean/1000*y.sr,
                                        linetype=`Ecosystem change`),
                                    linewidth=0.75) +
                         geom_line(aes(x=del.nitrous,
@@ -325,8 +341,8 @@ p.scc.nitrous = ggplot(nitrous.line.df) +
 p.scc.nitrous
 p.scc.ghgs = p.scc.methane + p.scc.nitrous + plot_layout(guides = "collect")
 p.scc.ghgs
-ggsave("Manuscript/Supp_Figures/FigureC6_Social_Cost_Carbon_Versus_GHGs.jpeg", 
-       plot=p.scc.ghgs, width=24, height=9, units="cm", dpi=1200)
+#ggsave("Manuscript/Supp_Figures/FigureC6_Social_Cost_Carbon_Versus_GHGs.jpeg", 
+#       plot=p.scc.ghgs, width=24, height=9, units="cm", dpi=1200)
 
 ################################################################################
 # Fugre C7: 3D plot
@@ -344,8 +360,8 @@ for (t in 1:n.t) {
   scc = grid.ghg$X
   for (i in 1:length(y.nitrous)) {
     for (j in 1:length(x.methane)) {
-      trt.cstock = ecoC.df.total[t,"mean"]/c.molecular.mass*co2.molecular.mass
-      scc[i,j] = (trt.cstock - ch4.gwp100yr*grid.ghg$X[i,j] - n2o.gwp100yr*grid.ghg$Y[i,j])*scc.df["mean","per.CO2"]
+      trt.cstock = ecoC.df.total[t,"mean"]/c.mol.mass*co2.mol.mass
+      scc[i,j] = (trt.cstock - ch4.100y*grid.ghg$X[i,j] - n2o.100y*grid.ghg$Y[i,j])*scc.df["mean","per.CO2"]
     }
   }
   surface_list[[trt]] = scc
@@ -380,12 +396,12 @@ p1  = plot_ly(showscale = FALSE) %>%
                      z = matrix(0, nrow=2, ncol=2),
                     colorscale = colorscale_gray,
                     opacity = 0.9) %>%
-         add_surface(x = c(0, subset(ghg.meta, molecule == "Methane")[1,"mean"]/1000*years.since.restoration),
-                     y = c(0, subset(ghg.meta, molecule == "Nitrous oxide")[1,"mean"]/1000*years.since.restoration),
+         add_surface(x = c(0, subset(ghg.meta, molecule == "Methane")[1,"mean"]/1000*y.sr),
+                     y = c(0, subset(ghg.meta, molecule == "Nitrous oxide")[1,"mean"]/1000*y.sr),
                      z = matrix(0, nrow=2, ncol=2),
                      colorscale = colorscale_purple) %>%
-         add_surface(x = c(0, subset(ghg.meta, molecule == "Methane")[2,"mean"]/1000*years.since.restoration),
-                     y = c(0, subset(ghg.meta, molecule == "Nitrous oxide")[2,"mean"]/1000*years.since.restoration),
+         add_surface(x = c(0, subset(ghg.meta, molecule == "Methane")[2,"mean"]/1000*y.sr),
+                     y = c(0, subset(ghg.meta, molecule == "Nitrous oxide")[2,"mean"]/1000*y.sr),
                      z = matrix(0, nrow=2, ncol=2),
                      colorscale = colorscale_orange) %>%
         layout(scene = list(xaxis = list(title = "Methane (kg/ha)"),
@@ -410,12 +426,12 @@ p2  = plot_ly(showscale = FALSE) %>%
                     z = matrix(0, nrow=2, ncol=2),
                     colorscale = colorscale_gray,
                     opacity = 0.9) %>%
-        add_surface(x = c(0, subset(ghg.meta, molecule == "Methane")[1,"mean"]/1000*years.since.restoration),
-                    y = c(0, subset(ghg.meta, molecule == "Nitrous oxide")[1,"mean"]/1000*years.since.restoration),
+        add_surface(x = c(0, subset(ghg.meta, molecule == "Methane")[1,"mean"]/1000*y.sr),
+                    y = c(0, subset(ghg.meta, molecule == "Nitrous oxide")[1,"mean"]/1000*y.sr),
                     z = matrix(0, nrow=2, ncol=2),
                     colorscale = colorscale_purple) %>%
-        add_surface(x = c(0, subset(ghg.meta, molecule == "Methane")[2,"mean"]/1000*years.since.restoration),
-                    y = c(0, subset(ghg.meta, molecule == "Nitrous oxide")[2,"mean"]/1000*years.since.restoration),
+        add_surface(x = c(0, subset(ghg.meta, molecule == "Methane")[2,"mean"]/1000*y.sr),
+                    y = c(0, subset(ghg.meta, molecule == "Nitrous oxide")[2,"mean"]/1000*y.sr),
                     z = matrix(0, nrow=2, ncol=2),
                     colorscale = colorscale_orange)  %>%
         layout(scene = list(xaxis = list(title = "Methane (kg/ha)"),
@@ -423,4 +439,229 @@ p2  = plot_ly(showscale = FALSE) %>%
                             zaxis = list(title = "Carbon benefit ($1,000/ha")))
 p2
 
+################################################################################
+# run simulate for social benefit of carbon
+set.seed(3141)
 
+n = 10000
+ghg.meta.crop = subset(ghg.meta, `Ecosystem change` == "Cropland to wetland")
+ghg.crop.ch4 = subset(ghg.meta.crop, molecule == "Methane")[,stats]*y.sr/1000
+ghg.crop.n2o = subset(ghg.meta.crop, molecule == "Nitrous oxide")[,stats]*y.sr/1000
+baseline.cstock.range = runif(n=n, 
+                              min=baseline.cstock$lower,
+                              max=baseline.cstock$upper)
+n2o.emission.range = runif(n=n,
+                           min=ghg.crop.n2o$lower,
+                           max=ghg.crop.n2o$upper)
+ch4.emission.range = runif(n=n,
+                           min=ghg.crop.ch4$lower,
+                           max=ghg.crop.ch4$upper)
+scc.range = runif(n=n,
+                  min=scc.df["lower","per.CO2"],
+                  max=scc.df["upper","per.CO2"])
+sim.carbon.accrual = data.frame(matrix(nrow=n, ncol=n.t))
+sim.carbon.seq = data.frame(matrix(nrow=n, ncol=n.t))
+sim.carbon.benefit = data.frame(matrix(nrow=n, ncol=n.t))
+sim.econ.benefit = data.frame(matrix(nrow=n, ncol=n.t))
+sim.richness = data.frame(matrix(nrow=n, ncol=n.t))
+colnames(sim.carbon.benefit) = trt.names
+colnames(sim.carbon.accrual) = trt.names
+colnames(sim.carbon.seq) = trt.names
+colnames(sim.econ.benefit) = trt.names
+colnames(sim.richness) = trt.names
+for (i in 1:n.t) {
+  trt.id = which(ecoC.df.total$trt == trt.names[i])
+  cost.i = est.df[est.df$trt == trt.names[i],"cost.2023"]
+  sim.richness[1:n,trt.names[i]] = runif(n=n,
+                                         min=richness.df[richness.df$trt == trt.names[i],]$richness.lower,
+                                         max=richness.df[richness.df$trt == trt.names[i],]$richness.upper)
+  trt.total.oc.df = ecoC.df.total[trt.id,]
+  trt.total.oc = runif(n=n, 
+                       min=trt.total.oc.df$lower,
+                       max=trt.total.oc.df$upper)
+  carbon.accrual.C = trt.total.oc - baseline.cstock.range
+  carbon.accrual.CO2 = carbon.accrual.C/c.mol.mass*co2.mol.mass
+  sim.carbon.accrual[1:n,trt.names[i]] = carbon.accrual.C
+  carbon.seq = carbon.accrual.CO2 - ch4.100y*ch4.emission.range - n2o.100y*n2o.emission.range
+  sim.carbon.seq[1:n,trt.names[i]] = carbon.seq
+  social.carbon.benefit = carbon.seq * scc.range
+  sim.carbon.benefit[1:n,trt.names[i]] = social.carbon.benefit
+  rel.econ.benefit = social.carbon.benefit - cost.i
+  sim.econ.benefit[1:n,trt.names[i]] = rel.econ.benefit
+}
+
+# OC accrual
+sim.carbon.accrual.melt = melt(sim.carbon.accrual)
+p.oc.accrual = ggplot(sim.carbon.accrual.melt,
+                      aes(y=factor(variable, level=trt.names),
+                          x=value,
+                          fill=factor(variable, levels=trt.names))) +
+                      geom_vline(xintercept=0, color="black") +
+                      geom_violin(color=NA, alpha=0.5) +
+                      geom_boxplot(width=0.2) + 
+                      theme(legend.position="none") +
+                      scale_x_continuous(limits=c(-100,300),
+                                         breaks=seq(-100,300,100)) +
+                      labs(y="",x="Organic carbon accrual (Mg C/ha)") +
+                      annotate("text", x = -Inf, y = Inf, label = "a",
+                               hjust = -1, vjust = 1.5, 
+                               size = 8, family = "sans", fontface = "plain") 
+p.oc.accrual
+
+# carbon sequestration
+sim.carbon.seq.melt = melt(sim.carbon.seq)
+p.oc.seq = ggplot(sim.carbon.seq.melt,
+                  aes(y=factor(variable, level=trt.names),
+                      x=value,
+                      fill=factor(variable, levels=trt.names))) +
+                  geom_vline(xintercept=0, color="black") +
+                  geom_violin(color=NA, alpha=0.5) +
+                  geom_boxplot(width=0.2) + 
+                  theme(axis.text.y=element_blank(),
+                        legend.position="none") +
+                  scale_x_continuous(limits=c(-490,850),
+                                     breaks=seq(-400,800,200)) +
+                  labs(y="",x="Carbon sequestration (Mg CO2/ha)") +
+                  annotate("text", x = -Inf, y = Inf, label = "b",
+                           hjust = -1, vjust = 1.5, 
+                           size = 8, family = "sans", fontface = "plain") 
+p.oc.seq
+
+# social carbon benefit
+sim.carbon.benefit.melt = melt(sim.carbon.benefit)
+p.scc = ggplot(sim.carbon.benefit.melt,
+                aes(y=factor(variable, level=trt.names),
+                    x=value/1000,
+                    fill=factor(variable, levels=trt.names))) +
+                geom_vline(xintercept=0, color="black") +
+                geom_violin(color=NA, alpha=0.5) +
+                geom_boxplot(width=0.2) +  
+                theme(legend.position="none") +
+                scale_x_continuous(limits=c(-205,400),
+                                   breaks=seq(-200,400,100)) + 
+                labs(y="",fill="",
+                     x="Total social carbon benefit ($1,000/ha)") +
+                annotate("text", x = -Inf, y = Inf, label = "c",
+                         hjust = -1, vjust = 1.5, 
+                         size = 8, family = "sans", fontface = "plain") 
+p.scc
+
+# relative economic benefit
+sim.econ.benefit.melt = melt(sim.econ.benefit)
+p.econ = ggplot(sim.econ.benefit.melt,
+                aes(y=factor(variable, level=trt.names),
+                    x=value/1000,
+                    fill=factor(variable, levels=trt.names))) +
+                geom_vline(xintercept=0, color="black") +
+                geom_violin(color=NA, alpha=0.5) +
+                geom_boxplot(width=0.2) +  
+                theme(axis.text.y=element_blank(),
+                      legend.position="none") +
+                scale_x_continuous(limits=c(-325,325),
+                                   breaks=seq(-300,300,100)) + 
+                labs(y="",x="Relative economic benefit ($1,000/ha)") +
+                annotate("text", x = -Inf, y = Inf, label = "d",
+                         hjust = -1, vjust = 1.5, 
+                         size = 8, family = "sans", fontface = "plain") 
+p.econ
+
+p.sim = (p.oc.accrual+p.oc.seq)/(p.scc+p.econ)
+p.sim
+
+ggsave("Manuscript/Supp_Figures/FigureC5_Social_Cost_Carbon_Simulation_by_Treatment.jpeg", 
+       plot=p.sim, width=20, height=16, units="cm", dpi=600)
+       
+# richness
+sim.n.carbon.all = data.frame(matrix(nrow=0, ncol=6))
+colnames(sim.n.carbon.all) = c("trt","n","accrual","seq","benefit","econ")
+for (i in 1:n.t) {
+  sim.n.carbon = data.frame(matrix(nrow=n, ncol=6))
+  colnames(sim.n.carbon) = c("trt","n","accrual","seq","benefit","econ")
+  sim.n.carbon$trt = trt.names[i]
+  sim.n.carbon$n = sim.richness[,trt.names[i]]
+  sim.n.carbon$accrual = sim.carbon.accrual[,trt.names[i]]
+  sim.n.carbon$seq = sim.carbon.seq[,trt.names[i]]
+  sim.n.carbon$benefit = sim.carbon.benefit[,trt.names[i]]/1000
+  sim.n.carbon$econ = sim.econ.benefit[,trt.names[i]]/1000
+  sim.n.carbon.all = rbind(sim.n.carbon.all, sim.n.carbon)
+}
+sim.nc.all.melt = subset(melt(sim.n.carbon.all, id.vars=c("trt","n")), 
+                         trt != "Reference")
+p.acc.n = ggplot(subset(sim.nc.all.melt, variable == "accrual"),
+                 aes(y=n,
+                     x=value,
+                     fill=factor(trt, levels=trt.names),
+                     color=factor(trt, levels=trt.names))) +
+                 geom_vline(xintercept=0, color="black") +
+                 geom_point(alpha=0.02) +
+                 stat_ellipse(geom = "polygon", 
+                              alpha = 0.2, level = 0.90) +
+                 theme(legend.position = "none") + 
+                 labs(y="Total species richness",
+                      x="Organic carbon accrual (Mg C/ha)") +
+                 scale_y_continuous(limits=c(0,30)) +
+                 scale_x_continuous(limits=c(-100,300),
+                                    breaks=seq(-100,300,100)) +
+                 annotate("text", x = -Inf, y = Inf, label = "a",
+                           hjust = -1, vjust = 1.5, 
+                           size = 8, family = "sans", fontface = "plain")
+p.seq.n = ggplot(subset(sim.nc.all.melt, variable == "seq"),
+                    aes(y=n,
+                        x=value,
+                        fill=factor(trt, levels=trt.names),
+                        color=factor(trt, levels=trt.names))) +
+                 geom_vline(xintercept=0, color="black") +
+                 geom_point(alpha=0.02) +
+                 stat_ellipse(geom = "polygon", 
+                              alpha = 0.2, level = 0.90) +
+                 theme(legend.position = "none",
+                       axis.text.y = element_blank()) + 
+                 labs(y="",
+                      x="Carbon sequestration (Mg CO2/ha)") +
+                 scale_y_continuous(limits=c(0,30)) +
+                 scale_x_continuous(limits=c(-490,850),
+                                    breaks=seq(-400,800,200)) +
+                 annotate("text", x = -Inf, y = Inf, label = "b",
+                          hjust = -1, vjust = 1.5, 
+                          size = 8, family = "sans", fontface = "plain")
+p.ben.n = ggplot(subset(sim.nc.all.melt, variable == "benefit"),
+                 aes(y=n,
+                     x=value,
+                     fill=factor(trt, levels=trt.names),
+                     color=factor(trt, levels=trt.names))) +
+                  geom_vline(xintercept=0, color="black") +
+                  geom_point(alpha=0.02) +
+                  stat_ellipse(geom = "polygon", 
+                               alpha = 0.2, level = 0.90) +
+                  theme(legend.position = "none") + 
+                  labs(y="Total species richness",
+                       x="Total social carbon benefit ($1,000/ha)") +
+                  scale_y_continuous(limits=c(0,30)) +
+                  scale_x_continuous(limits=c(-205,400),
+                                     breaks=seq(-200,400,100)) +
+                  annotate("text", x = -Inf, y = Inf, label = "c",
+                           hjust = -1, vjust = 1.5, 
+                           size = 8, family = "sans", fontface = "plain")
+p.econ.n = ggplot(subset(sim.nc.all.melt, variable == "econ"),
+                 aes(y=n,
+                     x=value,
+                     fill=factor(trt, levels=trt.names),
+                     color=factor(trt, levels=trt.names))) +
+                  geom_vline(xintercept=0, color="black") +
+                  geom_point(alpha=0.02) +
+                  stat_ellipse(geom = "polygon", 
+                               alpha = 0.2, level = 0.90) +
+                  theme(legend.position = "none",
+                        axis.text.y = element_blank()) + 
+                  labs(y="",x="Relative economic benefit ($1,000/ha)") +
+                  scale_y_continuous(limits=c(0,30)) +
+                  scale_x_continuous(limits=c(-325,325),
+                                     breaks=seq(-300,300,100)) +
+                  annotate("text", x = -Inf, y = Inf, label = "d",
+                           hjust = -1, vjust = 1.5, 
+                           size = 8, family = "sans", fontface = "plain")
+p.sim.n = (p.acc.n+p.seq.n)/(p.ben.n+p.econ.n)
+p.sim.n
+
+ggsave("Manuscript/Supp_Figures/FigureC6_Social_Cost_Carbon_Simulation_Richness_Versus.jpeg", 
+       plot=p.sim.n, width=18, height=16, units="cm", dpi=600)

@@ -1,5 +1,4 @@
-path_to_repo= "C:/Users/Chels/OneDrive - University of Illinois - Urbana/Ch2_Floodplain_Experiment"
-setwd(path_to_repo)
+setwd("C:/Users/Chels/OneDrive - University of Illinois - Urbana/Ch2_Floodplain_Experiment")
 
 library(ggplot2)
 library(patchwork)
@@ -313,15 +312,41 @@ ipcc.df = read.csv("floodplain-experiment-repo/Carbon_Calculations/IPCC_Carbon_E
 # isolate soil data for best model
 soil.hdi.df.best = soil.hdi.df[which(soil.hdi.df$model == "strip.plot.random"),]
 stock.hdi.df.best = stock.hdi.df[which(stock.hdi.df$model == "strip.random"),]
-signif(subset(soil.hdi.df.best, variable == "poc.percent")[1:5,"posterior.mean"] - subset(soil.hdi.df.best, variable == "poc.percent")[6,"posterior.mean"],1)
-range(signif((subset(soil.hdi.df.best, variable == "poc.percent")[1:5,"posterior.mean"] - subset(soil.hdi.df.best, variable == "poc.percent")[6,"posterior.mean"])/subset(soil.hdi.df.best, variable == "poc.percent")[6,"posterior.mean"]*100,3))
-signif(subset(soil.hdi.df.best, variable == "poc.stock")[1:5,"posterior.mean"] - subset(soil.hdi.df.best, variable == "poc.stock")[6,"posterior.mean"],2)
-range(signif((subset(soil.hdi.df.best, variable == "poc.stock")[1:5,"posterior.mean"] - subset(soil.hdi.df.best, variable == "poc.stock")[6,"posterior.mean"])/subset(soil.hdi.df.best, variable == "poc.stock")[6,"posterior.mean"]*100,3))
-signif(subset(soil.hdi.df.best, variable == "maoc.percent")[1:5,"posterior.mean"] - subset(soil.hdi.df.best, variable == "maoc.percent")[6,"posterior.mean"],1)
-range(signif((subset(soil.hdi.df.best, variable == "maoc.percent")[1:5,"posterior.mean"] - subset(soil.hdi.df.best, variable == "maoc.percent")[6,"posterior.mean"])/subset(soil.hdi.df.best, variable == "maoc.percent")[6,"posterior.mean"]*100,3))
-signif(subset(soil.hdi.df.best, variable == "maoc.stock")[1:5,"posterior.mean"] - subset(soil.hdi.df.best, variable == "maoc.stock")[6,"posterior.mean"],2)
-range(signif((subset(soil.hdi.df.best, variable == "maoc.stock")[1:5,"posterior.mean"] - subset(soil.hdi.df.best, variable == "maoc.stock")[6,"posterior.mean"])/subset(soil.hdi.df.best, variable == "maoc.stock")[6,"posterior.mean"]*100,3))
 
+# compare stock estimates with IPCC values
+signif(subset(soil.hdi.df.best, variable == "toc.stock")[,"posterior.mean"] - subset(ipcc.df, soc.type == "Annual crops")[,"soc.value"],3)
+signif(subset(soil.hdi.df.best, variable == "toc.stock")[,"posterior.mean"] - subset(ipcc.df, soc.type == "Revegetated cropland")[,"soc.value"],3)
+signif(subset(soil.hdi.df.best, variable == "toc.stock")[,"posterior.mean"] - subset(ipcc.df, soc.type == "Natural wetland")[,"soc.value"],3)
+
+## estimate relative MAOC v. POC recovery
+
+# absolute MAOC
+range(signif(subset(soil.hdi.df.best, variable == "maoc.percent")[1:5,"posterior.mean"] - subset(soil.hdi.df.best, variable == "maoc.percent")[6,"posterior.mean"],1))
+range(signif(subset(soil.hdi.df.best, variable == "maoc.stock")[1:5,"posterior.mean"] - subset(soil.hdi.df.best, variable == "maoc.stock")[6,"posterior.mean"],2))
+mean(signif(subset(soil.hdi.df.best, variable == "maoc.percent")[1:5,"posterior.mean"] - subset(soil.hdi.df.best, variable == "maoc.percent")[6,"posterior.mean"],1))
+mean(signif(subset(soil.hdi.df.best, variable == "maoc.stock")[1:5,"posterior.mean"] - subset(soil.hdi.df.best, variable == "maoc.stock")[6,"posterior.mean"],2))
+
+# absolute POC
+range(signif(subset(soil.hdi.df.best, variable == "poc.percent")[1:5,"posterior.mean"] - subset(soil.hdi.df.best, variable == "poc.percent")[6,"posterior.mean"],1))
+range(signif(subset(soil.hdi.df.best, variable == "poc.stock")[1:5,"posterior.mean"] - subset(soil.hdi.df.best, variable == "poc.stock")[6,"posterior.mean"],2))
+mean(signif(subset(soil.hdi.df.best, variable == "poc.percent")[1:5,"posterior.mean"] - subset(soil.hdi.df.best, variable == "poc.percent")[6,"posterior.mean"],1))
+mean(signif(subset(soil.hdi.df.best, variable == "poc.stock")[1:5,"posterior.mean"] - subset(soil.hdi.df.best, variable == "poc.stock")[6,"posterior.mean"],2))
+
+# relative POC
+range(signif((subset(soil.hdi.df.best, variable == "poc.percent")[1:5,"posterior.mean"] - subset(soil.hdi.df.best, variable == "poc.percent")[6,"posterior.mean"])/subset(soil.hdi.df.best, variable == "poc.percent")[6,"posterior.mean"]*100,3))
+range(signif((subset(soil.hdi.df.best, variable == "poc.stock")[1:5,"posterior.mean"] - subset(soil.hdi.df.best, variable == "poc.stock")[6,"posterior.mean"])/subset(soil.hdi.df.best, variable == "poc.stock")[6,"posterior.mean"]*100,3))
+mean(signif((subset(soil.hdi.df.best, variable == "poc.percent")[1:5,"posterior.mean"] - subset(soil.hdi.df.best, variable == "poc.percent")[6,"posterior.mean"])/subset(soil.hdi.df.best, variable == "poc.percent")[6,"posterior.mean"]*100,3))
+mean(signif((subset(soil.hdi.df.best, variable == "poc.stock")[1:5,"posterior.mean"] - subset(soil.hdi.df.best, variable == "poc.stock")[6,"posterior.mean"])/subset(soil.hdi.df.best, variable == "poc.stock")[6,"posterior.mean"]*100,3))
+
+# relative MAOC
+range(signif((subset(soil.hdi.df.best, variable == "maoc.stock")[1:5,"posterior.mean"] - subset(soil.hdi.df.best, variable == "maoc.stock")[6,"posterior.mean"])/subset(soil.hdi.df.best, variable == "maoc.stock")[6,"posterior.mean"]*100,3))
+mean(signif((subset(soil.hdi.df.best, variable == "maoc.percent")[1:5,"posterior.mean"] - subset(soil.hdi.df.best, variable == "maoc.percent")[6,"posterior.mean"])/subset(soil.hdi.df.best, variable == "maoc.percent")[6,"posterior.mean"]*100,3))
+mean(signif((subset(soil.hdi.df.best, variable == "maoc.stock")[1:5,"posterior.mean"] - subset(soil.hdi.df.best, variable == "maoc.stock")[6,"posterior.mean"])/subset(soil.hdi.df.best, variable == "maoc.stock")[6,"posterior.mean"]*100,3))
+
+# compare texture percents
+range(signif(subset(soil.hdi.df.best, variable == "sand")[6,"posterior.mean"] - subset(soil.hdi.df.best, variable == "sand")[1:5,"posterior.mean"],2))
+range(signif(subset(soil.hdi.df.best, variable == "silt")[6,"posterior.mean"] - subset(soil.hdi.df.best, variable == "silt")[1:5,"posterior.mean"],2))
+range(signif(subset(soil.hdi.df.best, variable == "clay")[6,"posterior.mean"] - subset(soil.hdi.df.best, variable == "clay")[1:5,"posterior.mean"],2))
 
 # Georgiu MAOC estimate
 #soc.df = data.frame(matrix(nrow=1,ncol=2))
@@ -559,6 +584,8 @@ p.e = ggplot(stock.soil.df,
                         label.r=unit(0,"pt"),label.size=0,
                         size=10,fontface="bold")
 p.e
+round(range(subset(stock.hdi.df.best, variable == "total.ecosystem.carbon")[1:3,"posterior.mean"] - subset(stock.hdi.df.best, variable == "total.ecosystem.carbon")[5,"posterior.mean"]),1)
+round(range(subset(stock.hdi.df.best, variable == "total.ecosystem.carbon")[1:3,"posterior.mean"] - subset(stock.hdi.df.best, variable == "total.ecosystem.carbon")[4,"posterior.mean"]),1)
 
 # richness plot
 stack.vars.r.old = c("Herbaceous layer richness","Tree layer richness","Both tree & herbaceous\nlayer richness") 
@@ -596,8 +623,8 @@ ggsave("Manuscript/Main_Figures/Figure6_Soil_Vegetation_Ecosystem_Cstocks_Richne
 # Appendix B.4: C stocks by species
 
 # Table B3: summarize Frax penn results for 
-live.frax.stock.df = stock.hdi.df.best[which(stock.hdi.df.best$variable == "snag.frax.live.carbon"),]
-dead.frax.stock.df = stock.hdi.df.best[which(stock.hdi.df.best$variable == "snag.frax.dead.carbon"),]
+live.frax.stock.df = stock.hdi.df.best[stock.hdi.df.best$variable == "snag.frax.live.carbon",]
+dead.frax.stock.df = stock.hdi.df.best[stock.hdi.df.best$variable == "snag.frax.dead.carbon",]
 
 cbind(live.frax.stock.df[,"full.treatment.name"],
       signif(live.frax.stock.df[,c("posterior.mean","X5","X95")],digits=3))
@@ -626,7 +653,7 @@ df.list[["live.tree.carbon"]] = unite(df.list[["live.tree.carbon"]], col='specie
 df.list[["live.tree.carbon"]] = pivot_wider(df.list[["live.tree.carbon"]], 
                                             id_cols = c(treatment, strip, plot),
                                             names_from = species, 
-                                            values_from = bmC.ha3)
+                                            values_from = bmC.ha.allodb)
 df.list[["live.tree.carbon"]][is.na(df.list[["live.tree.carbon"]])] = 0
 
 # reshape dataframe
@@ -655,8 +682,16 @@ for (i in 1:n.pool) {
 mean.df.all$full.treatment.name = 0
 for (i in 1:n.t) { mean.df.all$full.treatment.name[mean.df.all$treatment == trt.letters[i]] = trt.names[i] }
 
-# plot means for live trees
+# Figure B10: plot stacked C stocks by woody pool
 uni.spp = unique(mean.df.all$species)
+labels = c("a","b","c"); positons = c(190,50,14)
+mean.df.all$label = 0
+mean.df.all$position = 0
+for (i in 1:3) {
+  mean.df.all$label[mean.df.all$pool == pool.labels[i]] = labels[i]
+  mean.df.all$position[mean.df.all$pool == pool.labels[i]] = positons[i]
+}
+#expand_limits_fun = function(x) { c(x[1], x[2] + 1) }
 p.species = ggplot(mean.df.all, 
                    aes(y=factor(full.treatment.name,levels=trt.names),
                        x=mean,
@@ -665,13 +700,17 @@ p.species = ggplot(mean.df.all,
                             position="stack") +
                    labs(x="Empirical plot-level mean C stock (Mg/ha)", 
                         y="", fill="Species") +
+                   geom_text(aes(x = position-0.1, y = 6, label = label), 
+                             size = 6) +
                    facet_wrap(.~factor(pool, levels=pool.labels), 
-                              ncol=1, scales="free_x") + 
+                              ncol=1, scales="free_x") +
+                   #scale_x_continuous(limits = expand_limits_fun) +
                    guides(fill = guide_legend(reverse = TRUE))
+p.species
 ggsave("Manuscript/Supp_Figures/FigureB10_Woody_C_Stocks_By_Species.jpeg", 
        plot=p.species, width=14, height=16, units="cm", dpi=1200)
 
-# Figure B11: Stacked means for herbaceous species groups
+# Figure B12: Stacked means for herbaceous species groups
 sp.groups = c("mixed.biomass.c.stock","h.japonicus.c.stock","p.arundinacea.c.stock")
 sp.labels = c("Mixed biomass","H. japonicus biomass","P. arundinacea biomass")
 herbaceous.biomass.c.stock.hdi.df = stock.hdi.df.best[stock.hdi.df.best$variable %in% sp.groups,]

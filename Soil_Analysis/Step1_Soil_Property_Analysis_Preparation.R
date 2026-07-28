@@ -252,3 +252,11 @@ soil.data$tic.stock = soil.data$tic.percent * soil.data$bulk.density * 30
 # write all soil data at quadrat level to csv
 write.csv(soil.data, "Soil_Analysis/Clean_Data/Soil_Data_by_Quadrat_June2023.csv", row.names=F)
 
+############################################################################
+
+ggplot(bd.data,
+       aes(y=treatment,
+           x=log10(root.fragment.density),
+           fill=depth)) +
+       geom_boxplot() +
+       labs(y="")

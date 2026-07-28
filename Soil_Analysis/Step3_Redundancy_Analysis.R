@@ -102,7 +102,7 @@ rda.plot <- ggplot(data=df1) +
                                     color="red", fill="transparent",
                                     alpha=0.7,size=3.5) +
                    labs(x=var.rda1.label,y=var.rda2.label) + 
-                   xlim(c(-2,2)) + ylim(c(-2,2)) +
+                   #xlim(c(-2,2)) + ylim(c(-2,2)) +
                    theme(text=element_text(size=14))
 rda.plot
 
@@ -116,7 +116,7 @@ var.sort1 = sort(df3[,"RDA1"], decreasing=T, index.return=T)
 df3[var.sort1$ix, c("RDA1","rows")]
 
 var.sort2 = sort(df3[,"RDA2"], decreasing=T, index.return=T)
-df3[var.sort2$ix, c("RDA2","rows")
+df3[var.sort2$ix, c("RDA2","rows")]
 
 
 ## make correlation matrix

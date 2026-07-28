@@ -1,7 +1,7 @@
 path_to_tree_folder = "C:/Users/Chels/OneDrive - University of Illinois - Urbana/Ch2_Floodplain_Experiment/Floodplain-Experiment-Repo"
 setwd(path_to_tree_folder)
 
-library(tidyr)
+library(tidyverse)
 
 ## script that loads and cleans diameter-at-breast-height (dbh.cm) data from 
 ## Joslin wetland mitigation site in Henry County
@@ -76,10 +76,10 @@ data.2022 = data.2022 %>% separate(treatment_plot, into = c("treatment","plot"),
 data.2023 = data.2023 %>% separate(treatment_plot, into = c("treatment","plot"), sep = 1, remove=T)
 
 # add columns for full treatment name
-data.2022$full.treatment.name = rep(0, nrow(data.2022))
-data.2023$full.treatment.name = rep(0, nrow(data.2023))
-for (i in 1:n.t) { data.2022$full.treatment.name[which(data.2022$treatment == trt.letters[i])] = trt.names[i] }
-for (i in 1:n.t) { data.2023$full.treatment.name[which(data.2023$treatment == trt.letters[i])] = trt.names[i] }
+data.2022$full.treatment.name = 0
+data.2023$full.treatment.name = 0
+for (i in 1:n.t) { data.2022$full.treatment.name[data.2022$treatment == trt.letters[i]] = trt.names[i] }
+for (i in 1:n.t) { data.2023$full.treatment.name[data.2023$treatment == trt.letters[i]] = trt.names[i] }
 
 # combine 2022 and 2023 data
 order.cols = c("year","redo","treatment","full.treatment.name","plot",

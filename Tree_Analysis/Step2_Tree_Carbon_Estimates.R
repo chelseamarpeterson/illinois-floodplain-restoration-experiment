@@ -1,22 +1,21 @@
-path_to_tree_folder = "C:/Users/Chels/OneDrive - University of Illinois - Urbana/Ch2_Floodplain_Experiment/Floodplain-Experiment-Repo"
-setwd(path_to_tree_folder)
+setwd("C:/Users/Chels/OneDrive - University of Illinois - Urbana/Ch2_Floodplain_Experiment")
 
 library(allodb)
-library(dplyr)
-library(tidyr)
+library(tidyverse)
 library(reshape2)
+library(patchwork)
 
 ################################################################################
 # load metadata
 
 # treatments
-trt.df = read.csv("Metadata/Treatment_Letters_Names.csv")
+trt.df = read.csv("floodplain-experiment-repo/Metadata/Treatment_Letters_Names.csv")
 trt.letters = trt.df[,"Treatment.letters"]
 trt.names = trt.df[,"Treatment.names"]
 n.t = nrow(trt.df)
 
 # read in conversions, constants, and plot dimensions 
-dim.df = read.csv("Metadata/Constants_Conversions_Dimensions.csv")
+dim.df = read.csv("floodplain-experiment-repo/Metadata/Constants_Conversions_Dimensions.csv")
 dim.list = list()
 for (i in 1:nrow(dim.df)) { dim.list[[dim.df[i,"Name"]]] = dim.df[i,"Value"] }
 
@@ -25,7 +24,7 @@ years = c(2022,2023)
 n.y = length(years)
 
 # list of genus families
-family.df = read.csv("Tree_Analysis/Tree_Databases/Tree_Families.csv")
+family.df = read.csv("floodplain-experiment-repo/Tree_Analysis/Tree_Databases/Tree_Families.csv")
 n.f = nrow(family.df)
 genus.families = list()
 for (i in 1:n.f) { genus.families[[family.df$Genus[i]]] = family.df$Family[i] }
@@ -34,15 +33,15 @@ for (i in 1:n.f) { genus.families[[family.df$Genus[i]]] = family.df$Family[i] }
 # step 1: estimate above- and belowground biomass from diameter-at-breast height (DBH) data (cm) 
 
 # read in all DBH data
-dbh.all = read.csv("Tree_Analysis/Clean_Data_By_Species/DBH_Data_Clean_2022_2023.csv", header=T)
+dbh.all = read.csv("floodplain-experiment-repo/Tree_Analysis/Clean_Data_By_Species/DBH_Data_Clean_2022_2023.csv", header=T)
 
 # make list for unique species
 uni.spp = sort(unique(dbh.all$spp))
 n.sp = length(uni.spp)
 
 # read in allometric equation matrices
-allo.df.jenkins = read.csv("Tree_Analysis/Tree_Databases/Jenkins2004.csv", header=T)
-allo.df.chojnacky = read.csv("Tree_Analysis/Tree_Databases/Chojnacky2014.csv", header=T)
+allo.df.jenkins = read.csv("floodplain-experiment-repo/Tree_Analysis/Tree_Databases/Jenkins2004.csv", header=T)
+allo.df.chojnacky = read.csv("floodplain-experiment-repo/Tree_Analysis/Tree_Databases/Chojnacky2014.csv", header=T)
 
 # update row names
 rownames(allo.df.jenkins) = allo.df.jenkins$spp
@@ -99,7 +98,7 @@ colnames(biomass.by.species)[which(colnames(biomass.by.species) %in% bm.vars)] =
 # step 2: estimate carbon stocks from biomass (Mg C/ha)
 
 # clean wood database
-wood.c.df = read.csv("Tree_Analysis/Tree_Databases/Doraisami_2021_Wood_C_Database.csv")
+wood.c.df = read.csv("floodplain-experiment-repo/Tree_Analysis/Tree_Databases/Doraisami_2021_Wood_C_Database.csv")
 live.wood.c.df = wood.c.df[which(wood.c.df$dead.alive == "alive" & wood.c.df$growth.form == "tree"),]
 live.stem.c.df = live.wood.c.df[which(live.wood.c.df$tissue == "stem"),]
 live.stem.c.df = live.stem.c.df %>% separate(binomial.resolved, c("genus","spp"), sep="_", remove=F)
@@ -202,5 +201,64 @@ plot.sort = sort(C.stocks.by.plot.redo$treatment_plot, index.return=T)
 C.stocks.by.plot.redo = C.stocks.by.plot.redo[plot.sort$ix,-which(colnames(C.stocks.by.plot) %in% c("redo","year","treatment_plot"))]
 
 # write C stocks results to file
-write.csv(C.stocks.by.plot.redo, "Tree_Analysis/Clean_Data_By_Plot/Woody_Biomass_Carbon_Stocks_By_Plot.csv", row.names=F)
-write.csv(C.stocks.by.species.redo, "Tree_Analysis/Clean_Data_By_Species/Woody_Biomass_Carbon_Stocks_By_Species.csv", row.names=F)
+write.csv(C.stocks.by.plot.redo, 
+          "floodplain-experiment-repo/Tree_Analysis/Clean_Data_By_Plot/Woody_Biomass_Carbon_Stocks_By_Plot.csv", 
+          row.names=F)
+write.csv(C.stocks.by.species.redo, 
+          "floodplain-experiment-repo/Tree_Analysis/Clean_Data_By_Species/Woody_Biomass_Carbon_Stocks_By_Species.csv", 
+          row.names=F)
+
+################################################################################
+# plot DBH v. C stocks
+
+# remove redo plots
+dbh.all = dbh.all %>% unite(col = "treatment_plot", c("treatment","plot"), sep="", remove=F) 
+redo.dbh.ind = which(dbh.all$treatment_plot %in% redo.trt.plots & dbh.all$redo == "N")
+dbh.all = dbh.all[-redo.dbh.ind,]
+
+# compare tree counts among treatments
+dbh.all$ones = 1
+quantiles = quantile(dbh.all$dbh.cm, probs=c(0.25,0.5,0.75))
+dbh.all$quantile = 0
+for (i in 1:nrow(dbh.all)) {
+  dbh.i = dbh.all$dbh.cm[i]
+  if (dbh.i < quantiles[1]) {
+    dbh.all$quantile[i] = "0-25%"
+  } else if ((dbh.i >= quantiles[1]) & (dbh.i < quantiles[2])) {
+    dbh.all$quantile[i] = "25-50%"
+  } else if ((dbh.i >= quantiles[2]) & (dbh.i < quantiles[3])) {
+    dbh.all$quantile[i] = "50-75%"
+  } else if (dbh.i >= quantiles[3]) {
+    dbh.all$quantile[i] = "75-100%"
+  }
+}
+quantile.labels = c("0-25%","25-50%","50-75%","75-100%")
+dbh.tree.count = dbh.all %>%
+                 group_by(full.treatment.name, quantile) %>%
+                 summarise(count = sum(ones))
+p.count = ggplot(dbh.tree.count,
+                 aes(y=factor(full.treatment.name, levels=trt.names),
+                     x=count,
+                     fill=factor(quantile,levels=quantile.labels))) + 
+                 geom_bar(stat="identity") +
+                 labs(y="",x="Tree count (DBH >= 2.5 cm)") +
+                 scale_x_continuous(limits=c(0,100)) + 
+                 annotate("text", x = Inf, y = Inf, label = "a",
+                          hjust = 1.5, vjust = 1.4, 
+                          size = 8, family = "sans", fontface = "plain") 
+p.count
+# compare tree DBHs among treatments
+p.dbh = ggplot(dbh.all,
+               aes(y=factor(full.treatment.name, levels=trt.names),
+                   x=dbh.cm)) +
+               geom_boxplot() +
+               labs(y="",x="Tree DBH (cm)") +
+               scale_x_continuous(limits=c(0,120)) +
+               theme(axis.text.y = element_blank()) +
+               annotate("text", x = Inf, y = Inf, label = "b",
+                        hjust = 1.5, vjust = 1.4, 
+                        size = 8, family = "sans", fontface = "plain") 
+p = p.count + p.dbh
+p
+ggsave("Manuscript/Supp_Figures/FigureB11_Tree_Counts_DBHs_by_Treatment.jpeg",
+       plot=p, width=7, height=3, dpi=600)

@@ -90,7 +90,7 @@ for (i in 1:n.s) {
 }
 cbind(subset(ecoC.df.total.melt, stat=="mean")[1:6,"trt"], signif(subset(ecoC.df.total.melt, stat=="mean")[1:6,"carbon.benefit"]/1000,3))
 cbind(subset(ecoC.df.total.melt, stat=="lower")[1:6,"trt"], signif(subset(ecoC.df.total.melt, stat=="lower")[1:6,"carbon.benefit"]/1000,3))
-cbind(subset(ecoC.df.total.melt, stat=="upper")[1:6,"trt"], signif(subset(ecoC.df.total.melt, stat=="upper")[1:6,"carbon.benefit"]/1000,3))
+cbind(subset(ecoC.df.total.melt, stat=="upper")[1:6,"trt"], signif(subset(ecoC.df.total.melt, stat=="upper")[1:6,"carbon.benefit"]/1000,4))
 
 ecoC.df.annual.melt$carbon.benefit = 0
 ann.crop.ch4 = subset(ghg.meta, `Ecosystem change` == "Cropland to wetland" & molecule == "Methane")[1,stats]/1000 # (kg/ha/y)*(1 Mg/1000 kg) = Mg CH4/ha/y
